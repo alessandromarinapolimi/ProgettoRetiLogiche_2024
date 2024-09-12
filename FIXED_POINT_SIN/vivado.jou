@@ -3,50 +3,24 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Mon Sep  2 17:25:05 2024
-# Process ID: 10076
-# Current directory: E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent23820 E:\Scuola\3oAnnoPDM\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.xpr
-# Log file: E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/vivado.log
-# Journal file: E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN\vivado.jou
-# Running On        :DESKTOP-MR0MB0B
+# Start of session at: Thu Sep 12 19:18:21 2024
+# Process ID: 5084
+# Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent18632 C:\Users\ultro\OneDrive\ALTRO\Desktop\Project SIN_FIXED_POINT\ProgettoRetiLogiche_2024-main\FIXED_POINT_SIN\FIXED_POINT_SIN.xpr
+# Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/vivado.log
+# Journal file: C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN\vivado.jou
+# Running On        :Laptop-ASH
 # Platform          :Windows Server 2016 or Windows 10
-# Operating System  :19045
-# Processor Detail  :12th Gen Intel(R) Core(TM) i9-12900K
-# CPU Frequency     :3187 MHz
-# CPU Physical cores:16
-# CPU Logical cores :24
-# Host memory       :34053 MB
-# Swap memory       :7247 MB
-# Total Virtual     :41301 MB
-# Available Virtual :27467 MB
+# Operating System  :22631
+# Processor Detail  :AMD Ryzen 5 4600H with Radeon Graphics         
+# CPU Frequency     :2994 MHz
+# CPU Physical cores:6
+# CPU Logical cores :12
+# Host memory       :12210 MB
+# Swap memory       :4831 MB
+# Total Virtual     :17042 MB
+# Available Virtual :3928 MB
 #-----------------------------------------------------------
 start_gui
-open_project E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.xpr
+open_project {C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.xpr}
 update_compile_order -fileset sources_1
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-reset_run synth_1
-launch_runs synth_1 -jobs 15
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-launch_runs synth_1 -jobs 15
-wait_on_run synth_1
-launch_runs impl_1 -jobs 15
-wait_on_run impl_1
-open_run impl_1

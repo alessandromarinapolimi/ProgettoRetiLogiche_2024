@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1/SINE_CALCULATOR.tcl"
+  variable script "C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1/SINE_CALCULATOR.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,9 +56,8 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 6
 set_param checkpoint.writeSynthRtdsInDcp 1
-set_param synth.incrementalSynthesisCache C:/Users/Alessandro/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-23840-DESKTOP-MR0MB0B/incrSyn
+set_param synth.incrementalSynthesisCache {C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/.Xil/Vivado-29172-Laptop-ASH/incrSyn}
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -67,21 +66,21 @@ create_project -in_memory -part xc7a200tsbg484-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.cache/wt [current_project]
-set_property parent.project_path E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.xpr [current_project]
+set_property webtalk.parent_dir {C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.cache/wt} [current_project]
+set_property parent.project_path {C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.xpr} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo e:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.cache/ip [current_project]
+set_property ip_output_repo {c:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.cache/ip} [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd
-  E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd
-  E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd
-  E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd
-  E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd
-  E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd
+  {C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd}
+  {C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd}
+  {C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd}
+  {C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd}
+  {C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd}
+  {C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd}
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -94,7 +93,7 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 }
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/utils_1/imports/synth_1/SINE_CALCULATOR.dcp
+read_checkpoint -auto_incremental -incremental {C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/utils_1/imports/synth_1/SINE_CALCULATOR.dcp}
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

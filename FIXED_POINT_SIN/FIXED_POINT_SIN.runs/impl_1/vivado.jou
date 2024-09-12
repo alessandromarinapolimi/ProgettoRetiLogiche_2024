@@ -3,22 +3,22 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Thu Sep  5 20:28:08 2024
-# Process ID: 2388
-# Current directory: E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/impl_1
+# Start of session at: Thu Sep 12 16:59:32 2024
+# Process ID: 1608
+# Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/impl_1
 # Command line: vivado.exe -log SINE_CALCULATOR.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source SINE_CALCULATOR.tcl -notrace
-# Log file: E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/impl_1/SINE_CALCULATOR.vdi
-# Journal file: E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/impl_1\vivado.jou
-# Running On        :DESKTOP-MR0MB0B
+# Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/impl_1/SINE_CALCULATOR.vdi
+# Journal file: C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/impl_1\vivado.jou
+# Running On        :Laptop-ASH
 # Platform          :Windows Server 2016 or Windows 10
-# Operating System  :19045
-# Processor Detail  :12th Gen Intel(R) Core(TM) i9-12900K
-# CPU Frequency     :3187 MHz
-# CPU Physical cores:16
-# CPU Logical cores :24
-# Host memory       :34053 MB
-# Swap memory       :7784 MB
-# Total Virtual     :41838 MB
-# Available Virtual :20401 MB
+# Operating System  :22631
+# Processor Detail  :AMD Ryzen 5 4600H with Radeon Graphics         
+# CPU Frequency     :2994 MHz
+# CPU Physical cores:6
+# CPU Logical cores :12
+# Host memory       :12210 MB
+# Swap memory       :6547 MB
+# Total Virtual     :18758 MB
+# Available Virtual :3914 MB
 #-----------------------------------------------------------
 source SINE_CALCULATOR.tcl -notrace

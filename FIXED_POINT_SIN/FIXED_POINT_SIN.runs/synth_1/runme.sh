@@ -12,9 +12,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=E:/Scuola/3oAnnoPDM/PRL/Vivado/2024.1/ids_lite/ISE/bin/nt64;E:/Scuola/3oAnnoPDM/PRL/Vivado/2024.1/ids_lite/ISE/lib/nt64:E:/Scuola/3oAnnoPDM/PRL/Vivado/2024.1/bin
+  PATH=C:/Users/ultro/.Xilinx/Vivado/2024.1/ids_lite/ISE/bin/nt64;C:/Users/ultro/.Xilinx/Vivado/2024.1/ids_lite/ISE/lib/nt64:C:/Users/ultro/.Xilinx/Vivado/2024.1/bin
 else
-  PATH=E:/Scuola/3oAnnoPDM/PRL/Vivado/2024.1/ids_lite/ISE/bin/nt64;E:/Scuola/3oAnnoPDM/PRL/Vivado/2024.1/ids_lite/ISE/lib/nt64:E:/Scuola/3oAnnoPDM/PRL/Vivado/2024.1/bin:$PATH
+  PATH=C:/Users/ultro/.Xilinx/Vivado/2024.1/ids_lite/ISE/bin/nt64;C:/Users/ultro/.Xilinx/Vivado/2024.1/ids_lite/ISE/lib/nt64:C:/Users/ultro/.Xilinx/Vivado/2024.1/bin:$PATH
 fi
 export PATH
 
@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='E:/Scuola/3oAnnoPDM/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1'
+HD_PWD='C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
