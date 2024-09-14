@@ -1,116 +1,154 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
+
 entity SINE_CALCULATOR is
-    Port(
+    generic (
+        N : positive := 10;  -- Number of bits for sine values
+        M : positive := 9    -- Number of bits for input angle
+    );
+    Port (
         clk   : in  std_logic;
         reset : in  std_logic;
-        angle : in  std_logic_vector(8 downto 0);
-        sine  : out std_logic_vector(9 downto 0)
+        angle : in  std_logic_vector(M-1 downto 0);
+        sine  : out std_logic_vector(N-1 downto 0)
     );
 end SINE_CALCULATOR;
+
 architecture Structural of SINE_CALCULATOR is
     component LUT is
+        generic (N : positive);
         Port (
             ANGLE : in  std_logic_vector(6 downto 0);
-            SINE  : out std_logic_vector(9 downto 0)
+            SINE  : out std_logic_vector(N-1 downto 0)
         );
     end component;
-    component INTERP is
-        Port (
-            ANGLE             : in  std_logic_vector(2 downto 0);
-            SINE1             : in  std_logic_vector(9 downto 0);
-            SINE2             : in  std_logic_vector(9 downto 0);
-            INTERPOLATED_SINE : out std_logic_vector(9 downto 0)
-        );
-    end component;
-    component SUB is
-        Port (
-            X    : in  std_logic_vector(9 downto 0);
-            Y    : in  std_logic_vector(9 downto 0);
-            DIFF : out std_logic_vector(9 downto 0)
-        );
-    end component;
+
     component RCA is
-        Port(
-            A    : in  std_logic_vector(9 downto 0);
-            B    : in  std_logic_vector(9 downto 0);
+        generic (N : positive);
+        Port (
+            A, B : in  std_logic_vector(N-1 downto 0);
             CIN  : in  std_logic;
-            SUM  : out std_logic_vector(9 downto 0);
+            SUM  : out std_logic_vector(N-1 downto 0);
             COUT : out std_logic
         );
     end component;
-    signal theta                          : std_logic_vector(8 downto 0);
-    signal idx                            : std_logic_vector(6 downto 0);
-    signal lut1_out                       : std_logic_vector(9 downto 0) := (others => '0');
-    signal lut2_out                       : std_logic_vector(9 downto 0) := (others => '0');
-    signal interp_out                     : std_logic_vector(9 downto 0);
-    signal neg_flag                       : std_logic; 
-    signal lut1_addr, lut2_addr           : std_logic_vector(6 downto 0);
-    signal lut1_addr_ext                  : std_logic_vector(9 downto 0);
-    signal angle_90, angle_180, angle_270 : std_logic_vector(8 downto 0);
-    signal sub_result                     : std_logic_vector(9 downto 0);
-    signal add_result                     : std_logic_vector(6 downto 0);
-    
-    signal unused_bits : std_logic_vector(2 downto 0);  -- Segnale fittizio per i bit inutilizzati
-    attribute keep : boolean;
-    attribute keep of unused_bits : signal is true;
 
+    component SUB is
+        generic (N : positive);
+        Port (
+            X, Y : in  std_logic_vector(N-1 downto 0);
+            DIFF : out std_logic_vector(N-1 downto 0)
+        );
+    end component;
+
+    signal angle_adjusted : std_logic_vector(M-1 downto 0);
+    signal angle_final : std_logic_vector(6 downto 0);
+    signal sine_temp : std_logic_vector(N-1 downto 0);
+    signal sine_neg : std_logic_vector(N-1 downto 0);
+    signal neg_flag : std_logic;
+
+    -- Constants
+    constant ANGLE_360 : std_logic_vector(M-1 downto 0) := (M-1 => '1', others => '0');  -- 360 degrees
+    constant ANGLE_180 : std_logic_vector(M-1 downto 0) := (M-2 => '1', others => '0');  -- 180 degrees
+    constant ANGLE_90  : std_logic_vector(M-1 downto 0) := (M-3 => '1', others => '0');  -- 90 degrees
+
+    -- Signals for angle adjustment
+    signal angle_plus_360 : std_logic_vector(M-1 downto 0);
+    signal angle_minus_360 : std_logic_vector(M-1 downto 0);
+    signal angle_minus_180 : std_logic_vector(M-1 downto 0);
+    signal angle_90_minus : std_logic_vector(M-1 downto 0);
 
 begin
-    angle_90 <= "001011010";  -- 90 in binario
-    angle_180 <= "010110100";  -- 180 in binario
-    angle_270 <= "100001110";  -- 270 in binario
+    -- Angle adjustment logic
+    ADD_360: RCA
+    generic map (N => M)
+    port map (
+        A => angle,
+        B => ANGLE_360,
+        CIN => '0',
+        SUM => angle_plus_360,
+        COUT => open
+    );
+
+    SUB_360: SUB
+    generic map (N => M)
+    port map (
+        X => angle,
+        Y => ANGLE_360,
+        DIFF => angle_minus_360
+    );
+
+    SUB_180: SUB
+    generic map (N => M)
+    port map (
+        X => angle,
+        Y => ANGLE_180,
+        DIFF => angle_minus_180
+    );
+
+    SUB_FROM_90: SUB
+    generic map (N => M)
+    port map (
+        X => ANGLE_90,
+        Y => angle,
+        DIFF => angle_90_minus
+    );
+
     process(clk, reset)
     begin
         if reset = '1' then
-            theta <= (others => '0');
-            idx <= (others => '0');
+            angle_adjusted <= (others => '0');
             neg_flag <= '0';
         elsif rising_edge(clk) then
-            theta <= angle;
-            if unsigned(theta) < unsigned(angle_90) then  -- 0-89
-                idx <= theta(6 downto 0);
-                neg_flag <= '0';
-            elsif unsigned(theta) < unsigned(angle_180) then  -- 90-179
-                idx <= std_logic_vector(unsigned(not theta(6 downto 0)) + 1);
-                neg_flag <= '0';
-            elsif unsigned(theta) < unsigned(angle_270) then  -- 180-269
-                idx <= theta(6 downto 0);
+            if angle(M-1) = '1' then
+                angle_adjusted <= angle_plus_360;
+            elsif angle >= ANGLE_360 then
+                angle_adjusted <= angle_minus_360;
+            else
+                angle_adjusted <= angle;
+            end if;
+
+            if angle_adjusted >= ANGLE_180 then
+                angle_adjusted <= angle_minus_180;
                 neg_flag <= '1';
-            else  -- 270-359
-                idx <= std_logic_vector(unsigned(not theta(6 downto 0)) + 1);
-                neg_flag <= '1';
+            else
+                neg_flag <= '0';
+            end if;
+
+            if angle_adjusted > ANGLE_90 then
+                angle_adjusted <= angle_90_minus;
             end if;
         end if;
     end process;
-    lut1_addr <= idx(6 downto 3) & "000";
-    lut1_addr_ext <= "000" & lut1_addr;
-    
 
+    -- Use only the 7 least significant bits for the LUT
+    angle_final <= angle_adjusted(6 downto 0);
 
-    ADD_8: RCA port map (
-        A => lut1_addr_ext,
-        B => "0000001000",  -- 8 in binario
-        CIN => '0',
-        SUM(6 downto 0) => add_result,
-        SUM(9 downto 7) => unused_bits,  -- Utilizzo del segnale fittizio
-        COUT => open
+    -- LUT instance
+    LUT_INST: LUT
+    generic map (N => N)
+    port map (
+        ANGLE => angle_final,
+        SINE => sine_temp
     );
-    lut2_addr <= add_result;
-    LUT1: entity work.LUT port map (ANGLE => lut1_addr, SINE => lut1_out);
-    LUT2: entity work.LUT port map (ANGLE => lut2_addr, SINE => lut2_out);
-    INTERP1: entity work.INTERP port map (
-        ANGLE => idx(2 downto 0),
-        SINE1 => lut1_out,
-        SINE2 => lut2_out,
-        INTERPOLATED_SINE => interp_out
+
+    -- Negate sine if necessary
+    NEG_SINE: SUB
+    generic map (N => N)
+    port map (
+        X => (others => '0'),
+        Y => sine_temp,
+        DIFF => sine_neg
     );
-    -- Negazione del seno se necessario
-    NEG_SINE: entity work.SUB port map (
-        X => "0000000000",
-        Y => interp_out,
-        DIFF => sub_result
-    );
-    sine <= sub_result when neg_flag = '1' else interp_out;
+
+    -- Multiplexer for selecting between positive and negative sine
+    process(sine_temp, sine_neg, neg_flag)
+    begin
+        if neg_flag = '1' then
+            sine <= sine_neg;
+        else
+            sine <= sine_temp;
+        end if;
+    end process;
+
 end Structural;

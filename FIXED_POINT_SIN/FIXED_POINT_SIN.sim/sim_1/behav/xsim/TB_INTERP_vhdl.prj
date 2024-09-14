@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd" \
+"../../../../FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd" \
+"../../../../FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd" \
+"../../../../FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd" \
+"../../../../FIXED_POINT_SIN.srcs/sim_1/new/TB_INTERP.vhd" \
+
+# Do not sort compile order
+nosort

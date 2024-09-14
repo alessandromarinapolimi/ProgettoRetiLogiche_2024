@@ -123,7 +123,6 @@ begin
         report "-----------------------------------------" severity NOTE;
 
         -- Simulation ended
-        wait for 10ns;  
         std.env.stop; 
     end process;
 

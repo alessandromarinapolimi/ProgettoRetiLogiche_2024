@@ -1,8 +1,10 @@
 Time resolution is 1 ps
-Note: -----------------------------------------
-Time: 100 ns  Iteration: 0  Process: /TB_RCA/stim_proc  File: C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_RCA.vhd
-Note: ----SIMULATION COMPLETED SUCCESSFULLY----
-Time: 100 ns  Iteration: 0  Process: /TB_RCA/stim_proc  File: C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_RCA.vhd
-Note: -----------------------------------------
-Time: 100 ns  Iteration: 0  Process: /TB_RCA/stim_proc  File: C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_RCA.vhd
-$stop called at time : 110 ns : File "C:/Users/ultro/OneDrive/ALTRO/Desktop/Project SIN_FIXED_POINT/ProgettoRetiLogiche_2024-main/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_RCA.vhd" Line 127
+Error: Test case 2 failed
+Time: 20 ns  Iteration: 0  Process: /TB_INTERP/stim_proc  File: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_INTERP.vhd
+Error: Test case 3 failed
+Time: 30 ns  Iteration: 0  Process: /TB_INTERP/stim_proc  File: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_INTERP.vhd
+Error: Test case 4 failed
+Time: 40 ns  Iteration: 0  Process: /TB_INTERP/stim_proc  File: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_INTERP.vhd
+Note: Simulation finished successfully
+Time: 40 ns  Iteration: 0  Process: /TB_INTERP/stim_proc  File: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_INTERP.vhd
+$stop called at time : 40 ns : File "C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_INTERP.vhd" Line 83

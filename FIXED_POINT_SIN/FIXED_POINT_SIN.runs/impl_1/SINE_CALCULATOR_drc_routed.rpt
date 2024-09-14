@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Thu Sep 12 17:01:29 2024
+| Date         : Sat Sep 14 10:47:33 2024
 | Host         : Laptop-ASH running 64-bit major release  (build 9200)
 | Command      : report_drc -file SINE_CALCULATOR_drc_routed.rpt -pb SINE_CALCULATOR_drc_routed.pb -rpx SINE_CALCULATOR_drc_routed.rpx
 | Design       : SINE_CALCULATOR
@@ -24,13 +24,14 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 3
+             Violations found: 4
 +----------+------------------+-----------------------------------------------------+------------+
 | Rule     | Severity         | Description                                         | Violations |
 +----------+------------------+-----------------------------------------------------+------------+
 | NSTD-1   | Critical Warning | Unspecified I/O Standard                            | 1          |
 | UCIO-1   | Critical Warning | Unconstrained Logical Port                          | 1          |
 | CFGBVS-1 | Warning          | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
+| PDRC-153 | Warning          | Gated clock check                                   | 1          |
 +----------+------------------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -56,6 +57,11 @@ Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_des
  #where value2 is the voltage provided to configuration bank 0
 
 Refer to the device configuration user guide for more information.
+Related violations: <none>
+
+PDRC-153#1 Warning
+Gated clock check  
+Net LUT_INST/sine_OBUF[9]_inst_i_3_n_0 is a gated clock net sourced by a combinational pin LUT_INST/sine_OBUF[9]_inst_i_3/O, cell LUT_INST/sine_OBUF[9]_inst_i_3. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 
