@@ -1,86 +1,141 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
 
 entity TB_INTERP is
 end TB_INTERP;
 
 architecture Behavioral of TB_INTERP is
-    constant N : positive := 10;  -- Assuming 10-bit precision for sine values
-
+    constant N : integer := 10;
+    
     component INTERP is
-        generic (
-            N : positive 
-        );
-        Port(
-            ANGLE             : in  std_logic_vector(6 downto 0);
-            SINE1, SINE2      : in  std_logic_vector(N-1 downto 0);
-            INTERPOLATED_SINE : out std_logic_vector(N-1 downto 0)
+        generic (N : positive);
+        Port ( 
+            ANGLE_DIFF : in std_logic_vector(2 downto 0);  -- Differenza tra angolo in ingresso e l'angolo più piccolo
+            SINE1 : in std_logic_vector(N-1 downto 0);         -- Seno dell'angolo più piccolo
+            SINE2 : in std_logic_vector(N-1 downto 0);         -- Seno dell'angolo più grande
+            RESULT : out std_logic_vector(N-1 downto 0)     -- Risultato interpolato
         );
     end component;
-
-    signal ANGLE : std_logic_vector(6 downto 0) := (others => '0');
-    signal SINE1, SINE2, INTERPOLATED_SINE : std_logic_vector(N-1 downto 0) := (others => '0');
-
-    -- Function to convert real to std_logic_vector
-    function real_to_slv(r : real; bits : positive) return std_logic_vector is
-        variable int_val : integer;
-    begin
-        int_val := integer(r * real(2**(bits-2)));
-        return std_logic_vector(to_signed(int_val, bits));
-    end function;
+    
+    signal ANGLE_DIFF : std_logic_vector(2 downto 0);
+    signal SINE1, SINE2, RESULT : std_logic_vector(N-1 downto 0);
 
 begin
-    -- Instantiate the Unit Under Test (UUT)
-    UUT: INTERP 
+    UUT: INTERP
         generic map (N => N)
         port map (
-            ANGLE => ANGLE,
+            ANGLE_DIFF => ANGLE_DIFF,
             SINE1 => SINE1,
             SINE2 => SINE2,
-            INTERPOLATED_SINE => INTERPOLATED_SINE
+            RESULT => RESULT
         );
-
-    -- Stimulus process
+        
     stim_proc: process
     begin
-        -- Test case 1: Angle = 0, SINE1 = 0, SINE2 = 0.5
-        ANGLE <= "0000000";  -- 0 degrees
-        SINE1 <= real_to_slv(0.0, N);
-        SINE2 <= real_to_slv(0.5, N);
+    
+         -- Test per 1 grado
+        ANGLE_DIFF <= "001";  -- Differenza di 1 grado
+        SINE1 <= "0000000000";  -- sin(0) 
+        SINE2 <= "0000100011";  -- sin(8) 
         wait for 10 ns;
-        assert (unsigned(INTERPOLATED_SINE) = 0) 
-            report "Test case 1 failed" severity ERROR;
 
-        -- Test case 2: Angle = 4 (halfway between 0 and 8), SINE1 = 0, SINE2 = 0.5
-        ANGLE <= "0000100";  -- 4 degrees
-        SINE1 <= real_to_slv(0.0, N);
-        SINE2 <= real_to_slv(0.5, N);
+        -- Test per 12 gradi
+        ANGLE_DIFF <= "100";  -- Differenza di 4 gradi
+        SINE1 <= "0000100011";  -- sin(8) 
+        SINE2 <= "0001000110";  -- sin(16) 
         wait for 10 ns;
-        assert (unsigned(INTERPOLATED_SINE) = unsigned(real_to_slv(0.25, N))) 
-            report "Test case 2 failed" severity ERROR;
-
-        -- Test case 3: Angle = 8, SINE1 = 0, SINE2 = 0.5
-        ANGLE <= "0001000";  -- 8 degrees
-        SINE1 <= real_to_slv(0.0, N);
-        SINE2 <= real_to_slv(0.5, N);
-        wait for 10 ns;
-        assert (unsigned(INTERPOLATED_SINE) = unsigned(real_to_slv(0.5, N))) 
-            report "Test case 3 failed" severity ERROR;
-
-        -- Test case 4: Random angle between 0 and 8
-        ANGLE <= "0000110";  -- 6 degrees
-        SINE1 <= real_to_slv(0.0, N);
-        SINE2 <= real_to_slv(1.0, N);
-        wait for 10 ns;
-        assert (unsigned(INTERPOLATED_SINE) > unsigned(real_to_slv(0.6, N)) and
-                unsigned(INTERPOLATED_SINE) < unsigned(real_to_slv(0.8, N))) 
-            report "Test case 4 failed" severity ERROR;
-
-        -- End simulation
         
-        report "Simulation finished successfully";
-        std.env.stop;
+        -- Test per 17 gradi
+        ANGLE_DIFF <= "001";  -- Differenza di 1 grado
+        SINE1 <= "0001000110";  -- sin(16) 
+        SINE2 <= "0001101000";  -- sin(24)
+        wait for 10 ns;
+    
+         -- Test per 23 gradi
+        ANGLE_DIFF <= "111";  -- Differenza di 7 gradi
+        SINE1 <= "0001000110";  -- sin(16) 
+        SINE2 <= "0001101000";  -- sin(24) 
+        wait for 10 ns;
+        
+        -- Test per 29 gradi
+        ANGLE_DIFF <= "101";  -- Differenza di 5 gradi
+        SINE1 <= "0001101000";  -- sin(24)
+        SINE2 <= "0010000111";  -- sin(32)
+        wait for 10 ns;
+
+        -- Test per 47 gradi
+        ANGLE_DIFF <= "111";  -- Differenza di 5 gradi
+        SINE1 <= "0010100100";  -- sin(40) 
+        SINE2 <= "0010111110";  -- sin(48)
+        wait for 10 ns;
+        
+        -- Test per 51 gradi
+        ANGLE_DIFF <= "011";  -- Differenza di 3 gradi
+        SINE1 <= "0010111110";  -- sin(48) 
+        SINE2 <= "0011010100";  -- sin(56)
+        wait for 10 ns;
+        
+        -- Test per 69 gradi
+        ANGLE_DIFF <= "101";  -- Differenza di 5 gradi
+        SINE1 <= "0011100110";  -- sin(64)
+        SINE2 <= "0011110011";  -- sin72) 
+        wait for 10 ns;
+
+        -- Test per 73 gradi
+        ANGLE_DIFF <= "001";  -- Differenza di 1 gradi
+        SINE1 <= "0011110011";  -- sin(72) 
+        SINE2 <= "0011111100";  -- sin(80)
+        wait for 10 ns;
+      
+        -- Test per 79 gradi
+        ANGLE_DIFF <= "111";  -- Differenza di 7 gradi
+        SINE1 <= "0011110011";  -- sin(72) 
+        SINE2 <= "0011111100";  -- sin(80)
+        wait for 10 ns;
+
+         -- Test per 81 gradi
+        ANGLE_DIFF <= "001";  -- Differenza di 1 gradi
+        SINE1 <= "0011111100";  -- sin(80) 
+        SINE2 <= "0011111111";  -- sin(88) 
+        wait for 10 ns;
+        
+        -- Test per 82 gradi
+        ANGLE_DIFF <= "010";  -- Differenza di 2 gradi
+        SINE1 <= "0011111100";  -- sin(80) 
+        SINE2 <= "0011111111";  -- sin(88) 
+        wait for 10 ns;
+        
+        -- Test per 83 gradi
+        ANGLE_DIFF <= "011";  -- Differenza di 3 gradi
+        SINE1 <= "0011111100";  -- sin(80) 
+        SINE2 <= "0011111111";  -- sin(88) 
+        wait for 10 ns;
+        
+        -- Test per 84 gradi
+        ANGLE_DIFF <= "100";  -- Differenza di 4 gradi
+        SINE1 <= "0011111100";  -- sin(80) 
+        SINE2 <= "0011111111";  -- sin(88) 
+        wait for 10 ns;
+        
+        -- Test per 85 gradi
+        ANGLE_DIFF <= "101";  -- Differenza di 5 gradi
+        SINE1 <= "0011111100";  -- sin(80) 
+        SINE2 <= "0011111111";  -- sin(88) 
+        wait for 10 ns;
+        
+        -- Test per 86 gradi
+        ANGLE_DIFF <= "110";  -- Differenza di 6 gradi
+        SINE1 <= "0011111100";  -- sin(80) 
+        SINE2 <= "0011111111";  -- sin(88) 
+        wait for 10 ns;
+        
+        -- Test per 87 gradi
+        ANGLE_DIFF <= "111";  -- Differenza di 7 gradi
+        SINE1 <= "0011111100";  -- sin(80) 
+        SINE2 <= "0011111111";  -- sin(88) 
+        wait for 10 ns;
+
+        std.env.stop; -- Fermare la simulazione
     end process;
 
 end Behavioral;
