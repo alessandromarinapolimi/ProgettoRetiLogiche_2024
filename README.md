@@ -20,11 +20,11 @@ Legend:
 
 | Elements                        | Status |
 |---------------------------------|--------|
-| FA                              | 🟡     |
-| INTERP                          | 🟡     |
+| FA                              | 🟢     |
+| RCA                             | 🟢     |
+| SUB                             | 🟢     |
+| INTERP                          | 🟢     |
 | LUT                             | 🟡     |
-| RCA                             | 🟡     |
-| SUB                             | 🟡     |
 | SINE_CALCULATOR                 | 🟡     |
 
 
