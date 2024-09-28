@@ -7,14 +7,14 @@ entity SINE_CALCULATOR is
         M : positive := 9    -- Number of bits for input angle
     );
     Port (
-        clk   : in  std_logic;
-        reset : in  std_logic;
-        angle : in  std_logic_vector(M-1 downto 0);
-        sine  : out std_logic_vector(N-1 downto 0)
+        CLK   : in  std_logic;
+        RESET : in  std_logic;
+        ANGLE : in  std_logic_vector(M-1 downto 0);
+        SINE  : out std_logic_vector(N-1 downto 0)
     );
 end SINE_CALCULATOR;
 
-architecture Structural of SINE_CALCULATOR is
+architecture structural of SINE_CALCULATOR is
     component LUT is
         generic (N : positive);
         Port (
@@ -41,114 +41,98 @@ architecture Structural of SINE_CALCULATOR is
         );
     end component;
 
-    signal angle_adjusted : std_logic_vector(M-1 downto 0);
-    signal angle_final : std_logic_vector(6 downto 0);
-    signal sine_temp : std_logic_vector(N-1 downto 0);
-    signal sine_neg : std_logic_vector(N-1 downto 0);
-    signal neg_flag : std_logic;
-
     -- Constants
     constant ANGLE_360 : std_logic_vector(M-1 downto 0) := (M-1 => '1', others => '0');  -- 360 degrees
     constant ANGLE_180 : std_logic_vector(M-1 downto 0) := (M-2 => '1', others => '0');  -- 180 degrees
     constant ANGLE_90  : std_logic_vector(M-1 downto 0) := (M-3 => '1', others => '0');  -- 90 degrees
 
-    -- Signals for angle adjustment
-    signal angle_plus_360 : std_logic_vector(M-1 downto 0);
-    signal angle_minus_360 : std_logic_vector(M-1 downto 0);
-    signal angle_minus_180 : std_logic_vector(M-1 downto 0);
-    signal angle_90_minus : std_logic_vector(M-1 downto 0);
+    -- Signals
+    signal ANGLE_ADJUSTED : std_logic_vector(M-1 downto 0);
+    signal ANGLE_FINAL : std_logic_vector(6 downto 0);
+    signal SINE_TEMP : std_logic_vector(N-1 downto 0);
+    signal SINE_NEG : std_logic_vector(N-1 downto 0);
+    signal NEG_FLAG : std_logic;
+
+    -- Intermediate signals for angle adjustment
+    signal ANGLE_MINUS_360, ANGLE_MINUS_180 : std_logic_vector(M-1 downto 0);
+    signal ANGLE_180_MINUS, ANGLE_90_MINUS : std_logic_vector(M-1 downto 0);
+
+    -- Function to compare two std_logic_vector
+    function GREATER_THAN(A, B: std_logic_vector) return boolean is
+    begin
+        for I in A'high downto A'low loop
+            if A(I) = '1' and B(I) = '0' then
+                return true;
+            elsif A(I) = '0' and B(I) = '1' then
+                return false;
+            end if;
+        end loop;
+        return false;
+    end function;
 
 begin
-    -- Angle adjustment logic
-    ADD_360: RCA
-    generic map (N => M)
-    port map (
-        A => angle,
-        B => ANGLE_360,
-        CIN => '0',
-        SUM => angle_plus_360,
-        COUT => open
-    );
-
+    -- Subtractors for angle adjustment
     SUB_360: SUB
     generic map (N => M)
-    port map (
-        X => angle,
-        Y => ANGLE_360,
-        DIFF => angle_minus_360
-    );
+    port map (X => ANGLE, Y => ANGLE_360, DIFF => ANGLE_MINUS_360);
 
     SUB_180: SUB
     generic map (N => M)
-    port map (
-        X => angle,
-        Y => ANGLE_180,
-        DIFF => angle_minus_180
-    );
+    port map (X => ANGLE_360, Y => ANGLE_ADJUSTED, DIFF => ANGLE_180_MINUS);
 
-    SUB_FROM_90: SUB
+    SUB_FROM_180: SUB
     generic map (N => M)
-    port map (
-        X => ANGLE_90,
-        Y => angle,
-        DIFF => angle_90_minus
-    );
+    port map (X => ANGLE_180, Y => ANGLE_ADJUSTED, DIFF => ANGLE_90_MINUS);
 
-    process(clk, reset)
+    process(CLK, RESET)
     begin
-        if reset = '1' then
-            angle_adjusted <= (others => '0');
-            neg_flag <= '0';
-        elsif rising_edge(clk) then
-            if angle(M-1) = '1' then
-                angle_adjusted <= angle_plus_360;
-            elsif angle >= ANGLE_360 then
-                angle_adjusted <= angle_minus_360;
+        if RESET = '1' then
+            ANGLE_ADJUSTED <= (others => '0');
+            NEG_FLAG <= '0';
+        elsif rising_edge(CLK) then
+            -- Step 1: Normalize angle to 0-359 range
+            if GREATER_THAN(ANGLE, ANGLE_360) then
+                ANGLE_ADJUSTED <= ANGLE_MINUS_360;
             else
-                angle_adjusted <= angle;
+                ANGLE_ADJUSTED <= ANGLE;
             end if;
 
-            if angle_adjusted >= ANGLE_180 then
-                angle_adjusted <= angle_minus_180;
-                neg_flag <= '1';
+            -- Step 2: Handle negative flag and mirror for 180-359
+            if GREATER_THAN(ANGLE_ADJUSTED, ANGLE_180) then
+                ANGLE_ADJUSTED <= ANGLE_180_MINUS;
+                NEG_FLAG <= '1';
             else
-                neg_flag <= '0';
+                NEG_FLAG <= '0';
             end if;
 
-            if angle_adjusted > ANGLE_90 then
-                angle_adjusted <= angle_90_minus;
+            -- Step 3: Mirror for 90-179
+            if GREATER_THAN(ANGLE_ADJUSTED, ANGLE_90) then
+                ANGLE_ADJUSTED <= ANGLE_90_MINUS;
             end if;
         end if;
     end process;
 
     -- Use only the 7 least significant bits for the LUT
-    angle_final <= angle_adjusted(6 downto 0);
+    ANGLE_FINAL <= ANGLE_ADJUSTED(6 downto 0);
 
     -- LUT instance
     LUT_INST: LUT
     generic map (N => N)
     port map (
-        ANGLE => angle_final,
-        SINE => sine_temp
+        ANGLE => ANGLE_FINAL,
+        SINE => SINE_TEMP
     );
 
-    -- Negate sine if necessary
+    -- Negate sine if necessary (two's complement)
     NEG_SINE: SUB
     generic map (N => N)
     port map (
         X => (others => '0'),
-        Y => sine_temp,
-        DIFF => sine_neg
+        Y => SINE_TEMP,
+        DIFF => SINE_NEG
     );
 
     -- Multiplexer for selecting between positive and negative sine
-    process(sine_temp, sine_neg, neg_flag)
-    begin
-        if neg_flag = '1' then
-            sine <= sine_neg;
-        else
-            sine <= sine_temp;
-        end if;
-    end process;
+    SINE <= SINE_NEG when NEG_FLAG = '1' else SINE_TEMP;
 
-end Structural;
+end structural;
