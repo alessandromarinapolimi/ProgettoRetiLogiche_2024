@@ -24,8 +24,8 @@ Legend:
 | RCA                             | 🟢     |
 | SUB                             | 🟢     |
 | INTERP                          | 🟢     |
-| LUT                             | 🟡     |
-| SINE_CALCULATOR                 | 🟡     |
+| LUT                             | 🟢     |
+| SINE_CALCULATOR                 | 🟢     |
 
 
 ## About the Project
