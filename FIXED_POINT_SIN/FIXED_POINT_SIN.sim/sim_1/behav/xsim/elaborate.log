@@ -11,13 +11,13 @@ Time Resolution for simulation is 1ps
 Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
 Compiling architecture rtl of entity xil_defaultlib.FA [fa_default]
-Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=9)\]
-Compiling architecture rtl of entity xil_defaultlib.SUB [\SUB(n=9)\]
 Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=10)\]
 Compiling architecture rtl of entity xil_defaultlib.SUB [\SUB(n=10)\]
 Compiling architecture rtl of entity xil_defaultlib.INTERP [\INTERP(n=10)\]
 Compiling architecture rtl of entity xil_defaultlib.LUT [lut_default]
 Compiling architecture structural of entity xil_defaultlib.SINE_CALCULATOR [sine_calculator_default]
-Compiling architecture tb of entity xil_defaultlib.tb_sine
+Compiling architecture behavioral of entity xil_defaultlib.tb_sine
 Built simulation snapshot TB_SINE_behav
