@@ -35,10 +35,10 @@ This module is designed to calculate the sine of an angle given in degrees. The 
 
 ### Key Features:
 - Input Range: The module accepts angles from 0 to 359 degrees.
-Fixed-Point Representation: The sine output is a 10-bit value with 2 integer bits and 8 fractional bits, allowing for accurate representation of values between -1 and 1.
-Trigonometric Symmetry: To efficiently compute the sine for angles outside the 0-90° range, the module leverages trigonometric identities, extending the calculation to cover angles between 91° and 359°.
+- Fixed-Point Representation: The sine output is a 10-bit value with 2 integer bits and 8 fractional bits, allowing for accurate representation of values between -1 and 1.
+- Trigonometric Symmetry: To efficiently compute the sine for angles outside the 0-90° range, the module leverages trigonometric identities, extending the calculation to cover angles between 91° and 359°.
 ### Calculation Method:
 - 0-90 Degrees: The sine of angles between 0° and 90° is computed using a lookup table. This table stores the sine values for angles between 0° and 88° (at 8° intervals), as well as for 89° and 90°.
-Interpolation: If the input angle does not directly match a value in the lookup table, the sine is computed using linear interpolation within the closest interval from the table.
-91-359 Degrees: For angles beyond 90°, the module applies trigonometric identities (e.g., sine symmetry and periodicity) to compute the sine based on the known values from the 0-90° range.
+- Interpolation: If the input angle does not directly match a value in the lookup table, the sine is computed using linear interpolation within the closest interval from the table.
+- 91-359 Degrees: For angles beyond 90°, the module applies trigonometric identities (e.g., sine symmetry and periodicity) to compute the sine based on the known values from the 0-90° range.
 
