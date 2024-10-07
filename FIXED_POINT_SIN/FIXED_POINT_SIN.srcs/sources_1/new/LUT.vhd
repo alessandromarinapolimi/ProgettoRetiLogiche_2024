@@ -59,76 +59,82 @@ begin
     );
 
     process(ANGLE)
-    begin
-        USE_INTERPOLATION <= '0';
-        case ANGLE is
-            when "1011010" => -- 90 degrees
-                LUT_OUT <= SINE_LUT(12);
-            when "1011000" | "1011001" => -- 88 or 89 degrees
-                LUT_OUT <= SINE_LUT(11); -- Direct LUT value for 88 and 89 degrees
-            when "0000000" => 
-                LUT_OUT <= SINE_LUT(0);
-            when "0001000" => 
-                LUT_OUT <= SINE_LUT(1);
-            when "0010000" => 
-                LUT_OUT <= SINE_LUT(2);
-            when "0011000" => 
-                LUT_OUT <= SINE_LUT(3);
-            when "0100000" => 
-                LUT_OUT <= SINE_LUT(4);
-            when "0101000" => 
-                LUT_OUT <= SINE_LUT(5);
-            when "0110000" => 
-                LUT_OUT <= SINE_LUT(6);
-            when "0111000" => 
-                LUT_OUT <= SINE_LUT(7);
-            when "1000000" => 
-                LUT_OUT <= SINE_LUT(8);
-            when "1001000" => 
-                LUT_OUT <= SINE_LUT(9);
-            when "1010000" => 
-                LUT_OUT <= SINE_LUT(10);
-            when others =>
-                USE_INTERPOLATION <= '1';
-                -- Interpolazione per angoli intermedi
-                case ANGLE(6 downto 3) is
-                    when "0000" => 
-                        SINE1 <= SINE_LUT(0);
-                        SINE2 <= SINE_LUT(1);
-                    when "0001" => 
-                        SINE1 <= SINE_LUT(1);
-                        SINE2 <= SINE_LUT(2);
-                    when "0010" => 
-                        SINE1 <= SINE_LUT(2);
-                        SINE2 <= SINE_LUT(3);
-                    when "0011" => 
-                        SINE1 <= SINE_LUT(3);
-                        SINE2 <= SINE_LUT(4);
-                    when "0100" => 
-                        SINE1 <= SINE_LUT(4);
-                        SINE2 <= SINE_LUT(5);
-                    when "0101" => 
-                        SINE1 <= SINE_LUT(5);
-                        SINE2 <= SINE_LUT(6);
-                    when "0110" => 
-                        SINE1 <= SINE_LUT(6);
-                        SINE2 <= SINE_LUT(7);
-                    when "0111" => 
-                        SINE1 <= SINE_LUT(7);
-                        SINE2 <= SINE_LUT(8);
-                    when "1000" => 
-                        SINE1 <= SINE_LUT(8);
-                        SINE2 <= SINE_LUT(9);
-                    when "1001" => 
-                        SINE1 <= SINE_LUT(9);
-                        SINE2 <= SINE_LUT(10);
-                    when others => 
-                        SINE1 <= SINE_LUT(10);
-                        SINE2 <= SINE_LUT(11);
-                end case;
-                ANGLE_DIFF <= ANGLE(2 downto 0);
-        end case;
-    end process;
+begin
+    -- Inizializza tutti i segnali all'inizio del processo
+    USE_INTERPOLATION <= '0';
+    LUT_OUT <= (others => '0');  -- Valore di default
+    SINE1 <= (others => '0');    -- Valore di default
+    SINE2 <= (others => '0');    -- Valore di default
+    ANGLE_DIFF <= (others => '0'); -- Valore di default
+
+    case ANGLE is
+        when "1011010" => -- 90 degrees
+            LUT_OUT <= SINE_LUT(12);
+        when "1011000" | "1011001" => -- 88 or 89 degrees
+            LUT_OUT <= SINE_LUT(11);
+        when "0000000" => 
+            LUT_OUT <= SINE_LUT(0);
+        when "0001000" => 
+            LUT_OUT <= SINE_LUT(1);
+        when "0010000" => 
+            LUT_OUT <= SINE_LUT(2);
+        when "0011000" => 
+            LUT_OUT <= SINE_LUT(3);
+        when "0100000" => 
+            LUT_OUT <= SINE_LUT(4);
+        when "0101000" => 
+            LUT_OUT <= SINE_LUT(5);
+        when "0110000" => 
+            LUT_OUT <= SINE_LUT(6);
+        when "0111000" => 
+            LUT_OUT <= SINE_LUT(7);
+        when "1000000" => 
+            LUT_OUT <= SINE_LUT(8);
+        when "1001000" => 
+            LUT_OUT <= SINE_LUT(9);
+        when "1010000" => 
+            LUT_OUT <= SINE_LUT(10);
+        when others =>
+            USE_INTERPOLATION <= '1';
+            -- Interpolazione per angoli intermedi
+            case ANGLE(6 downto 3) is
+                when "0000" => 
+                    SINE1 <= SINE_LUT(0);
+                    SINE2 <= SINE_LUT(1);
+                when "0001" => 
+                    SINE1 <= SINE_LUT(1);
+                    SINE2 <= SINE_LUT(2);
+                when "0010" => 
+                    SINE1 <= SINE_LUT(2);
+                    SINE2 <= SINE_LUT(3);
+                when "0011" => 
+                    SINE1 <= SINE_LUT(3);
+                    SINE2 <= SINE_LUT(4);
+                when "0100" => 
+                    SINE1 <= SINE_LUT(4);
+                    SINE2 <= SINE_LUT(5);
+                when "0101" => 
+                    SINE1 <= SINE_LUT(5);
+                    SINE2 <= SINE_LUT(6);
+                when "0110" => 
+                    SINE1 <= SINE_LUT(6);
+                    SINE2 <= SINE_LUT(7);
+                when "0111" => 
+                    SINE1 <= SINE_LUT(7);
+                    SINE2 <= SINE_LUT(8);
+                when "1000" => 
+                    SINE1 <= SINE_LUT(8);
+                    SINE2 <= SINE_LUT(9);
+                when "1001" => 
+                    SINE1 <= SINE_LUT(9);
+                    SINE2 <= SINE_LUT(10);
+                when others => 
+                    SINE1 <= SINE_LUT(10);
+                    SINE2 <= SINE_LUT(11);
+            end case;
+            ANGLE_DIFF <= ANGLE(2 downto 0);
+    end case;
+end process;
 
     -- Output selection process
     SINE <= INTERPOLATED_SINE when USE_INTERPOLATION = '1' else LUT_OUT;

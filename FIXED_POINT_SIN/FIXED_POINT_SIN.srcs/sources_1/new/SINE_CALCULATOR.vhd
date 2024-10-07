@@ -36,6 +36,7 @@ architecture structural of SINE_CALCULATOR is
     signal SINE_TEMP : std_logic_vector(N-1 downto 0);
     signal SINE_NEG : std_logic;
     signal QUADRANT : std_logic_vector(1 downto 0);
+    
 
     -- Funzione per confrontare due std_logic_vector
     function GREATER_THAN(A, B: std_logic_vector) return boolean is

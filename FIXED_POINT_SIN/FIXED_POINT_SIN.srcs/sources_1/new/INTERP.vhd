@@ -42,7 +42,7 @@ architecture RTL of INTERP is
     -- Signal declarations
     signal SINE_DIFF : std_logic_vector(N-1 downto 0);                                -- Difference between SINE2 and SINE1
     signal MULT_1, MULT_2, MULT_4 : std_logic_vector(N-1 downto 0);     -- Multiples of the sine difference
-    signal SUM_1, SUM_2, SUM_3 : std_logic_vector(N-1 downto 0);           -- Intermediate sums
+    signal SUM_1, SUM_2,SUM_3 : std_logic_vector(N-1 downto 0);                        -- Intermediate sums
     signal ADD_VALUE : std_logic_vector(N-1 downto 0);                              -- Final add value for interpolation
 
 begin
