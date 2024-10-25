@@ -3,12 +3,12 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Sat Sep 14 10:44:41 2024
-# Process ID: 4388
-# Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1
+# Start of session at: Wed Oct 23 13:06:41 2024
+# Process ID: 18980
+# Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1
 # Command line: vivado.exe -log SINE_CALCULATOR.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source SINE_CALCULATOR.tcl
-# Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1/SINE_CALCULATOR.vds
-# Journal file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1\vivado.jou
+# Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1/SINE_CALCULATOR.vds
+# Journal file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1\vivado.jou
 # Running On        :Laptop-ASH
 # Platform          :Windows Server 2016 or Windows 10
 # Operating System  :22631
@@ -17,8 +17,8 @@
 # CPU Physical cores:6
 # CPU Logical cores :12
 # Host memory       :12210 MB
-# Swap memory       :5368 MB
-# Total Virtual     :17579 MB
-# Available Virtual :5150 MB
+# Swap memory       :6174 MB
+# Total Virtual     :18385 MB
+# Available Virtual :5315 MB
 #-----------------------------------------------------------
 source SINE_CALCULATOR.tcl -notrace

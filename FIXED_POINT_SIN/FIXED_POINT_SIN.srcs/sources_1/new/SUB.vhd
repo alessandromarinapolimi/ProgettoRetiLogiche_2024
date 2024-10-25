@@ -4,12 +4,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- Subtractor (SUB)
 entity SUB is
     generic (
-        N : positive  
+        N : positive  ;
+        M : positive 
     );
     Port (
         X        : in  std_logic_vector(N-1 downto 0);     -- Input: Minuend (X)
         Y        : in  std_logic_vector(N-1 downto 0);     -- Input: Subtrahend (Y)
-        DIFF  : out std_logic_vector(N-1 downto 0)     -- Output: Difference (X - Y)
+        DIFF  : out std_logic_vector(M-1 downto 0)     -- Output: Difference (X - Y)
     );
 end SUB;
 
@@ -18,14 +19,15 @@ architecture RTL of SUB is
     -- Component declaration for RCA to be used for subtraction
     component RCA is
         generic (
-            N : positive 
+            N,M : positive 
+           
         );
         
         Port (
             A           : in  std_logic_vector(N-1 downto 0);               -- Input: First operand
             B           : in  std_logic_vector(N-1 downto 0);               -- Input: Second operand
             CIN       : in  std_logic;                                                      -- Input: Carry-in
-            SUM     : out std_logic_vector(N-1 downto 0);              -- Output: Sum (or difference in this case)
+            SUM     : out std_logic_vector(M-1 downto 0);              -- Output: Sum (or difference in this case)
             COUT    : out std_logic                                                     -- Output: Carry-out (unused here)
         );
     end component;
@@ -40,7 +42,7 @@ begin
 
     -- Instantiate RCA to perform subtraction
     SUB_RCA: RCA
-    generic map (N => N)            -- Specify the bit-width
+    generic map (N => N,M=>M)            -- Specify the bit-width
     
     port map (
         A                    => X,                 -- Minuend (X)

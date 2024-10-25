@@ -1,5 +1,5 @@
 namespace eval ::optrace {
-  variable script "C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/impl_1/SINE_CALCULATOR.tcl"
+  variable script "C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/impl_1/SINE_CALCULATOR.tcl"
   variable category "vivado_impl"
 }
 
@@ -108,7 +108,7 @@ set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 3
   set_param checkpoint.writeSynthRtdsInDcp 1
-  set_param synth.incrementalSynthesisCache C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/.Xil/Vivado-18572-Laptop-ASH/incrSyn
+  set_param synth.incrementalSynthesisCache {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/.Xil/Vivado-2444-Laptop-ASH/incrSyn}
   set_param runs.launchOptions { -jobs 4  }
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a200tsbg484-1
@@ -116,14 +116,15 @@ OPTRACE "create in-memory project" START { }
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.cache/wt [current_project]
-  set_property parent.project_path C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.xpr [current_project]
-  set_property ip_output_repo C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.cache/ip [current_project]
+  set_property webtalk.parent_dir {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.cache/wt} [current_project]
+  set_property parent.project_path {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.xpr} [current_project]
+  set_property ip_output_repo {{C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.cache/ip}} [current_project]
   set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1/SINE_CALCULATOR.dcp
+  add_files -quiet {{C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1/SINE_CALCULATOR.dcp}}
 OPTRACE "read constraints: implementation" START { }
+  read_xdc {{C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new/SINE_CALC_CONSTRAINTS.xdc}}
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }
 OPTRACE "read constraints: implementation_pre" END { }

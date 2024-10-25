@@ -3,12 +3,12 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Fri Oct  4 11:55:28 2024
-# Process ID: 14696
-# Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3932 C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL24\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.xpr
-# Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/vivado.log
-# Journal file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN\vivado.jou
+# Start of session at: Fri Oct 18 12:20:04 2024
+# Process ID: 4652
+# Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14588 C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.xpr
+# Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/vivado.log
+# Journal file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN\vivado.jou
 # Running On        :Laptop-ASH
 # Platform          :Windows Server 2016 or Windows 10
 # Operating System  :22631
@@ -17,14 +17,14 @@
 # CPU Physical cores:6
 # CPU Logical cores :12
 # Host memory       :12210 MB
-# Swap memory       :6710 MB
-# Total Virtual     :18921 MB
-# Available Virtual :9255 MB
+# Swap memory       :7247 MB
+# Total Virtual     :19458 MB
+# Available Virtual :9973 MB
 #-----------------------------------------------------------
 start_gui
-open_project C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.xpr
+open_project {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.xpr}
 INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
-Current project path is 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN'
+Current project path is 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN'
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.6 available at C:/Users/ultro/.Xilinx/Vivado/2024.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kc705/1.6/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at C:/Users/ultro/.Xilinx/Vivado/2024.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at C:/Users/ultro/.Xilinx/Vivado/2024.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
@@ -86,13 +86,13 @@ WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216:part0:2.0 availab
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Users/ultro/.Xilinx/Vivado/2024.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Users/ultro/.Xilinx/Vivado/2024.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Users/ultro/.Xilinx/Vivado/2024.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
-INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.gen/sources_1'.
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.gen/sources_1'.
 Scanning sources...
 Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Users/ultro/.Xilinx/Vivado/2024.1/data/ip'.
-open_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:13 . Memory (MB): peak = 1542.266 ; gain = 424.629
+open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:11 . Memory (MB): peak = 1530.480 ; gain = 405.457
 synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
 Command: synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint
 Starting synth_design
@@ -100,89 +100,43 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 3396
+INFO: [Synth 8-7075] Helper process launched with PID 14180
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1994.047 ; gain = 439.910
+Starting Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1975.168 ; gain = 429.109
 ---------------------------------------------------------------------------------
 Clean up Linter database...
-INFO: [Synth 8-638] synthesizing module 'SINE_CALCULATOR' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:18]
-	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'LUT' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:4' bound to instance 'LUT_INST' of component 'LUT' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:89]
-INFO: [Synth 8-638] synthesizing module 'LUT' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:15]
-	Parameter N bound to: 10 - type: integer 
-	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'INTERP' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:5' bound to instance 'INTERPOLATOR' of component 'INTERP' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:52]
-INFO: [Synth 8-638] synthesizing module 'INTERP' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:18]
-	Parameter N bound to: 10 - type: integer 
-	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'DIFF_CALC' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:51]
-INFO: [Synth 8-638] synthesizing module 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:16]
-	Parameter N bound to: 10 - type: integer 
-	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'SUB_RCA' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:42]
-INFO: [Synth 8-638] synthesizing module 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:18]
-	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'FA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd:12]
-INFO: [Synth 8-256] done synthesizing module 'FA' (1#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd:12]
-INFO: [Synth 8-256] done synthesizing module 'RCA' (2#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:18]
-INFO: [Synth 8-256] done synthesizing module 'SUB' (3#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:16]
-	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'RCA1' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:66]
-	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'RCA2' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:77]
-	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'FINAL_SUM' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:106]
-INFO: [Synth 8-256] done synthesizing module 'INTERP' (4#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:18]
-INFO: [Synth 8-256] done synthesizing module 'LUT' (5#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:15]
-WARNING: [Synth 8-6014] Unused sequential element QUADRANT_reg was removed.  [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:59]
-INFO: [Synth 8-256] done synthesizing module 'SINE_CALCULATOR' (6#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:18]
+INFO: [Synth 8-638] synthesizing module 'SINE_CALCULATOR' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:19]
+	Parameter N bound to: 9 - type: integer 
+	Parameter M bound to: 7 - type: integer 
+INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'SUB_INST1' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:108]
+INFO: [Synth 8-638] synthesizing module 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:17]
+	Parameter N bound to: 9 - type: integer 
+	Parameter M bound to: 7 - type: integer 
+	Parameter N bound to: 9 - type: integer 
+	Parameter M bound to: 7 - type: integer 
+INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'SUB_RCA' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:19]
+	Parameter N bound to: 9 - type: integer 
+	Parameter M bound to: 7 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'FA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd:12]
+INFO: [Synth 8-256] done synthesizing module 'FA' (1#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd:12]
+ERROR: [Synth 8-11324] array index 7 out of range [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:32]
+ERROR: [Synth 8-285] failed synthesizing module 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:19]
+ERROR: [Synth 8-285] failed synthesizing module 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:17]
+ERROR: [Synth 8-285] failed synthesizing module 'SINE_CALCULATOR' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:19]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2099.617 ; gain = 545.480
+Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2085.371 ; gain = 539.312
 ---------------------------------------------------------------------------------
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Fri Oct  4 12:09:44 2024
-| Host         : Laptop-ASH running 64-bit major release  (build 9200)
----------------------------------------------------------------------------------------------------------------------------------------------
-
-RTL Linter Report
-
-Table of Contents
------------------
-1. Summary
-
-1. Summary
-----------
-
-+----------+----------+--------------+----------+
-| Rule ID  | Severity | # Violations | # Waived |
-+----------+----------+--------------+----------+
-| ASSIGN-6 | WARNING  | 3            | 0        |
-| INFER-1  | WARNING  | 4            | 0        |
-+----------+----------+--------------+----------+
-
-
-WARNING: [Synth 37-123] [ASSIGN-6]Some bits in 'SUM_3' are not read. First unread bit index is 0. 
-RTL Name 'SUM_3', Hierarchy 'INTERP', File 'INTERP.vhd', Line 45.
-WARNING: [Synth 37-88] [INFER-1]Inferred latch found for ANGLE_DIFF_reg. 
-RTL Name 'ANGLE_DIFF_reg', Hierarchy 'LUT', File 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd', Line 55.
-WARNING: [Synth 37-88] [INFER-1]Inferred latch found for LUT_OUT_reg. 
-RTL Name 'LUT_OUT_reg', Hierarchy 'LUT', File 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd', Line 66.
-WARNING: [Synth 37-88] [INFER-1]Inferred latch found for SINE1_reg. 
-RTL Name 'SINE1_reg', Hierarchy 'LUT', File 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd', Line 56.
-WARNING: [Synth 37-88] [INFER-1]Inferred latch found for SINE2_reg. 
-RTL Name 'SINE2_reg', Hierarchy 'LUT', File 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd', Line 57.
-WARNING: [Synth 37-123] [ASSIGN-6]Some bits in 'ANGLE_ADJUSTED' are not read. First unread bit index is 7. 
-RTL Name 'ANGLE_ADJUSTED', Hierarchy 'SINE_CALCULATOR', File 'SINE_CALCULATOR.vhd', Line 34.
-WARNING: [Synth 37-93] [ASSIGN-6]Signal 'QUADRANT' was assigned but not read. 
-RTL Name 'QUADRANT', Hierarchy 'SINE_CALCULATOR', File 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL24/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd', Line 38.
-INFO: [Synth 37-85] Total of 7 linter message(s) generated.
-INFO: [Synth 37-45] Linter Run Finished!
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2099.617 ; gain = 545.480
+synthesize failed
 INFO: [Common 17-83] Releasing license: Synthesis
-26 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
+12 Infos, 0 Warnings, 0 Critical Warnings and 4 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2099.617 ; gain = 545.480
+synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2085.371 ; gain = 539.312
+ERROR: [Common 17-39] 'synth_design' failed due to earlier errors.
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\FA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\FA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\FA.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
 exit
-INFO: [Common 17-206] Exiting Vivado at Fri Oct  4 16:22:58 2024...
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 18 12:28:47 2024...

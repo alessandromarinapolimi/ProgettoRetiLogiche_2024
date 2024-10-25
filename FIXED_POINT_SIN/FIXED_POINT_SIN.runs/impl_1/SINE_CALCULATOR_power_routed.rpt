@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date             : Sat Sep 14 10:47:34 2024
+| Date             : Wed Oct 23 13:36:12 2024
 | Host             : Laptop-ASH running 64-bit major release  (build 9200)
 | Command          : report_power -file SINE_CALCULATOR_power_routed.rpt -pb SINE_CALCULATOR_power_summary_routed.pb -rpx SINE_CALCULATOR_power_routed.rpx
 | Design           : SINE_CALCULATOR
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 10.349       |
+| Total On-Chip Power (W)  | 7.606        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 10.106       |
-| Device Static (W)        | 0.244        |
+| Dynamic (W)              | 7.409        |
+| Device Static (W)        | 0.196        |
 | Effective TJA (C/W)      | 3.3          |
-| Max Ambient (C)          | 50.7         |
-| Junction Temperature (C) | 59.3         |
+| Max Ambient (C)          | 59.8         |
+| Junction Temperature (C) | 50.2         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,15 +52,16 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     1.212 |      152 |       --- |             --- |
-|   LUT as Logic |     1.201 |      102 |    133800 |            0.08 |
+| Slice Logic    |     0.384 |       84 |       --- |             --- |
+|   LUT as Logic |     0.354 |       53 |    133800 |            0.04 |
+|   F7/F8 Muxes  |     0.020 |       14 |    133800 |            0.01 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
-|   Register     |     0.005 |       24 |    267600 |           <0.01 |
-|   Others       |     0.000 |        3 |       --- |             --- |
-| Signals        |     1.091 |      149 |       --- |             --- |
-| I/O            |     7.802 |       21 |       285 |            7.37 |
-| Static Power   |     0.244 |          |           |                 |
-| Total          |    10.349 |          |           |                 |
+|   Register     |     0.004 |        8 |    267600 |           <0.01 |
+|   Others       |     0.000 |        1 |       --- |             --- |
+| Signals        |     0.396 |       61 |       --- |             --- |
+| I/O            |     6.630 |       21 |       285 |            7.37 |
+| Static Power   |     0.196 |          |           |                 |
+| Total          |     7.606 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -70,16 +71,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     2.463 |       2.343 |      0.120 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.678 |       0.635 |      0.042 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.902 |       0.820 |      0.082 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.576 |       0.539 |      0.037 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vcco18    |       1.800 |     3.682 |       3.677 |      0.005 |       NA    | Unspecified | NA         |
+| Vcco18    |       1.800 |     3.126 |       3.121 |      0.005 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vccbram   |       1.000 |     0.003 |       0.000 |      0.003 |       NA    | Unspecified | NA         |
+| Vccbram   |       1.000 |     0.002 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |       NA    | Unspecified | NA         |
@@ -137,8 +138,7 @@ Table of Contents
 +-----------------+-----------+
 | Name            | Power (W) |
 +-----------------+-----------+
-| SINE_CALCULATOR |    10.106 |
-|   LUT_INST      |     2.080 |
+| SINE_CALCULATOR |     7.409 |
 +-----------------+-----------+
 
 

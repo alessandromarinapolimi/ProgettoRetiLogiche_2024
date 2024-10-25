@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1'
+HD_PWD='C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

@@ -8,162 +8,189 @@
   **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
   **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
   **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-  **** Start of session at: Sat Sep 14 10:44:41 2024
+  **** Start of session at: Wed Oct 23 13:06:41 2024
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source SINE_CALCULATOR.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 513.805 ; gain = 197.926
-Command: read_checkpoint -auto_incremental -incremental C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/utils_1/imports/synth_1/SINE_CALCULATOR.dcp
-INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/utils_1/imports/synth_1/SINE_CALCULATOR.dcp for incremental synthesis
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 514.348 ; gain = 201.332
+Command: read_checkpoint -auto_incremental -incremental {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/utils_1/imports/synth_1/SINE_CALCULATOR.dcp}
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/utils_1/imports/synth_1/SINE_CALCULATOR.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Device 21-403] Loading part xc7a200tsbg484-1
+INFO: [Device 21-9227] Part: xc7a200tsbg484-1 does not have CEAM library.
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 5188
+INFO: [Synth 8-7075] Helper process launched with PID 18600
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 975.867 ; gain = 450.004
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1421.898 ; gain = 448.863
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'SINE_CALCULATOR' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:17]
+INFO: [Synth 8-638] synthesizing module 'SINE_CALCULATOR' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:19]
 	Parameter N bound to: 9 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:4' bound to instance 'ADD_360' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:63]
-INFO: [Synth 8-638] synthesizing module 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:16]
+	Parameter M bound to: 7 - type: integer 
+INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'SUB_INST1' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:111]
+INFO: [Synth 8-638] synthesizing module 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:17]
 	Parameter N bound to: 9 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'FA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd:11]
-INFO: [Synth 8-256] done synthesizing module 'FA' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd:11]
-INFO: [Synth 8-256] done synthesizing module 'RCA' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:16]
+	Parameter M bound to: 7 - type: integer 
 	Parameter N bound to: 9 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:4' bound to instance 'SUB_360' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:73]
-INFO: [Synth 8-638] synthesizing module 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:15]
+	Parameter M bound to: 7 - type: integer 
+INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'SUB_RCA' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:19]
 	Parameter N bound to: 9 - type: integer 
+	Parameter M bound to: 7 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'FA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd:12]
+INFO: [Synth 8-256] done synthesizing module 'FA' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd:12]
+INFO: [Synth 8-256] done synthesizing module 'RCA' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'SUB' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:17]
 	Parameter N bound to: 9 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:4' bound to instance 'SUB_RCA' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:34]
-INFO: [Synth 8-256] done synthesizing module 'SUB' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:15]
+	Parameter M bound to: 7 - type: integer 
+INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'SUB_INST2' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:120]
 	Parameter N bound to: 9 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:4' bound to instance 'SUB_180' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:81]
-	Parameter N bound to: 9 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:4' bound to instance 'SUB_FROM_90' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:89]
+	Parameter M bound to: 7 - type: integer 
+INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'SUB_INST3' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:129]
 	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'LUT' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:4' bound to instance 'LUT_INST' of component 'LUT' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:128]
-INFO: [Synth 8-638] synthesizing module 'LUT' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:14]
-	Parameter N bound to: 10 - type: integer 
-	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'INTERP' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:4' bound to instance 'INTERPOLATOR' of component 'INTERP' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:57]
-INFO: [Synth 8-638] synthesizing module 'INTERP' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:15]
-	Parameter N bound to: 10 - type: integer 
-	Parameter N bound to: 7 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:4' bound to instance 'ADD_4' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:46]
-INFO: [Synth 8-638] synthesizing module 'RCA__parameterized2' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:16]
-	Parameter N bound to: 7 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'RCA__parameterized2' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:16]
-	Parameter N bound to: 7 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:4' bound to instance 'FRACTION_CALC' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:58]
-INFO: [Synth 8-638] synthesizing module 'SUB__parameterized2' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:15]
-	Parameter N bound to: 7 - type: integer 
-	Parameter N bound to: 7 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:4' bound to instance 'SUB_RCA' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:34]
-INFO: [Synth 8-256] done synthesizing module 'SUB__parameterized2' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:15]
-	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:4' bound to instance 'SINE_DIFF_CALC' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:66]
-INFO: [Synth 8-638] synthesizing module 'SUB__parameterized4' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:15]
+INFO: [Synth 8-3491] module 'LUT' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:4' bound to instance 'LUT_INST' of component 'LUT' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:141]
+INFO: [Synth 8-638] synthesizing module 'LUT' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:15]
 	Parameter N bound to: 10 - type: integer 
 	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:4' bound to instance 'SUB_RCA' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:34]
-INFO: [Synth 8-638] synthesizing module 'RCA__parameterized4' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:16]
+INFO: [Synth 8-3491] module 'INTERP' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:5' bound to instance 'INTERPOLATOR' of component 'INTERP' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:52]
+INFO: [Synth 8-638] synthesizing module 'INTERP' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:18]
 	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'RCA__parameterized4' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:16]
-INFO: [Synth 8-256] done synthesizing module 'SUB__parameterized4' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:15]
-	Parameter N bound to: 13 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:4' bound to instance 'RCA_SUM_0_1' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:80]
-INFO: [Synth 8-638] synthesizing module 'RCA__parameterized6' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:16]
-	Parameter N bound to: 13 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'RCA__parameterized6' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:16]
-	Parameter N bound to: 13 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:4' bound to instance 'RCA_FINAL_SUM' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:90]
 	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:4' bound to instance 'RCA_FINAL' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:104]
-INFO: [Synth 8-256] done synthesizing module 'INTERP' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:15]
-	Parameter N bound to: 7 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:4' bound to instance 'SUB_89' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:66]
-	Parameter N bound to: 7 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:4' bound to instance 'SUB_90' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:74]
-INFO: [Synth 8-256] done synthesizing module 'LUT' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:14]
+	Parameter M bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'DIFF_CALC' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:51]
+INFO: [Synth 8-638] synthesizing module 'SUB__parameterized2' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:17]
 	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:4' bound to instance 'NEG_SINE' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:136]
-INFO: [Synth 8-256] done synthesizing module 'SINE_CALCULATOR' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:17]
+	Parameter M bound to: 10 - type: integer 
+	Parameter N bound to: 10 - type: integer 
+	Parameter M bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'SUB_RCA' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'RCA__parameterized1' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:19]
+	Parameter N bound to: 10 - type: integer 
+	Parameter M bound to: 10 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'RCA__parameterized1' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'SUB__parameterized2' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:17]
+	Parameter N bound to: 10 - type: integer 
+	Parameter M bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'RCA1' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:66]
+	Parameter N bound to: 10 - type: integer 
+	Parameter M bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'RCA2' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:77]
+	Parameter N bound to: 10 - type: integer 
+	Parameter M bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'FINAL_SUM' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:105]
+INFO: [Synth 8-256] done synthesizing module 'INTERP' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:18]
+INFO: [Synth 8-256] done synthesizing module 'LUT' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:15]
+	Parameter N bound to: 10 - type: integer 
+	Parameter M bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'RCA_INST' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:152]
+INFO: [Synth 8-256] done synthesizing module 'SINE_CALCULATOR' (0#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:19]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1086.664 ; gain = 560.801
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1534.398 ; gain = 561.363
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1086.664 ; gain = 560.801
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1534.398 ; gain = 561.363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1534.398 ; gain = 561.363
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1534.398 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new/SINE_CALC_CONSTRAINTS.xdc]
+Finished Parsing XDC File [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new/SINE_CALC_CONSTRAINTS.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new/SINE_CALC_CONSTRAINTS.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/SINE_CALCULATOR_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/SINE_CALCULATOR_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1576.031 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1576.031 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:21 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tsbg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1086.664 ; gain = 560.801
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:21 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
-INFO: [Device 21-403] Loading part xc7a200tsbg484-1
-WARNING: [Synth 8-327] inferring latch for variable 'SINE1_reg' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:61]
-WARNING: [Synth 8-327] inferring latch for variable 'SINE2_reg' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:62]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1086.664 ; gain = 560.801
+Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-No constraint files found.
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1576.031 ; gain = 602.996
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1576.031 ; gain = 602.996
+---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---XORs : 
-	   2 Input      1 Bit         XORs := 240   
+	   2 Input      1 Bit         XORs := 142   
 +---Registers : 
-	                9 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input   13 Bit        Muxes := 3     
-	   2 Input   10 Bit        Muxes := 3     
-	   8 Input    9 Bit        Muxes := 1     
-	   8 Input    8 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 2     
+	   2 Input    7 Bit        Muxes := 3     
+	  14 Input    1 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 8     
+	   5 Input    1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Part Resource Summary
 ---------------------------------------------------------------------------------
-INFO: [Device 21-9227] Part: xc7a200tsbg484-1 does not have CEAM library.
 Part Resources:
 DSPs: 740 (col length:100)
 BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-No constraint files found.
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-3332] Sequential element (LUT_INST/SINE1_reg[9]) is unused and will be removed from module SINE_CALCULATOR.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1333.453 ; gain = 807.590
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:26 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
-No constraint files found.
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:34 . Memory (MB): peak = 1576.031 ; gain = 602.996
+---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:19 . Memory (MB): peak = 1334.434 ; gain = 808.570
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:34 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:19 . Memory (MB): peak = 1334.434 ; gain = 808.570
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:34 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -181,37 +208,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:26 . Memory (MB): peak = 1334.434 ; gain = 808.570
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:41 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:26 . Memory (MB): peak = 1334.434 ; gain = 808.570
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:41 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:26 . Memory (MB): peak = 1334.434 ; gain = 808.570
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:41 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:26 . Memory (MB): peak = 1334.434 ; gain = 808.570
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:41 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:26 . Memory (MB): peak = 1334.434 ; gain = 808.570
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:41 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:26 . Memory (MB): peak = 1334.434 ; gain = 808.570
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:41 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -224,52 +251,43 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+-----+------+
-|      |Cell |Count |
-+------+-----+------+
-|1     |BUFG |     1|
-|2     |LUT1 |     2|
-|3     |LUT2 |    12|
-|4     |LUT3 |    18|
-|5     |LUT4 |    11|
-|6     |LUT5 |    14|
-|7     |LUT6 |    68|
-|8     |FDCE |    10|
-|9     |LD   |    14|
-|10    |IBUF |    11|
-|11    |OBUF |    10|
-+------+-----+------+
-
-Report Instance Areas: 
-+------+-----------+-------+------+
-|      |Instance   |Module |Cells |
-+------+-----------+-------+------+
-|1     |top        |       |   171|
-|2     |  LUT_INST |LUT    |   125|
-+------+-----------+-------+------+
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |BUFG  |     1|
+|2     |LUT2  |     3|
+|3     |LUT3  |     3|
+|4     |LUT4  |     7|
+|5     |LUT5  |    10|
+|6     |LUT6  |    37|
+|7     |MUXF7 |    10|
+|8     |MUXF8 |     4|
+|9     |FDCE  |     8|
+|10    |IBUF  |    11|
+|11    |OBUF  |    10|
++------+------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:26 . Memory (MB): peak = 1334.434 ; gain = 808.570
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:41 . Memory (MB): peak = 1576.031 ; gain = 602.996
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:00:26 . Memory (MB): peak = 1334.434 ; gain = 808.570
-Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:26 . Memory (MB): peak = 1334.434 ; gain = 808.570
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:38 . Memory (MB): peak = 1576.031 ; gain = 561.363
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:41 . Memory (MB): peak = 1576.031 ; gain = 602.996
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1346.488 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1576.031 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 14 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 1 inverter(s) to 14 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1440.375 ; gain = 0.000
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1576.031 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 14 instances were transformed.
-  LD => LDCE (inverted pins: G): 14 instances
+No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 43bf6e16
+Synth Design complete | Checksum: 208cc82f
 INFO: [Common 17-83] Releasing license: Synthesis
-57 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+50 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:29 . Memory (MB): peak = 1440.375 ; gain = 921.816
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1440.375 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1/SINE_CALCULATOR.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:50 . Memory (MB): peak = 1576.031 ; gain = 1056.645
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1576.031 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1/SINE_CALCULATOR.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file SINE_CALCULATOR_utilization_synth.rpt -pb SINE_CALCULATOR_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Sep 14 10:45:22 2024...
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 23 13:07:41 2024...
