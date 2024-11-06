@@ -3,10 +3,10 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Wed Oct 23 12:35:23 2024
-# Process ID: 2444
+# Start of session at: Mon Nov  4 12:17:19 2024
+# Process ID: 22772
 # Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15872 C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent24572 C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.xpr
 # Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/vivado.log
 # Journal file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN\vivado.jou
 # Running On        :Laptop-ASH
@@ -17,9 +17,9 @@
 # CPU Physical cores:6
 # CPU Logical cores :12
 # Host memory       :12210 MB
-# Swap memory       :6174 MB
-# Total Virtual     :18385 MB
-# Available Virtual :7609 MB
+# Swap memory       :7532 MB
+# Total Virtual     :19743 MB
+# Available Virtual :4031 MB
 #-----------------------------------------------------------
 start_gui
 open_project {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.xpr}
@@ -89,10 +89,11 @@ WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 avail
 INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.gen/sources_1'.
 Scanning sources...
 Finished scanning sources
+CRITICAL WARNING: [Runs 36-271] Incremental checkpoint part, xc7a200tsbg484-1, does not match run part, xc7a35tcpg236-1.
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Users/ultro/.Xilinx/Vivado/2024.1/data/ip'.
-open_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:13 . Memory (MB): peak = 1540.441 ; gain = 413.504
+open_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:11 . Memory (MB): peak = 1538.750 ; gain = 412.953
 launch_simulation
 Command: launch_simulation 
 INFO: [Vivado 12-12493] Simulation top is 'TB_SINE'
@@ -107,18 +108,26 @@ INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
 INFO: [USF-XSim-2] XSim::Compile design
 INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim'
 "xvhdl --incr --relax -prj TB_SINE_vhdl.prj"
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'SINE_CALCULATOR'
-ERROR: [VRFC 10-2989] 'sub_result3' is not declared [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:104]
-ERROR: [VRFC 10-2989] 'sub_result3' is not declared [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:134]
-ERROR: [VRFC 10-3095] actual of formal out port 'diff' cannot be an expression [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:134]
-ERROR: [VRFC 10-9458] unit 'structural' is ignored due to previous errors [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:19]
-INFO: [VRFC 10-8704] VHDL file 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd' is ignored due to errors
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'INTERP'
+ERROR: [VRFC 10-719] formal port/generic <m> is not declared in <rca> [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:105]
+ERROR: [VRFC 10-9458] unit 'rtl' is ignored due to previous errors [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:18]
+INFO: [VRFC 10-8704] VHDL file 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd' is ignored due to errors
 INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
 INFO: [USF-XSim-99] Step results log file:'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim/xvhdl.log'
 ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim/xvhdl.log' file for more information.
 ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
 ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
 launch_simulation
 Command: launch_simulation 
 INFO: [Vivado 12-12493] Simulation top is 'TB_SINE'
@@ -133,9 +142,9 @@ INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
 INFO: [USF-XSim-2] XSim::Compile design
 INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim'
 "xvhdl --incr --relax -prj TB_SINE_vhdl.prj"
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'SINE_CALCULATOR'
-INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'INTERP'
+INFO: [USF-XSim-69] 'compile' step finished in '4' seconds
 INFO: [USF-XSim-3] XSim::Elaborate design
 INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim'
 "xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot TB_SINE_behav xil_defaultlib.TB_SINE -log elaborate.log"
@@ -155,88 +164,10 @@ Compiling package ieee.std_logic_1164
 Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
 Compiling architecture rtl of entity xil_defaultlib.FA [fa_default]
-Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=9,m=7)\]
-Compiling architecture rtl of entity xil_defaultlib.SUB [\SUB(n=9,m=7)\]
-Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=10,m=10)\]
-Compiling architecture rtl of entity xil_defaultlib.SUB [\SUB(n=10,m=10)\]
-Compiling architecture rtl of entity xil_defaultlib.INTERP [\INTERP(n=10)\]
-Compiling architecture rtl of entity xil_defaultlib.LUT [lut_default]
-Compiling architecture structural of entity xil_defaultlib.SINE_CALCULATOR [sine_calculator_default]
-Compiling architecture behavioral of entity xil_defaultlib.tb_sine
-Built simulation snapshot TB_SINE_behav
-INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
-INFO: [USF-XSim-4] XSim::Simulate design
-INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim'
-INFO: [USF-XSim-98] *** Running xsim
-   with args "TB_SINE_behav -key {Behavioral:sim_1:Functional:TB_SINE} -tclbatch {TB_SINE.tcl} -log {simulate.log}"
-INFO: [USF-XSim-8] Loading simulator feature
-Time resolution is 1 ps
-source TB_SINE.tcl
-# set curr_wave [current_wave_config]
-# if { [string length $curr_wave] == 0 } {
-#   if { [llength [get_objects]] > 0} {
-#     add_wave /
-#     set_property needs_save false [current_wave_config]
-#   } else {
-#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
-#   }
-# }
-# run 1000ns
-INFO: [USF-XSim-96] XSim completed. Design snapshot 'TB_SINE_behav' loaded.
-INFO: [USF-XSim-97] XSim simulation ran for 1000ns
-launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 1608.195 ; gain = 25.988
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\SINE_CALCULATOR.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-ERROR: [Common 17-180] Spawn failed: No error
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\SINE_CALCULATOR.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-ERROR: [Common 17-180] Spawn failed: No error
-close_sim
-INFO: [Simtcl 6-16] Simulation closed
-launch_simulation
-Command: launch_simulation 
-INFO: [Vivado 12-12493] Simulation top is 'TB_SINE'
-WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
-INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim'
-INFO: [SIM-utils-51] Simulation object is 'sim_1'
-INFO: [SIM-utils-72] Using boost library from 'C:/Users/ultro/.Xilinx/Vivado/2024.1/tps/boost_1_72_0'
-INFO: [SIM-utils-54] Inspecting design source files for 'TB_SINE' in fileset 'sim_1'...
-INFO: [USF-XSim-97] Finding global include files...
-INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
-INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
-INFO: [USF-XSim-2] XSim::Compile design
-INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim'
-"xvhdl --incr --relax -prj TB_SINE_vhdl.prj"
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_SINE.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'TB_SINE'
-INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
-INFO: [USF-XSim-3] XSim::Elaborate design
-INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim'
-"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot TB_SINE_behav xil_defaultlib.TB_SINE -log elaborate.log"
-Vivado Simulator v2024.1
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: C:/Users/ultro/.Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot TB_SINE_behav xil_defaultlib.TB_SINE -log elaborate.log 
-Using 2 slave threads.
-Starting static elaboration
-Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling package std.standard
-Compiling package std.textio
-Compiling package ieee.std_logic_1164
-Compiling package ieee.std_logic_arith
-Compiling package ieee.std_logic_unsigned
-Compiling architecture rtl of entity xil_defaultlib.FA [fa_default]
-Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=9,m=7)\]
-Compiling architecture rtl of entity xil_defaultlib.SUB [\SUB(n=9,m=7)\]
-Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=10,m=10)\]
-Compiling architecture rtl of entity xil_defaultlib.SUB [\SUB(n=10,m=10)\]
+Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=9)\]
+Compiling architecture rtl of entity xil_defaultlib.SUB [\SUB(n=9)\]
+Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=10)\]
+Compiling architecture rtl of entity xil_defaultlib.SUB [\SUB(n=10)\]
 Compiling architecture rtl of entity xil_defaultlib.INTERP [\INTERP(n=10)\]
 Compiling architecture rtl of entity xil_defaultlib.LUT [lut_default]
 Compiling architecture structural of entity xil_defaultlib.SINE_CALCULATOR [sine_calculator_default]
@@ -262,169 +193,114 @@ source TB_SINE.tcl
 # run 1000ns
 INFO: [USF-XSim-96] XSim completed. Design snapshot 'TB_SINE_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 1000ns
-launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 1649.914 ; gain = 25.734
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 1606.020 ; gain = 22.918
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
 WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\SINE_CALCULATOR.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
 WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
 WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
 ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
 WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\SINE_CALCULATOR.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
 WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-ERROR: [Common 17-180] Spawn failed: No error
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\SINE_CALCULATOR.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
-ERROR: [Common 17-180] Spawn failed: No error
-close_sim
-INFO: [Simtcl 6-16] Simulation closed
-launch_simulation
-Command: launch_simulation 
-INFO: [Vivado 12-12493] Simulation top is 'TB_SINE'
-WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
-INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim'
-INFO: [SIM-utils-51] Simulation object is 'sim_1'
-INFO: [SIM-utils-72] Using boost library from 'C:/Users/ultro/.Xilinx/Vivado/2024.1/tps/boost_1_72_0'
-INFO: [SIM-utils-54] Inspecting design source files for 'TB_SINE' in fileset 'sim_1'...
-INFO: [USF-XSim-97] Finding global include files...
-INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
-INFO: [USF-XSim-101] Fetching design files from 'sim_1'...
-INFO: [USF-XSim-2] XSim::Compile design
-INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim'
-"xvhdl --incr --relax -prj TB_SINE_vhdl.prj"
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_SINE.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'TB_SINE'
-INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
-INFO: [USF-XSim-3] XSim::Elaborate design
-INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim'
-"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot TB_SINE_behav xil_defaultlib.TB_SINE -log elaborate.log"
-Vivado Simulator v2024.1
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: C:/Users/ultro/.Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot TB_SINE_behav xil_defaultlib.TB_SINE -log elaborate.log 
-Using 2 slave threads.
-Starting static elaboration
-Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling package std.standard
-Compiling package std.textio
-Compiling package ieee.std_logic_1164
-Compiling package ieee.std_logic_arith
-Compiling package ieee.std_logic_unsigned
-Compiling architecture rtl of entity xil_defaultlib.FA [fa_default]
-Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=9,m=7)\]
-Compiling architecture rtl of entity xil_defaultlib.SUB [\SUB(n=9,m=7)\]
-Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=10,m=10)\]
-Compiling architecture rtl of entity xil_defaultlib.SUB [\SUB(n=10,m=10)\]
-Compiling architecture rtl of entity xil_defaultlib.INTERP [\INTERP(n=10)\]
-Compiling architecture rtl of entity xil_defaultlib.LUT [lut_default]
-Compiling architecture structural of entity xil_defaultlib.SINE_CALCULATOR [sine_calculator_default]
-Compiling architecture behavioral of entity xil_defaultlib.tb_sine
-Built simulation snapshot TB_SINE_behav
-INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
-INFO: [USF-XSim-4] XSim::Simulate design
-INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim'
-INFO: [USF-XSim-98] *** Running xsim
-   with args "TB_SINE_behav -key {Behavioral:sim_1:Functional:TB_SINE} -tclbatch {TB_SINE.tcl} -log {simulate.log}"
-INFO: [USF-XSim-8] Loading simulator feature
-Time resolution is 1 ps
-source TB_SINE.tcl
-# set curr_wave [current_wave_config]
-# if { [string length $curr_wave] == 0 } {
-#   if { [llength [get_objects]] > 0} {
-#     add_wave /
-#     set_property needs_save false [current_wave_config]
-#   } else {
-#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
-#   }
-# }
-# run 1000ns
-INFO: [USF-XSim-96] XSim completed. Design snapshot 'TB_SINE_behav' loaded.
-INFO: [USF-XSim-97] XSim simulation ran for 1000ns
-launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 1649.914 ; gain = 0.000
-synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
-Command: synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+synth_design -top SINE_CALCULATOR -part xc7a35tcpg236-1 -lint 
+Command: synth_design -top SINE_CALCULATOR -part xc7a35tcpg236-1 -lint
 Starting synth_design
-Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
-INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 13636
+INFO: [Synth 8-7075] Helper process launched with PID 25092
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2025.004 ; gain = 375.090
+Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2664.629 ; gain = 0.000
 ---------------------------------------------------------------------------------
 Clean up Linter database...
-INFO: [Synth 8-638] synthesizing module 'SINE_CALCULATOR' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'SINE_CALCULATOR' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:18]
 	Parameter N bound to: 9 - type: integer 
-	Parameter M bound to: 7 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'SUB_INST1' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:111]
-INFO: [Synth 8-638] synthesizing module 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:17]
+INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'SUB_INST1' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:91]
+INFO: [Synth 8-638] synthesizing module 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:16]
 	Parameter N bound to: 9 - type: integer 
-	Parameter M bound to: 7 - type: integer 
 	Parameter N bound to: 9 - type: integer 
-	Parameter M bound to: 7 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'SUB_RCA' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:44]
-INFO: [Synth 8-638] synthesizing module 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:19]
+INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'SUB_RCA' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:43]
+INFO: [Synth 8-638] synthesizing module 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:18]
 	Parameter N bound to: 9 - type: integer 
-	Parameter M bound to: 7 - type: integer 
 INFO: [Synth 8-638] synthesizing module 'FA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd:12]
 INFO: [Synth 8-256] done synthesizing module 'FA' (1#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/FA.vhd:12]
-INFO: [Synth 8-256] done synthesizing module 'RCA' (2#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:19]
-INFO: [Synth 8-256] done synthesizing module 'SUB' (3#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:17]
+INFO: [Synth 8-256] done synthesizing module 'RCA' (2#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:18]
+INFO: [Synth 8-256] done synthesizing module 'SUB' (3#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:16]
 	Parameter N bound to: 9 - type: integer 
-	Parameter M bound to: 7 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'SUB_INST2' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:120]
+INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'SUB_INST2' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:99]
 	Parameter N bound to: 9 - type: integer 
-	Parameter M bound to: 7 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'SUB_INST3' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:129]
+INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'SUB_INST3' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:107]
 	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'LUT' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:4' bound to instance 'LUT_INST' of component 'LUT' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:141]
+INFO: [Synth 8-3491] module 'LUT' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:4' bound to instance 'LUT_INST' of component 'LUT' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:140]
 INFO: [Synth 8-638] synthesizing module 'LUT' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:15]
 	Parameter N bound to: 10 - type: integer 
 	Parameter N bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'INTERP' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:5' bound to instance 'INTERPOLATOR' of component 'INTERP' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:52]
-INFO: [Synth 8-638] synthesizing module 'INTERP' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:18]
+INFO: [Synth 8-3491] module 'INTERP' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:4' bound to instance 'INTERPOLATOR' of component 'INTERP' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:52]
+INFO: [Synth 8-638] synthesizing module 'INTERP' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:16]
 	Parameter N bound to: 10 - type: integer 
 	Parameter N bound to: 10 - type: integer 
-	Parameter M bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'DIFF_CALC' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:51]
-INFO: [Synth 8-638] synthesizing module 'SUB__parameterized2' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:17]
+INFO: [Synth 8-3491] module 'SUB' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:5' bound to instance 'DIFF_CALC' of component 'SUB' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:41]
+INFO: [Synth 8-638] synthesizing module 'SUB__parameterized2' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:16]
 	Parameter N bound to: 10 - type: integer 
-	Parameter M bound to: 10 - type: integer 
 	Parameter N bound to: 10 - type: integer 
-	Parameter M bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'SUB_RCA' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:44]
-INFO: [Synth 8-638] synthesizing module 'RCA__parameterized1' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:19]
+INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'SUB_RCA' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:43]
+INFO: [Synth 8-638] synthesizing module 'RCA__parameterized1' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:18]
 	Parameter N bound to: 10 - type: integer 
-	Parameter M bound to: 10 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'RCA__parameterized1' (3#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:19]
-INFO: [Synth 8-256] done synthesizing module 'SUB__parameterized2' (3#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:17]
+INFO: [Synth 8-256] done synthesizing module 'RCA__parameterized1' (3#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:18]
+INFO: [Synth 8-256] done synthesizing module 'SUB__parameterized2' (3#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SUB.vhd:16]
 	Parameter N bound to: 10 - type: integer 
-	Parameter M bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'RCA1' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:66]
-	Parameter N bound to: 10 - type: integer 
-	Parameter M bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'RCA2' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:77]
-	Parameter N bound to: 10 - type: integer 
-	Parameter M bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'FINAL_SUM' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:105]
-INFO: [Synth 8-256] done synthesizing module 'INTERP' (4#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:18]
+INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'FINAL_ADD' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:75]
+INFO: [Synth 8-256] done synthesizing module 'INTERP' (4#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/INTERP.vhd:16]
 INFO: [Synth 8-256] done synthesizing module 'LUT' (5#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/LUT.vhd:15]
 	Parameter N bound to: 10 - type: integer 
-	Parameter M bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'RCA_INST' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:152]
-INFO: [Synth 8-256] done synthesizing module 'SINE_CALCULATOR' (6#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:19]
+INFO: [Synth 8-3491] module 'RCA' declared at 'C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/RCA.vhd:5' bound to instance 'RCA_INST' of component 'RCA' [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:150]
+INFO: [Synth 8-256] done synthesizing module 'SINE_CALCULATOR' (6#1) [C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd:18]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2154.504 ; gain = 504.590
+Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2664.629 ; gain = 0.000
 ---------------------------------------------------------------------------------
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Wed Oct 23 12:45:52 2024
+| Date         : Mon Nov  4 12:33:19 2024
 | Host         : Laptop-ASH running 64-bit major release  (build 9200)
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -437,75 +313,51 @@ Table of Contents
 1. Summary
 ----------
 
-+---------+----------+--------------+----------+
-| Rule ID | Severity | # Violations | # Waived |
-+---------+----------+--------------+----------+
++----------+----------+--------------+----------+
+| Rule ID  | Severity | # Violations | # Waived |
++----------+----------+--------------+----------+
+| ASSIGN-6 | WARNING  | 4            | 0        |
++----------+----------+--------------+----------+
 
 
-INFO: [Synth 37-85] Total of 0 linter message(s) generated.
+WARNING: [Synth 37-123] [ASSIGN-6]Some bits in 'DIFF' are not read. First unread bit index is 0. 
+RTL Name 'DIFF', Hierarchy 'INTERP', File 'INTERP.vhd', Line 36.
+WARNING: [Synth 37-123] [ASSIGN-6]Some bits in 'sub_result1' are not read. First unread bit index is 7. 
+RTL Name 'sub_result1', Hierarchy 'SINE_CALCULATOR', File 'SINE_CALCULATOR.vhd', Line 63.
+WARNING: [Synth 37-123] [ASSIGN-6]Some bits in 'sub_result2' are not read. First unread bit index is 7. 
+RTL Name 'sub_result2', Hierarchy 'SINE_CALCULATOR', File 'SINE_CALCULATOR.vhd', Line 63.
+WARNING: [Synth 37-123] [ASSIGN-6]Some bits in 'sub_result3' are not read. First unread bit index is 7. 
+RTL Name 'sub_result3', Hierarchy 'SINE_CALCULATOR', File 'SINE_CALCULATOR.vhd', Line 63.
+INFO: [Synth 37-85] Total of 4 linter message(s) generated.
 INFO: [Synth 37-45] Linter Run Finished!
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2154.504 ; gain = 504.590
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2664.629 ; gain = 0.000
 INFO: [Common 17-83] Releasing license: Synthesis
-35 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+33 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2154.504 ; gain = 504.590
-file mkdir C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1
-file mkdir C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1
-file mkdir C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new
-file mkdir C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new
-file mkdir C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new
-file mkdir C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new
-file mkdir C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new
-file mkdir C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1
-file mkdir {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new}
-close [ open {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new/SINE_CALC_CONSTRAINTS.xdc} w ]
-add_files -fileset constrs_1 {{C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new/SINE_CALC_CONSTRAINTS.xdc}}
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/utils_1/imports/synth_1/SINE_CALCULATOR.dcp with file C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1/SINE_CALCULATOR.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1
-
-launch_runs synth_1 -jobs 4
-[Wed Oct 23 13:06:38 2024] Launched synth_1...
-Run output will be captured here: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1/runme.log
-launch_runs impl_1 -jobs 4
-[Wed Oct 23 13:33:59 2024] Launched impl_1...
-Run output will be captured here: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/impl_1/runme.log
-open_run impl_1
-INFO: [Device 21-403] Loading part xc7a200tsbg484-1
-INFO: [Device 21-9227] Part: xc7a200tsbg484-1 does not have CEAM library.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2363.344 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 14 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-INFO: [Project 1-479] Netlist was created with Vivado 2024.1
-INFO: [Project 1-570] Preparing netlist for logic optimization
-Read ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2442.418 ; gain = 0.000
-INFO: [Timing 38-478] Restoring timing data from binary archive.
-INFO: [Timing 38-479] Binary timing data restore complete.
-INFO: [Project 1-856] Restoring constraints from binary archive.
-INFO: [Project 1-853] Binary constraint restore complete.
-INFO: [Designutils 20-5722] Start Reading Physical Databases.
-Reading placement.
-Read Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3060.648 ; gain = 0.000
-Reading placer database...
-Read Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 3060.648 ; gain = 0.000
-Read PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 3060.648 ; gain = 0.000
-Read PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3060.648 ; gain = 0.000
-Reading routing.
-Read RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.056 . Memory (MB): peak = 3060.648 ; gain = 0.000
-Read Physdb Files: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.082 . Memory (MB): peak = 3060.648 ; gain = 0.000
-Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
-Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.083 . Memory (MB): peak = 3060.648 ; gain = 0.000
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3060.648 ; gain = 0.000
-INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
-
-open_run: Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 3201.250 ; gain = 1046.746
-WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
-report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
-INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
-INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2664.629 ; gain = 0.000
+set_property top TB_INTERP [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\RCA.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sim_1\new\TB_SINE.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.srcs\sources_1\new\INTERP.vhd:]
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'TB_INTERP'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+boost::filesystem::remove: Impossibile accedere al file. Il file è utilizzato da un altro processo: "C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim/simulate.log"
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'TB_INTERP'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+boost::filesystem::remove: Impossibile accedere al file. Il file è utilizzato da un altro processo: "C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/behav/xsim/simulate.log"
 close_sim
 INFO: [Simtcl 6-16] Simulation closed
 exit
-INFO: [Common 17-206] Exiting Vivado at Thu Oct 24 01:14:50 2024...
+INFO: [Common 17-206] Exiting Vivado at Mon Nov  4 12:34:04 2024...

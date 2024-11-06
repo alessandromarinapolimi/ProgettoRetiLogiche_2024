@@ -4,59 +4,41 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- Ripple Carry Adder (RCA)
 entity RCA is
     generic (
-        N : positive;   -- N-bit width of the inputs 
-        M : positive    -- M-bit width of the output
+        N : positive    -- Number of bits for operands
     );
-    
     Port (
-        A, B      : in  std_logic_vector(N-1 downto 0);     -- Inputs: N-bit vectors A and B
-        CIN       : in  std_logic;                                           -- Input: Carry-in (CIN)
-        SUM      : out std_logic_vector(M-1 downto 0);  -- Output: M-bit sum vector
-        COUT    : out std_logic                                          -- Output: Final carry-out
+        A            :  in  std_logic_vector(N-1 downto 0);            -- First input operand
+        B            :  in  std_logic_vector(N-1 downto 0);            -- Second input operand
+        CIN        :  in  std_logic;                                                  -- Carry input
+        SUM      :  out std_logic_vector(N-1 downto 0);           -- Sum output
+        COUT    :  out std_logic                                                  -- Carry output
     );
 end RCA;
 
+
 architecture RTL of RCA is
-    signal C : std_logic_vector(M downto 0);                     -- Internal signal per i carry bits
-    signal A_int, B_int : std_logic_vector(M-1 downto 0);
-    signal dummy : std_logic;
-    signal dummy_out : std_logic;                                         -- Segnale per l'output del secondo processo
-    
+
+-- C(0) is the input carry, C(N) is the output carry
+signal C : std_logic_vector(N downto 0);
+
 begin
-    process(A, B)
-        variable temp : std_logic;
-    begin
-        temp := '0';
-        for i in M to N-1 loop
-            temp := temp or A(i) or B(i);
-        end loop;
-        dummy <= temp;
-    end process;
-
-    -- Process per "leggere" il segnale dummy
-    process(dummy)
-    begin
-        dummy_out <= dummy;
-    end process;
-
-    -- Inizializza A_int e B_int
-    A_int <= A(M-1 downto 0);
-    B_int <= B(M-1 downto 0);
-    
-    -- Inizializza il primo carry con il carry-in (CIN)
     C(0) <= CIN;
     
-    gen: for i in 0 to M-1 generate
-        FA_inst: entity work.FA
+    gen: for i in 0 to N-1 generate
+    
+    -- Each FA takes inputs A(i), B(i), and previous carry
+    -- Outputs connect to SUM(i) and next carry
+    FA_i: entity work.FA
+       
             port map(
-                X     => A_int(i),
-                Y     => B_int(i),
-                CIN   => C(i),
-                SUM   => SUM(i),
-                COUT  => C(i + 1)
+                X              => A(i),              -- Current bit from first operand
+                Y              => B(i),              -- Current bit from second operand
+                CIN          => C(i),              -- Carry in from previous FA
+                SUM        => SUM(i),         -- Current bit of sum
+                COUT      => C(i + 1)          -- Carry out to next FA
             );
     end generate;
     
-    -- Il carry-out finale viene assegnato a COUT
-    COUT <= C(M) or dummy_out;  -- Usiamo dummy_out nell'assegnazione di COUT
+    --Final carry out
+    COUT <= C(N);
 end RTL;

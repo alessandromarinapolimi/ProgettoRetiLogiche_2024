@@ -1,1 +1,1 @@
-set_max_delay -datapath_only - from[all_inputs] -to [all_outputs] 14.500
+set_max_delay -datapath_only -from [all_inputs] -to [all_outputs] 9.500

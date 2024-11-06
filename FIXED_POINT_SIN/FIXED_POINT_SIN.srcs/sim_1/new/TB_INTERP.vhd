@@ -64,7 +64,7 @@ begin
         wait for 10 ns;
 
         -- Test per 47 gradi
-        ANGLE_DIFF <= "111";  -- Differenza di 5 gradi
+        ANGLE_DIFF <= "111";  -- Differenza di 7 gradi
         SINE1 <= "0010100100";  -- sin(40) 
         SINE2 <= "0010111110";  -- sin(48)
         wait for 10 ns;
@@ -134,6 +134,7 @@ begin
         SINE1 <= "0011111100";  -- sin(80) 
         SINE2 <= "0011111111";  -- sin(88) 
         wait for 10 ns;
+        
 
         std.env.stop; -- Fermare la simulazione
     end process;
