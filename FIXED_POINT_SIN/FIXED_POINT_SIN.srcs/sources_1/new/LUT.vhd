@@ -56,76 +56,81 @@ begin
         );
     
     process(ANGLE)
-    begin
-  
-        -- Special cases
-        if ANGLE = "1011010" then                            -- 90°
+begin
+    -- Default values (IMPORTANT: assign default values at the start)
+    USE_INTERPOLATION <= '0';
+    LUT_OUT <= (others => '0');
+    SINE1 <= (others => '0');
+    SINE2 <= (others => '0');
+    ANGLE_DIFF <= "000";  -- Default value for ANGLE_DIFF
+
+    -- Special cases
+    if ANGLE = "1011010" then                            -- 90°
+        USE_INTERPOLATION <= '0';
+        LUT_OUT <= SINE_LUT(12);
+    elsif ANGLE(6 downto 1) = "101100" then    -- 88° or 89°
+        USE_INTERPOLATION <= '0';
+        LUT_OUT <= SINE_LUT(11);
+    else
+        -- Checking if interpolation is needed
+        if ANGLE(2 downto 0) = "000" then
             USE_INTERPOLATION <= '0';
-            LUT_OUT <= SINE_LUT(12);
-        elsif ANGLE(6 downto 1) = "101100" then    -- 88° or 89°
-            USE_INTERPOLATION <= '0';
-            LUT_OUT <= SINE_LUT(11);
+            -- Selection of direct sine values from lookup table
+            case ANGLE(6 downto 3) is
+                when "0000" => LUT_OUT <= SINE_LUT(0);
+                when "0001" => LUT_OUT <= SINE_LUT(1);
+                when "0010" => LUT_OUT <= SINE_LUT(2);
+                when "0011" => LUT_OUT <= SINE_LUT(3);
+                when "0100" => LUT_OUT <= SINE_LUT(4);
+                when "0101" => LUT_OUT <= SINE_LUT(5);
+                when "0110" => LUT_OUT <= SINE_LUT(6);
+                when "0111" => LUT_OUT <= SINE_LUT(7);
+                when "1000" => LUT_OUT <= SINE_LUT(8);
+                when "1001" => LUT_OUT <= SINE_LUT(9);
+                when others => LUT_OUT <= SINE_LUT(10);
+            end case;
         else
-            -- Checking if interpolation is needed
-            if ANGLE(2 downto 0) = "000" then
-                USE_INTERPOLATION <= '0';
-                -- Selection of direct sine values from lookup table
-                case ANGLE(6 downto 3) is
-                    when "0000" => LUT_OUT <= SINE_LUT(0);
-                    when "0001" => LUT_OUT <= SINE_LUT(1);
-                    when "0010" => LUT_OUT <= SINE_LUT(2);
-                    when "0011" => LUT_OUT <= SINE_LUT(3);
-                    when "0100" => LUT_OUT <= SINE_LUT(4);
-                    when "0101" => LUT_OUT <= SINE_LUT(5);
-                    when "0110" => LUT_OUT <= SINE_LUT(6);
-                    when "0111" => LUT_OUT <= SINE_LUT(7);
-                    when "1000" => LUT_OUT <= SINE_LUT(8);
-                    when "1001" => LUT_OUT <= SINE_LUT(9);
-                    when others => LUT_OUT <= SINE_LUT(10);
-                end case;
-            else
-                USE_INTERPOLATION <= '1';
-                -- Selection for different sine values based on the angle
-                case ANGLE(6 downto 3) is
-                    when "0000" => 
-                        SINE1 <= SINE_LUT(0);
-                        SINE2 <= SINE_LUT(1);
-                    when "0001" => 
-                        SINE1 <= SINE_LUT(1);
-                        SINE2 <= SINE_LUT(2);
-                    when "0010" => 
-                        SINE1 <= SINE_LUT(2);
-                        SINE2 <= SINE_LUT(3);
-                    when "0011" => 
-                        SINE1 <= SINE_LUT(3);
-                        SINE2 <= SINE_LUT(4);
-                    when "0100" => 
-                        SINE1 <= SINE_LUT(4);
-                        SINE2 <= SINE_LUT(5);
-                    when "0101" => 
-                        SINE1 <= SINE_LUT(5);
-                        SINE2 <= SINE_LUT(6);
-                    when "0110" => 
-                        SINE1 <= SINE_LUT(6);
-                        SINE2 <= SINE_LUT(7);
-                    when "0111" => 
-                        SINE1 <= SINE_LUT(7);
-                        SINE2 <= SINE_LUT(8);
-                    when "1000" => 
-                        SINE1 <= SINE_LUT(8);
-                        SINE2 <= SINE_LUT(9);
-                    when "1001" => 
-                        SINE1 <= SINE_LUT(9);
-                        SINE2 <= SINE_LUT(10);
-                    when others => 
-                        SINE1 <= SINE_LUT(10);
-                        SINE2 <= SINE_LUT(11);
-                end case;
-                ANGLE_DIFF <= ANGLE(2 downto 0);
-            end if;
+            USE_INTERPOLATION <= '1';
+            ANGLE_DIFF <= ANGLE(2 downto 0);  -- Move this here
+            -- Selection for different sine values based on the angle
+            case ANGLE(6 downto 3) is
+                when "0000" => 
+                    SINE1 <= SINE_LUT(0);
+                    SINE2 <= SINE_LUT(1);
+                when "0001" => 
+                    SINE1 <= SINE_LUT(1);
+                    SINE2 <= SINE_LUT(2);
+                when "0010" => 
+                    SINE1 <= SINE_LUT(2);
+                    SINE2 <= SINE_LUT(3);
+                when "0011" => 
+                    SINE1 <= SINE_LUT(3);
+                    SINE2 <= SINE_LUT(4);
+                when "0100" => 
+                    SINE1 <= SINE_LUT(4);
+                    SINE2 <= SINE_LUT(5);
+                when "0101" => 
+                    SINE1 <= SINE_LUT(5);
+                    SINE2 <= SINE_LUT(6);
+                when "0110" => 
+                    SINE1 <= SINE_LUT(6);
+                    SINE2 <= SINE_LUT(7);
+                when "0111" => 
+                    SINE1 <= SINE_LUT(7);
+                    SINE2 <= SINE_LUT(8);
+                when "1000" => 
+                    SINE1 <= SINE_LUT(8);
+                    SINE2 <= SINE_LUT(9);
+                when "1001" => 
+                    SINE1 <= SINE_LUT(9);
+                    SINE2 <= SINE_LUT(10);
+                when others => 
+                    SINE1 <= SINE_LUT(10);
+                    SINE2 <= SINE_LUT(11);
+            end case;
         end if;
-    end process;
-    
+    end if;
+end process;
     -- Output 
     SINE <= INTERPOLATED_SINE when USE_INTERPOLATION = '1' else LUT_OUT;
 

@@ -40,7 +40,7 @@ architecture RTL of INTERP is
 
     -- Signal declarations
     signal SINE_DIFF : std_logic_vector(N-1 downto 0);                              -- Difference between SINE2 and SINE1
-    signal MULT_2 : std_logic_vector(N-1 downto 0);                                  -- Multiples of the sine difference
+    signal MULT_2 : std_logic_vector(N-1 downto 0);                                  -- Multiple
     signal SUM_1, SUM_2, SUM_3 : std_logic_vector(N-1 downto 0);         -- Intermediate sums
     signal ADD_VALUE : std_logic_vector(N-1 downto 0);                           -- Final add value for interpolation
 
@@ -108,9 +108,9 @@ begin
     FINAL_SUM: RCA
         generic map (N => N)
         port map (
-            A     => SINE1,      -- Input: SINE1
+            A     => SINE1,            -- Input: SINE1
             B     => ADD_VALUE,  -- Input: ADD_VALUE
-            CIN   => '0',        -- Carry-in is 0
+            CIN   => '0',                 -- Carry-in is 0
             SUM   => RESULT,     -- Output: RESULT = SINE1 + ADD_VALUE
             COUT  => open
         );

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1730714664" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/SINE_CALCULATOR.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a200tsbg484-1" LaunchTime="1731148500" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/SINE_CALCULATOR.dcp">
   <File Type="PA-TCL" Name="SINE_CALCULATOR.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="SINE_CALCULATOR_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="SINE_CALCULATOR_reports.tcl"/>
   <File Type="RDS-RDS" Name="SINE_CALCULATOR.vds"/>
   <File Type="RDS-UTIL" Name="SINE_CALCULATOR_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="SINE_CALCULATOR_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="SINE_CALCULATOR.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="SINE_CALCULATOR_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="SINE_CALCULATOR_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/FA.vhd">

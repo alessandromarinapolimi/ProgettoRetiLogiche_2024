@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Mon Nov  4 11:04:28 2024
-# Process ID: 8768
+# Start of session at: Sat Nov  9 11:35:04 2024
+# Process ID: 13408
 # Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1
 # Command line: vivado.exe -log SINE_CALCULATOR.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source SINE_CALCULATOR.tcl
 # Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.runs/synth_1/SINE_CALCULATOR.vds
@@ -17,8 +17,8 @@
 # CPU Physical cores:6
 # CPU Logical cores :12
 # Host memory       :12210 MB
-# Swap memory       :14585 MB
-# Total Virtual     :26796 MB
-# Available Virtual :4018 MB
+# Swap memory       :7247 MB
+# Total Virtual     :19458 MB
+# Available Virtual :6272 MB
 #-----------------------------------------------------------
 source SINE_CALCULATOR.tcl -notrace
