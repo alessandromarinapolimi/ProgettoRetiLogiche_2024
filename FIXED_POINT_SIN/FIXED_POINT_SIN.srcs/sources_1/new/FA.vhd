@@ -5,7 +5,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity FA is
     Port(
         X, Y, CIN       : in  std_logic;          -- Inputs: X, Y, and carry-in (CIN)
-        SUM, COUT  : out std_logic         -- Outputs: SUM and carry-out (COUT)
+        SUM, COUT  : out std_logic         -- Outputs: sum and carry-out (COUT)
     );
 end FA;
 

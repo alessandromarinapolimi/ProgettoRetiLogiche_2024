@@ -57,12 +57,12 @@ begin
     
     process(ANGLE)
 begin
-    -- Default values (IMPORTANT: assign default values at the start)
+    -- Default values 
     USE_INTERPOLATION <= '0';
     LUT_OUT <= (others => '0');
     SINE1 <= (others => '0');
     SINE2 <= (others => '0');
-    ANGLE_DIFF <= "000";  -- Default value for ANGLE_DIFF
+    ANGLE_DIFF <= "000";  
 
     -- Special cases
     if ANGLE = "1011010" then                            -- 90°
@@ -91,7 +91,7 @@ begin
             end case;
         else
             USE_INTERPOLATION <= '1';
-            ANGLE_DIFF <= ANGLE(2 downto 0);  -- Move this here
+            ANGLE_DIFF <= ANGLE(2 downto 0);
             -- Selection for different sine values based on the angle
             case ANGLE(6 downto 3) is
                 when "0000" => 

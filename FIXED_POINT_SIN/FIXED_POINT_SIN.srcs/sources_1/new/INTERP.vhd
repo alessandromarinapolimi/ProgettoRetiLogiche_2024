@@ -6,7 +6,6 @@ entity INTERP is
     generic (
         N : positive  
     );
-    
     Port (
         ANGLE_DIFF       : in std_logic_vector(2 downto 0);            -- Input: 3-bit angle difference
         SINE1                  : in std_logic_vector(N-1 downto 0);        -- Input: First sine value
@@ -40,12 +39,12 @@ architecture RTL of INTERP is
 
     -- Signal declarations
     signal SINE_DIFF : std_logic_vector(N-1 downto 0);                              -- Difference between SINE2 and SINE1
-    signal MULT_2 : std_logic_vector(N-1 downto 0);                                  -- Multiple
+    signal MULT_2 : std_logic_vector(N-1 downto 0);                                  -- Multiple of 2*SINE_DIFF
     signal SUM_1, SUM_2, SUM_3 : std_logic_vector(N-1 downto 0);         -- Intermediate sums
     signal ADD_VALUE : std_logic_vector(N-1 downto 0);                           -- Final add value for interpolation
 
 begin
-
+ 
     -- Step 1: Calculate the difference between SINE2 and SINE1
     DIFF_CALC: SUB
         generic map (N)

@@ -34,7 +34,6 @@ end component;
 signal Y_comp : std_logic_vector(N-1 downto 0);
 
 begin
-
     -- Take 2's complement of Y (invert Y bits for subtraction)
     Y_comp <= not Y;
 

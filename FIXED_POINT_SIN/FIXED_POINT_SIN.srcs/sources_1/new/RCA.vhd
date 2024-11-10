@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- Ripple Carry Adder (RCA)
 entity RCA is
     generic (
-        N : positive    -- Number of bits for operands
+        N : positive   
     );
     Port (
         A            :  in  std_logic_vector(N-1 downto 0);            -- First input operand
@@ -15,8 +15,7 @@ entity RCA is
     );
 end RCA;
 
-
-architecture RTL of RCA is
+architecture RTL of RCA is 
 
 -- C(0) is the input carry, C(N) is the output carry
 signal C : std_logic_vector(N downto 0);
@@ -34,7 +33,7 @@ begin
                 X              => A(i),              -- Current bit from first operand
                 Y              => B(i),              -- Current bit from second operand
                 CIN          => C(i),              -- Carry in from previous FA
-                SUM        => SUM(i),         -- Current bit of sum
+                SUM        => SUM(i),        -- Current bit of sum
                 COUT      => C(i + 1)          -- Carry out to next FA
             );
     end generate;
