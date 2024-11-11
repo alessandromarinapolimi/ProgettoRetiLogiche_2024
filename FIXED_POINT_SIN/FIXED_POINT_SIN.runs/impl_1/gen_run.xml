@@ -18,10 +18,14 @@
   <File Type="BITSTR-MMI" Name="SINE_CALCULATOR.mmi"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="SINE_CALCULATOR_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-SYSDEF" Name="SINE_CALCULATOR.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="SINE_CALCULATOR_methodology_drc_routed.pb"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="SINE_CALCULATOR.ltx"/>
+  <File Type="BOOT-PDI-FILE" Name="SINE_CALCULATOR_boot.pdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="NPI_FILE" Name="SINE_CALCULATOR.npi"/>
   <File Type="OPT-DRC" Name="SINE_CALCULATOR_drc_opted.rpt"/>
+  <File Type="RBD_FILE" Name="SINE_CALCULATOR.rbd"/>
   <File Type="OPT-HWDEF" Name="SINE_CALCULATOR.hwdef"/>
   <File Type="PLACE-IO" Name="SINE_CALCULATOR_io_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="SINE_CALCULATOR_utilization_placed.rpt"/>
@@ -55,17 +59,13 @@
   <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="SINE_CALCULATOR_timing_summary_postroute_physopted.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="SINE_CALCULATOR_bus_skew_postroute_physopted.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="SINE_CALCULATOR_bus_skew_postroute_physopted.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="SINE_CALCULATOR_methodology_drc_routed.pb"/>
   <File Type="ROUTE-DRC-RPX" Name="SINE_CALCULATOR_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="SINE_CALCULATOR_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="SINE_CALCULATOR.pdi"/>
-  <File Type="BOOT-PDI-FILE" Name="SINE_CALCULATOR_boot.pdi"/>
   <File Type="PL-PDI-FILE" Name="SINE_CALCULATOR_pld.pdi"/>
   <File Type="RCFI_FILE" Name="SINE_CALCULATOR.rcfi"/>
   <File Type="CFI_FILE" Name="SINE_CALCULATOR.cfi"/>
   <File Type="RNPI_FILE" Name="SINE_CALCULATOR.rnpi"/>
-  <File Type="NPI_FILE" Name="SINE_CALCULATOR.npi"/>
-  <File Type="RBD_FILE" Name="SINE_CALCULATOR.rbd"/>
   <File Type="ROUTE-RQS" Name="SINE_CALCULATOR_routed.rqs"/>
   <File Type="POSTROUTE-PHYSOPT-RQS" Name="SINE_CALCULATOR_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
