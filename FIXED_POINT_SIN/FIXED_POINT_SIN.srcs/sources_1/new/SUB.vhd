@@ -14,7 +14,6 @@ entity SUB is
 end SUB;
 
 architecture RTL of SUB is
-
 -- Component declaration for RCA to be used for subtraction
 component RCA is
     generic (

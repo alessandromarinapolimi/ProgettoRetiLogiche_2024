@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- Full Adder (FA)
 entity FA is
     Port(
-        X, Y, CIN       : in  std_logic;          -- Inputs: X, Y, and carry-in (CIN)
+        X, Y, CIN       : in  std_logic;          -- Inputs: X, Y, carry-in (CIN)
         SUM, COUT  : out std_logic         -- Outputs: sum and carry-out (COUT)
     );
 end FA;
@@ -12,7 +12,7 @@ end FA;
 architecture RTL of FA is
 begin
 
-    -- SUM is calculated using the XOR of X, Y, and CIN
+    -- SUM is calculated using the XOR of X, Y, CIN
     SUM  <= X xor Y xor CIN;
     
     -- COUT is generated based on the carry logic

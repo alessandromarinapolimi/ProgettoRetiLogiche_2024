@@ -1,0 +1,75 @@
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Users/ultro/.Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot TB_SINE_func_impl xil_defaultlib.TB_SINE -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package unisim.vcomponents
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling architecture lut3_v of entity unisim.LUT3 [\LUT3(init="01101010")(0,7)\]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="01010110010101011010...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="10101010101010011010...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="01011001101010100101...]
+Compiling architecture lut2_v of entity unisim.LUT2 [\LUT2(init="0001")(0,3)\]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00111100001100110110...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="00000000010101111111...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="00000000000000000101...]
+Compiling architecture lut3_v of entity unisim.LUT3 [\LUT3(init="11100000")(0,7)\]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00111100111111111001...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00000000010101111111...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00000000000000000101...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="10101000000000000101...]
+Compiling architecture fdce_v of entity unisim.FDCE [fdce_default]
+Compiling architecture ibuf_v of entity unisim.IBUF [\IBUF(1,9)(1,1)(1,4)(1,7)\]
+Compiling architecture bufg_v of entity unisim.BUFG [bufg_default]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11111111101100001111...]
+Compiling architecture lut3_v of entity unisim.LUT3 [\LUT3(init="10000000")(0,7)\]
+Compiling architecture lut4_v of entity unisim.LUT4 [\LUT4(init="1111111111111110")(0...]
+Compiling architecture lut4_v of entity unisim.LUT4 [\LUT4(init="1111010011110101")(0...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00000001010101010101...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="10111010101110100110...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00000001111011100000...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11101110001100111010...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11111110111111100001...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="01011001110011110101...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11111111111111111111...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00000001010010010100...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11111111111111111111...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11111010111110101010...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00000101000001010000...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="01000001110000010100...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11111111111111111111...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="10111010101110100010...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="00000000000000000001...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="01001001101101100100...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11111111111111111111...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="10110010101100100101...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="00000000000000000000...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00110000001100111011...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00111101100011111000...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11110000001111110011...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="01010101010101010101...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11001100110011001100...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00000000000000000000...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="11111111111111111111...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="11111111111111111000...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11111111111111111111...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="00000000000100000000...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11111111111111111111...]
+Compiling architecture lut3_v of entity unisim.LUT3 [\LUT3(init="11111110")(0,7)\]
+Compiling architecture muxf7_v of entity unisim.MUXF7 [muxf7_default]
+Compiling architecture muxf8_v of entity unisim.MUXF8 [muxf8_default]
+Compiling architecture obuf_v of entity unisim.OBUF [\OBUF(1,9)(1,7)(1,4)\]
+Compiling architecture structure of entity xil_defaultlib.SINE_CALCULATOR [sine_calculator_default]
+Compiling architecture behavioral of entity xil_defaultlib.tb_sine
+Built simulation snapshot TB_SINE_func_impl

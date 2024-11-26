@@ -1,0 +1,11 @@
+0.7
+2020.2
+May 22 2024
+19:03:11
+C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.sim/sim_1/impl/timing/xsim/TB_SINE_time_impl.v,1732479018,verilog,,,,SINE_CALCULATOR;glbl,,,,,,,,
+C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_FA.vhd,1728560053,vhdl,,,,tb_fa,,,,,,,,
+C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_INTERP.vhd,1730722537,vhdl,,,,tb_interp,,,,,,,,
+C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_LUT.vhd,1728560053,vhdl,,,,tb_lut,,,,,,,,
+C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_RCA.vhd,1728560053,vhdl,,,,tb_rca,,,,,,,,
+C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_SINE.vhd,1732220891,vhdl,,,,tb_sine,,,,,,,,
+C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/sim_1/new/TB_SUB.vhd,1728560053,vhdl,,,,tb_sub,,,,,,,,

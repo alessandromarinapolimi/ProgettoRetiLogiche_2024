@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Sat Nov  9 11:39:53 2024
+| Date         : Sun Nov 24 21:08:05 2024
 | Host         : Laptop-ASH running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file SINE_CALCULATOR_timing_summary_routed.rpt -pb SINE_CALCULATOR_timing_summary_routed.pb -rpx SINE_CALCULATOR_timing_summary_routed.rpx -warn_on_violation
 | Design       : SINE_CALCULATOR
@@ -57,12 +57,12 @@ Table of Contents
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
 4. checking unconstrained_internal_endpoints (58)
-5. checking no_input_delay (0)
-6. checking no_output_delay (0)
+5. checking no_input_delay (10)
+6. checking no_output_delay (10)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
-10. checking partial_input_delay (11)
+10. checking partial_input_delay (0)
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
@@ -88,16 +88,16 @@ Table of Contents
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (0)
-------------------------------
- There are 0 input ports with no input delay specified.
+5. checking no_input_delay (10)
+-------------------------------
+ There are 10 input ports with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (0)
--------------------------------
- There are 0 ports with no output delay specified.
+6. checking no_output_delay (10)
+--------------------------------
+ There are 10 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -119,9 +119,9 @@ Table of Contents
  There are 0 combinational loops in the design.
 
 
-10. checking partial_input_delay (11)
--------------------------------------
- There are 11 input ports with partial input delay specified. (HIGH)
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
 
 
 11. checking partial_output_delay (0)
@@ -145,7 +145,7 @@ Table of Contents
         inf        0.000                      0                   68          inf        0.000                      0                   68           NA           NA                      NA                    NA  
 
 
-All user specified timing constraints are met.
+There are no user specified timing constraints.
 
 
 ------------------------------------------------------------------------------------------------
@@ -219,7 +219,7 @@ Min Delay            68 Endpoints
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 SINE_FINAL_reg[9]/C
+  Source:                 SINE_FINAL_RESULT_reg[9]/C
                             (rising edge-triggered cell FDCE)
   Destination:            SINE[9]
                             (output port)
@@ -230,8 +230,8 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y112         FDCE                         0.000     0.000 r  SINE_FINAL_reg[9]/C
-    SLICE_X1Y112         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_reg[9]/Q
+    SLICE_X1Y112         FDCE                         0.000     0.000 r  SINE_FINAL_RESULT_reg[9]/C
+    SLICE_X1Y112         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_RESULT_reg[9]/Q
                          net (fo=1, routed)           1.870     2.326    SINE_OBUF[9]
     AB20                 OBUF (Prop_obuf_I_O)         2.658     4.985 r  SINE_OBUF[9]_inst/O
                          net (fo=0)                   0.000     4.985    SINE[9]
@@ -239,7 +239,7 @@ Slack:                    inf
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_FINAL_reg[5]/C
+  Source:                 SINE_FINAL_RESULT_reg[5]/C
                             (rising edge-triggered cell FDCE)
   Destination:            SINE[5]
                             (output port)
@@ -250,8 +250,8 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y112         FDCE                         0.000     0.000 r  SINE_FINAL_reg[5]/C
-    SLICE_X0Y112         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_reg[5]/Q
+    SLICE_X0Y112         FDCE                         0.000     0.000 r  SINE_FINAL_RESULT_reg[5]/C
+    SLICE_X0Y112         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_RESULT_reg[5]/Q
                          net (fo=1, routed)           1.814     2.270    SINE_OBUF[5]
     AB18                 OBUF (Prop_obuf_I_O)         2.662     4.932 r  SINE_OBUF[5]_inst/O
                          net (fo=0)                   0.000     4.932    SINE[5]
@@ -259,7 +259,7 @@ Slack:                    inf
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_FINAL_reg[8]/C
+  Source:                 SINE_FINAL_RESULT_reg[8]/C
                             (rising edge-triggered cell FDCE)
   Destination:            SINE[8]
                             (output port)
@@ -270,8 +270,8 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y112         FDCE                         0.000     0.000 r  SINE_FINAL_reg[8]/C
-    SLICE_X0Y112         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_reg[8]/Q
+    SLICE_X0Y112         FDCE                         0.000     0.000 r  SINE_FINAL_RESULT_reg[8]/C
+    SLICE_X0Y112         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_RESULT_reg[8]/Q
                          net (fo=1, routed)           1.727     2.183    SINE_OBUF[8]
     V17                  OBUF (Prop_obuf_I_O)         2.650     4.833 r  SINE_OBUF[8]_inst/O
                          net (fo=0)                   0.000     4.833    SINE[8]
@@ -279,7 +279,7 @@ Slack:                    inf
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_FINAL_reg[6]/C
+  Source:                 SINE_FINAL_RESULT_reg[6]/C
                             (rising edge-triggered cell FDCE)
   Destination:            SINE[6]
                             (output port)
@@ -290,8 +290,8 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y112         FDCE                         0.000     0.000 r  SINE_FINAL_reg[6]/C
-    SLICE_X1Y112         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_reg[6]/Q
+    SLICE_X1Y112         FDCE                         0.000     0.000 r  SINE_FINAL_RESULT_reg[6]/C
+    SLICE_X1Y112         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_RESULT_reg[6]/Q
                          net (fo=1, routed)           1.710     2.166    SINE_OBUF[6]
     AA18                 OBUF (Prop_obuf_I_O)         2.664     4.830 r  SINE_OBUF[6]_inst/O
                          net (fo=0)                   0.000     4.830    SINE[6]
@@ -299,7 +299,7 @@ Slack:                    inf
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_FINAL_reg[7]/C
+  Source:                 SINE_FINAL_RESULT_reg[7]/C
                             (rising edge-triggered cell FDCE)
   Destination:            SINE[7]
                             (output port)
@@ -310,8 +310,8 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y112         FDCE                         0.000     0.000 r  SINE_FINAL_reg[7]/C
-    SLICE_X1Y112         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_reg[7]/Q
+    SLICE_X1Y112         FDCE                         0.000     0.000 r  SINE_FINAL_RESULT_reg[7]/C
+    SLICE_X1Y112         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_RESULT_reg[7]/Q
                          net (fo=1, routed)           1.724     2.180    SINE_OBUF[7]
     W17                  OBUF (Prop_obuf_I_O)         2.640     4.820 r  SINE_OBUF[7]_inst/O
                          net (fo=0)                   0.000     4.820    SINE[7]
@@ -319,7 +319,7 @@ Slack:                    inf
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_FINAL_reg[3]/C
+  Source:                 SINE_FINAL_RESULT_reg[3]/C
                             (rising edge-triggered cell FDCE)
   Destination:            SINE[3]
                             (output port)
@@ -330,8 +330,8 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y113         FDCE                         0.000     0.000 r  SINE_FINAL_reg[3]/C
-    SLICE_X0Y113         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_reg[3]/Q
+    SLICE_X0Y113         FDCE                         0.000     0.000 r  SINE_FINAL_RESULT_reg[3]/C
+    SLICE_X0Y113         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_RESULT_reg[3]/Q
                          net (fo=1, routed)           1.688     2.144    SINE_OBUF[3]
     U18                  OBUF (Prop_obuf_I_O)         2.640     4.784 r  SINE_OBUF[3]_inst/O
                          net (fo=0)                   0.000     4.784    SINE[3]
@@ -339,7 +339,7 @@ Slack:                    inf
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_FINAL_reg[4]/C
+  Source:                 SINE_FINAL_RESULT_reg[4]/C
                             (rising edge-triggered cell FDCE)
   Destination:            SINE[4]
                             (output port)
@@ -350,8 +350,8 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y113         FDCE                         0.000     0.000 r  SINE_FINAL_reg[4]/C
-    SLICE_X1Y113         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_reg[4]/Q
+    SLICE_X1Y113         FDCE                         0.000     0.000 r  SINE_FINAL_RESULT_reg[4]/C
+    SLICE_X1Y113         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_RESULT_reg[4]/Q
                          net (fo=1, routed)           1.674     2.130    SINE_OBUF[4]
     U17                  OBUF (Prop_obuf_I_O)         2.642     4.772 r  SINE_OBUF[4]_inst/O
                          net (fo=0)                   0.000     4.772    SINE[4]
@@ -359,7 +359,7 @@ Slack:                    inf
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_FINAL_reg[1]/C
+  Source:                 SINE_FINAL_RESULT_reg[1]/C
                             (rising edge-triggered cell FDCE)
   Destination:            SINE[1]
                             (output port)
@@ -370,8 +370,8 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y111         FDCE                         0.000     0.000 r  SINE_FINAL_reg[1]/C
-    SLICE_X0Y111         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_reg[1]/Q
+    SLICE_X0Y111         FDCE                         0.000     0.000 r  SINE_FINAL_RESULT_reg[1]/C
+    SLICE_X0Y111         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_RESULT_reg[1]/Q
                          net (fo=1, routed)           1.688     2.144    SINE_OBUF[1]
     R14                  OBUF (Prop_obuf_I_O)         2.618     4.762 r  SINE_OBUF[1]_inst/O
                          net (fo=0)                   0.000     4.762    SINE[1]
@@ -379,7 +379,7 @@ Slack:                    inf
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_FINAL_reg[2]/C
+  Source:                 SINE_FINAL_RESULT_reg[2]/C
                             (rising edge-triggered cell FDCE)
   Destination:            SINE[2]
                             (output port)
@@ -390,8 +390,8 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y111         FDCE                         0.000     0.000 r  SINE_FINAL_reg[2]/C
-    SLICE_X1Y111         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_reg[2]/Q
+    SLICE_X1Y111         FDCE                         0.000     0.000 r  SINE_FINAL_RESULT_reg[2]/C
+    SLICE_X1Y111         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_RESULT_reg[2]/Q
                          net (fo=1, routed)           1.674     2.130    SINE_OBUF[2]
     P14                  OBUF (Prop_obuf_I_O)         2.603     4.733 r  SINE_OBUF[2]_inst/O
                          net (fo=0)                   0.000     4.733    SINE[2]
@@ -399,7 +399,7 @@ Slack:                    inf
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_FINAL_reg[0]/C
+  Source:                 SINE_FINAL_RESULT_reg[0]/C
                             (rising edge-triggered cell FDCE)
   Destination:            SINE[0]
                             (output port)
@@ -410,8 +410,8 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y110         FDCE                         0.000     0.000 r  SINE_FINAL_reg[0]/C
-    SLICE_X0Y110         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_reg[0]/Q
+    SLICE_X0Y110         FDCE                         0.000     0.000 r  SINE_FINAL_RESULT_reg[0]/C
+    SLICE_X0Y110         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  SINE_FINAL_RESULT_reg[0]/Q
                          net (fo=1, routed)           1.533     1.989    SINE_OBUF[0]
     R18                  OBUF (Prop_obuf_I_O)         2.613     4.602 r  SINE_OBUF[0]_inst/O
                          net (fo=0)                   0.000     4.602    SINE[0]
@@ -444,9 +444,9 @@ Slack:                    inf
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_NEG_reg/C
+  Source:                 SINE_NEG_FLAG_reg/C
                             (rising edge-triggered cell FDCE)
-  Destination:            SINE_FINAL_reg[1]/D
+  Destination:            SINE_FINAL_RESULT_reg[1]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
   Data Path Delay:        0.352ns  (logic 0.221ns (62.829%)  route 0.131ns (37.172%))
@@ -454,18 +454,18 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y110         FDCE                         0.000     0.000 r  SINE_NEG_reg/C
-    SLICE_X1Y110         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  SINE_NEG_reg/Q
-                         net (fo=9, routed)           0.131     0.272    SINE_NEG
-    SLICE_X0Y111         MUXF8 (Prop_muxf8_S_O)       0.080     0.352 r  SINE_FINAL_reg[1]_i_1/O
-                         net (fo=1, routed)           0.000     0.352    SINE_FINAL_reg[1]_i_1_n_0
-    SLICE_X0Y111         FDCE                                         r  SINE_FINAL_reg[1]/D
+    SLICE_X1Y110         FDCE                         0.000     0.000 r  SINE_NEG_FLAG_reg/C
+    SLICE_X1Y110         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  SINE_NEG_FLAG_reg/Q
+                         net (fo=9, routed)           0.131     0.272    SINE_NEG_FLAG
+    SLICE_X0Y111         MUXF8 (Prop_muxf8_S_O)       0.080     0.352 r  SINE_FINAL_RESULT_reg[1]_i_1/O
+                         net (fo=1, routed)           0.000     0.352    SINE_FINAL_RESULT_reg[1]_i_1_n_0
+    SLICE_X0Y111         FDCE                                         r  SINE_FINAL_RESULT_reg[1]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_NEG_reg/C
+  Source:                 SINE_NEG_FLAG_reg/C
                             (rising edge-triggered cell FDCE)
-  Destination:            SINE_FINAL_reg[2]/D
+  Destination:            SINE_FINAL_RESULT_reg[2]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
   Data Path Delay:        0.352ns  (logic 0.221ns (62.829%)  route 0.131ns (37.172%))
@@ -473,12 +473,12 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y110         FDCE                         0.000     0.000 r  SINE_NEG_reg/C
-    SLICE_X1Y110         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  SINE_NEG_reg/Q
-                         net (fo=9, routed)           0.131     0.272    SINE_NEG
-    SLICE_X1Y111         MUXF8 (Prop_muxf8_S_O)       0.080     0.352 r  SINE_FINAL_reg[2]_i_1/O
-                         net (fo=1, routed)           0.000     0.352    SINE_FINAL_reg[2]_i_1_n_0
-    SLICE_X1Y111         FDCE                                         r  SINE_FINAL_reg[2]/D
+    SLICE_X1Y110         FDCE                         0.000     0.000 r  SINE_NEG_FLAG_reg/C
+    SLICE_X1Y110         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  SINE_NEG_FLAG_reg/Q
+                         net (fo=9, routed)           0.131     0.272    SINE_NEG_FLAG
+    SLICE_X1Y111         MUXF8 (Prop_muxf8_S_O)       0.080     0.352 r  SINE_FINAL_RESULT_reg[2]_i_1/O
+                         net (fo=1, routed)           0.000     0.352    SINE_FINAL_RESULT_reg[2]_i_1_n_0
+    SLICE_X1Y111         FDCE                                         r  SINE_FINAL_RESULT_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -520,7 +520,7 @@ Slack:                    inf
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 ANGLE_REG_reg[0]/C
+  Source:                 INPUT_ANGLE_REG_reg[0]/C
                             (rising edge-triggered cell FDCE)
   Destination:            ANGLE_ADJUSTED_reg[0]/D
   Path Group:             (none)
@@ -530,35 +530,56 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y108         FDCE                         0.000     0.000 r  ANGLE_REG_reg[0]/C
-    SLICE_X0Y108         FDCE (Prop_fdce_C_Q)         0.128     0.128 r  ANGLE_REG_reg[0]/Q
-                         net (fo=9, routed)           0.243     0.371    ANGLE_REG[0]
+    SLICE_X0Y108         FDCE                         0.000     0.000 r  INPUT_ANGLE_REG_reg[0]/C
+    SLICE_X0Y108         FDCE (Prop_fdce_C_Q)         0.128     0.128 r  INPUT_ANGLE_REG_reg[0]/Q
+                         net (fo=9, routed)           0.243     0.371    INPUT_ANGLE_REG[0]
     SLICE_X1Y110         FDCE                                         r  ANGLE_ADJUSTED_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 ANGLE_REG_reg[1]/C
+  Source:                 ANGLE_ADJUSTED_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            SINE_FINAL_RESULT_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.380ns  (logic 0.248ns (65.227%)  route 0.132ns (34.773%))
+  Logic Levels:           3  (FDCE=1 LUT6=1 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y110         FDCE                         0.000     0.000 r  ANGLE_ADJUSTED_reg[0]/C
+    SLICE_X1Y110         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  ANGLE_ADJUSTED_reg[0]/Q
+                         net (fo=25, routed)          0.132     0.273    ANGLE_ADJUSTED_reg_n_0_[0]
+    SLICE_X0Y110         LUT6 (Prop_lut6_I3_O)        0.045     0.318 r  SINE_FINAL_RESULT[0]_i_2/O
+                         net (fo=1, routed)           0.000     0.318    SINE_FINAL_RESULT[0]_i_2_n_0
+    SLICE_X0Y110         MUXF7 (Prop_muxf7_I0_O)      0.062     0.380 r  SINE_FINAL_RESULT_reg[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.380    SINE_FINAL_RESULT_reg[0]_i_1_n_0
+    SLICE_X0Y110         FDCE                                         r  SINE_FINAL_RESULT_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 INPUT_ANGLE_REG_reg[1]/C
                             (rising edge-triggered cell FDCE)
   Destination:            ANGLE_ADJUSTED_reg[3]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.385ns  (logic 0.186ns (48.313%)  route 0.199ns (51.687%))
+  Data Path Delay:        0.385ns  (logic 0.186ns (48.292%)  route 0.199ns (51.708%))
   Logic Levels:           2  (FDCE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y108         FDCE                         0.000     0.000 r  ANGLE_REG_reg[1]/C
-    SLICE_X0Y108         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  ANGLE_REG_reg[1]/Q
-                         net (fo=10, routed)          0.199     0.340    ANGLE_REG[1]
+    SLICE_X0Y108         FDCE                         0.000     0.000 r  INPUT_ANGLE_REG_reg[1]/C
+    SLICE_X0Y108         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  INPUT_ANGLE_REG_reg[1]/Q
+                         net (fo=10, routed)          0.199     0.340    INPUT_ANGLE_REG[1]
     SLICE_X1Y109         LUT6 (Prop_lut6_I1_O)        0.045     0.385 r  ANGLE_ADJUSTED[3]_i_1/O
                          net (fo=1, routed)           0.000     0.385    ANGLE_ADJUSTED[3]_i_1_n_0
     SLICE_X1Y109         FDCE                                         r  ANGLE_ADJUSTED_reg[3]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SINE_NEG_reg/C
+  Source:                 SINE_NEG_FLAG_reg/C
                             (rising edge-triggered cell FDCE)
-  Destination:            SINE_FINAL_reg[9]/D
+  Destination:            SINE_FINAL_RESULT_reg[9]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
   Data Path Delay:        0.410ns  (logic 0.186ns (45.335%)  route 0.224ns (54.665%))
@@ -566,35 +587,16 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y110         FDCE                         0.000     0.000 r  SINE_NEG_reg/C
-    SLICE_X1Y110         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  SINE_NEG_reg/Q
-                         net (fo=9, routed)           0.224     0.365    SINE_NEG
-    SLICE_X1Y112         LUT6 (Prop_lut6_I5_O)        0.045     0.410 r  SINE_FINAL[9]_i_1/O
-                         net (fo=1, routed)           0.000     0.410    SINE_FINAL[9]_i_1_n_0
-    SLICE_X1Y112         FDCE                                         r  SINE_FINAL_reg[9]/D
+    SLICE_X1Y110         FDCE                         0.000     0.000 r  SINE_NEG_FLAG_reg/C
+    SLICE_X1Y110         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  SINE_NEG_FLAG_reg/Q
+                         net (fo=9, routed)           0.224     0.365    SINE_NEG_FLAG
+    SLICE_X1Y112         LUT6 (Prop_lut6_I5_O)        0.045     0.410 r  SINE_FINAL_RESULT[9]_i_1/O
+                         net (fo=1, routed)           0.000     0.410    SINE_FINAL_RESULT[9]_i_1_n_0
+    SLICE_X1Y112         FDCE                                         r  SINE_FINAL_RESULT_reg[9]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 ANGLE_ADJUSTED_reg[6]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            SINE_FINAL_reg[0]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.429ns  (logic 0.226ns (52.640%)  route 0.203ns (47.360%))
-  Logic Levels:           2  (FDCE=1 MUXF7=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y109         FDCE                         0.000     0.000 r  ANGLE_ADJUSTED_reg[6]/C
-    SLICE_X0Y109         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  ANGLE_ADJUSTED_reg[6]/Q
-                         net (fo=14, routed)          0.203     0.344    ANGLE_ADJUSTED_reg_n_0_[6]
-    SLICE_X0Y110         MUXF7 (Prop_muxf7_S_O)       0.085     0.429 r  SINE_FINAL_reg[0]_i_1/O
-                         net (fo=1, routed)           0.000     0.429    SINE_FINAL_reg[0]_i_1_n_0
-    SLICE_X0Y110         FDCE                                         r  SINE_FINAL_reg[0]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 ANGLE_REG_reg[5]/C
+  Source:                 INPUT_ANGLE_REG_reg[5]/C
                             (rising edge-triggered cell FDCE)
   Destination:            QUADRANT_reg[1]/D
   Path Group:             (none)
@@ -604,9 +606,9 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y108         FDCE                         0.000     0.000 r  ANGLE_REG_reg[5]/C
-    SLICE_X0Y108         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  ANGLE_REG_reg[5]/Q
-                         net (fo=7, routed)           0.138     0.279    ANGLE_REG[5]
+    SLICE_X0Y108         FDCE                         0.000     0.000 r  INPUT_ANGLE_REG_reg[5]/C
+    SLICE_X0Y108         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  INPUT_ANGLE_REG_reg[5]/Q
+                         net (fo=7, routed)           0.138     0.279    INPUT_ANGLE_REG[5]
     SLICE_X1Y108         LUT6 (Prop_lut6_I3_O)        0.045     0.324 f  QUADRANT[1]_i_2/O
                          net (fo=2, routed)           0.062     0.386    QUADRANT[1]_i_2_n_0
     SLICE_X1Y108         LUT4 (Prop_lut4_I0_O)        0.045     0.431 r  QUADRANT[1]_i_1/O

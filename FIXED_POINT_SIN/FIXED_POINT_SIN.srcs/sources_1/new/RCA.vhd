@@ -1,6 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
+ 
 -- Ripple Carry Adder (RCA)
 entity RCA is
     generic (
@@ -22,20 +22,19 @@ signal C : std_logic_vector(N downto 0);
 
 begin
     C(0) <= CIN;
-    
+
     gen: for i in 0 to N-1 generate
-    
-    -- Each FA takes inputs A(i), B(i), and previous carry
-    -- Outputs connect to SUM(i) and next carry
-    FA_i: entity work.FA
-       
-            port map(
-                X              => A(i),              -- Current bit from first operand
-                Y              => B(i),              -- Current bit from second operand
-                CIN          => C(i),              -- Carry in from previous FA
-                SUM        => SUM(i),        -- Current bit of sum
-                COUT      => C(i + 1)          -- Carry out to next FA
-            );
+        -- Each FA takes inputs A(i), B(i), and previous carry
+        -- Outputs connect to SUM(i) and next carry
+        FA_i: entity work.FA
+           
+                port map(
+                    X              => A(i),              -- Current bit from first operand
+                    Y              => B(i),              -- Current bit from second operand
+                    CIN          => C(i),              -- Carry in from previous FA
+                    SUM        => SUM(i),        -- Current bit of sum
+                    COUT      => C(i + 1)          -- Carry out to next FA
+                );
     end generate;
     
     --Final carry out

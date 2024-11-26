@@ -11,12 +11,12 @@ entity INTERP is
         ANGLE_DIFF       : in std_logic_vector(2 downto 0);            -- Input: 3-bit angle difference
         SINE1                  : in std_logic_vector(N-1 downto 0);        -- Input: First sine value
         SINE2                  : in std_logic_vector(N-1 downto 0);        -- Input: Second sine value
-        RESULT               : out std_logic_vector(N-1 downto 0)       -- Output: Interpolated sine result
+        RESULT               : out std_logic_vector(N-1 downto 0)      -- Output: Interpolated sine result
     );
 end INTERP;
 
-architecture RTL of INTERP is
 
+architecture RTL of INTERP is
     -- Component declaration for the RCA
     component RCA is
         generic (N : positive);

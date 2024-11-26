@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Sat Nov  9 11:39:53 2024
+| Date         : Sun Nov 24 21:08:04 2024
 | Host         : Laptop-ASH running 64-bit major release  (build 9200)
 | Command      : report_methodology -file SINE_CALCULATOR_methodology_drc_routed.rpt -pb SINE_CALCULATOR_methodology_drc_routed.pb -rpx SINE_CALCULATOR_methodology_drc_routed.rpx
 | Design       : SINE_CALCULATOR
@@ -69,47 +69,47 @@ Related violations: <none>
 
 TIMING-17#8 Critical Warning
 Non-clocked sequential cell  
-The clock pin ANGLE_REG_reg[0]/C is not reached by a timing clock
+The clock pin INPUT_ANGLE_REG_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#9 Critical Warning
 Non-clocked sequential cell  
-The clock pin ANGLE_REG_reg[1]/C is not reached by a timing clock
+The clock pin INPUT_ANGLE_REG_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#10 Critical Warning
 Non-clocked sequential cell  
-The clock pin ANGLE_REG_reg[2]/C is not reached by a timing clock
+The clock pin INPUT_ANGLE_REG_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#11 Critical Warning
 Non-clocked sequential cell  
-The clock pin ANGLE_REG_reg[3]/C is not reached by a timing clock
+The clock pin INPUT_ANGLE_REG_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#12 Critical Warning
 Non-clocked sequential cell  
-The clock pin ANGLE_REG_reg[4]/C is not reached by a timing clock
+The clock pin INPUT_ANGLE_REG_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#13 Critical Warning
 Non-clocked sequential cell  
-The clock pin ANGLE_REG_reg[5]/C is not reached by a timing clock
+The clock pin INPUT_ANGLE_REG_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#14 Critical Warning
 Non-clocked sequential cell  
-The clock pin ANGLE_REG_reg[6]/C is not reached by a timing clock
+The clock pin INPUT_ANGLE_REG_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#15 Critical Warning
 Non-clocked sequential cell  
-The clock pin ANGLE_REG_reg[7]/C is not reached by a timing clock
+The clock pin INPUT_ANGLE_REG_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#16 Critical Warning
 Non-clocked sequential cell  
-The clock pin ANGLE_REG_reg[8]/C is not reached by a timing clock
+The clock pin INPUT_ANGLE_REG_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#17 Critical Warning
@@ -124,57 +124,57 @@ Related violations: <none>
 
 TIMING-17#19 Critical Warning
 Non-clocked sequential cell  
-The clock pin SINE_FINAL_reg[0]/C is not reached by a timing clock
+The clock pin SINE_FINAL_RESULT_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#20 Critical Warning
 Non-clocked sequential cell  
-The clock pin SINE_FINAL_reg[1]/C is not reached by a timing clock
+The clock pin SINE_FINAL_RESULT_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#21 Critical Warning
 Non-clocked sequential cell  
-The clock pin SINE_FINAL_reg[2]/C is not reached by a timing clock
+The clock pin SINE_FINAL_RESULT_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#22 Critical Warning
 Non-clocked sequential cell  
-The clock pin SINE_FINAL_reg[3]/C is not reached by a timing clock
+The clock pin SINE_FINAL_RESULT_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#23 Critical Warning
 Non-clocked sequential cell  
-The clock pin SINE_FINAL_reg[4]/C is not reached by a timing clock
+The clock pin SINE_FINAL_RESULT_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#24 Critical Warning
 Non-clocked sequential cell  
-The clock pin SINE_FINAL_reg[5]/C is not reached by a timing clock
+The clock pin SINE_FINAL_RESULT_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#25 Critical Warning
 Non-clocked sequential cell  
-The clock pin SINE_FINAL_reg[6]/C is not reached by a timing clock
+The clock pin SINE_FINAL_RESULT_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#26 Critical Warning
 Non-clocked sequential cell  
-The clock pin SINE_FINAL_reg[7]/C is not reached by a timing clock
+The clock pin SINE_FINAL_RESULT_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#27 Critical Warning
 Non-clocked sequential cell  
-The clock pin SINE_FINAL_reg[8]/C is not reached by a timing clock
+The clock pin SINE_FINAL_RESULT_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#28 Critical Warning
 Non-clocked sequential cell  
-The clock pin SINE_FINAL_reg[9]/C is not reached by a timing clock
+The clock pin SINE_FINAL_RESULT_reg[9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#29 Critical Warning
 Non-clocked sequential cell  
-The clock pin SINE_NEG_reg/C is not reached by a timing clock
+The clock pin SINE_NEG_FLAG_reg/C is not reached by a timing clock
 Related violations: <none>
 
 

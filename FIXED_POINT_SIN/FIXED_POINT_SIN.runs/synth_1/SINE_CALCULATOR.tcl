@@ -56,10 +56,6 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_param synth.incrementalSynthesisCache {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/.Xil/Vivado-7784-Laptop-ASH/incrSyn}
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a200tsbg484-1
 
@@ -91,9 +87,6 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new/SINE_CALC_CONSTRAINTS.xdc}}
-set_property used_in_implementation false [get_files {{C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/constrs_1/new/SINE_CALC_CONSTRAINTS.xdc}}]
-
 set_param ips.enableIPCacheLiteLoad 1
 
 read_checkpoint -auto_incremental -incremental {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.srcs/utils_1/imports/synth_1/SINE_CALCULATOR.dcp}

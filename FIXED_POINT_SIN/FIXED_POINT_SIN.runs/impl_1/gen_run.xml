@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a200tsbg484-1" LaunchTime="1731148676">
+<GenRun Id="impl_1" LaunchPart="xc7a200tsbg484-1" LaunchTime="1732478774">
   <File Type="ROUTE-PWR" Name="SINE_CALCULATOR_power_routed.rpt"/>
   <File Type="PA-TCL" Name="SINE_CALCULATOR.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="SINE_CALCULATOR_power_summary_routed.pb"/>
@@ -116,12 +116,6 @@
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
     <Filter Type="Constrs"/>
-    <File Path="$PSRCDIR/constrs_1/new/SINE_CALC_CONSTRAINTS.xdc">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-      </FileInfo>
-    </File>
     <Config>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>

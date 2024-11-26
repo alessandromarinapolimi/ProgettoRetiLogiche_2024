@@ -5,16 +5,13 @@ entity TB_SINE is
 end TB_SINE;
 
 architecture Behavioral of TB_SINE is
+    -- Dichiara il componente con i valori specifici invece dei generic
     component SINE_CALCULATOR
-        generic (
-            N : positive := 10;
-            M : positive := 9
-        );
         Port (
             CLK   : in  std_logic;
             RESET : in  std_logic;
-            ANGLE : in  std_logic_vector(M-1 downto 0);
-            SINE  : out std_logic_vector(N-1 downto 0)
+            ANGLE : in  std_logic_vector(8 downto 0);  -- M-1 downto 0, dove M=9
+            SINE  : out std_logic_vector(9 downto 0)   -- N-1 downto 0, dove N=10
         );
     end component;
 
@@ -22,7 +19,6 @@ architecture Behavioral of TB_SINE is
     signal RESET : std_logic := '0';
     signal ANGLE : std_logic_vector(8 downto 0) := (others => '0');
     signal SINE  : std_logic_vector(9 downto 0);
-
     constant CLK_period : time := 3 ns;
 
     type angle_array is array (natural range <>) of std_logic_vector(8 downto 0);
@@ -62,39 +58,36 @@ architecture Behavioral of TB_SINE is
     );
 
 begin
+    -- Istanzia il componente senza generic map
     uut: SINE_CALCULATOR
-        generic map (
-            N => 10,
-            M => 9
-        )
         port map (
             CLK => CLK,
             RESET => RESET,
             ANGLE => ANGLE,
             SINE => SINE
         );
-
     CLK_process : process
     begin
         CLK <= '0';
-        wait for CLK_period/10;
+        wait for CLK_period;
         CLK <= '1';
-        wait for CLK_period/10;
+        wait for CLK_period;
     end process;
-
     stim_proc: process
-    begin
-        RESET <= '1';
-        wait for CLK_period * 5;
-        RESET <= '0';
-        wait for CLK_period * 5;
-
-        for i in TEST_ANGLES'range loop
-            ANGLE <= TEST_ANGLES(i);
-            wait for CLK_period * 10;  -- Tempo aumentato per ogni angolo
-        end loop;
-
-        wait;
-    end process;
-
+begin
+    RESET <= '1';
+    wait for CLK_period * 5;
+    RESET <= '0';
+    wait for CLK_period * 5;
+    
+    for i in TEST_ANGLES'range loop
+        -- Aspetta il fronte di salita del clock
+        wait until rising_edge(CLK);
+        -- Aggiorna ANGLE dopo il fronte di salita
+        ANGLE <= TEST_ANGLES(i);
+        wait for CLK_period * 9;  -- Aspetta 9 cicli prima del prossimo valore
+    end loop;
+    
+    wait;
+end process;
 end Behavioral;
