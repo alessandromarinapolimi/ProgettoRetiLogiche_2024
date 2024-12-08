@@ -18,10 +18,11 @@ entity RCA is
 end entity RCA;
 
 architecture RTL of RCA is
-    signal C : std_logic_vector(N downto 0);             -- Internal signal for carries: C(0) is carry-in, C(N) is carry-out
+    signal C : std_logic_vector(N downto 0);                     -- Internal signal for carries: C(0) is carry-in, C(N) is carry-out
     
     begin
-        C(0) <= CIN;    -- Assign initial carry-in
+        C(0) <= CIN;                                                                -- Assign initial carry-in
+        
         --------
         -- Generate block for each bit of the adder
         --------
@@ -36,5 +37,5 @@ architecture RTL of RCA is
                 );
         end generate;
     
-        COUT <= C(N);    -- Assign final carry-out
+        COUT <= C(N);                                                           -- Assign final carry-out
 end architecture RTL;

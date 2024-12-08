@@ -3,10 +3,10 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Sat Nov 23 11:21:46 2024
-# Process ID: 14220
+# Start of session at: Thu Dec  5 21:20:40 2024
+# Process ID: 2344
 # Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10036 C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15044 C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.xpr
 # Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/vivado.log
 # Journal file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN\vivado.jou
 # Running On        :Laptop-ASH
@@ -19,19 +19,7 @@
 # Host memory       :16505 MB
 # Swap memory       :7247 MB
 # Total Virtual     :23753 MB
-# Available Virtual :12702 MB
+# Available Virtual :14265 MB
 #-----------------------------------------------------------
 start_gui
 open_project {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.xpr}
-launch_simulation
-source TB_SINE.tcl
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-close_sim
-launch_runs impl_1 -jobs 4
-wait_on_run impl_1
-launch_simulation -mode post-implementation -type timing
-source TB_SINE.tcl
-launch_simulation
-close_sim

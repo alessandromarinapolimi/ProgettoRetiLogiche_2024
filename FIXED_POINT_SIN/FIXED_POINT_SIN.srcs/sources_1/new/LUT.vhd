@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
 
 ------------------------------
 -- LookUp Table (LUT)
@@ -74,9 +75,7 @@ architecture RTL of LUT is
             if ANGLE = "1011010" then                              -- 90°
                 USE_INTERPOLATION <= '0';
                 LUT_OUT <= SINE_LUT(12);
-                
-            elsif ANGLE(6 downto 1) = "101100" then     -- 88° or 89°
-            
+            elsif ANGLE(6 downto 1) = "101100" then      -- 88° or 89°
                 USE_INTERPOLATION <= '0';
                 LUT_OUT <= SINE_LUT(11);
             else
@@ -86,62 +85,19 @@ architecture RTL of LUT is
                     
                     ------------
                     -- Selection of sine values from the lookup table
-                    ------------
-                    case ANGLE(6 downto 3) is
-                        when "0000" => LUT_OUT <= SINE_LUT(0);
-                        when "0001" => LUT_OUT <= SINE_LUT(1);
-                        when "0010" => LUT_OUT <= SINE_LUT(2);
-                        when "0011" => LUT_OUT <= SINE_LUT(3);
-                        when "0100" => LUT_OUT <= SINE_LUT(4);
-                        when "0101" => LUT_OUT <= SINE_LUT(5);
-                        when "0110" => LUT_OUT <= SINE_LUT(6);
-                        when "0111" => LUT_OUT <= SINE_LUT(7);
-                        when "1000" => LUT_OUT <= SINE_LUT(8);
-                        when "1001" => LUT_OUT <= SINE_LUT(9);
-                        when others => LUT_OUT <= SINE_LUT(10);
-                    end case;
+                    ------------      
+                    LUT_OUT <= SINE_LUT(conv_integer(unsigned('0' & ANGLE(6 downto 3))));      
+                                                      
                 else
+                
                     USE_INTERPOLATION <= '1';
                     ANGLE_DIFF <= ANGLE(2 downto 0);
                     
                     -----------
                     -- Selection of sine values for interpolation
                     -----------
-                    case ANGLE(6 downto 3) is
-                        when "0000" => 
-                            SINE1 <= SINE_LUT(0);
-                            SINE2 <= SINE_LUT(1);
-                        when "0001" => 
-                            SINE1 <= SINE_LUT(1);
-                            SINE2 <= SINE_LUT(2);
-                        when "0010" => 
-                            SINE1 <= SINE_LUT(2);
-                            SINE2 <= SINE_LUT(3);
-                        when "0011" => 
-                            SINE1 <= SINE_LUT(3);
-                            SINE2 <= SINE_LUT(4);
-                        when "0100" => 
-                            SINE1 <= SINE_LUT(4);
-                            SINE2 <= SINE_LUT(5);
-                        when "0101" => 
-                            SINE1 <= SINE_LUT(5);
-                            SINE2 <= SINE_LUT(6);
-                        when "0110" => 
-                            SINE1 <= SINE_LUT(6);
-                            SINE2 <= SINE_LUT(7);
-                        when "0111" => 
-                            SINE1 <= SINE_LUT(7);
-                            SINE2 <= SINE_LUT(8);
-                        when "1000" => 
-                            SINE1 <= SINE_LUT(8);
-                            SINE2 <= SINE_LUT(9);
-                        when "1001" => 
-                            SINE1 <= SINE_LUT(9);
-                            SINE2 <= SINE_LUT(10);
-                        when others => 
-                            SINE1 <= SINE_LUT(10);
-                            SINE2 <= SINE_LUT(11);
-                    end case;
+                    SINE1 <= SINE_LUT(conv_integer(unsigned('0' & ANGLE(6 downto 3))));
+                    SINE2 <= SINE_LUT(conv_integer(unsigned('0' & ANGLE(6 downto 3))) + 1);
                 end if;
             end if;
         end process;

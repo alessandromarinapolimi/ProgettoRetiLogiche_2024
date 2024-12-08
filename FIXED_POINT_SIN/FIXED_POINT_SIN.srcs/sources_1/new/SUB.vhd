@@ -30,21 +30,21 @@ architecture RTL of SUB is
         );
     end component;
 
-    signal Y_comp : std_logic_vector(N-1 downto 0);          -- Signal for the 2's complement of Y
+    signal Y_COMP : std_logic_vector(N-1 downto 0);         -- Signal for the 2's complement of Y
 
     begin
-            Y_comp <= not Y;        -- Calculate 2's complement of Y for subtraction
+            Y_COMP <= not Y;                                                     -- Calculate 2's complement of Y for subtraction
     
             SUB_RCA: RCA
             generic map (
                 N => N
             )
             port map (
-                A            => X,               -- Minuend (X)
-                B            => Y_comp,    -- Subtrahend (Y's 2's complement)
-                CIN        => '1',              -- Carry-in set to 1 for 2's complement addition
-                SUM      => DIFF,          -- Output: Difference (X - Y)
-                COUT    => open           -- Carry-out is not used
+                A            => X,                 -- Minuend (X)
+                B            => Y_COMP,     -- Subtrahend (Y's 2's complement)
+                CIN        => '1',                -- Carry-in set to 1 for 2's complement addition
+                SUM      => DIFF,            -- Output: Difference (X - Y)
+                COUT    => open             -- Carry-out is not used
             );
             
 end architecture RTL;
