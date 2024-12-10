@@ -1,0 +1,79 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Mon Dec  9 19:16:30 2024
+# Process ID: 19308
+# Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent24824 C:\Users\ultro\OneDrive\ALTRO\Desktop\PRL OCT10\ProgettoRetiLogiche_2024\FIXED_POINT_SIN\FIXED_POINT_SIN.xpr
+# Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/vivado.log
+# Journal file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN\vivado.jou
+# Running On        :Laptop-ASH
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :26100
+# Processor Detail  :AMD Ryzen 5 4600H with Radeon Graphics         
+# CPU Frequency     :2994 MHz
+# CPU Physical cores:6
+# CPU Logical cores :12
+# Host memory       :16505 MB
+# Swap memory       :7247 MB
+# Total Virtual     :23753 MB
+# Available Virtual :13379 MB
+#-----------------------------------------------------------sstart_guiopen_project {C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL OCT10/ProgettoRetiLogiche_2024/FIXED_POINT_SIN/FIXED_POINT_SIN.xpr}
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+launch_simulation
+source TB_LUT.tcl
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+close_sim
+launch_simulation
+source TB_LUT.tcl
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+close_sim
+launch_simulation
+source TB_LUT.tcl
+close_sim
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+launch_simulation
+source TB_LUT.tcl
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+close_sim
+launch_simulation
+source TB_LUT.tcl
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+close_sim
+launch_simulation
+source TB_LUT.tcl
+close_sim
+launch_simulation
+source TB_LUT.tcl
+close_sim
+launch_simulation
+launch_simulation
+source TB_LUT.tcl
+close_sim
+launch_simulation
+source TB_LUT.tcl
+close_sim
+launch_simulation
+source TB_LUT.tcl
+close_sim
+launch_simulation
+source TB_LUT.tcl
+close_sim
+launch_simulation
+source TB_LUT.tcl
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+close_sim
+launch_simulation
+source TB_LUT.tcl
+synth_design -top SINE_CALCULATOR -part xc7a200tsbg484-1 -lint 
+close_sim
+launch_simulation

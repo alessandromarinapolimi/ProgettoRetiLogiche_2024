@@ -1,7 +1,7 @@
 Vivado Simulator v2024.1
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: C:/Users/ultro/.Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot TB_LUT_behav xil_defaultlib.TB_LUT -log elaborate.log 
+Running: C:/Users/ultro/.Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot TB_INTERP_behav xil_defaultlib.TB_INTERP -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -17,6 +17,5 @@ Compiling architecture rtl of entity xil_defaultlib.FA [fa_default]
 Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=10)\]
 Compiling architecture rtl of entity xil_defaultlib.SUB [\SUB(n=10)\]
 Compiling architecture rtl of entity xil_defaultlib.INTERP [\INTERP(n=10)\]
-Compiling architecture rtl of entity xil_defaultlib.LUT [lut_default]
-Compiling architecture behavioral of entity xil_defaultlib.tb_lut
-Built simulation snapshot TB_LUT_behav
+Compiling architecture behavioral of entity xil_defaultlib.tb_interp
+Built simulation snapshot TB_INTERP_behav

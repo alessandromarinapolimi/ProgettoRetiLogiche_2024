@@ -49,13 +49,13 @@ architecture RTL of LUT is
     signal USE_INTERPOLATION         : std_logic;
 
     begin
-        INTERPOLATOR: INTERP
+        INTERPOLATOR: INTERP       
             generic map (N => N)  
             port map (
                 ANGLE_DIFF => ANGLE_DIFF,
                 SINE1      => SINE1,
                 SINE2      => SINE2,
-                RESULT     => INTERPOLATED_SINE
+                RESULT   => INTERPOLATED_SINE
             );
     
         ----------
@@ -98,10 +98,12 @@ architecture RTL of LUT is
                     -----------
                     SINE1 <= SINE_LUT(conv_integer(unsigned('0' & ANGLE(6 downto 3))));
                     SINE2 <= SINE_LUT(conv_integer(unsigned('0' & ANGLE(6 downto 3))) + 1);
+                    
+                    LUT_OUT <= INTERPOLATED_SINE;
                 end if;
             end if;
         end process;
     
-        SINE <= INTERPOLATED_SINE when USE_INTERPOLATION = '1' else LUT_OUT;        -- Output selection: either interpolated result or LUT output
+        SINE <=INTERPOLATED_SINE when USE_INTERPOLATION = '1' else LUT_OUT;        -- Output selection: either interpolated result or LUT output
     
 end architecture RTL;

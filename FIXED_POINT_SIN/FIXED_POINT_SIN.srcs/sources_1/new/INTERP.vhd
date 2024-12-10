@@ -1,117 +1,143 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
 
----------------------------------
--- Interpolator (INTERP)
----------------------------------
+--------------------------------------
+-- INTERPOLATOR (INTERP)
+--------------------------------------
 entity INTERP is
     generic (
-        N : positive   -- Number of bits for sine values
+        N : positive            -- Number of bits for sine values
     );
-    Port (
-        ANGLE_DIFF    : in  std_logic_vector(2 downto 0);         -- 3-bit angle difference input
-        SINE1               : in  std_logic_vector(N-1 downto 0);     -- First sine value
-        SINE2               : in  std_logic_vector(N-1 downto 0);     -- Second sine value
-        RESULT            : out std_logic_vector(N-1 downto 0)    -- Interpolated result
+    port (
+        ANGLE_DIFF      : in  std_logic_vector(2 downto 0);            -- 3-bit angle difference input
+        SINE1                 : in  std_logic_vector(N-1 downto 0);        -- First sine value
+        SINE2                 : in  std_logic_vector(N-1 downto 0);        -- Second sine value
+        RESULT              : out std_logic_vector(N-1 downto 0)       -- Interpolated result
     );
 end entity INTERP;
 
 architecture RTL of INTERP is
-
-    component RCA is
-        generic (N : positive);
-        Port (
-            A, B       : in  std_logic_vector(N-1 downto 0);       -- Operand inputs
-            CIN        : in  std_logic;                                             -- Carry-in
-            SUM      : out std_logic_vector(N-1 downto 0);     -- Sum output
-            COUT    : out std_logic                                             -- Carry-out
-        );
-    end component;
-
+    -- SUB Component Declaration
     component SUB is
-        generic (N : positive);
+        generic (
+            N : positive   -- Number of bits for the operands
+        );
         Port (
-            X, Y      : in  std_logic_vector(N-1 downto 0);        -- Inputs: Minuend and Subtrahend
-            DIFF     : out std_logic_vector(N-1 downto 0)       -- Output: Difference
+            X     : in  std_logic_vector(N-1 downto 0);     -- Input: Minuend (X)
+            Y     : in  std_logic_vector(N-1 downto 0);     -- Input: Subtrahend (Y)
+            DIFF  : out std_logic_vector(N-1 downto 0)      -- Output: Difference (X - Y)
         );
     end component;
 
-    signal SINE_DIFF                : std_logic_vector(N-1 downto 0);     -- Difference between SINE2 and SINE1
-    signal MULT2, MULT4       : std_logic_vector(N-1 downto 0);     -- Scaled differences
-    signal SUM1, SUM2           : std_logic_vector(N-1 downto 0);     -- Intermediate sums
-    signal ADD_VALUE             : std_logic_vector(N-1 downto 0);     -- Final value to be added
-    
+    -- Signal for SUB component
+    signal SINE_DIFF : std_logic_vector(N-1 downto 0);
+
     begin
-        ---------
-        -- Step 1: Calculate the difference between SINE2 and SINE1
-        ---------
-        DIFF_CALC: SUB
-            generic map (N)
-            port map (
-                X     => SINE2,
-                Y     => SINE1,
-                DIFF  => SINE_DIFF
-            );
-            
-        ---------
-        -- Step 2: Calculate multiples of the difference
-        ---------
-        MULT2 <= SINE_DIFF(N-2 downto 0) & '0';         -- Left shift by 1 (multiply by 2)
-        MULT4 <= SINE_DIFF(N-3 downto 0) & "00";     -- Left shift by 2 (multiply by 4)
-    
-        ---------
-        -- Step 3: Add multiples of SINE_DIFF using RCAs
-        ---------
-        RCA1: RCA
-            generic map (N => N)
-            port map (
-                A     => SINE_DIFF,
-                B     => MULT2,
-                CIN   => '0',
-                SUM   => SUM1,
-                COUT  => open
-            );
-    
-        RCA2: RCA
-            generic map (N => N)
-            port map (
-                A     => SUM1,
-                B     => MULT4,
-                CIN   => '0',
-                SUM   => SUM2,
-                COUT  => open
-            );
-    
-        ---------
-        -- Step 4: Select the correct value based on ANGLE_DIFF and divide by 8
-        ---------
-        process(ANGLE_DIFF, SINE_DIFF, MULT2, MULT4, SUM1, SUM2)
-            variable temp : std_logic_vector(N-1 downto 0);
+        -- Instantiate SUB component for subtraction
+        SUB_INST: SUB
+        generic map (
+            N => N
+        )
+        port map (
+            X => SINE2,
+            Y => SINE1,
+            DIFF => SINE_DIFF
+        );
+
+        --------
+        -- interpolation process
+        --------
+        interpolation_process: process(ANGLE_DIFF, SINE1, SINE2, SINE_DIFF)
+            variable SCALED_DIFF     : std_logic_vector(N-1 downto 0); -- scaled difference
+            variable TEMP_SUM        : std_logic_vector(N-1 downto 0); -- temporary sum for scaling
             
             begin
-                case ANGLE_DIFF is
-                    when "000"                 => temp := (others => '0');
-                    when "001"                 => temp := SINE_DIFF;
-                    when "010"                 => temp := MULT2;
-                    when "100"                 => temp := MULT4;
-                    when "011" | "101"    => temp := SUM1;
-                    when others               => temp := SUM2;      -- For "110" or "111"
-                end case;
-        
-            ADD_VALUE <= "000" & temp(N-1 downto 3);      -- Divide by 8 (right shift by 3)
-        end process;
-        
-        ---------
-        -- Step 5: Add ADD_VALUE to SINE1 to get the interpolated result
-        ---------
-        FINAL_SUM: RCA
-            generic map (N => N)
-            port map (
-                A     => SINE1,
-                B     => ADD_VALUE,
-                CIN   => '0',
-                SUM   => RESULT,
-                COUT  => open
+            -- Use SINE_DIFF from SUB component
+            
+            case ANGLE_DIFF is                                                                       -- scale difference based on ANGLE_DIFF
+                when "000" => 
+                    SCALED_DIFF := (others => '0');                                             -- no scaling
+                
+                when "001" => 
+                    SCALED_DIFF := SINE_DIFF;                                                  -- scale by 1
+                
+                when "010" => 
+                    SCALED_DIFF := SINE_DIFF(N-2 downto 0) & '0';                -- scale by 2 (left shift)
+                
+                when "011" => 
+                    ----------
+                    -- Scale by 3 (1 + 2)
+                    ----------
+                    SCALED_DIFF := SINE_DIFF(N-2 downto 0) & '0';
+                    TEMP_SUM := conv_std_logic_vector(
+                        conv_integer(unsigned(SINE_DIFF)) + 
+                        conv_integer(unsigned(SCALED_DIFF)), 
+                        N
+                    );
+                    SCALED_DIFF := TEMP_SUM;
+                
+                when "100" => 
+                    ----------
+                    -- Scale by 4 (left shift twice)
+                    ----------
+                    SCALED_DIFF := SINE_DIFF(N-3 downto 0) & "00";
+                
+                when "101" => 
+                    ----------
+                    -- Scale by 5 (1 + 4)
+                    ----------
+                    SCALED_DIFF := SINE_DIFF(N-3 downto 0) & "00";
+                    TEMP_SUM := conv_std_logic_vector(
+                        conv_integer(unsigned(SINE_DIFF)) + 
+                        conv_integer(unsigned(SCALED_DIFF)), 
+                        N
+                    );
+                    SCALED_DIFF := TEMP_SUM;
+                
+                when "110" => 
+                    ----------
+                    -- Scale by 6 (2 + 4)
+                    ----------
+                    SCALED_DIFF := SINE_DIFF(N-2 downto 0) & '0';
+                    TEMP_SUM := conv_std_logic_vector(
+                        conv_integer(unsigned(SCALED_DIFF)) + 
+                        conv_integer(unsigned(SINE_DIFF(N-3 downto 0) & "00")), 
+                        N
+                    );
+                    SCALED_DIFF := TEMP_SUM;
+                
+                when "111" => 
+                    ----------
+                    -- Scale by 7 (1 + 2 + 4)
+                    ----------
+                    SCALED_DIFF := SINE_DIFF(N-2 downto 0) & '0';
+                    TEMP_SUM := conv_std_logic_vector(
+                        conv_integer(unsigned(SINE_DIFF)) + 
+                        conv_integer(unsigned(SCALED_DIFF)), 
+                        N
+                    );
+                    SCALED_DIFF := TEMP_SUM;
+                    TEMP_SUM := conv_std_logic_vector(
+                        conv_integer(unsigned(SCALED_DIFF)) + 
+                        conv_integer(unsigned(SINE_DIFF(N-3 downto 0) & "00")), 
+                        N
+                    );
+                    SCALED_DIFF := TEMP_SUM;
+                
+                when others => 
+                    SCALED_DIFF := (others => '0');                         -- default case
+            end case;
+            
+            ----------
+            -- Divide by 8 (right shift by 3) and add to SINE1
+            ----------
+            TEMP_SUM := conv_std_logic_vector(
+                conv_integer(unsigned(SINE1)) + 
+                conv_integer(unsigned('0' & '0' & '0' & SCALED_DIFF(N-1 downto 3))), 
+                N
             );
             
+            RESULT <= TEMP_SUM;                                            -- assign result to output
+        end process;
 end architecture RTL;
