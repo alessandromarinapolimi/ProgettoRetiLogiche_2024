@@ -92,7 +92,14 @@ begin
         SINE1 <= "0011110011";  -- sin(72) 
         SINE2 <= "0011111100";  -- sin(80)
         wait for 10 ns;
-
+        
+        
+        -- Test per 80 gradi
+        ANGLE_DIFF <= "000";  -- Differenza di 1 gradi
+        SINE1 <= "0011111100";  -- sin(80) 
+        SINE2 <= "0011111111";  -- sin(88) 
+        wait for 10 ns;
+        
          -- Test per 81 gradi
         ANGLE_DIFF <= "001";  -- Differenza di 1 gradi
         SINE1 <= "0011111100";  -- sin(80) 

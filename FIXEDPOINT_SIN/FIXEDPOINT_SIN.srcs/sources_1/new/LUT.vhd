@@ -2,12 +2,12 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 
-------------------------------
--- LookUp Table (LUT)
-------------------------------
+--------------------------------
+-- Lookup Table (LUT) 
+--------------------------------
 entity LUT is
     generic (
-        N : positive := 10  -- Number of bits for sine values
+        N : positive := 10      -- Number of bits for sine values
     );
     Port (
         ANGLE : in std_logic_vector(6 downto 0);        -- Input: 7-bit angle
@@ -16,8 +16,12 @@ entity LUT is
 end entity LUT;
 
 architecture RTL of LUT is
-    type lut_type is array (0 to 12) of std_logic_vector(N-1 downto 0);
-    constant SINE_LUT : lut_type := (
+
+    ----------
+    -- Definition of the sine LUT type and values
+    ----------
+    type LUT_TYPE is array (0 to 12) of std_logic_vector(N-1 downto 0);
+    constant SINE_LUT_VALUES : LUT_TYPE := (
         "0000000000", -- sin(0)    (0.00000000)
         "0000100011", -- sin(8)    (0.13671875)
         "0001000110", -- sin(16)   (0.27343750)
@@ -36,74 +40,83 @@ architecture RTL of LUT is
     component INTERP is 
         generic (N : positive);
         Port (
-            ANGLE_DIFF       : in std_logic_vector(2 downto 0);
-            SINE1, SINE2      : in std_logic_vector(N-1 downto 0);
-            RESULT               : out std_logic_vector(N-1 downto 0)
+            ANGLE_DIFF        : in std_logic_vector(2 downto 0);         -- Angle difference for interpolation
+            SINE1, SINE2       : in std_logic_vector(N-1 downto 0);     -- Adjacent LUT values
+            RESULT                : out std_logic_vector(N-1 downto 0)   -- Interpolated sine value
         );
     end component;
+    
+    --------
+    -- Internal signals
+    --------
+    signal FINAL_SINE                 : std_logic_vector(N-1 downto 0);      -- Final sine value 
+    signal LUT_SINE                     : std_logic_vector(N-1 downto 0);      -- Selected sine value from LUT
+    signal NEXT_SINE                  : std_logic_vector(N-1 downto 0);      -- Next sine value for interpolation
+    signal ANGLE_REMAINDER  : std_logic_vector(2 downto 0);          -- Fractional part of the angle
+    signal INDEX                          : integer range 0 to 12 := 0;                -- Index for the LUT
 
-    signal SINE1, SINE2                        : std_logic_vector(N-1 downto 0);
-    signal ANGLE_DIFF                         : std_logic_vector(2 downto 0);
-    signal INTERPOLATED_SINE          : std_logic_vector(N-1 downto 0);
-    signal LUT_OUT                              : std_logic_vector(N-1 downto 0);
-    signal USE_INTERPOLATION         : std_logic;
+begin
 
+    INTERPOLATOR: INTERP       
+        generic map (N => N)  
+        port map (
+            ANGLE_DIFF              => ANGLE_REMAINDER,      -- Fractional part of the angle
+            SINE1                         => LUT_SINE,                         -- Current sine value from LUT
+            SINE2                         => NEXT_SINE,                      -- Next sine value from LUT
+            RESULT                      => FINAL_SINE                      -- Interpolated result
+        );
+
+    ---------
+    -- Process to calculate the sine value based on the input angle
+    ---------
+    process(ANGLE)
     begin
-        INTERPOLATOR: INTERP       
-            generic map (N => N)  
-            port map (
-                ANGLE_DIFF => ANGLE_DIFF,
-                SINE1      => SINE1,
-                SINE2      => SINE2,
-                RESULT   => INTERPOLATED_SINE
-            );
-    
-        ----------
-        -- Process for angle input handling
-        ----------
-        process(ANGLE)
-        begin
-            USE_INTERPOLATION <= '0';
-            LUT_OUT <= (others => '0');
-            SINE1 <= (others => '0');
-            SINE2 <= (others => '0');
-            ANGLE_DIFF <= "000";  
+
+        INDEX   <= 0;
+        LUT_SINE <= (others => '0');
+        NEXT_SINE <= (others => '0');
+        ANGLE_REMAINDER <= "000";
         
-            -----------
-            -- Special cases for specific angles
-            -----------
-            if ANGLE = "1011010" then                              -- 90°
-                USE_INTERPOLATION <= '0';
-                LUT_OUT <= SINE_LUT(12);
-            elsif ANGLE(6 downto 1) = "101100" then      -- 88° or 89°
-                USE_INTERPOLATION <= '0';
-                LUT_OUT <= SINE_LUT(11);
-            else
-            
-                if ANGLE(2 downto 0) = "000" then
-                    USE_INTERPOLATION <= '0';
-                    
-                    ------------
-                    -- Selection of sine values from the lookup table
-                    ------------      
-                    LUT_OUT <= SINE_LUT(conv_integer(unsigned('0' & ANGLE(6 downto 3))));      
-                                                      
-                else
+        ---------
+        -- Handling special cases
+        ---------
+        case ANGLE is
+            when "1011010" =>                                                      -- 90°
+                LUT_SINE <= SINE_LUT_VALUES(12);                      -- Directly select sine value from LUT
                 
-                    USE_INTERPOLATION <= '1';
-                    ANGLE_DIFF <= ANGLE(2 downto 0);
-                    
-                    -----------
-                    -- Selection of sine values for interpolation
-                    -----------
-                    SINE1 <= SINE_LUT(conv_integer(unsigned('0' & ANGLE(6 downto 3))));
-                    SINE2 <= SINE_LUT(conv_integer(unsigned('0' & ANGLE(6 downto 3))) + 1);
-                    
-                    LUT_OUT <= INTERPOLATED_SINE;
+            when "1011001" | "1011000" =>                                 -- 88° or 89°
+                LUT_SINE <= SINE_LUT_VALUES(11);                      -- Directly select sine value from LUT
+                
+            when "0000000" =>                                                      -- 0°
+                LUT_SINE <= SINE_LUT_VALUES(0);                      -- Directly select sine value from LUT
+                
+                
+            when others =>
+                ---------
+                -- Compute the base index for the LUT
+                ---------
+                INDEX <= conv_integer(unsigned('0' & ANGLE(6 downto 3)));
+                LUT_SINE <= SINE_LUT_VALUES(INDEX);                         
+                
+                 ----------
+                -- Sine calculation without interpolation
+                ----------
+                if ANGLE(2 downto 0) = "000" then
+                    LUT_SINE <= SINE_LUT_VALUES(INDEX+1);                         
+                    NEXT_SINE <= LUT_SINE;                                             -- Get next sine value for interpolation
+                    ANGLE_REMAINDER <= ANGLE(2 downto 0);            
                 end if;
-            end if;
-        end process;
-    
-        SINE <=INTERPOLATED_SINE when USE_INTERPOLATION = '1' else LUT_OUT;        -- Output selection: either interpolated result or LUT output
-    
+                
+                ----------
+                -- Check if interpolation is needed
+                ----------
+                if ANGLE(2 downto 0) /= "000" then
+                    NEXT_SINE <= SINE_LUT_VALUES(INDEX + 1);           -- Get next sine value for interpolation
+                    ANGLE_REMAINDER <= ANGLE(2 downto 0);            -- Extract fractional angle part
+                end if;
+        end case;
+    end process;
+
+    SINE <= FINAL_SINE;
+
 end architecture RTL;

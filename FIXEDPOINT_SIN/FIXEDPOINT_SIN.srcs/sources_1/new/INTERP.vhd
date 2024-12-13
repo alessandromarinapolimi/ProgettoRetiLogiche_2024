@@ -24,9 +24,9 @@ architecture RTL of INTERP is
             N : positive   -- Number of bits for the operands
         );
         Port (
-            X     : in  std_logic_vector(N-1 downto 0);     -- Input: Minuend (X)
-            Y     : in  std_logic_vector(N-1 downto 0);     -- Input: Subtrahend (Y)
-            DIFF  : out std_logic_vector(N-1 downto 0)      -- Output: Difference (X - Y)
+            X            : in  std_logic_vector(N-1 downto 0);       -- Input: Minuend (X)
+            Y            : in  std_logic_vector(N-1 downto 0);       -- Input: Subtrahend (Y)
+            DIFF       : out std_logic_vector(N-1 downto 0)      -- Output: Difference (X - Y)
         );
     end component;
 
