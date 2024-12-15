@@ -37,5 +37,5 @@ architecture RTL of RCA is
                 );
         end generate;
     
-        COUT <= C(N);                                                           -- Assign final carry-out
+        COUT <= C(N);                            -- Assign final carry-out
 end architecture RTL;

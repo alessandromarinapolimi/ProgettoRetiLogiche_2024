@@ -3,12 +3,12 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Thu Dec 12 23:32:08 2024
-# Process ID: 2120
-# Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/FIXEDPOINT_SIN
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2728 C:\Users\ultro\OneDrive\ALTRO\Desktop\PROGETTO RL\FIXEDPOINT_SIN\FIXEDPOINT_SIN.xpr
-# Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/FIXEDPOINT_SIN/vivado.log
-# Journal file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/FIXEDPOINT_SIN\vivado.jou
+# Start of session at: Sun Dec 15 19:17:38 2024
+# Process ID: 24508
+# Current directory: C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/ProgettoRetiLogiche_2024/FIXEDPOINT_SIN
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2724 C:\Users\ultro\OneDrive\ALTRO\Desktop\PROGETTO RL\ProgettoRetiLogiche_2024\FIXEDPOINT_SIN\FIXEDPOINT_SIN.xpr
+# Log file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/ProgettoRetiLogiche_2024/FIXEDPOINT_SIN/vivado.log
+# Journal file: C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/ProgettoRetiLogiche_2024/FIXEDPOINT_SIN\vivado.jou
 # Running On        :Laptop-ASH
 # Platform          :Windows Server 2016 or Windows 10
 # Operating System  :26100
@@ -19,86 +19,46 @@
 # Host memory       :16505 MB
 # Swap memory       :6710 MB
 # Total Virtual     :23216 MB
-# Available Virtual :10880 MB
+# Available Virtual :11517 MB
 #-----------------------------------------------------------
 start_gui
-open_project {C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/FIXEDPOINT_SIN/FIXEDPOINT_SIN.xpr}
-update_compile_order -fileset sources_1
+open_project {C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/ProgettoRetiLogiche_2024/FIXEDPOINT_SIN/FIXEDPOINT_SIN.xpr}
 launch_simulation
-source TB_LUT.tcl
+source TB_SINE.tcl
 close_sim
 launch_simulation
-source TB_LUT.tcl
+source TB_SINE.tcl
 close_sim
 launch_simulation
-source TB_LUT.tcl
+source TB_SINE.tcl
 close_sim
 launch_simulation
-source TB_LUT.tcl
+source TB_SINE.tcl
 close_sim
 launch_simulation
-source TB_LUT.tcl
+launch_simulation
+launch_simulation
+source TB_SINE.tcl
+add_bp {C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/ProgettoRetiLogiche_2024/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sources_1/new/LUT.vhd} 98
+remove_bps -file {C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/ProgettoRetiLogiche_2024/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sources_1/new/LUT.vhd} -line 98
+add_bp {C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/ProgettoRetiLogiche_2024/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sources_1/new/LUT.vhd} 98
+remove_bps -file {C:/Users/ultro/OneDrive/ALTRO/Desktop/PROGETTO RL/ProgettoRetiLogiche_2024/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sources_1/new/LUT.vhd} -line 98
 close_sim
 launch_simulation
-source TB_LUT.tcl
+source TB_SINE.tcl
 close_sim
 launch_simulation
-source TB_LUT.tcl
+source TB_SINE.tcl
 close_sim
 launch_simulation
-source TB_LUT.tcl
+source TB_SINE.tcl
 close_sim
 launch_simulation
-source TB_LUT.tcl
+source TB_SINE.tcl
 close_sim
 launch_simulation
-source TB_LUT.tcl
+source TB_SINE.tcl
 close_sim
 launch_simulation
-source TB_LUT.tcl
-close_sim
-launch_simulation
-source TB_LUT.tcl
-close_sim
-launch_simulation
-source TB_LUT.tcl
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top TB_INTERP [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sim_1
-launch_simulation
-close_sim
-launch_simulation
-source TB_INTERP.tcl
-close_sim
-launch_simulation
-source TB_INTERP.tcl
-close_sim
-launch_simulation
-source TB_INTERP.tcl
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top TB_LUT [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sim_1
-close_sim
-launch_simulation
-source TB_LUT.tcl
-close_sim
-launch_simulation
-source TB_LUT.tcl
-close_sim
-launch_simulation
-source TB_LUT.tcl
-close_sim
-launch_simulation
-source TB_LUT.tcl
-close_sim
-launch_simulation
-source TB_LUT.tcl
+source TB_SINE.tcl
 close_sim

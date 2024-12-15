@@ -6,7 +6,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 ---------------------------
 entity SUB is
     generic (
-        N : positive   -- Number of bits for the operands
+        N : positive                                                          -- Number of bits for the operands
     );
     Port (
         X         : in  std_logic_vector(N-1 downto 0);     -- Input: Minuend (X)

@@ -18,10 +18,9 @@ entity INTERP is
 end entity INTERP;
 
 architecture RTL of INTERP is
-    -- SUB Component Declaration
     component SUB is
         generic (
-            N : positive   -- Number of bits for the operands
+            N : positive       -- Number of bits for the operands
         );
         Port (
             X            : in  std_logic_vector(N-1 downto 0);       -- Input: Minuend (X)
@@ -30,11 +29,9 @@ architecture RTL of INTERP is
         );
     end component;
 
-    -- Signal for SUB component
-    signal SINE_DIFF : std_logic_vector(N-1 downto 0);
+    signal SINE_DIFF : std_logic_vector(N-1 downto 0);     -- Signal for SUB component
 
     begin
-        -- Instantiate SUB component for subtraction
         SUB_INST: SUB
         generic map (
             N => N
@@ -49,21 +46,19 @@ architecture RTL of INTERP is
         -- interpolation process
         --------
         interpolation_process: process(ANGLE_DIFF, SINE1, SINE2, SINE_DIFF)
-            variable SCALED_DIFF     : std_logic_vector(N-1 downto 0); -- scaled difference
-            variable TEMP_SUM        : std_logic_vector(N-1 downto 0); -- temporary sum for scaling
+            variable SCALED_DIFF     : std_logic_vector(N-1 downto 0);       -- Scaled difference
+            variable TEMP_SUM        : std_logic_vector(N-1 downto 0);       -- Temporary sum for scaling
             
             begin
-            -- Use SINE_DIFF from SUB component
-            
-            case ANGLE_DIFF is                                                                       -- scale difference based on ANGLE_DIFF
+            case ANGLE_DIFF is                                                                       -- Scale difference based on ANGLE_DIFF
                 when "000" => 
-                    SCALED_DIFF := (others => '0');                                             -- no scaling
+                    SCALED_DIFF := (others => '0');                                             -- No scaling
                 
                 when "001" => 
-                    SCALED_DIFF := SINE_DIFF;                                                  -- scale by 1
+                    SCALED_DIFF := SINE_DIFF;                                                  -- Scale by 1
                 
                 when "010" => 
-                    SCALED_DIFF := SINE_DIFF(N-2 downto 0) & '0';                -- scale by 2 (left shift)
+                    SCALED_DIFF := SINE_DIFF(N-2 downto 0) & '0';                -- Scale by 2 (left shift)
                 
                 when "011" => 
                     ----------
@@ -126,7 +121,7 @@ architecture RTL of INTERP is
                     SCALED_DIFF := TEMP_SUM;
                 
                 when others => 
-                    SCALED_DIFF := (others => '0');                         -- default case
+                    SCALED_DIFF := (others => '0');                         -- Default case
             end case;
             
             ----------
@@ -138,6 +133,6 @@ architecture RTL of INTERP is
                 N
             );
             
-            RESULT <= TEMP_SUM;                                            -- assign result to output
+            RESULT <= TEMP_SUM;                                            -- Output
         end process;
 end architecture RTL;

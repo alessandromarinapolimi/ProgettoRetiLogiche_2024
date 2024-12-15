@@ -22,23 +22,6 @@ architecture Behavioral of TB_LUT is
     
     type angle_array is array (natural range <>) of std_logic_vector(6 downto 0);
     constant test_angles : angle_array := (
-    
---            "0000000", -- 0
---            "0001000", -- 8
---            "0010000", -- 16
---            "0101000", -- 40
---            "1010000" , -- 80
---             "1010111", -- 87
---        "1011000", -- 88
---        "1011001", -- 89
---   "1011010"  -- 90
-
---            );
-
-
-
-
-    
         "0000000", -- 0
         "0000001", -- 1
         "0000010", -- 2
