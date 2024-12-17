@@ -4,7 +4,7 @@
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.   -->
 
-<Project Product="Vivado" Version="7" Minor="67" Path="C:/Users/ultro/OneDrive/ALTRO/Desktop/FIXEDPOINTSIN_/FIXEDPOINTSIN_.xpr">
+<Project Product="Vivado" Version="7" Minor="67" Path="C:/Users/ultro/OneDrive/ALTRO/Desktop/PRL 1712/ProgettoRetiLogiche_2024-main/FIXEDPOINT_SIN/FIXEDPOINTSIN_.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="e3c56c2b4b0b4fa1bb8d4248b051cbc8"/>
@@ -91,46 +91,52 @@
   <FileSets Version="1" Minor="32">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sources_1/new/FA.vhd">
+      <File Path="$PSRCDIR/sources_1/new/FA.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sources_1/new/INTERP.vhd">
+      <File Path="$PSRCDIR/sources_1/new/INTERP.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sources_1/new/LUT.vhd">
+      <File Path="$PSRCDIR/sources_1/new/LUT.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sources_1/new/RCA.vhd">
+      <File Path="$PSRCDIR/sources_1/new/RCA.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sources_1/new/SUB.vhd">
+      <File Path="$PSRCDIR/sources_1/new/SUB.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sources_1/new/SINE_CALCULATOR.vhd">
+      <File Path="$PSRCDIR/sources_1/new/SINE.vhd">
         <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/MUX.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="SINE_CALCULATOR"/>
-        <Option Name="TopAutoSet" Val="TRUE"/>
+        <Option Name="TopModule" Val="SINE"/>
       </Config>
     </FileSet>
     <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
@@ -140,41 +146,42 @@
       </Config>
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sim_1/new/TB_FA.vhd">
+      <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sim_1/new/TB_SINE.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sim_1/new/TB_SUB.vhd">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sim_1/new/TB_RCA.vhd">
+      <File Path="$PSRCDIR/sim_1/new/TB_INTERP.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sim_1/new/TB_SINE.vhd">
+      <File Path="$PSRCDIR/sim_1/new/TB_LUT.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sim_1/new/TB_INTERP.vhd">
+      <File Path="$PSRCDIR/sim_1/new/TB_SUB.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../ProgettoRetiLogiche_2024-1/FIXEDPOINT_SIN/FIXEDPOINT_SIN.srcs/sim_1/new/TB_LUT.vhd">
+      <File Path="$PSRCDIR/sim_1/new/TB_FA.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sim_1/new/TB_RCA.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -183,7 +190,7 @@
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="TB_FA"/>
+        <Option Name="TopModule" Val="TB_SINE"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="TopAutoSet" Val="TRUE"/>
         <Option Name="TransportPathDelay" Val="0"/>
@@ -224,9 +231,7 @@
   <Runs Version="1" Minor="22">
     <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a200tsbg484-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="true" WriteIncrSynthDcp="false" State="current" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
         <Step Id="synth_design"/>
       </Strategy>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2024"/>
@@ -235,9 +240,7 @@
     </Run>
     <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a200tsbg484-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
