@@ -1,6 +1,5 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity SINE is
     generic (
@@ -42,6 +41,19 @@ architecture structural of SINE is
         );
     end component;
 
+    -- Custom comparison function
+    function is_less_than(
+        a : std_logic_vector;
+        b : std_logic_vector
+    ) return boolean is
+        variable a_extended : std_logic_vector(a'length downto 0);
+        variable b_extended : std_logic_vector(b'length downto 0);
+    begin
+        a_extended := '0' & a;
+        b_extended := '0' & b;
+        return a_extended < b_extended;
+    end function;
+
     -- Constants
     constant ANGLE_90    : std_logic_vector(M-1 downto 0)  := "001011010";
     constant ANGLE_180   : std_logic_vector(M-1 downto 0)  := "010110100";
@@ -72,11 +84,11 @@ begin
         if rising_edge(CLK) then
             ANGLE_REG <= ANGLE;
             
-            if ANGLE_REG < ANGLE_90 then
+            if is_less_than(ANGLE_REG, ANGLE_90) then
                 QUADRANT <= "00";
-            elsif ANGLE_REG < ANGLE_180 then
+            elsif is_less_than(ANGLE_REG, ANGLE_180) then
                 QUADRANT <= "01";
-            elsif ANGLE_REG < ANGLE_270 then
+            elsif is_less_than(ANGLE_REG, ANGLE_270) then
                 QUADRANT <= "10";
             else
                 QUADRANT <= "11";
@@ -165,3 +177,5 @@ begin
     SINE <= SINE_FINAL;
 
 end structural;
+
+-- You'll also need to provide the implementation for SUB and RCA components as they are not shown in the original code
