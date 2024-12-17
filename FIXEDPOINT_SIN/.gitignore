@@ -1,0 +1,9 @@
+FIXEDPOINT_SIN.cache/
+FIXEDPOINT_SIN.hw/
+FIXEDPOINT_SIN.ip_user_files/
+FIXEDPOINT_SIN.sim/
+FIXEDPOINT_SIN.xpr
+vivado*.backup.jou
+vivado*.backup.log
+vivado.jou
+vivado.log
