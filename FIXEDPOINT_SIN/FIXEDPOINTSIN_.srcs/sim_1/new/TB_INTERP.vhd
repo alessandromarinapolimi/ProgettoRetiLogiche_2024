@@ -33,17 +33,57 @@ begin
     stim_proc: process
     begin
     
-         -- Test per 1 grado
-        ANGLE_DIFF <= "001";  -- Differenza di 1 grado
-        SINE1 <= "0000000000";  -- sin(0) 
-        SINE2 <= "0000100011";  -- sin(8) 
-        wait for 10 ns;
+      -- Test per 0 gradi
+ANGLE_DIFF <= "000";  -- Differenza di 0 gradi
+SINE1 <= "0000000000";  -- sin(0)
+SINE2 <= "0000100011"; 
+wait for 10 ns;
 
-        -- Test per 12 gradi
-        ANGLE_DIFF <= "100";  -- Differenza di 4 gradi
-        SINE1 <= "0000100011";  -- sin(8) 
-        SINE2 <= "0001000110";  -- sin(16) 
-        wait for 10 ns;
+-- Test per 1 grado
+ANGLE_DIFF <= "001";  -- Differenza di 1 grado
+SINE1 <= "0000000000";  -- sin(0)
+SINE2 <= "0000100011";  -- sin(1)
+wait for 10 ns;
+
+-- Test per 2 gradi
+ANGLE_DIFF <= "010";  -- Differenza di 2 gradi
+SINE1 <= "0000000000";  -- sin(0)
+SINE2 <= "0000100011";  -- sin(1)
+wait for 10 ns;
+
+-- Test per 3 gradi
+ANGLE_DIFF <= "011";  -- Differenza di 3 gradi
+SINE1 <= "0000000000";  -- sin(0)
+SINE2 <= "0000100011";  -- sin(1)
+wait for 10 ns;
+
+-- Test per 4 gradi
+ANGLE_DIFF <= "100";  -- Differenza di 4 gradi
+SINE1 <= "0000000000";  -- sin(0)
+SINE2 <= "0000100011";  -- sin(1)
+wait for 10 ns;
+
+-- Test per 5 gradi
+ANGLE_DIFF <= "101";  -- Differenza di 5 gradi
+SINE1 <= "0000000000";  -- sin(0)
+SINE2 <= "0000100011";  -- sin(1)
+wait for 10 ns;
+
+-- Test per 6 gradi
+ANGLE_DIFF <= "110";  -- Differenza di 6 gradi
+SINE1 <= "0000000000";  -- sin(0)
+SINE2 <= "0000100011";  -- sin(1)
+wait for 10 ns;
+
+-- Test per 7 gradi
+ANGLE_DIFF <= "111";  -- Differenza di 7 gradi
+SINE1 <= "0000000000";  -- sin(0)
+SINE2 <= "0000100011";  -- sin(1)
+wait for 10 ns;
+
+
+
+
         
         -- Test per 17 gradi
         ANGLE_DIFF <= "001";  -- Differenza di 1 grado

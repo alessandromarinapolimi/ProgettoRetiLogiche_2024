@@ -1,16 +1,13 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-------------------------------
--- LookUp Table (LUT)
-------------------------------
 entity LUT is
     generic (
         N : positive := 10  -- Number of bits for sine values
     );
     Port (
-        ANGLE : in std_logic_vector(6 downto 0);        -- Input: 7-bit angle
-        SINE  : out std_logic_vector(N-1 downto 0)     -- Output: N-bit sine value
+        ANGLE : in std_logic_vector(6 downto 0);     -- Input: 7-bit angle
+        SINE  : out std_logic_vector(N-1 downto 0)   -- Output: N-bit sine value
     );
 end entity LUT;
 
@@ -35,117 +32,128 @@ architecture RTL of LUT is
     component INTERP is 
         generic (N : positive);
         Port (
-            ANGLE_DIFF       : in std_logic_vector(2 downto 0);
-            SINE1, SINE2      : in std_logic_vector(N-1 downto 0);
-            RESULT               : out std_logic_vector(N-1 downto 0)
+            ANGLE_DIFF : in std_logic_vector(2 downto 0);
+            SINE1, SINE2 : in std_logic_vector(N-1 downto 0);
+            RESULT : out std_logic_vector(N-1 downto 0)
         );
     end component;
 
-    signal SINE1, SINE2                        : std_logic_vector(N-1 downto 0);
-    signal ANGLE_DIFF                         : std_logic_vector(2 downto 0);
-    signal INTERPOLATED_SINE          : std_logic_vector(N-1 downto 0);
-    signal LUT_OUT                              : std_logic_vector(N-1 downto 0);
-    signal USE_INTERPOLATION         : std_logic;
+    component MUX is
+        generic (
+            N : positive := 1   -- Solo 1 bit di selezione necessario
+        );
+        Port (
+            DATA_IN  : in  std_logic_vector((2**N)-1 downto 0);
+            SEL      : in  std_logic_vector(N-1 downto 0);
+            DATA_OUT : out std_logic
+        );
+    end component;
 
-    begin
-        INTERPOLATOR: INTERP
-            generic map (N => N)  
+    signal SINE1, SINE2 : std_logic_vector(N-1 downto 0);
+    signal ANGLE_DIFF : std_logic_vector(2 downto 0);
+    signal INTERPOLATED_SINE : std_logic_vector(N-1 downto 0);
+    signal LUT_OUT : std_logic_vector(N-1 downto 0);
+    signal is_special_case : std_logic;
+    signal mux_out : std_logic_vector(N-1 downto 0);
+
+begin
+    -- Interpolator instantiation
+    INTERPOLATOR: INTERP
+        generic map (N => N)  
+        port map (
+            ANGLE_DIFF => ANGLE_DIFF,
+            SINE1 => SINE1,
+            SINE2 => SINE2,
+            RESULT => INTERPOLATED_SINE
+        );
+
+    -- Generate N multiplexers, one for each bit of the output
+    GEN_MUX: for i in 0 to N-1 generate
+        MUX_i: MUX
+            generic map (N => 1)
             port map (
-                ANGLE_DIFF => ANGLE_DIFF,
-                SINE1      => SINE1,
-                SINE2      => SINE2,
-                RESULT     => INTERPOLATED_SINE
+                DATA_IN(0) => INTERPOLATED_SINE(i),
+                DATA_IN(1) => LUT_OUT(i),
+                SEL(0) => is_special_case,
+                DATA_OUT => mux_out(i)
             );
-    
-        ----------
-        -- Process for angle input handling
-        ----------
-        process(ANGLE)
-        begin
-            USE_INTERPOLATION <= '0';
-            LUT_OUT <= (others => '0');
-            SINE1 <= (others => '0');
-            SINE2 <= (others => '0');
-            ANGLE_DIFF <= "000";  
-        
-            -----------
-            -- Special cases for specific angles
-            -----------
-            if ANGLE = "1011010" then                              -- 90°
-                USE_INTERPOLATION <= '0';
-                LUT_OUT <= SINE_LUT(12);
-                
-            elsif ANGLE(6 downto 1) = "101100" then     -- 88° or 89°
+    end generate GEN_MUX;
+
+    -- Process for angle input handling
+    process(ANGLE)
+    begin
+        -- Default assignments
+        LUT_OUT <= SINE_LUT(0);
+        SINE1 <= SINE_LUT(0);
+        SINE2 <= SINE_LUT(1);
+        ANGLE_DIFF <= ANGLE(2 downto 0);
+        is_special_case <= '0';
+
+        -- Special cases handling
+        if ANGLE = "1011010" then     -- 90°
+            LUT_OUT <= SINE_LUT(12);
+            is_special_case <= '1';
             
-                USE_INTERPOLATION <= '0';
-                LUT_OUT <= SINE_LUT(11);
-            else
+        elsif ANGLE(6 downto 1) = "101100" then    -- 88° or 89°
+            LUT_OUT <= SINE_LUT(11);
+            is_special_case <= '1';
             
-                if ANGLE(2 downto 0) = "000" then
-                    USE_INTERPOLATION <= '0';
-                    
-                    ------------
-                    -- Selection of sine values from the lookup table
-                    ------------
-                    case ANGLE(6 downto 3) is
-                        when "0000" => LUT_OUT <= SINE_LUT(0);
-                        when "0001" => LUT_OUT <= SINE_LUT(1);
-                        when "0010" => LUT_OUT <= SINE_LUT(2);
-                        when "0011" => LUT_OUT <= SINE_LUT(3);
-                        when "0100" => LUT_OUT <= SINE_LUT(4);
-                        when "0101" => LUT_OUT <= SINE_LUT(5);
-                        when "0110" => LUT_OUT <= SINE_LUT(6);
-                        when "0111" => LUT_OUT <= SINE_LUT(7);
-                        when "1000" => LUT_OUT <= SINE_LUT(8);
-                        when "1001" => LUT_OUT <= SINE_LUT(9);
-                        when others => LUT_OUT <= SINE_LUT(10);
-                    end case;
-                else
-                    USE_INTERPOLATION <= '1';
-                    ANGLE_DIFF <= ANGLE(2 downto 0);
-                    
-                    -----------
-                    -- Selection of sine values for interpolation
-                    -----------
-                    case ANGLE(6 downto 3) is
-                        when "0000" => 
-                            SINE1 <= SINE_LUT(0);
-                            SINE2 <= SINE_LUT(1);
-                        when "0001" => 
-                            SINE1 <= SINE_LUT(1);
-                            SINE2 <= SINE_LUT(2);
-                        when "0010" => 
-                            SINE1 <= SINE_LUT(2);
-                            SINE2 <= SINE_LUT(3);
-                        when "0011" => 
-                            SINE1 <= SINE_LUT(3);
-                            SINE2 <= SINE_LUT(4);
-                        when "0100" => 
-                            SINE1 <= SINE_LUT(4);
-                            SINE2 <= SINE_LUT(5);
-                        when "0101" => 
-                            SINE1 <= SINE_LUT(5);
-                            SINE2 <= SINE_LUT(6);
-                        when "0110" => 
-                            SINE1 <= SINE_LUT(6);
-                            SINE2 <= SINE_LUT(7);
-                        when "0111" => 
-                            SINE1 <= SINE_LUT(7);
-                            SINE2 <= SINE_LUT(8);
-                        when "1000" => 
-                            SINE1 <= SINE_LUT(8);
-                            SINE2 <= SINE_LUT(9);
-                        when "1001" => 
-                            SINE1 <= SINE_LUT(9);
-                            SINE2 <= SINE_LUT(10);
-                        when others => 
-                            SINE1 <= SINE_LUT(10);
-                            SINE2 <= SINE_LUT(11);
-                    end case;
-                end if;
-            end if;
-        end process;
+        elsif ANGLE(2 downto 0) = "000" then    -- Multiple of 8°
+            case ANGLE(6 downto 3) is
+                when "0000" => LUT_OUT <= SINE_LUT(0);
+                when "0001" => LUT_OUT <= SINE_LUT(1);
+                when "0010" => LUT_OUT <= SINE_LUT(2);
+                when "0011" => LUT_OUT <= SINE_LUT(3);
+                when "0100" => LUT_OUT <= SINE_LUT(4);
+                when "0101" => LUT_OUT <= SINE_LUT(5);
+                when "0110" => LUT_OUT <= SINE_LUT(6);
+                when "0111" => LUT_OUT <= SINE_LUT(7);
+                when "1000" => LUT_OUT <= SINE_LUT(8);
+                when "1001" => LUT_OUT <= SINE_LUT(9);
+                when others => LUT_OUT <= SINE_LUT(10);
+            end case;
+            is_special_case <= '1';
+        else
+            -- Regular case: needs interpolation
+            case ANGLE(6 downto 3) is
+                when "0000" => 
+                    SINE1 <= SINE_LUT(0);
+                    SINE2 <= SINE_LUT(1);
+                when "0001" => 
+                    SINE1 <= SINE_LUT(1);
+                    SINE2 <= SINE_LUT(2);
+                when "0010" => 
+                    SINE1 <= SINE_LUT(2);
+                    SINE2 <= SINE_LUT(3);
+                when "0011" => 
+                    SINE1 <= SINE_LUT(3);
+                    SINE2 <= SINE_LUT(4);
+                when "0100" => 
+                    SINE1 <= SINE_LUT(4);
+                    SINE2 <= SINE_LUT(5);
+                when "0101" => 
+                    SINE1 <= SINE_LUT(5);
+                    SINE2 <= SINE_LUT(6);
+                when "0110" => 
+                    SINE1 <= SINE_LUT(6);
+                    SINE2 <= SINE_LUT(7);
+                when "0111" => 
+                    SINE1 <= SINE_LUT(7);
+                    SINE2 <= SINE_LUT(8);
+                when "1000" => 
+                    SINE1 <= SINE_LUT(8);
+                    SINE2 <= SINE_LUT(9);
+                when "1001" => 
+                    SINE1 <= SINE_LUT(9);
+                    SINE2 <= SINE_LUT(10);
+                when others => 
+                    SINE1 <= SINE_LUT(10);
+                    SINE2 <= SINE_LUT(11);
+            end case;
+        end if;
+    end process;
+
     
-        SINE <= INTERPOLATED_SINE when USE_INTERPOLATION = '1' else LUT_OUT;        -- Output selection: either interpolated result or LUT output
-    
+    SINE <= MUX_OUT;
+
 end architecture RTL;
