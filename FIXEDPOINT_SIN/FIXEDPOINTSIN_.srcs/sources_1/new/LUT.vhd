@@ -39,13 +39,10 @@ architecture RTL of LUT is
     end component;
 
     component MUX is
-        generic (
-            N : positive := 1   -- Solo 1 bit di selezione necessario
-        );
         Port (
-            DATA_IN  : in  std_logic_vector((2**N)-1 downto 0);
-            SEL      : in  std_logic_vector(N-1 downto 0);
-            DATA_OUT : out std_logic
+            A, B : in std_logic;
+            S   : in std_logic;
+            Z   : out std_logic
         );
     end component;
 
@@ -70,12 +67,11 @@ begin
     -- Generate N multiplexers, one for each bit of the output
     GEN_MUX: for i in 0 to N-1 generate
         MUX_i: MUX
-            generic map (N => 1)
             port map (
-                DATA_IN(0) => INTERPOLATED_SINE(i),
-                DATA_IN(1) => LUT_OUT(i),
-                SEL(0) => is_special_case,
-                DATA_OUT => mux_out(i)
+                A => INTERPOLATED_SINE(i),
+                B => LUT_OUT(i),
+                S => is_special_case,
+                Z => mux_out(i)
             );
     end generate GEN_MUX;
 
@@ -153,7 +149,6 @@ begin
         end if;
     end process;
 
-    
-    SINE <= MUX_OUT;
+    SINE <= mux_out;
 
 end architecture RTL;
