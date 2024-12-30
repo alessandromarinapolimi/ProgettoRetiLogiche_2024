@@ -85,8 +85,8 @@ wait for 10 ns;
 
 
         
-        -- Test per 17 gradi
-        ANGLE_DIFF <= "001";  -- Differenza di 1 grado
+        -- Test per 16 gradi
+        ANGLE_DIFF <= "000";  -- Differenza di 0 grado
         SINE1 <= "0001000110";  -- sin(16) 
         SINE2 <= "0001101000";  -- sin(24)
         wait for 10 ns;

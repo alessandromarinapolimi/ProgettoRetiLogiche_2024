@@ -5,7 +5,7 @@ entity TB_SINE is
 end TB_SINE;
 
 architecture Behavioral of TB_SINE is
-    component SINE_CALCULATOR
+    component SINE
         generic (
             N : positive := 10;
             M : positive := 9
@@ -60,7 +60,7 @@ architecture Behavioral of TB_SINE is
     );
 
 begin
-    uut: SINE_CALCULATOR
+    uut: SINE
         generic map (
             N => 10,
             M => 9

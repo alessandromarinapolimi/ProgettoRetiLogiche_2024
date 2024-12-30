@@ -177,5 +177,3 @@ begin
     SINE <= SINE_FINAL;
 
 end structural;
-
--- You'll also need to provide the implementation for SUB and RCA components as they are not shown in the original code
