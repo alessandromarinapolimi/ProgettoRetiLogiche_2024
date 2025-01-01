@@ -41,6 +41,14 @@ architecture structural of SINE is
         );
     end component;
 
+    component MUX is
+        port(
+            A,B     : in STD_LOGIC;
+            S       : in STD_LOGIC;
+            Z       : out STD_LOGIC
+        );
+    end component;
+
     -- Custom comparison function
     function is_less_than(
         a : std_logic_vector;
@@ -161,19 +169,23 @@ begin
             COUT => open
         );
 
-    -- Stage 3: Final output register
+    -- Stage 3: Final output using MUX for each bit
+    GEN_MUX: for i in 0 to N-1 generate
+        MUX_INST: MUX
+            port map (
+                A => SINE_TEMP(i),
+                B => RCA_RESULT(i),
+                S => SINE_NEG,
+                Z => SINE_FINAL(i)
+            );
+    end generate GEN_MUX;
+
+    -- Register the final output
     process(CLK)
     begin
         if rising_edge(CLK) then
-            if SINE_NEG = '0' then
-                SINE_FINAL <= SINE_TEMP;
-            else
-                SINE_FINAL <= RCA_RESULT;
-            end if;
+            SINE <= SINE_FINAL;
         end if;
     end process;
-
-    -- Output assignment
-    SINE <= SINE_FINAL;
 
 end structural;

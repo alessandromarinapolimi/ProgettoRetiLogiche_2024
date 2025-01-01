@@ -3,51 +3,47 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity INTERP is
     generic (
-        N : positive
+        N : positive  
     );
+    
     Port (
-        ANGLE_DIFF : in std_logic_vector(2 downto 0);
-        SINE1      : in std_logic_vector(N-1 downto 0);
-        SINE2      : in std_logic_vector(N-1 downto 0);
-        RESULT     : out std_logic_vector(N-1 downto 0)
+        ANGLE_DIFF   : in std_logic_vector(2 downto 0);         -- Input: 3-bit angle difference
+        SINE1        : in std_logic_vector(N-1 downto 0);        -- Input: First sine value
+        SINE2        : in std_logic_vector(N-1 downto 0);        -- Input: Second sine value
+        RESULT       : out std_logic_vector(N-1 downto 0)        -- Output: Interpolated sine result
     );
 end INTERP;
 
 architecture RTL of INTERP is
+
     component RCA is
         generic (N : positive);
         Port (
-            A, B  : in  std_logic_vector(N-1 downto 0);
-            CIN   : in  std_logic;
-            SUM   : out std_logic_vector(N-1 downto 0);
-            COUT  : out std_logic
+            A, B      : in  std_logic_vector(N-1 downto 0);
+            CIN       : in  std_logic;
+            SUM       : out std_logic_vector(N-1 downto 0);
+            COUT      : out std_logic
         );
     end component;
 
     component SUB is
         generic (N : positive);
         Port (
-            X, Y  : in  std_logic_vector(N-1 downto 0);
-            DIFF  : out std_logic_vector(N-1 downto 0)
+            X, Y   : in  std_logic_vector(N-1 downto 0);
+            DIFF   : out std_logic_vector(N-1 downto 0)
         );
     end component;
 
-    -- Segnali per le differenze e i multipli
     signal SINE_DIFF : std_logic_vector(N-1 downto 0);
     signal MULT_1, MULT_2, MULT_4 : std_logic_vector(N-1 downto 0);
-    
-    -- Segnali per le somme intermedie (calcolate in parallelo)
-    signal SUM_1_2, SUM_1_4, SUM_2_4, SUM_1_2_4 : std_logic_vector(N-1 downto 0);
-    
-    -- Segnale per il valore selezionato prima della divisione
-    signal SELECTED_VALUE : std_logic_vector(N-1 downto 0);
-    
-    -- Segnale per il valore dopo la divisione
-    signal DIVIDED_VALUE : std_logic_vector(N-1 downto 0);
+    signal SUM_1, SUM_2, SUM_3, SUM_4 : std_logic_vector(N-1 downto 0);
+    signal ADD_VALUE : std_logic_vector(N-1 downto 0);
+    signal INTERP_VALUE : std_logic_vector(N-1 downto 0);  -- Nuovo segnale per il valore di interpolazione
 
 begin
-    -- Calcolo parallelo della differenza
-    DIFF_UNIT: SUB
+
+    -- Step 1: Calculate the difference between SINE2 and SINE1
+    DIFF_CALC: SUB
         generic map (N => N)
         port map (
             X    => SINE2,
@@ -55,80 +51,76 @@ begin
             DIFF => SINE_DIFF
         );
 
-    -- Calcolo parallelo dei multipli
-    MULT_PARALLEL: process(SINE_DIFF)
-    begin
-        MULT_1 <= SINE_DIFF;
-        MULT_2 <= SINE_DIFF(N-2 downto 0) & '0';
-        MULT_4 <= SINE_DIFF(N-3 downto 0) & "00";
-    end process;
+    -- Step 2: Prepare multiples of the difference
+    MULT_1 <= SINE_DIFF;                                -- SINE_DIFF * 1
+    MULT_2 <= SINE_DIFF(N-2 downto 0) & '0';            -- SINE_DIFF * 2
+    MULT_4 <= SINE_DIFF(N-3 downto 0) & "00";           -- SINE_DIFF * 4
 
-    -- Calcolo parallelo di tutte le possibili somme
-    SUM_PARALLEL_1_2: RCA
+    -- Step 3: Intermediate Additions
+    RCA1: RCA
         generic map (N => N)
         port map (
             A    => MULT_1,
             B    => MULT_2,
             CIN  => '0',
-            SUM  => SUM_1_2,
+            SUM  => SUM_1,
             COUT => open
         );
 
-    SUM_PARALLEL_1_4: RCA
+    RCA2: RCA
         generic map (N => N)
         port map (
             A    => MULT_1,
             B    => MULT_4,
             CIN  => '0',
-            SUM  => SUM_1_4,
+            SUM  => SUM_2,
             COUT => open
         );
-
-    SUM_PARALLEL_2_4: RCA
+        
+    RCA3: RCA
         generic map (N => N)
         port map (
             A    => MULT_2,
             B    => MULT_4,
             CIN  => '0',
-            SUM  => SUM_2_4,
+            SUM  => SUM_3,
             COUT => open
         );
-
-    SUM_PARALLEL_1_2_4: RCA
+        
+    RCA4: RCA
         generic map (N => N)
         port map (
             A    => MULT_1,
-            B    => SUM_2_4,
+            B    => SUM_3,
             CIN  => '0',
-            SUM  => SUM_1_2_4,
+            SUM  => SUM_4,
             COUT => open
         );
 
-    -- Selezione parallela del valore basato su ANGLE_DIFF
-    VALUE_SELECT: process(ANGLE_DIFF, MULT_1, MULT_2, MULT_4, 
-                         SUM_1_2, SUM_1_4, SUM_2_4, SUM_1_2_4)
+    -- Step 4: Select correct interpolation value based on ANGLE_DIFF
+    process(ANGLE_DIFF, MULT_1, MULT_2, MULT_4, SUM_1, SUM_2, SUM_3, SUM_4)
     begin
         case ANGLE_DIFF is
-            when "001"  => SELECTED_VALUE <= MULT_1;
-            when "010"  => SELECTED_VALUE <= MULT_2;
-            when "011"  => SELECTED_VALUE <= SUM_1_2;
-            when "100"  => SELECTED_VALUE <= MULT_4;
-            when "101"  => SELECTED_VALUE <= SUM_1_4;
-            when "110"  => SELECTED_VALUE <= SUM_2_4;
-            when "111"  => SELECTED_VALUE <= SUM_1_2_4;
-            when others => SELECTED_VALUE <= (others => '0');
+            when "001"   => INTERP_VALUE <= MULT_1;          -- Scale by 1
+            when "010"   => INTERP_VALUE <= MULT_2;          -- Scale by 2
+            when "011"   => INTERP_VALUE <= SUM_1;           -- Scale by 3 (1+2)
+            when "100"   => INTERP_VALUE <= MULT_4;          -- Scale by 4
+            when "101"   => INTERP_VALUE <= SUM_2;           -- Scale by 5 (1+4)
+            when "110"   => INTERP_VALUE <= SUM_3;           -- Scale by 6 (2+4)
+            when "111"   => INTERP_VALUE <= SUM_4;           -- Scale by 7 (1+2+4)
+            when others  => INTERP_VALUE <= (others => '0');  -- Default case
         end case;
     end process;
 
-    -- Divisione per 8 (shift right di 3) in parallelo
-    DIVIDED_VALUE <= "000" & SELECTED_VALUE(N-1 downto 3);
+    -- Step 5: Divide by 8 (right shift by 3)
+    ADD_VALUE <= "000" & INTERP_VALUE(N-1 downto 3);
 
-    -- Somma finale in parallelo
-    FINAL_ADD: RCA
+    -- Step 6: Final sum to get interpolated result
+    FINAL_SUM: RCA
         generic map (N => N)
         port map (
             A    => SINE1,
-            B    => DIVIDED_VALUE,
+            B    => ADD_VALUE,
             CIN  => '0',
             SUM  => RESULT,
             COUT => open
