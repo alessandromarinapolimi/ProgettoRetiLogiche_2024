@@ -7,9 +7,8 @@ entity INTERP is
     );
     
     Port (
-        ANGLE_DIFF   : in std_logic_vector(2 downto 0);         -- Input: 3-bit angle difference
-        SINE1        : in std_logic_vector(N-1 downto 0);        -- Input: First sine value
-        SINE2        : in std_logic_vector(N-1 downto 0);        -- Input: Second sine value
+        ANGLE_DIFF   : in std_logic_vector(2 downto 0);          -- Input: 3-bit angle difference
+        SINE1, SINE2 : in std_logic_vector(N-1 downto 0);        -- Input: First sine value & Second sine value 
         RESULT       : out std_logic_vector(N-1 downto 0)        -- Output: Interpolated sine result
     );
 end INTERP;
@@ -34,11 +33,7 @@ architecture RTL of INTERP is
         );
     end component;
 
-    signal SINE_DIFF : std_logic_vector(N-1 downto 0);
-    signal MULT_1, MULT_2, MULT_4 : std_logic_vector(N-1 downto 0);
-    signal SUM_1, SUM_2, SUM_3, SUM_4 : std_logic_vector(N-1 downto 0);
-    signal ADD_VALUE : std_logic_vector(N-1 downto 0);
-    signal INTERP_VALUE : std_logic_vector(N-1 downto 0);  -- Nuovo segnale per il valore di interpolazione
+    signal SINE_DIFF, MULT_2, MULT_4,  MULT_8, SUM_1_2, SUM_1_4, SUM_2_4, SUB_8_1, ADD_VALUE : std_logic_vector(N-1 downto 0);
 
 begin
 
@@ -52,68 +47,63 @@ begin
         );
 
     -- Step 2: Prepare multiples of the difference
-    MULT_1 <= SINE_DIFF;                                -- SINE_DIFF * 1
     MULT_2 <= SINE_DIFF(N-2 downto 0) & '0';            -- SINE_DIFF * 2
     MULT_4 <= SINE_DIFF(N-3 downto 0) & "00";           -- SINE_DIFF * 4
+    MULT_8 <= SINE_DIFF(N-4 downto 0) & "000";          -- SINE_DIFF * 8
 
-    -- Step 3: Intermediate Additions
-    RCA1: RCA
+    -- Step 3: Intermediate Additions and Subtractions
+    RCA3: RCA
         generic map (N => N)
         port map (
-            A    => MULT_1,
+            A    => SINE_DIFF,
             B    => MULT_2,
             CIN  => '0',
-            SUM  => SUM_1,
+            SUM  => SUM_1_2,
             COUT => open
         );
 
-    RCA2: RCA
+    RCA5: RCA
         generic map (N => N)
         port map (
-            A    => MULT_1,
+            A    => SINE_DIFF,
             B    => MULT_4,
             CIN  => '0',
-            SUM  => SUM_2,
+            SUM  => SUM_1_4,
             COUT => open
         );
         
-    RCA3: RCA
+    RCA6: RCA
         generic map (N => N)
         port map (
             A    => MULT_2,
             B    => MULT_4,
             CIN  => '0',
-            SUM  => SUM_3,
+            SUM  => SUM_2_4,
             COUT => open
         );
         
-    RCA4: RCA
+    SUB7: SUB
         generic map (N => N)
         port map (
-            A    => MULT_1,
-            B    => SUM_3,
-            CIN  => '0',
-            SUM  => SUM_4,
-            COUT => open
+            X    => MULT_8,
+            Y    => SINE_DIFF,
+            DIFF => SUB_8_1  
         );
-
-    -- Step 4: Select correct interpolation value based on ANGLE_DIFF
-    process(ANGLE_DIFF, MULT_1, MULT_2, MULT_4, SUM_1, SUM_2, SUM_3, SUM_4)
-    begin
-        case ANGLE_DIFF is
-            when "001"   => INTERP_VALUE <= MULT_1;          -- Scale by 1
-            when "010"   => INTERP_VALUE <= MULT_2;          -- Scale by 2
-            when "011"   => INTERP_VALUE <= SUM_1;           -- Scale by 3 (1+2)
-            when "100"   => INTERP_VALUE <= MULT_4;          -- Scale by 4
-            when "101"   => INTERP_VALUE <= SUM_2;           -- Scale by 5 (1+4)
-            when "110"   => INTERP_VALUE <= SUM_3;           -- Scale by 6 (2+4)
-            when "111"   => INTERP_VALUE <= SUM_4;           -- Scale by 7 (1+2+4)
-            when others  => INTERP_VALUE <= (others => '0');  -- Default case
-        end case;
-    end process;
-
-    -- Step 5: Divide by 8 (right shift by 3)
-    ADD_VALUE <= "000" & INTERP_VALUE(N-1 downto 3);
+ 
+    -- Step 4 & 5: Select correct interpolation value based on ANGLE_DIFF & divide by 8 (right shift by 3) 
+        process(ANGLE_DIFF, SINE_DIFF, MULT_2, MULT_4, SUM_1_2, SUM_1_4, SUM_2_4, SUB_8_1)
+        begin
+            case ANGLE_DIFF is
+                when "001"   => ADD_VALUE <= "000" & SINE_DIFF(N-1 downto 3);      -- Scale by 1
+                when "010"   => ADD_VALUE <= "000" & MULT_2(N-1 downto 3);         -- Scale by 2
+                when "011"   => ADD_VALUE <= "000" & SUM_1_2(N-1 downto 3);        -- Scale by 3 (1+2)
+                when "100"   => ADD_VALUE <= "000" & MULT_4(N-1 downto 3);         -- Scale by 4
+                when "101"   => ADD_VALUE <= "000" & SUM_1_4(N-1 downto 3);        -- Scale by 5 (1+4)
+                when "110"   => ADD_VALUE <= "000" & SUM_2_4(N-1 downto 3);        -- Scale by 6 (2+4)
+                when "111"   => ADD_VALUE <= "000" & SUB_8_1(N-1 downto 3);        -- Scale by 7 (8-1)
+                when others  => ADD_VALUE <= (others => '0');                      -- Default case
+            end case;
+        end process;
 
     -- Step 6: Final sum to get interpolated result
     FINAL_SUM: RCA

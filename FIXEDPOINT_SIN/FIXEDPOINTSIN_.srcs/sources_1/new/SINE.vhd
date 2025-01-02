@@ -41,11 +41,11 @@ architecture structural of SINE is
         );
     end component;
 
-    component MUX is
+    component MUX4 is
         port(
-            A,B     : in STD_LOGIC;
-            S       : in STD_LOGIC;
-            Z       : out STD_LOGIC
+            A,B,C,D : in STD_LOGIC_VECTOR(6 downto 0);
+            S0,S1: in STD_LOGIC;
+            Z: out STD_LOGIC_VECTOR(6 downto 0)
         );
     end component;
 
@@ -77,10 +77,9 @@ architecture structural of SINE is
     signal SINE_NEG          : std_logic;
     signal SINE_FINAL        : std_logic_vector(N-1 downto 0);
     
-    -- Intermediate signals for the two's complement
+    -- Intermediate signals
     signal SINE_NEG_TEMP     : std_logic_vector(N-1 downto 0);
     signal RCA_RESULT        : std_logic_vector(N-1 downto 0);
-    
     signal ANGLE_180_MINUS_REG : std_logic_vector(6 downto 0);
     signal ANGLE_REG_MINUS_180 : std_logic_vector(6 downto 0);
     signal ANGLE_360_MINUS_REG : std_logic_vector(6 downto 0);
@@ -92,6 +91,7 @@ begin
         if rising_edge(CLK) then
             ANGLE_REG <= ANGLE;
             
+            -- Quadrant determination
             if is_less_than(ANGLE_REG, ANGLE_90) then
                 QUADRANT <= "00";
             elsif is_less_than(ANGLE_REG, ANGLE_180) then
@@ -104,6 +104,7 @@ begin
         end if;
     end process;
 
+    -- Subtractors for angle adjustments
     SUB_180_MINUS_REG: SUB
     generic map (N => 7)
     port map (
@@ -128,27 +129,27 @@ begin
         DIFF => ANGLE_360_MINUS_REG
     );
 
-    -- Stage 2: Adjusted angle calculation
+    -- MUX4 for angle selection based on quadrant
+    ANGLE_MUX: MUX4
+    port map(
+        A => ANGLE_REG(6 downto 0),           -- First quadrant
+        B => ANGLE_180_MINUS_REG,             -- Second quadrant
+        C => ANGLE_REG_MINUS_180,             -- Third quadrant
+        D => ANGLE_360_MINUS_REG,             -- Fourth quadrant
+        S0 => QUADRANT(0),
+        S1 => QUADRANT(1),
+        Z => ANGLE_ADJUSTED
+    );
+
+    -- Stage 2: Sign determination based on quadrant
     process(CLK)
     begin
         if rising_edge(CLK) then
-            case QUADRANT is
-                when "00" =>   -- First quadrant
-                    ANGLE_ADJUSTED <= ANGLE_REG(6 downto 0);
-                    SINE_NEG <= '0';
-                when "01" =>   -- Second quadrant
-                    ANGLE_ADJUSTED <= ANGLE_180_MINUS_REG;
-                    SINE_NEG <= '0';
-                when "10" =>   -- Third quadrant
-                    ANGLE_ADJUSTED <= ANGLE_REG_MINUS_180;
-                    SINE_NEG <= '1';
-                when others => -- Fourth quadrant
-                    ANGLE_ADJUSTED <= ANGLE_360_MINUS_REG;
-                    SINE_NEG <= '1';
-            end case;
+            SINE_NEG <= QUADRANT(1);  -- Negative in quadrants 2 and 3
         end if;
     end process;
 
+    -- Lookup table for sine values
     LUT_INST: LUT
         generic map (N => N)
         port map (
@@ -156,7 +157,7 @@ begin
             SINE  => SINE_TEMP
         );
 
-    -- Two's complement calculation (combinational)
+    -- Two's complement calculation
     SINE_NEG_TEMP <= not SINE_TEMP;
     
     RCA_INST: RCA
@@ -169,23 +170,19 @@ begin
             COUT => open
         );
 
-    -- Stage 3: Final output using MUX for each bit
-    GEN_MUX: for i in 0 to N-1 generate
-        MUX_INST: MUX
-            port map (
-                A => SINE_TEMP(i),
-                B => RCA_RESULT(i),
-                S => SINE_NEG,
-                Z => SINE_FINAL(i)
-            );
-    end generate GEN_MUX;
-
-    -- Register the final output
+    -- Stage 3: Final output register
     process(CLK)
     begin
         if rising_edge(CLK) then
-            SINE <= SINE_FINAL;
+            if SINE_NEG = '0' then
+                SINE_FINAL <= SINE_TEMP;
+            else
+                SINE_FINAL <= RCA_RESULT;
+            end if;
         end if;
     end process;
+
+    -- Output assignment
+    SINE <= SINE_FINAL;
 
 end structural;

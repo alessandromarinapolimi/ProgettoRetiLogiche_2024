@@ -38,8 +38,7 @@ architecture RTL of LUT is
         );
     end component;
 
-    signal SINE1, SINE2 : std_logic_vector(N-1 downto 0);
-    signal INTERPOLATED_SINE : std_logic_vector(N-1 downto 0);
+    signal SINE1, SINE2, INTERPOLATED_SINE : std_logic_vector(N-1 downto 0);
 
 begin
     INTERPOLATOR: INTERP
@@ -53,7 +52,7 @@ begin
 
     process(ANGLE)
     begin
-      case ANGLE(6 downto 3) is
+        case ANGLE(6 downto 3) is
             when "0000" => 
                 SINE1 <= SINE_LUT(0);
                 SINE2 <= SINE_LUT(1);
