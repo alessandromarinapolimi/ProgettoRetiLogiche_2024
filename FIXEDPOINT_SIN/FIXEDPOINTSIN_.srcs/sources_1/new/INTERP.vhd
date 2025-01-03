@@ -100,8 +100,7 @@ begin
                 when "100"   => ADD_VALUE <= "000" & MULT_4(N-1 downto 3);         -- Scale by 4
                 when "101"   => ADD_VALUE <= "000" & SUM_1_4(N-1 downto 3);        -- Scale by 5 (1+4)
                 when "110"   => ADD_VALUE <= "000" & SUM_2_4(N-1 downto 3);        -- Scale by 6 (2+4)
-                when "111"   => ADD_VALUE <= "000" & SUB_8_1(N-1 downto 3);        -- Scale by 7 (8-1)
-                when others  => ADD_VALUE <= (others => '0');                      -- Default case
+                when others  => ADD_VALUE <= "000" & SUB_8_1(N-1 downto 3);        -- Default case "111", scale by 7 (8-1)
             end case;
         end process;
 

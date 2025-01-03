@@ -42,10 +42,13 @@ architecture structural of SINE is
     end component;
 
     component MUX4 is
+        generic (
+            N : positive
+        );
         port(
-            A,B,C,D : in STD_LOGIC_VECTOR(6 downto 0);
+            A,B,C,D : in STD_LOGIC_VECTOR(N-1 downto 0);
             S0,S1: in STD_LOGIC;
-            Z: out STD_LOGIC_VECTOR(6 downto 0)
+            Z: out STD_LOGIC_VECTOR(N-1 downto 0)
         );
     end component;
 
@@ -130,12 +133,15 @@ begin
     );
 
     -- MUX4 for angle selection based on quadrant
-    ANGLE_MUX: MUX4
+ANGLE_MUX: MUX4
+    generic map (
+        N => 7  -- 7-bit width for angle adjustment
+    )
     port map(
-        A => ANGLE_REG(6 downto 0),           -- First quadrant
-        B => ANGLE_180_MINUS_REG,             -- Second quadrant
-        C => ANGLE_REG_MINUS_180,             -- Third quadrant
-        D => ANGLE_360_MINUS_REG,             -- Fourth quadrant
+        A => ANGLE_REG(6 downto 0),
+        B => ANGLE_180_MINUS_REG,
+        C => ANGLE_REG_MINUS_180,
+        D => ANGLE_360_MINUS_REG,
         S0 => QUADRANT(0),
         S1 => QUADRANT(1),
         Z => ANGLE_ADJUSTED
