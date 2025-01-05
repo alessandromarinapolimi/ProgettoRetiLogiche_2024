@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity LUT is
     generic (
-        N : positive := 10  -- Number of bits for sine values
+        N : positive := 10                           -- Number of bits for sine values
     );
     Port (
         ANGLE : in std_logic_vector(6 downto 0);     -- Input: 7-bit angle
@@ -33,12 +33,12 @@ architecture RTL of LUT is
         generic (N : positive);
         Port (
             ANGLE_DIFF : in std_logic_vector(2 downto 0);
-            SINE1, SINE2 : in std_logic_vector(N-1 downto 0);
+            SINE1, SINE2   : in std_logic_vector(N-1 downto 0); 
             RESULT : out std_logic_vector(N-1 downto 0)
         );
     end component;
 
-    signal SINE1, SINE2, INTERPOLATED_SINE : std_logic_vector(N-1 downto 0);
+    signal INTERPOLATED_SINE, SINE1, SINE2 : std_logic_vector(N-1 downto 0);
 
 begin
     INTERPOLATOR: INTERP
