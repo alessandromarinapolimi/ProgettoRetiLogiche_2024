@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity INTERP is
     generic (
-        N : positive  
+        N : positive := 10 
     );
     
     Port (
