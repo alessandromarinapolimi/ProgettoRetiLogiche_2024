@@ -9,7 +9,7 @@ entity SINE is
     Port (
         CLK          : in  std_logic;
         ANGLE        : in  std_logic_vector(M-1 downto 0);
-        SINE         : out std_logic_vector(N-1 downto 0)
+        SINE         : out std_logic_vector(N-1 downto 0) := "0000000000"
     );
 end SINE;
 
@@ -17,17 +17,16 @@ architecture structural of SINE is
     component LUT is
         generic (N : positive);
         Port (
-            ANGLE     : in  std_logic_vector(6 downto 0);
-            SINE     : out std_logic_vector(N-1 downto 0)
+            ANGLE     : in  std_logic_vector(M-3 downto 0);
+            SINE      : out std_logic_vector(N-1 downto 0)
         );
     end component;
 
     component SUB is
         generic (N : positive);
         Port (
-            X         : in  std_logic_vector(N-1 downto 0);
-            Y         : in  std_logic_vector(N-1 downto 0);
-            DIFF      : out std_logic_vector(N-1 downto 0)
+            X, Y         : in  std_logic_vector(N-1 downto 0); 
+            DIFF         : out std_logic_vector(N-1 downto 0)
         );
     end component;
 
@@ -41,154 +40,104 @@ architecture structural of SINE is
         );
     end component;
 
-    component MUX4 is
-        generic (
-            N : positive
-        );
-        port(
-            A,B,C,D : in STD_LOGIC_VECTOR(N-1 downto 0);
-            S0,S1: in STD_LOGIC;
-            Z: out STD_LOGIC_VECTOR(N-1 downto 0)
-        );
-    end component;
-
-    -- Custom comparison function
-    function is_less_than(
-        a : std_logic_vector;
-        b : std_logic_vector
-    ) return boolean is
-        variable a_extended : std_logic_vector(a'length downto 0);
-        variable b_extended : std_logic_vector(b'length downto 0);
-    begin
-        a_extended := '0' & a;
-        b_extended := '0' & b;
-        return a_extended < b_extended;
-    end function;
-
-    -- Constants
-    constant ANGLE_90    : std_logic_vector(M-1 downto 0)  := "001011010";
-    constant ANGLE_180   : std_logic_vector(M-1 downto 0)  := "010110100";
-    constant ANGLE_270   : std_logic_vector(M-1 downto 0)  := "100001110";
-    constant ANGLE_360   : std_logic_vector(M-1 downto 0)  := "101101000";
+    -- Constants 
+    constant ANGLE_180_NMINUS4_BIT   : std_logic_vector(N-4 downto 0)  := "0110100";
+    constant ANGLE_270   : std_logic_vector(M-1 downto 0)  := "100001110"; 
     constant ONE_N       : std_logic_vector(N-1 downto 0)  := (0 => '1', others => '0');
 
-    -- Pipeline registers
-    signal ANGLE_REG         : std_logic_vector(M-1 downto 0);
-    signal QUADRANT          : std_logic_vector(1 downto 0);
-    signal ANGLE_ADJUSTED    : std_logic_vector(6 downto 0);
-    signal SINE_TEMP         : std_logic_vector(N-1 downto 0);
-    signal SINE_NEG          : std_logic;
-    signal SINE_FINAL        : std_logic_vector(N-1 downto 0);
-    
-    -- Intermediate signals
-    signal SINE_NEG_TEMP     : std_logic_vector(N-1 downto 0);
-    signal RCA_RESULT        : std_logic_vector(N-1 downto 0);
-    signal ANGLE_180_MINUS_REG : std_logic_vector(6 downto 0);
-    signal ANGLE_REG_MINUS_180 : std_logic_vector(6 downto 0);
-    signal ANGLE_360_MINUS_REG : std_logic_vector(6 downto 0);
+    -- Signals for angle processing
+    signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE : std_logic_vector(M-3 downto 0); 
+    signal SINE_TEMP, SINE_NEG_TEMP, SINE_NEG                          : std_logic_vector(N-1 downto 0);
+    signal NEG_FLAG                                                    : std_logic;
 
-begin
-    -- Stage 1: Register input and determine QUADRANT
-    process(CLK)
+    -- Function for comparing vectors
+    function GREATER_THAN(A, B: std_logic_vector) return boolean is
     begin
-        if rising_edge(CLK) then
-            ANGLE_REG <= ANGLE;
-            
-            -- Quadrant determination
-            if is_less_than(ANGLE_REG, ANGLE_90) then
-                QUADRANT <= "00";
-            elsif is_less_than(ANGLE_REG, ANGLE_180) then
-                QUADRANT <= "01";
-            elsif is_less_than(ANGLE_REG, ANGLE_270) then
-                QUADRANT <= "10";
-            else
-                QUADRANT <= "11";
+        for I in A'range loop
+            if A(I) = '1' and B(I) = '0' then
+                return true;
+            elsif A(I) = '0' and B(I) = '1' then
+                return false;
             end if;
-        end if;
-    end process;
+        end loop;
+        return false;
+    end function;
 
+begin  
     -- Subtractors for angle adjustments
-    SUB_180_MINUS_REG: SUB
+    SUB180ANGLE: SUB
     generic map (N => 7)
     port map (
-        X    => ANGLE_180(6 downto 0),
-        Y    => ANGLE_REG(6 downto 0),
-        DIFF => ANGLE_180_MINUS_REG
+        X    => ANGLE_180_NMINUS4_BIT,
+        Y    => ANGLE(6 downto 0),
+        DIFF => SUB_180_ANGLE
     );
 
-    SUB_REG_MINUS_180: SUB
+    SUBANGLE180: SUB
     generic map (N => 7)
     port map (
-        X    => ANGLE_REG(6 downto 0),
-        Y    => ANGLE_180(6 downto 0),
-        DIFF => ANGLE_REG_MINUS_180
+        X    => ANGLE(6 downto 0),
+        Y    =>ANGLE_180_NMINUS4_BIT,
+        DIFF => SUB_ANGLE_180
     );
 
-    SUB_360_MINUS_REG: SUB
+    SUB360ANGLE: SUB
     generic map (N => 7)
     port map (
-        X    => ANGLE_360(6 downto 0),
-        Y    => ANGLE_REG(6 downto 0),
-        DIFF => ANGLE_360_MINUS_REG
+        X    => "1101000",
+        Y    => ANGLE(6 downto 0),
+        DIFF => SUB_360_ANGLE
     );
 
-    -- MUX4 for angle selection based on quadrant
-ANGLE_MUX: MUX4
-    generic map (
-        N => 7  -- 7-bit width for angle adjustment
-    )
-    port map(
-        A => ANGLE_REG(6 downto 0),
-        B => ANGLE_180_MINUS_REG,
-        C => ANGLE_REG_MINUS_180,
-        D => ANGLE_360_MINUS_REG,
-        S0 => QUADRANT(0),
-        S1 => QUADRANT(1),
-        Z => ANGLE_ADJUSTED
-    );
-
-    -- Stage 2: Sign determination based on quadrant
-    process(CLK)
-    begin
-        if rising_edge(CLK) then
-            SINE_NEG <= QUADRANT(1);  -- Negative in quadrants 2 and 3
-        end if;
-    end process;
-
-    -- Lookup table for sine values
+    -- LUT instance for sine value lookup
     LUT_INST: LUT
-        generic map (N => N)
-        port map (
-            ANGLE => ANGLE_ADJUSTED,
-            SINE  => SINE_TEMP
-        );
+    generic map (N => N)
+    port map (
+        ANGLE => ANGLE_ADJUSTED,
+        SINE  => SINE_TEMP
+    );
 
-    -- Two's complement calculation
+    -- Two's complement calculation for negative values
     SINE_NEG_TEMP <= not SINE_TEMP;
     
     RCA_INST: RCA
-        generic map (N => N)
-        port map (
-            A    => SINE_NEG_TEMP,
-            B    => ONE_N,
-            CIN  => '0',
-            SUM  => RCA_RESULT,
-            COUT => open
-        );
+    generic map (N => N)
+    port map (
+        A    => SINE_NEG_TEMP,
+        B    => ONE_N,
+        CIN  => '0',
+        SUM  => SINE_NEG,
+        COUT => open
+    );
 
-    -- Stage 3: Final output register
     process(CLK)
     begin
         if rising_edge(CLK) then
-            if SINE_NEG = '0' then
-                SINE_FINAL <= SINE_TEMP;
+                if not GREATER_THAN(ANGLE, "001011010") then           -- First quadrant: 0-90 degrees 
+                    ANGLE_ADJUSTED <= ANGLE(6 downto 0);
+                    NEG_FLAG <= '0';
+                elsif not GREATER_THAN(ANGLE, "010110100") then        -- Second quadrant: 90-180 degrees
+                    ANGLE_ADJUSTED <= SUB_180_ANGLE;
+                    NEG_FLAG <= '0';
+                elsif not GREATER_THAN(ANGLE, ANGLE_270) then          -- Third quadrant: 180-270 degrees 
+                    ANGLE_ADJUSTED <= SUB_ANGLE_180;
+                    NEG_FLAG <= '1';
+                else                                                   -- Fourth quadrant: 270-360 degrees 
+                    ANGLE_ADJUSTED <= SUB_360_ANGLE;
+                    NEG_FLAG <= '1';
+                end if;
+            end if;
+    end process;
+    
+    process(CLK)
+    begin
+        if falling_edge(CLK) then
+            if NEG_FLAG = '0' then
+                SINE <= SINE_TEMP;
             else
-                SINE_FINAL <= RCA_RESULT;
+                SINE <= SINE_NEG;
             end if;
         end if;
     end process;
-
-    -- Output assignment
-    SINE <= SINE_FINAL;
 
 end structural;
