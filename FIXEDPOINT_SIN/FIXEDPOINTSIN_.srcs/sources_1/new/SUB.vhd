@@ -42,7 +42,7 @@ architecture RTL of SUB is
             )
             port map (
                 A          => X,                                    -- Minuend (X)
-                B          => Y_comp,                         -- Subtrahend (Y's 2's complement)
+                B          => Y_COMP,                         -- Subtrahend (Y's 2's complement)
                 CIN      => '1',                                   -- Carry-in set to 1 for 2's complement addition
                 SUM    => DIFF,                               -- Output: Difference (X - Y)
                 COUT  => open                                -- Carry-out is not used
