@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity SINE is
     generic (
-        N : positive := 10;  -- Number of bits for sine values
+        N : positive := 10;  -- Number of bits for sine values output
         M : positive := 9    -- Number of bits for the angle input
     );
     Port (
@@ -17,7 +17,7 @@ architecture structural of SINE is
     component LUT is
         generic (N : positive);
         Port (
-            ANGLE     : in  std_logic_vector(6 downto 0);
+            ANGLE     : in  std_logic_vector(M-3 downto 0);
             SINE     : out std_logic_vector(N-1 downto 0)
         );
     end component;
@@ -68,26 +68,26 @@ architecture structural of SINE is
 begin   
     -- Subtractors for angle adjustments
     SUB180ANGLE: SUB
-    generic map (N => 7)
+    generic map (N => M-2)
     port map (
-        X    => ANGLE_180(6 downto 0),
-        Y    => ANGLE(6 downto 0),
+        X    => ANGLE_180(M-3 downto 0),
+        Y    => ANGLE(M-3 downto 0),
         DIFF => SUB_180_ANGLE
     );
 
     SUBANGLE180: SUB
-    generic map (N => 7)
+    generic map (N => M-2)
     port map (
-        X    => ANGLE(6 downto 0),
-        Y    => ANGLE_180(6 downto 0),
+        X    => ANGLE(M-3 downto 0),
+        Y    => ANGLE_180(M-3 downto 0),
         DIFF => SUB_ANGLE_180
     );
 
     SUB360ANGLE: SUB
-    generic map (N => 7)
+    generic map (N => M-2)
     port map (
-        X    => ANGLE_360(6 downto 0),
-        Y    => ANGLE(6 downto 0),
+        X    => ANGLE_360(M-3 downto 0),
+        Y    => ANGLE(M-3 downto 0),
         DIFF => SUB_360_ANGLE
     );
 
@@ -101,7 +101,6 @@ begin
 
     -- Two's complement calculation for negative values
     SINE_NEG_TEMP <= not SINE_TEMP;
-    
     RCA_2COMPL: RCA
     generic map (N => N)
     port map (
@@ -115,20 +114,16 @@ begin
     process(CLK)
     begin
         if rising_edge(CLK) then
-            if not GREATER_THAN(ANGLE, ANGLE_90) then
-                -- First quadrant: 0-90 degrees
-                ANGLE_ADJUSTED <= ANGLE(6 downto 0);
+            if not GREATER_THAN(ANGLE, ANGLE_90) then       -- First quadrant: 0-90 degrees
+                ANGLE_ADJUSTED <= ANGLE(M-3 downto 0);
                 NEG_FLAG <= '0';
-            elsif not GREATER_THAN(ANGLE, ANGLE_180) then
-                -- Second quadrant: 90-180 degrees
+            elsif not GREATER_THAN(ANGLE, ANGLE_180) then   -- Second quadrant: 90-180 degrees
                 ANGLE_ADJUSTED <= SUB_180_ANGLE;
                 NEG_FLAG <= '0';
-            elsif not GREATER_THAN(ANGLE, ANGLE_270) then
-                -- Third quadrant: 180-270 degrees
+            elsif not GREATER_THAN(ANGLE, ANGLE_270) then   -- Third quadrant: 180-270 degrees
                 ANGLE_ADJUSTED <= SUB_ANGLE_180;
                 NEG_FLAG <= '1';
-            else
-                -- Fourth quadrant: 270-360 degrees
+            else                                            -- Fourth quadrant: 270-360 degrees
                 ANGLE_ADJUSTED <= SUB_360_ANGLE;
                 NEG_FLAG <= '1';
             end if;
