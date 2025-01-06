@@ -8,7 +8,7 @@ architecture Behavioral of TB_FA is
 
     -- Component declaration of the Full Adder (FA)
     component FA
-        Port(
+        Port (
             X, Y, CIN : in  std_logic;
             SUM, COUT : out std_logic
         );
@@ -16,7 +16,7 @@ architecture Behavioral of TB_FA is
 
     -- Test signals to connect to the FA component
     signal X, Y, CIN : std_logic;
-    signal SUM, COUT    : std_logic;
+    signal SUM, COUT : std_logic;
 
 begin
 
@@ -33,68 +33,68 @@ begin
     -- Stimulus process to apply test vectors
     stimulus_process: process
     begin
-        -- Test case 1: X = 0, Y = 0, CIN = 0 => CIN = 0, COUT = 0
+        -- Test case 1: X = 0, Y = 0, CIN = 0 => SUM = 0, COUT = 0
         X <= '0'; Y <= '0'; CIN <= '0';
         wait for 10 ns;
         assert (SUM = '0' and COUT = '0') 
-            report "Test Case 1 Failed: Expected CIN = 0, COUT = 0" 
+            report "Test Case 1 Failed: Expected SUM = 0, COUT = 0" 
             severity error;
 
-        -- Test case 2: X = 0, Y = 0, CIN = 1 => CIN = 1, COUT = 0
+        -- Test case 2: X = 0, Y = 0, CIN = 1 => SUM = 1, COUT = 0
         X <= '0'; Y <= '0'; CIN <= '1';
         wait for 10 ns;
         assert (SUM = '1' and COUT = '0') 
-            report "Test Case 2 Failed: Expected CIN = 1, COUT = 0" 
+            report "Test Case 2 Failed: Expected SUM = 1, COUT = 0" 
             severity error;
 
-        -- Test case 3: X = 0, Y = 1, CIN = 0 => CIN = 1, COUT = 0
+        -- Test case 3: X = 0, Y = 1, CIN = 0 => SUM = 1, COUT = 0
         X <= '0'; Y <= '1'; CIN <= '0';
         wait for 10 ns;
         assert (SUM = '1' and COUT = '0') 
-            report "Test Case 3 Failed: Expected CIN = 1, COUT = 0" 
+            report "Test Case 3 Failed: Expected SUM = 1, COUT = 0" 
             severity error;
 
-        -- Test case 4: X = 0, Y = 1, CIN = 1 => CIN = 0, COUT = 1
+        -- Test case 4: X = 0, Y = 1, CIN = 1 => SUM = 0, COUT = 1
         X <= '0'; Y <= '1'; CIN <= '1';
         wait for 10 ns;
         assert (SUM = '0' and COUT = '1') 
-            report "Test Case 4 Failed: Expected CIN = 0, COUT = 1" 
+            report "Test Case 4 Failed: Expected SUM = 0, COUT = 1" 
             severity error;
 
-        -- Test case 5: X = 1, Y = 0, CIN = 0 => CIN = 1, COUT = 0
+        -- Test case 5: X = 1, Y = 0, CIN = 0 => SUM = 1, COUT = 0
         X <= '1'; Y <= '0'; CIN <= '0';
         wait for 10 ns;
         assert (SUM = '1' and COUT = '0') 
-            report "Test Case 5 Failed: Expected CIN = 1, COUT = 0" 
+            report "Test Case 5 Failed: Expected SUM = 1, COUT = 0" 
             severity error;
 
-        -- Test case 6: X = 1, Y = 0, CIN = 1 => CIN = 0, COUT = 1
+        -- Test case 6: X = 1, Y = 0, CIN = 1 => SUM = 0, COUT = 1
         X <= '1'; Y <= '0'; CIN <= '1';
         wait for 10 ns;
         assert (SUM = '0' and COUT = '1') 
-            report "Test Case 6 Failed: Expected CIN = 0, COUT = 1" 
+            report "Test Case 6 Failed: Expected SUM = 0, COUT = 1" 
             severity error;
 
-        -- Test case 7: X = 1, Y = 1, CIN = 0 => CIN = 0, COUT = 1
+        -- Test case 7: X = 1, Y = 1, CIN = 0 => SUM = 0, COUT = 1
         X <= '1'; Y <= '1'; CIN <= '0';
         wait for 10 ns;
         assert (SUM = '0' and COUT = '1') 
-            report "Test Case 7 Failed: Expected CIN = 0, COUT = 1" 
+            report "Test Case 7 Failed: Expected SUM = 0, COUT = 1" 
             severity error;
 
-        -- Test case 8: X = 1, Y = 1, CIN = 1 => CIN = 1, COUT = 1
+        -- Test case 8: X = 1, Y = 1, CIN = 1 => SUM = 1, COUT = 1
         X <= '1'; Y <= '1'; CIN <= '1';
         wait for 10 ns;
         assert (SUM = '1' and COUT = '1') 
-            report "Test Case 8 Failed: Expected CIN = 1, COUT = 1" 
+            report "Test Case 8 Failed: Expected SUM = 1, COUT = 1" 
             severity error;
 
-        -- Tests completed 
+        -- Tests completed
         report "-----------------------------------------" severity note;
-        report "----SIMULATION COMPLETED SUCCESSFULLY----" severity NOTE;
+        report "---- SIMULATION COMPLETED SUCCESSFULLY ----" severity note;
         report "-----------------------------------------" severity note;
 
-        -- Simulation ended
+        -- End simulation
         std.env.stop;
     end process;
 
