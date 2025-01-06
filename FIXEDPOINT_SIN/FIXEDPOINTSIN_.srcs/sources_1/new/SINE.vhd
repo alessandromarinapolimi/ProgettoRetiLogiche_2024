@@ -66,7 +66,7 @@ begin
     SUB180ANGLE: SUB
     generic map (N => 7)
     port map (
-        X    => ANGLE_180_NMINUS4_BIT,
+        X    => ANGLE_180(6 downto 0),
         Y    => ANGLE(6 downto 0),
         DIFF => SUB_180_ANGLE
     );
