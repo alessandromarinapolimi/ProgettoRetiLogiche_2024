@@ -114,7 +114,7 @@ begin
                 if not GREATER_THAN(ANGLE, "001011010") then           -- First quadrant: 0-90 degrees 
                     ANGLE_ADJUSTED <= ANGLE(6 downto 0);
                     NEG_FLAG <= '0';
-                elsif not GREATER_THAN(ANGLE, ANGLE_180) then        -- Second quadrant: 90-180 degrees
+                elsif not GREATER_THAN(ANGLE, ANGLE_180) then          -- Second quadrant: 90-180 degrees
                     ANGLE_ADJUSTED <= SUB_180_ANGLE;
                     NEG_FLAG <= '0';
                 elsif not GREATER_THAN(ANGLE, "100001110") then        -- Third quadrant: 180-270 degrees 
