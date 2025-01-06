@@ -41,7 +41,7 @@ architecture structural of SINE is
     end component;
 
     -- Constants 
-    constant ANGLE_180   : std_logic_vector(N-1 downto 0)  := "010110100";  
+    constant ANGLE_180   : std_logic_vector(M-1 downto 0)  := "010110100";  
 
     -- Signals for angle processing
     signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE : std_logic_vector(M-3 downto 0); 
