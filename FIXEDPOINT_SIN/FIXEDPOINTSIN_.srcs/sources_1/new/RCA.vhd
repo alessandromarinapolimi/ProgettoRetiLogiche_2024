@@ -6,7 +6,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 --------------------------------------
 
 entity RCA is
-    generic (N : positive);
+    generic (
+        N : positive   -- Number of bits for the adder
+    );
     Port (
         A, B          : in  std_logic_vector(N-1 downto 0);          -- First and second input operand 
         CIN           : in  std_logic;                               -- Carry input

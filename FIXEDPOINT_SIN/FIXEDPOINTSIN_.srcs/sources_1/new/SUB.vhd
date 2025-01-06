@@ -1,39 +1,51 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
---------------------------------------
--- Ripple Carry Adder (RCA)
---------------------------------------
+---------------------------
+-- Subtractor (SUB)
+---------------------------
 
-entity RCA is
-    generic (N : positive);
-    Port (
-        A, B          : in  std_logic_vector(N-1 downto 0);          -- First and second input operand 
-        CIN           : in  std_logic;                               -- Carry input
-        SUM           : out std_logic_vector(N-1 downto 0);          -- Sum output
-        COUT          : out std_logic                                -- Final carry output
+entity SUB is
+    generic (
+        N : positive    
     );
-end entity RCA;
+    Port (
+        X         : in  std_logic_vector(N-1 downto 0);     -- Input: Minuend (X)
+        Y         : in  std_logic_vector(N-1 downto 0);     -- Input: Subtrahend (Y)
+        DIFF      : out std_logic_vector(N-1 downto 0)      -- Output: Difference (X - Y)
+    );
+end entity SUB;
 
-architecture RTL of RCA is
-    signal C : std_logic_vector(N downto 0);                         -- Internal signal for carries: C(0) is carry-in, C(N) is carry-out
-    
+architecture RTL of SUB is
+
+    component RCA is
+        generic (
+            N : positive                                              -- Number of bits for the operands
+        );
+        Port (
+            A             : in  std_logic_vector(N-1 downto 0);       -- Input: First operand
+            B             : in  std_logic_vector(N-1 downto 0);       -- Input: Second operand
+            CIN           : in  std_logic;                            -- Carry-in
+            SUM           : out std_logic_vector(N-1 downto 0);       -- Output: Sum
+            COUT          : out std_logic                             -- Carry-out (unused here)
+        );
+    end component;
+
+    signal Y_comp : std_logic_vector(N-1 downto 0);                   -- Signal for the 2's complement of Y
+
     begin
-        C(0) <= CIN;    
-        
-        --------
-        -- Generate block for each bit of the adder
-        --------
-        gen: for i in 0 to N-1 generate
-            FA_i: entity work.FA
-                port map (
-                    X     => A(i),                      -- Current bit from first operand
-                    Y     => B(i),                      -- Current bit from second operand
-                    CIN   => C(i),                      -- Carry in from previous stage
-                    SUM   => SUM(i),                    -- Current sum bit
-                    COUT  => C(i+1)                     -- Carry out to next stage
-                );
-        end generate;
+            Y_comp <= not Y;                                          -- Calculate 2's complement of Y for subtraction
     
-        COUT <= C(N);
+            SUB_RCA: RCA
+            generic map (
+                N => N
+            )
+            port map (
+                A    => X,                                    -- Minuend (X)
+                B    => Y_comp,                               -- Subtrahend (Y's 2's complement)
+                CIN  => '1',                                  -- Carry-in set to 1 for 2's complement addition
+                SUM  => DIFF,                                 -- Output: Difference (X - Y)
+                COUT => open                                  -- Carry-out is not used
+            );
+            
 end architecture RTL;
