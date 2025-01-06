@@ -41,11 +41,11 @@ architecture structural of SINE is
     end component;
 
     -- Constants
-    constant ANGLE_90    : std_logic_vector(M-1 downto 0)  := "001011010";
-    constant ANGLE_180   : std_logic_vector(M-1 downto 0)  := "010110100";
-    constant ANGLE_270   : std_logic_vector(M-1 downto 0)  := "100001110";
-    constant ANGLE_360   : std_logic_vector(M-1 downto 0)  := "101101000";
-    constant ONE_N       : std_logic_vector(N-1 downto 0)  := (0 => '1', others => '0');
+    constant ANGLE_90    : std_logic_vector(M-1 downto 0) := (M-1 downto 9 => '0') & "001011010";
+    constant ANGLE_180   : std_logic_vector(M-1 downto 0) := (M-1 downto 9 => '0') & "010110100";
+    constant ANGLE_270   : std_logic_vector(M-1 downto 0) := (M-1 downto 9 => '0') & "100001110";
+    constant ANGLE_360   : std_logic_vector(M-1 downto 0) := (M-1 downto 9 => '0') & "101101000"; 
+    constant ONE_N       : std_logic_vector(N-1 downto 0) := (0 => '1', others => '0');
 
     -- Signals for angle processing 
     signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE : std_logic_vector(M-3 downto 0); 
