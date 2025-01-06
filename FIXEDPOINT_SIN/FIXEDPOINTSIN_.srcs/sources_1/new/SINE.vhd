@@ -41,7 +41,7 @@ architecture structural of SINE is
     end component;
 
     -- Constants 
-    constant ANGLE_180_NMINUS4_BIT   : std_logic_vector(N-4 downto 0)  := "0110100";  
+    constant ANGLE_180   : std_logic_vector(N-1 downto 0)  := "010110100";  
 
     -- Signals for angle processing
     signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE : std_logic_vector(M-3 downto 0); 
@@ -75,7 +75,7 @@ begin
     generic map (N => 7)
     port map (
         X    => ANGLE(6 downto 0),
-        Y    =>ANGLE_180_NMINUS4_BIT,
+        Y    => ANGLE_180(6 downto 0),
         DIFF => SUB_ANGLE_180
     );
 
@@ -114,7 +114,7 @@ begin
                 if not GREATER_THAN(ANGLE, "001011010") then           -- First quadrant: 0-90 degrees 
                     ANGLE_ADJUSTED <= ANGLE(6 downto 0);
                     NEG_FLAG <= '0';
-                elsif not GREATER_THAN(ANGLE, "010110100") then        -- Second quadrant: 90-180 degrees
+                elsif not GREATER_THAN(ANGLE, ANGLE_180) then        -- Second quadrant: 90-180 degrees
                     ANGLE_ADJUSTED <= SUB_180_ANGLE;
                     NEG_FLAG <= '0';
                 elsif not GREATER_THAN(ANGLE, "100001110") then        -- Third quadrant: 180-270 degrees 
