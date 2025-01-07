@@ -6,11 +6,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --------------------------------------
 entity LUT is
     generic (
-        N : positive := 10                                                    -- Number of bits for sine values
+        N : positive := 10                                  -- Number of bits for sine values
     );
     Port (
         ANGLE   : in  std_logic_vector(6 downto 0);         -- Input: 7-bit angle
-        SINE       : out std_logic_vector(N-1 downto 0)    -- Output: N-bit sine value
+        SINE    : out std_logic_vector(N-1 downto 0)        -- Output: N-bit sine value
     );
 end entity LUT;
 
@@ -41,9 +41,9 @@ architecture RTL of LUT is
             N : positive
         );
         Port (
-            ANGLE_DIFF  : in  std_logic_vector(2 downto 0);                   -- Input: Fine angle difference
-            SINE1, SINE2 : in  std_logic_vector(N-1 downto 0);               -- Input: Two sine values for interpolation
-            RESULT          : out std_logic_vector(N-1 downto 0)               -- Output: Interpolated sine value
+            ANGLE_DIFF      : in  std_logic_vector(2 downto 0);                 -- Input: Fine angle difference
+            SINE1, SINE2    : in  std_logic_vector(N-1 downto 0);               -- Input: Two sine values for interpolation
+            RESULT          : out std_logic_vector(N-1 downto 0)                -- Output: Interpolated sine value
         );
     end component;
 
@@ -125,10 +125,10 @@ begin
             when "0111000" => SINE <= SINE_LUT(7);                              -- 56°
             when "1000000" => SINE <= SINE_LUT(8);                              -- 64°
             when "1001000" => SINE <= SINE_LUT(9);                              -- 72°
-            when "1010000" => SINE <= SINE_LUT(10);                            -- 80°
-            when "1011000" | "1011001" => SINE <= SINE_LUT(11);       -- 88° or 89°
-            when "1011010" => SINE <= SINE_LUT(12);                            -- 90°
-            when others => SINE <= INTERPOLATED_SINE;                     -- Interpolated values
+            when "1010000" => SINE <= SINE_LUT(10);                             -- 80°
+            when "1011000" | "1011001" => SINE <= SINE_LUT(11);                 -- 88° or 89°
+            when "1011010" => SINE <= SINE_LUT(12);                             -- 90°
+            when others => SINE <= INTERPOLATED_SINE;                           -- Interpolated values
         end case;
     end process;
 
