@@ -10,9 +10,9 @@ entity SINE is
         N : positive := 10    -- Number of bits for sine values output
     );
     Port (
-        CLK         : in  std_logic;
+        CLK            : in  std_logic;
         ANGLE       : in  std_logic_vector(M-1 downto 0);
-        SINE        : out std_logic_vector(N-1 downto 0) := (others => '0')
+        SINE           : out std_logic_vector(N-1 downto 0) := (others => '0')
     );
 end SINE;
 
@@ -22,7 +22,7 @@ architecture structural of SINE is
         generic (N : positive);
         Port (
             ANGLE    : in  std_logic_vector(M-3 downto 0);
-            SINE     : out std_logic_vector(N-1 downto 0)
+            SINE        : out std_logic_vector(N-1 downto 0)
         );
     end component;
 
@@ -44,6 +44,15 @@ architecture structural of SINE is
         );
     end component;
 
+    component COMPARATOR is
+        generic (N : positive);
+        Port (
+            A    : in  std_logic_vector(N-1 downto 0);
+            B    : in  std_logic_vector(N-1 downto 0);
+            GT   : out boolean
+        );
+    end component;
+
     --------
     -- Constants
     --------
@@ -55,28 +64,41 @@ architecture structural of SINE is
     --------
     -- Signals
     --------
-    signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE:   std_logic_vector(M-3 downto 0);
+    signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE: std_logic_vector(M-3 downto 0);
     signal SINE_TEMP, SINE_NEG_TEMP, SINE_NEG: std_logic_vector(N-1 downto 0);
-    signal NEG_FLAG  : std_logic;
-
-    --------
-    -- Function for angles comparison
-    --------
-    function GREATER_THAN(A, B: std_logic_vector) return boolean is
-    begin
+    signal NEG_FLAG: std_logic;
     
-        for I in A'range loop
-            if A(I) = '1' and B(I) = '0' then
-                return true;
-            elsif A(I) = '0' and B(I) = '1' then
-                return false;
-            end if;
-        end loop;
-        
-        return false;
-    end function;
+    -- Comparison signals (now boolean)
+    signal GT_90, GT_180, GT_270: boolean;
 
-    begin
+begin
+
+    --------
+    -- Comparator instantiations
+    --------
+    COMP_90: COMPARATOR
+        generic map (N => M)
+        port map (
+            A    => ANGLE,
+            B    => ANGLE_90,
+            GT   => GT_90
+        );
+
+    COMP_180: COMPARATOR
+        generic map (N => M)
+        port map (
+            A    => ANGLE,
+            B    => ANGLE_180,
+            GT   => GT_180
+        );
+
+    COMP_270: COMPARATOR
+        generic map (N => M)
+        port map (
+            A    => ANGLE,
+            B    => ANGLE_270,
+            GT   => GT_270
+        );
 
     --------
     -- Subtraction logic
@@ -111,7 +133,7 @@ architecture structural of SINE is
     LUT_INST: LUT
         generic map (N => N)
         port map (
-            ANGLE => ANGLE_ADJUSTED,
+            ANGLE   => ANGLE_ADJUSTED,
             SINE    => SINE_TEMP
         );
 
@@ -122,11 +144,11 @@ architecture structural of SINE is
     RCA_2COMPL: RCA
         generic map (N => N)
         port map (
-            A        => SINE_NEG_TEMP,
-            B        => (others => '0'),  
-            CIN      => '1',
-            SUM      => SINE_NEG,
-            COUT     => open
+            A    => SINE_NEG_TEMP,
+            B    => (others => '0'),  
+            CIN  => '1',
+            SUM  => SINE_NEG,
+            COUT => open
         );
 
     --------
@@ -135,24 +157,22 @@ architecture structural of SINE is
     process(CLK)
     begin
         if rising_edge(CLK) then
-        
-            if not GREATER_THAN(ANGLE, ANGLE_90) then         -- Quadrant 1 (0°-90°)
+            if not GT_90 then                     -- Quadrant 1 (0°-90°)
                 ANGLE_ADJUSTED <= ANGLE(M-3 downto 0);
                 NEG_FLAG <= '0';
                 
-            elsif not GREATER_THAN(ANGLE, ANGLE_180) then     -- Quadrant 2 (91°-180°)
+            elsif not GT_180 then                 -- Quadrant 2 (91°-180°)
                 ANGLE_ADJUSTED <= SUB_180_ANGLE;
                 NEG_FLAG <= '0';
                 
-            elsif not GREATER_THAN(ANGLE, ANGLE_270) then     -- Quadrant 3 (181°-270°)
+            elsif not GT_270 then                 -- Quadrant 3 (181°-270°)
                 ANGLE_ADJUSTED <= SUB_ANGLE_180;
                 NEG_FLAG <= '1';
                 
-            else                                              -- Quadrant 4 (271°-359°)
+            else                                  -- Quadrant 4 (271°-359°)
                 ANGLE_ADJUSTED <= SUB_360_ANGLE;
                 NEG_FLAG <= '1';
             end if;
-            
         end if;
     end process;
 
