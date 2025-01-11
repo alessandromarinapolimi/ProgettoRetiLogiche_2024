@@ -66,10 +66,8 @@ architecture structural of SINE is
     --------
     signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE: std_logic_vector(M-3 downto 0);
     signal SINE_TEMP, SINE_NEG_TEMP, SINE_NEG: std_logic_vector(N-1 downto 0);
-    signal NEG_FLAG: boolean;
+    signal NEG_FLAG, GT_90, GT_180, GT_270: boolean;
     
-    -- Comparison signals (now boolean)
-    signal GT_90, GT_180, GT_270: boolean;
 
 begin
 
