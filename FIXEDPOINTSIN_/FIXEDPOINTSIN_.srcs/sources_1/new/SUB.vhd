@@ -33,7 +33,6 @@ architecture RTL of SUB is
 
     begin
             Y_COMP <= not Y;                                                   -- Calculate 2's complement of Y for subtraction
-    
             SUB_RCA: RCA
             generic map (
                 N => N
