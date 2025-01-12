@@ -113,16 +113,18 @@ begin
     -- Step 4: Select interpolation value based on angle difference
     --------
     process(ANGLE_DIFF, SINE_DIFF, MULT_2, MULT_4, SUM_1_2, SUM_1_4, SUM_2_4, SUB_8_1)
+    variable temp : std_logic_vector(N-4 downto 0);
     begin
         case ANGLE_DIFF is
-            when "001"   => ADD_VALUE <= "000" & SINE_DIFF(N-1 downto 3);    -- Scale by 1
-            when "010"   => ADD_VALUE <= "000" & MULT_2(N-1 downto 3);       -- Scale by 2
-            when "011"   => ADD_VALUE <= "000" & SUM_1_2(N-1 downto 3);      -- Scale by 3
-            when "100"   => ADD_VALUE <= "000" & MULT_4(N-1 downto 3);       -- Scale by 4
-            when "101"   => ADD_VALUE <= "000" & SUM_1_4(N-1 downto 3);      -- Scale by 5
-            when "110"   => ADD_VALUE <= "000" & SUM_2_4(N-1 downto 3);      -- Scale by 6
-            when others  => ADD_VALUE <= "000" & SUB_8_1(N-1 downto 3);      -- Scale by 7
+            when "001"   => temp := SINE_DIFF(N-1 downto 3);   -- Scale by 1
+            when "010"   => temp := MULT_2(N-1 downto 3);       -- Scale by 2
+            when "011"   => temp := SUM_1_2(N-1 downto 3);      -- Scale by 3
+            when "100"   => temp := MULT_4(N-1 downto 3);       -- Scale by 4
+            when "101"   => temp := SUM_1_4(N-1 downto 3);      -- Scale by 5
+            when "110"   => temp := SUM_2_4(N-1 downto 3);      -- Scale by 6
+            when others => temp := SUB_8_1(N-1 downto 3);       -- Scale by 7
         end case;
+        ADD_VALUE <= "000" & temp;
     end process;
 
     --------

@@ -66,8 +66,9 @@ architecture structural of SINE is
     --------
     signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE: std_logic_vector(M-3 downto 0);
     signal SINE_TEMP, SINE_NEG_TEMP, SINE_NEG: std_logic_vector(N-1 downto 0);
-    signal NEG_FLAG, GT_90, GT_180, GT_270: boolean;
-    
+    signal GT_90, GT_180, GT_270: boolean;
+    signal NEG_FLAG: std_logic;
+
 begin
 
     --------
@@ -154,18 +155,21 @@ begin
     process(CLK)
     begin
         if rising_edge(CLK) then
-            if GT_270 then                       -- Quadrant 4 (271°-359°)
+           if GT_270 then                       -- Quadrant 4 (271°-359°)
                 ANGLE_ADJUSTED <= SUB_360_ANGLE;
-                NEG_FLAG <= true;
+                NEG_FLAG <= '1';
+                
             elsif GT_180 then                   -- Quadrant 3 (181°-270°)
                 ANGLE_ADJUSTED <= SUB_ANGLE_180;
-                NEG_FLAG <= true;
+                NEG_FLAG <= '1';
+                
             elsif GT_90 then                     -- Quadrant 2 (91°-180°)
                 ANGLE_ADJUSTED <= SUB_180_ANGLE;
-                NEG_FLAG <= false;
+                NEG_FLAG <= '0';
+                
             else                                          -- Quadrant 1 (0°-90°)
                 ANGLE_ADJUSTED <= ANGLE(M-3 downto 0);
-                NEG_FLAG <= false;
+                NEG_FLAG <= '0';
             end if;
         end if;
     end process;
@@ -175,13 +179,13 @@ begin
     --------
     process(CLK)
     begin
-        if falling_edge(CLK) then
-            if NEG_FLAG then
-                SINE <= SINE_NEG;
-            else
-                SINE <= SINE_TEMP;
-            end if;
+       if falling_edge(CLK) then
+        if NEG_FLAG = '1' then
+            SINE <= SINE_NEG;
+        else
+            SINE <= SINE_TEMP;
         end if;
+    end if;
     end process;
 
 end structural;
