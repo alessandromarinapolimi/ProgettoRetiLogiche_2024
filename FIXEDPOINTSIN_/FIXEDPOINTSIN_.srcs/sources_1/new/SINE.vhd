@@ -68,7 +68,6 @@ architecture structural of SINE is
     signal SINE_TEMP, SINE_NEG_TEMP, SINE_NEG: std_logic_vector(N-1 downto 0);
     signal NEG_FLAG, GT_90, GT_180, GT_270: boolean;
     
-
 begin
 
     --------
@@ -158,15 +157,12 @@ begin
             if GT_270 then                       -- Quadrant 4 (271°-359°)
                 ANGLE_ADJUSTED <= SUB_360_ANGLE;
                 NEG_FLAG <= true;
-                
             elsif GT_180 then                   -- Quadrant 3 (181°-270°)
                 ANGLE_ADJUSTED <= SUB_ANGLE_180;
                 NEG_FLAG <= true;
-                
             elsif GT_90 then                     -- Quadrant 2 (91°-180°)
                 ANGLE_ADJUSTED <= SUB_180_ANGLE;
                 NEG_FLAG <= false;
-                
             else                                          -- Quadrant 1 (0°-90°)
                 ANGLE_ADJUSTED <= ANGLE(M-3 downto 0);
                 NEG_FLAG <= false;
