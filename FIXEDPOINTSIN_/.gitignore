@@ -1,38 +1,17 @@
-# Ignore Vivado project files
+# Prima ignora tutto nella cartella FIXEDPOINTSIN_
+FIXEDPOINTSIN_/*
 
+# Poi includi esplicitamente solo la cartella delle sources
+!FIXEDPOINTSIN_.srcs/
+!FIXEDPOINTSIN_.srcs/**/*.vhd
+!FIXEDPOINTSIN_.srcs/**/*.v 
+!FIXEDPOINTSIN_.srcs/**/*.sv
 
-*.xd
-*.cache
-*.data
-*.jou
-*.log
-*.str
-*.dcp
-*.bd
-*.bdxml
-*.bit
-*.bin
-*.ltx
-*.svf
-*.vds
-*.veo
-*.vhi
-*.vho
-*.xci
-*.xml
-*.xsc
-*.wdf
-*.wcfg
-*.tcl
-*.hwdef
-
-# Exclude only .vhd, .v, and .sv files in the .srcs directory
-!**.srcs/**/*.vhd
-!**.srcs/**/*.v 
-!**.srcs/**/*.sv
-
-# Ignore backup files
+# Ignora i file di log Vivado
+vivado*.backup.jou
 vivado*.backup.log
-vivado*.jou
-vivado*.log
+vivado.jou
+vivado.log
+
+
 
