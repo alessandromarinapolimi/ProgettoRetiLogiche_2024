@@ -10,10 +10,10 @@ entity SINE is
         N : positive := 10    -- Number of bits for sine values output
     );
     Port (
-        CLK                : in  std_logic;
-        RESET            : in std_logic:= '0';
-        ANGLE           : in  std_logic_vector(M-1 downto 0);
-        SINE               : out std_logic_vector(N-1 downto 0) := (others => '0')
+        CLK            : in  std_logic;
+        RESET          : in  std_logic := '0'; 
+        ANGLE          : in  std_logic_vector(M-1 downto 0);
+        SINE           : out std_logic_vector(N-1 downto 0) := (others => '0')
     );
 end SINE;
 
@@ -70,8 +70,8 @@ architecture structural of SINE is
     signal GT_90, GT_180, GT_270, NEG_FLAG                               : std_logic := '0';  
     
     signal ANGLE_ADJUSTED_TEMP : std_logic_vector(M-3 downto 0) := (others => '0');
-    signal NEG_FLAG_TEMP              : std_logic := '0';
-    signal SINE_TEMP_OUT               : std_logic_vector(N-1 downto 0) := (others => '0');
+signal NEG_FLAG_TEMP      : std_logic := '0';
+signal SINE_TEMP_OUT      : std_logic_vector(N-1 downto 0) := (others => '0');
 
 begin
 
@@ -153,10 +153,16 @@ begin
             COUT => open
         );
         
-        ANGLE_ADJUSTED <= ANGLE_ADJUSTED_TEMP when RESET = '0' else (others => '0');
-        NEG_FLAG <= NEG_FLAG_TEMP                          when RESET = '0' else '0';
-        SINE <= SINE_TEMP_OUT                                     when RESET = '0' else (others => '0');
+        --------
+    -- Reset logic
+    --------
+    ANGLE_ADJUSTED <= ANGLE_ADJUSTED_TEMP when RESET = '0' else (others => '0');
+    NEG_FLAG <= NEG_FLAG_TEMP when RESET = '0' else '0';
+    SINE <= SINE_TEMP_OUT when RESET = '0' else (others => '0');
 
+     --------
+    -- Angle quadrant adjustment
+    --------
     process(CLK)
     begin
         if rising_edge(CLK) then
