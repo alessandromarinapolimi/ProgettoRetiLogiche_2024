@@ -1,19 +1,7 @@
-# Ignora tutto in FIXEDPOINTSIN_
-FIXEDPOINTSIN_/*
-
-# Mantieni solo i file sorgente
-!FIXEDPOINTSIN_/.srcs/
-!FIXEDPOINTSIN_/.srcs/**/*.vhd
-!FIXEDPOINTSIN_/.srcs/**/*.v 
-!FIXEDPOINTSIN_/.srcs/**/*.sv
-
-# Ignora i file di Vivado
-*.backup.jou
-*.backup.log
-*.jou
-*.log
-*.bat
-*.wdb
+# Ignore Vivado project files
+*.hw
+*.sim
+*.ip_user_files
 *.xd
 *.cache
 *.data
@@ -38,3 +26,16 @@ FIXEDPOINTSIN_/*
 *.wcfg
 *.tcl
 *.hwdef
+*.bat
+*.wdb
+
+# Ignore Vivado backup files
+vivado*.backup.log
+vivado*.jou
+vivado*.log
+
+# Ignore everything in .srcs except .vhd, .v, and .sv
+**.srcs/*
+!**.srcs/**/*.vhd
+!**.srcs/**/*.v
+!**.srcs/**/*.sv
