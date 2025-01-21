@@ -1,0 +1,40 @@
+# Ignora tutto in FIXEDPOINTSIN_
+FIXEDPOINTSIN_/*
+
+# Mantieni solo i file sorgente
+!FIXEDPOINTSIN_/.srcs/
+!FIXEDPOINTSIN_/.srcs/**/*.vhd
+!FIXEDPOINTSIN_/.srcs/**/*.v 
+!FIXEDPOINTSIN_/.srcs/**/*.sv
+
+# Ignora i file di Vivado
+*.backup.jou
+*.backup.log
+*.jou
+*.log
+*.bat
+*.wdb
+*.xd
+*.cache
+*.data
+*.jou
+*.log
+*.str
+*.dcp
+*.bd
+*.bdxml
+*.bit
+*.bin
+*.ltx
+*.svf
+*.vds
+*.veo
+*.vhi
+*.vho
+*.xci
+*.xml
+*.xsc
+*.wdf
+*.wcfg
+*.tcl
+*.hwdef
