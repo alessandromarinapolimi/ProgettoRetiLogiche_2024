@@ -1,5 +1,25 @@
 # Ignore Vivado project files
+
+*.xd
+*.data
+*.jou
+*.log
 *.str
+*.dcp
+*.bd
+*.bdxml
+*.bit
+*.bin
+*.ltx
+*.svf
+*.vds
+*.veo
+*.vhi
+*.vho
+*.xci
+*.xml
+*.xsc
+*.wdf
 *.wcfg
 *.tcl
 *.hwdef
