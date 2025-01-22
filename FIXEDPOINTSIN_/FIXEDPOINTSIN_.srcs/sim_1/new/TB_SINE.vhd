@@ -17,6 +17,7 @@ architecture Behavioral of TB_SINE is
         );
         Port (
             CLK   : in  std_logic;                                                -- System clock
+            RESET : in  std_logic;                                                -- Reset signal
             ANGLE : in  std_logic_vector(M-1 downto 0);                          -- Input angle
             SINE  : out std_logic_vector(N-1 downto 0)                           -- Output sine value
         );
@@ -26,6 +27,7 @@ architecture Behavioral of TB_SINE is
     -- Test signals
     --------
     signal CLK     : std_logic := '0';                                           -- Clock signal
+    signal RESET   : std_logic := '0';                                           -- Reset signal
     signal ANGLE   : std_logic_vector(8 downto 0) := (others => '0');           -- Input angle signal
     signal SINE_V  : std_logic_vector(9 downto 0);                              -- Output sine value
     constant CLK_period : time := 3 ns;                                         -- Clock period definition
@@ -35,7 +37,7 @@ architecture Behavioral of TB_SINE is
     --------
     type angle_array is array (natural range <>) of std_logic_vector(8 downto 0);
     constant TEST_ANGLES : angle_array := (
-        "000000000",  --     (0)
+         "000000000",  --     (0)
         "000000001",  --    (1)
         "000000010",  --    (2)
         "000001000",  --   (8)
@@ -67,8 +69,8 @@ architecture Behavioral of TB_SINE is
         "100111011",  --  (315)
         "010110011",  --    (179)
         "101100111"   --  (359)
-    );
 
+    );
 begin
     --------
     -- Device Under Test (DUT) instantiation
@@ -80,6 +82,7 @@ begin
         )
         port map (
             CLK   => CLK,
+            RESET => RESET,
             ANGLE => ANGLE,
             SINE  => SINE_V
         );
@@ -100,14 +103,28 @@ begin
     --------
     stim_proc: process
     begin
+        -- Initial reset
+        RESET <= '1';
+        wait for CLK_period * 2;
+        
+        -- Release reset
+        RESET <= '0';
         wait for CLK_period;                                                    -- Initial stabilization period
         
         for i in TEST_ANGLES'range loop
             ANGLE <= TEST_ANGLES(i);
-            wait for CLK_period * 10;                                          -- Allow time for sine computation
+            wait for CLK_period * 8;                                           -- Allow time for sine computation
+            
+          
         end loop;
         
+        -- Final reset test
+        RESET <= '1';
+        wait for CLK_period * 2;
+        RESET <= '0';
+        
         wait;                                                                  -- End simulation
+        std.env.stop;
     end process;
     
 end architecture Behavioral;

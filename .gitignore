@@ -1,4 +1,5 @@
 # Ignore Vivado project files
+*.xpr
 *.hw
 *.sim
 *.ip_user_files

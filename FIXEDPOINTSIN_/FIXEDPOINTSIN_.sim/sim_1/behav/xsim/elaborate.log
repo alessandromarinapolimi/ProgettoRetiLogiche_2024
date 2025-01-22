@@ -15,6 +15,7 @@ Time Resolution for simulation is 1ps
 Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
+Compiling package std.env
 Compiling architecture rtl of entity xil_defaultlib.COMPARATOR [\COMPARATOR(n=9)\]
 Compiling architecture rtl of entity xil_defaultlib.FA [fa_default]
 Compiling architecture rtl of entity xil_defaultlib.RCA [\RCA(n=7)\]

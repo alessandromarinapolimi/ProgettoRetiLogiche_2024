@@ -11,7 +11,7 @@ entity SINE is
     );
     Port (
         CLK            : in  std_logic;
-        RESET          : in  std_logic := '0'; 
+        RESET          : in  std_logic := '0';
         ANGLE          : in  std_logic_vector(M-1 downto 0);
         SINE           : out std_logic_vector(N-1 downto 0) := (others => '0')
     );
@@ -68,10 +68,6 @@ architecture structural of SINE is
     signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE   : std_logic_vector(M-3 downto 0);
     signal SINE_TEMP, SINE_NEG_TEMP, SINE_NEG                            : std_logic_vector(N-1 downto 0);
     signal GT_90, GT_180, GT_270, NEG_FLAG                               : std_logic := '0';  
-    
-    signal ANGLE_ADJUSTED_TEMP : std_logic_vector(M-3 downto 0) := (others => '0');
-    signal NEG_FLAG_TEMP      : std_logic := '0';
-    signal SINE_TEMP_OUT      : std_logic_vector(N-1 downto 0) := (others => '0');
 
 begin
 
@@ -153,41 +149,44 @@ begin
             COUT => open
         );
 
-    ANGLE_ADJUSTED <= ANGLE_ADJUSTED_TEMP;
-    NEG_FLAG <= NEG_FLAG_TEMP;
-    SINE <= SINE_TEMP_OUT;
-
     --------
-    -- Angle quadrant adjustment with synchronous reset
+    -- Angle quadrant adjustment
     --------
     process(CLK)
     begin
         if rising_edge(CLK) then
-            if RESET = '1' then
-                ANGLE_ADJUSTED_TEMP <= (others => '0');
-                NEG_FLAG_TEMP <= '0';
-                SINE_TEMP_OUT <= (others => '0');
-            else
-                if GT_270 = '1' then
-                    ANGLE_ADJUSTED_TEMP <= SUB_360_ANGLE;
-                    NEG_FLAG_TEMP <= '1';
-                elsif GT_180 = '1' then
-                    ANGLE_ADJUSTED_TEMP <= SUB_ANGLE_180;
-                    NEG_FLAG_TEMP <= '1';
-                elsif GT_90 = '1' then
-                    ANGLE_ADJUSTED_TEMP <= SUB_180_ANGLE;
-                    NEG_FLAG_TEMP <= '0';
-                else
-                    ANGLE_ADJUSTED_TEMP <= ANGLE(M-3 downto 0);
-                    NEG_FLAG_TEMP <= '0';
-                end if;
-
+           if GT_270 = '1' then                        -- Quadrant 4 (271°-359°)
+                ANGLE_ADJUSTED <= SUB_360_ANGLE;
+                NEG_FLAG <= '1';
                 
+            elsif GT_180 = '1' then                    -- Quadrant 3 (181°-270°)
+                ANGLE_ADJUSTED <= SUB_ANGLE_180;
+                NEG_FLAG <= '1';
+                
+            elsif GT_90 = '1' then                     -- Quadrant 2 (91°-180°)
+                ANGLE_ADJUSTED <= SUB_180_ANGLE;
+                NEG_FLAG <= '0';
+                
+            else                                       -- Quadrant 1 (0°-90°)
+                ANGLE_ADJUSTED <= ANGLE(M-3 downto 0);
+                NEG_FLAG <= '0';
+            end if;
+        end if;
+    end process;
+    --------
+    -- Sine value output logic
+    --------
+    process(CLK)
+    begin
+        if rising_edge(CLK) then
+            if RESET = '0' then      
                 if NEG_FLAG = '1' then
-                    SINE_TEMP_OUT <= SINE_NEG;
+                    SINE <= SINE_NEG;
                 else
-                    SINE_TEMP_OUT <= SINE_TEMP;
+                    SINE <= SINE_TEMP;
                 end if;
+            else                    
+                SINE <= (others => '0');
             end if;
         end if;
     end process;
