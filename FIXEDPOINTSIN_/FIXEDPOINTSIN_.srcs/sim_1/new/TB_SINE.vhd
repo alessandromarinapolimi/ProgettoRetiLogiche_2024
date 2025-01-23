@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+
 --------------------------------------
 -- Testbench for SINE Module
 --------------------------------------
@@ -37,7 +38,7 @@ architecture Behavioral of TB_SINE is
     --------
     type angle_array is array (natural range <>) of std_logic_vector(8 downto 0);
     constant TEST_ANGLES : angle_array := (
-         "000000000",  --     (0)
+        "000000000",  --     (0)
         "000000001",  --    (1)
         "000000010",  --    (2)
         "000001000",  --   (8)
@@ -52,6 +53,7 @@ architecture Behavioral of TB_SINE is
         "000101111",  --   (47)
         "000110000",  --   (48)
         "000110011",  --   (51)
+        "011100111" ,  --  (231)
         "100001101",  --  (269)
         "011111110",  --  (254)
         "001000101",  --   (69)
@@ -60,17 +62,16 @@ architecture Behavioral of TB_SINE is
         "001001111",  --   (79)
         "001010000",  --   (80)
         "001010001",  --   (81)
-        "001010010",  --   (82)
-        "001010011",  --   (83)
+        "001010010",  --   (83)
         "001010110",  --   (86)
         "001010101",  --     (85)
         "001011111",  --   (95)
         "100100010",  --  (290)
         "100111011",  --  (315)
         "010110011",  --    (179)
-        "101100111"   --  (359)
-
+        "101100111"  --  (359)
     );
+
 begin
     --------
     -- Device Under Test (DUT) instantiation
@@ -93,9 +94,9 @@ begin
     CLK_process : process
     begin
         CLK <= '0';
-        wait for CLK_period/10;
+        wait for CLK_period/2;
         CLK <= '1';
-        wait for CLK_period/10;
+        wait for CLK_period/2;
     end process;
 
     --------
@@ -114,16 +115,9 @@ begin
         for i in TEST_ANGLES'range loop
             ANGLE <= TEST_ANGLES(i);
             wait for CLK_period * 8;                                           -- Allow time for sine computation
-            
-          
         end loop;
         
-        -- Final reset test
-        RESET <= '1';
-        wait for CLK_period * 2;
-        RESET <= '0';
-        
-        wait;                                                                  -- End simulation
+        -- End simulation
         std.env.stop;
     end process;
     
