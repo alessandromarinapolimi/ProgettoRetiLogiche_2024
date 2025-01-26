@@ -1,0 +1,6 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../FIXEDPOINTSIN_.srcs/sim_1/new/TB_SINE.vhd" \
+
+# Do not sort compile order
+nosort

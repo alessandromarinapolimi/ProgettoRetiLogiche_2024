@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --------------------------------------
 -- Sine Calculator (SINE)
 --------------------------------------
-entity SINE is
+entity SINE_CALCULATOR is
     generic (
         M : positive := 9;    -- Number of bits for the angle input
         N : positive := 10    -- Number of bits for sine values output
@@ -13,11 +13,11 @@ entity SINE is
         CLK            : in  std_logic;
         RESET          : in  std_logic := '0';
         ANGLE          : in  std_logic_vector(M-1 downto 0);
-        SINE           : out std_logic_vector(N-1 downto 0) := (others => '0')
+        SINE           : out std_logic_vector(N-1 downto 0)
     );
-end SINE;
+end SINE_CALCULATOR;
 
-architecture structural of SINE is
+architecture structural of SINE_CALCULATOR is
 
     component LUT is
         generic (N : positive);
@@ -66,8 +66,8 @@ architecture structural of SINE is
     -- Signals
     --------
     signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE   : std_logic_vector(M-3 downto 0);
-    signal SINE_TEMP, SINE_NEG_TEMP, SINE_NEG                            : std_logic_vector(N-1 downto 0);
-    signal GT_90, GT_180, GT_270, NEG_FLAG                               : std_logic := '0';  
+    signal SINE_TEMP, SINE_NEG_TEMP, SINE_NEG, SINE_NEXT                 : std_logic_vector(N-1 downto 0);
+    signal GT_90, GT_180, GT_270, NEG_FLAG, NEG_FLAG_NEXT               : std_logic := '0';  
 
 begin
 
@@ -149,44 +149,48 @@ begin
             COUT => open
         );
 
-    --------
-    -- Angle quadrant adjustment
-    --------
-    process(CLK)
+    
+    process(GT_270, GT_180, GT_90, ANGLE, SUB_360_ANGLE, SUB_ANGLE_180, SUB_180_ANGLE)
     begin
-        if rising_edge(CLK) then
-           if GT_270 = '1' then                        -- Quadrant 4 (271°-359°)
-                ANGLE_ADJUSTED <= SUB_360_ANGLE;
-                NEG_FLAG <= '1';
-                
-            elsif GT_180 = '1' then                    -- Quadrant 3 (181°-270°)
-                ANGLE_ADJUSTED <= SUB_ANGLE_180;
-                NEG_FLAG <= '1';
-                
-            elsif GT_90 = '1' then                     -- Quadrant 2 (91°-180°)
-                ANGLE_ADJUSTED <= SUB_180_ANGLE;
-                NEG_FLAG <= '0';
-                
-            else                                       -- Quadrant 1 (0°-90°)
-                ANGLE_ADJUSTED <= ANGLE(M-3 downto 0);
-                NEG_FLAG <= '0';
-            end if;
+        ANGLE_ADJUSTED <= ANGLE(M-3 downto 0);
+        NEG_FLAG_NEXT <= '0';
+        
+        if GT_270 = '1' then                        -- Quadrant 4 (271°-359°)
+            ANGLE_ADJUSTED <= SUB_360_ANGLE;
+            NEG_FLAG_NEXT <= '1';
+        elsif GT_180 = '1' then                    -- Quadrant 3 (181°-270°)
+            ANGLE_ADJUSTED <= SUB_ANGLE_180;
+            NEG_FLAG_NEXT <= '1';
+        elsif GT_90 = '1' then                     -- Quadrant 2 (91°-180°)
+            ANGLE_ADJUSTED <= SUB_180_ANGLE;
+            NEG_FLAG_NEXT <= '0';
         end if;
     end process;
+
     --------
-    -- Sine value output logic
+    -- Combinational process for sine value selection
+    --------
+    process(NEG_FLAG, SINE_TEMP, SINE_NEG)
+    begin
+        if NEG_FLAG = '1' then
+            SINE_NEXT <= SINE_NEG;
+        else
+            SINE_NEXT <= SINE_TEMP;
+        end if;
+    end process;
+
+    --------
+    -- Sequential process for registering outputs
     --------
     process(CLK)
     begin
         if rising_edge(CLK) then
-            if RESET = '0' then      
-                if NEG_FLAG = '1' then
-                    SINE <= SINE_NEG;
-                else
-                    SINE <= SINE_TEMP;
-                end if;
-            else                    
+            if RESET = '1' then
+                NEG_FLAG <= '0';
                 SINE <= (others => '0');
+            else
+                NEG_FLAG <= NEG_FLAG_NEXT;
+                SINE <= SINE_NEXT;
             end if;
         end if;
     end process;

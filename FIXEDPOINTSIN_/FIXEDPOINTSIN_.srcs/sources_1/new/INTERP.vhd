@@ -112,7 +112,7 @@ begin
     --------
     -- Step 4: Select interpolation value based on angle difference
     --------
-    process(ANGLE_DIFF, SINE_DIFF)
+    process(ANGLE_DIFF, SINE_DIFF, MULT_2, MULT_4, SUM_1_2, SUM_1_4, SUM_2_4, SUB_8_1)
     variable temp : std_logic_vector(N-4 downto 0);
     begin
         case ANGLE_DIFF is

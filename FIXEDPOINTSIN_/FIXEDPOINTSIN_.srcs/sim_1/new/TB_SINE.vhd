@@ -1,124 +1,77 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
---------------------------------------
--- Testbench for SINE Module
---------------------------------------
 entity TB_SINE is
 end entity TB_SINE;
 
 architecture Behavioral of TB_SINE is
-    --------
-    -- Component declaration for Device Under Test (DUT)
-    --------
-    component SINE
-        generic (
-            M : positive := 9;                                                     -- Number of bits for angle input
-            N : positive := 10                                                     -- Number of bits for sine output
-        );
+    component SINE_CALCULATOR
         Port (
-            CLK   : in  std_logic;                                                -- System clock
-            RESET : in  std_logic;                                                -- Reset signal
-            ANGLE : in  std_logic_vector(M-1 downto 0);                          -- Input angle
-            SINE  : out std_logic_vector(N-1 downto 0)                           -- Output sine value
+            CLK   : in  std_logic;
+            RESET : in  std_logic;
+            ANGLE : in  std_logic_vector(8 downto 0);
+            SINE  : out std_logic_vector(9 downto 0)
         );
     end component;
     
-    --------
-    -- Test signals
-    --------
-    signal CLK     : std_logic := '0';                                           -- Clock signal
-    signal RESET   : std_logic := '0';                                           -- Reset signal
-    signal ANGLE   : std_logic_vector(8 downto 0) := (others => '0');           -- Input angle signal
-    signal SINE_V  : std_logic_vector(9 downto 0);                              -- Output sine value
-    constant CLK_period : time := 3 ns;                                         -- Clock period definition
+    signal CLK     : std_logic;
+    signal RESET   : std_logic;
+    signal ANGLE   : std_logic_vector(8 downto 0);
+    signal SINE    : std_logic_vector(9 downto 0);
+    constant CLK_PERIOD : time := 3 ns;
     
-    --------
-    -- Test vector definition
-    --------
-    type angle_array is array (natural range <>) of std_logic_vector(8 downto 0);
-    constant TEST_ANGLES : angle_array := (
-        "000000000",  --     (0)
-        "000000001",  --    (1)
-        "000000010",  --    (2)
-        "000001000",  --   (8)
-        "000001100",  --   (12)
-        "000010000",  --  (16)
-        "000010001",  --    (17)
-        "000010111",  --  (23)
-        "000011000",  --  (24)
-        "000011101",  --  (29)
-        "000100000",  --   (32)
-        "000101000",  --   (40)
-        "000101111",  --   (47)
-        "000110000",  --   (48)
-        "000110011",  --   (51)
-        "011100111" ,  --  (231)
-        "100001101",  --  (269)
-        "011111110",  --  (254)
-        "001000101",  --   (69)
-        "001001000",  --   (72)
-        "001001001",  --   (73)
-        "001001111",  --   (79)
-        "001010000",  --   (80)
-        "001010001",  --   (81)
-        "001010010",  --   (83)
-        "001010110",  --   (86)
-        "001010101",  --     (85)
-        "001011111",  --   (95)
-        "100100010",  --  (290)
-        "100111011",  --  (315)
-        "010110011",  --    (179)
-        "101100111"  --  (359)
-    );
-
 begin
-    --------
-    -- Device Under Test (DUT) instantiation
-    --------
-    uut: SINE
-        generic map (
-            N => 10,                                                             -- 10-bit sine output
-            M => 9                                                              -- 9-bit angle input
-        )
+    -- Unit Under Test
+    uut: SINE_CALCULATOR
         port map (
             CLK   => CLK,
             RESET => RESET,
             ANGLE => ANGLE,
-            SINE  => SINE_V
+            SINE  => SINE
         );
 
-    --------
+    
+    reset_process: process
+    begin
+        RESET <= '1';  -- Assert reset
+        wait for CLK_period*2;
+        
+        RESET <= '0';  -- Deassert reset
+        wait;  -- Wait forever
+    end process reset_process;       
+    
+           --------
     -- Clock generation process
     --------
-    CLK_process : process
-    begin
-        CLK <= '0';
-        wait for CLK_period/2;
-        CLK <= '1';
-        wait for CLK_period/2;
-    end process;
+ CLK_process: process
+begin
+    CLK <= '1';
+    wait for CLK_period/2;
+    CLK <= '0';
+    wait for CLK_period/2;
+end process CLK_process;
 
-    --------
+ --------
     -- Stimulus process
     --------
     stim_proc: process
     begin
-        -- Initial reset
-        RESET <= '1';
-        wait for CLK_period * 2;
+            
+        wait for CLK_period*33;  
         
-        -- Release reset
-        RESET <= '0';
-        wait for CLK_period;                                                    -- Initial stabilization period
         
-        for i in TEST_ANGLES'range loop
-            ANGLE <= TEST_ANGLES(i);
-            wait for CLK_period * 8;                                           -- Allow time for sine computation
+        -- Test all angles from 0 to 359
+        for i in 0 to 359 loop
+            ANGLE <= std_logic_vector(to_unsigned(i, ANGLE'length));
+            wait for CLK_PERIOD;
         end loop;
         
+       
+        
         -- End simulation
-        std.env.stop;
+        std.env.finish;  -- End simulation
     end process;
     
-end architecture Behavioral;
+    
+    end architecture Behavioral;

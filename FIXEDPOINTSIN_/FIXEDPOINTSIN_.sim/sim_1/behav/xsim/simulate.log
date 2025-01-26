@@ -1,2 +1,2 @@
 Time resolution is 1 ps
-$stop called at time : 777 ns : File "C:/Users/ultro/OneDrive/ALTRO/Desktop/ProgettoRetiLogiche_2024/FIXEDPOINTSIN_/FIXEDPOINTSIN_.srcs/sim_1/new/TB_SINE.vhd" Line 121
+$finish called at time : 3650 ns : File "C:/Users/ultro/OneDrive/ALTRO/Desktop/ProgettoRetiLogiche_2024/FIXEDPOINTSIN_/FIXEDPOINTSIN_.srcs/sim_1/new/TB_SINE.vhd" Line 73
