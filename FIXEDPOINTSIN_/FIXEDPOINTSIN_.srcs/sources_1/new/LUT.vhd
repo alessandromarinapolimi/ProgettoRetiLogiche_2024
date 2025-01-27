@@ -6,10 +6,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --------------------------------------
 entity LUT is
     generic (
-        N : positive := 10                                                        -- Number of bits for sine values
+        N : positive := 10;                                                        
+        M: positive := 6
     );
     Port (
-        ANGLE   : in  std_logic_vector(6 downto 0);             -- Input: 7-bit angle
+        ANGLE   : in  std_logic_vector(M downto 0);             -- Input: 7-bit angle
         SINE       : out std_logic_vector(N-1 downto 0)        -- Output: N-bit sine value
     );
 end entity LUT;
@@ -41,9 +42,9 @@ architecture RTL of LUT is
             N : positive
         );
         Port (
-            ANGLE_DIFF      : in  std_logic_vector(2 downto 0);                    -- Input: Fine angle difference
-            SINE1, SINE2     : in  std_logic_vector(N-1 downto 0);                -- Input: Two sine values for interpolation
-            RESULT              : out std_logic_vector(N-1 downto 0)                -- Output: Interpolated sine value
+            ANGLE_DIFF                             : in  std_logic_vector(2 downto 0);                    -- Input: Fine angle difference
+            SINE1, SINE2                            : in  std_logic_vector(N-1 downto 0);                -- Input: Two sine values for interpolation
+            INTERPOLATED_SINE              : out std_logic_vector(N-1 downto 0)                -- Output: Interpolated sine value
         );
     end component;
 
@@ -61,10 +62,10 @@ begin
             N => N
         )
         port map (
-            ANGLE_DIFF     => ANGLE(2 downto 0),                                
-            SINE1                => SINE1,
-            SINE2                => SINE2,
-            RESULT             => INTERPOLATED_SINE
+            ANGLE_DIFF                           => ANGLE(2 downto 0),                                
+            SINE1                                      => SINE1,
+            SINE2                                      => SINE2,
+            INTERPOLATED_SINE             => INTERPOLATED_SINE
         );
 
     --------

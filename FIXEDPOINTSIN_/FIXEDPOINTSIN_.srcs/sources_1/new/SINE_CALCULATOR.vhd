@@ -20,9 +20,9 @@ end SINE_CALCULATOR;
 architecture structural of SINE_CALCULATOR is
 
     component LUT is
-        generic (N : positive);
+        generic (N,M : positive);
         Port (
-            ANGLE       : in  std_logic_vector(M-3 downto 0);
+            ANGLE       : in  std_logic_vector(M downto 0);
             SINE        : out std_logic_vector(N-1 downto 0)
         );
     end component;
@@ -129,7 +129,7 @@ begin
     -- LUT instantiation for sine value lookup table
     --------
     LUT_INST: LUT
-        generic map (N => N)
+        generic map (N => N, M=>M-3)
         port map (
             ANGLE   => ANGLE_ADJUSTED,
             SINE    => SINE_TEMP

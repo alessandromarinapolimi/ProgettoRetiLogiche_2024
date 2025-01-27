@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2024.1
-| Date         : Mon Jan 27 00:21:25 2025
+| Date         : Mon Jan 27 13:47:16 2025
 | Host         : Laptop-ASH
 | Design       : design_1
 | Device       : xc7a200t-sbg484-1--

@@ -6,12 +6,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 --------------------------------------
 entity INTERP is
     generic (
-        N : positive                                                                                     -- Number of bits for interpolation
+        N : positive                                                                                                        -- Number of bits for interpolation
     );
     Port (
-        ANGLE_DIFF     : in  std_logic_vector(2 downto 0);                     -- Input: 3-bit angle difference
-        SINE1, SINE2    : in  std_logic_vector(N-1 downto 0);                 -- Input: First and second sine values
-        RESULT             : out std_logic_vector(N-1 downto 0)                 -- Output: Interpolated result
+        ANGLE_DIFF                         : in  std_logic_vector(2 downto 0);                     -- Input: 3-bit angle difference
+        SINE1, SINE2                        : in  std_logic_vector(N-1 downto 0);                 -- Input: First and second sine values
+        INTERPOLATED_SINE          : out std_logic_vector(N-1 downto 0)                 -- Output: Interpolated result
     );
 end entity INTERP;
 
@@ -112,7 +112,7 @@ begin
     --------
     -- Step 4: Select interpolation value based on angle difference
     --------
-    process(ANGLE_DIFF, SINE_DIFF, MULT_2, MULT_4, SUM_1_2, SUM_1_4, SUM_2_4, SUB_8_1)
+    process(ANGLE_DIFF, SINE1)
     variable temp : std_logic_vector(N-4 downto 0);
     begin
         case ANGLE_DIFF is
@@ -136,7 +136,7 @@ begin
             A    => SINE1,
             B    => ADD_VALUE,
             CIN  => '0',
-            SUM  => RESULT,
+            SUM  => INTERPOLATED_SINE,
             COUT => open
         );
 
