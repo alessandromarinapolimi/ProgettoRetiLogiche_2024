@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Mon Jan 27 13:47:12 2025
+| Date         : Sun Feb  9 10:48:13 2025
 | Host         : Laptop-ASH running 64-bit major release  (build 9200)
 | Command      : report_drc -file SINE_CALCULATOR_drc_opted.rpt -pb SINE_CALCULATOR_drc_opted.pb -rpx SINE_CALCULATOR_drc_opted.rpx
 | Design       : SINE_CALCULATOR

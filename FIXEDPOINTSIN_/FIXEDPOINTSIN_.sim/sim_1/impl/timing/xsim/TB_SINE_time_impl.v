@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-// Date        : Mon Jan 27 13:49:29 2025
+// Date        : Mon Jan 27 16:30:30 2025
 // Host        : Laptop-ASH running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               C:/Users/ultro/OneDrive/ALTRO/Desktop/ProgettoRetiLogiche_2024/FIXEDPOINTSIN_/FIXEDPOINTSIN_.sim/sim_1/impl/timing/xsim/TB_SINE_time_impl.v
@@ -14,7 +14,7 @@
 `timescale 1 ps / 1 ps
 `define XIL_TIMING
 
-(* ECO_CHECKSUM = "d9774654" *) (* M = "9" *) (* N = "10" *) 
+(* ECO_CHECKSUM = "3f4a92a6" *) (* M = "9" *) (* N = "10" *) 
 (* NotValidForBitStream *)
 (* \DesignAttr:ENABLE_NOC_NETLIST_VIEW  *) 
 (* \DesignAttr:ENABLE_AIE_NETLIST_VIEW  *) 
@@ -33,10 +33,6 @@ module SINE_CALCULATOR
   wire CLK;
   wire CLK_IBUF;
   wire CLK_IBUF_BUFG;
-  wire NEG_FLAG;
-  wire NEG_FLAG_i_1_n_0;
-  wire NEG_FLAG_i_2_n_0;
-  wire NEG_FLAG_i_3_n_0;
   wire RESET;
   wire RESET_IBUF;
   wire [9:0]SINE;
@@ -47,155 +43,76 @@ module SINE_CALCULATOR
   wire \SINE[0]_i_7_n_0 ;
   wire \SINE[0]_i_8_n_0 ;
   wire \SINE[0]_i_9_n_0 ;
-  wire \SINE[1]_i_12_n_0 ;
-  wire \SINE[1]_i_13_n_0 ;
-  wire \SINE[1]_i_14_n_0 ;
-  wire \SINE[1]_i_15_n_0 ;
-  wire \SINE[1]_i_16_n_0 ;
-  wire \SINE[1]_i_17_n_0 ;
-  wire \SINE[1]_i_18_n_0 ;
-  wire \SINE[1]_i_19_n_0 ;
-  wire \SINE[1]_i_20_n_0 ;
-  wire \SINE[1]_i_21_n_0 ;
-  wire \SINE[1]_i_22_n_0 ;
-  wire \SINE[1]_i_23_n_0 ;
+  wire \SINE[1]_i_10_n_0 ;
+  wire \SINE[1]_i_11_n_0 ;
   wire \SINE[1]_i_2_n_0 ;
-  wire \SINE[1]_i_3_n_0 ;
-  wire \SINE[1]_i_4_n_0 ;
+  wire \SINE[1]_i_6_n_0 ;
+  wire \SINE[1]_i_7_n_0 ;
   wire \SINE[1]_i_8_n_0 ;
-  wire \SINE[2]_i_12_n_0 ;
-  wire \SINE[2]_i_13_n_0 ;
-  wire \SINE[2]_i_14_n_0 ;
-  wire \SINE[2]_i_15_n_0 ;
-  wire \SINE[2]_i_16_n_0 ;
-  wire \SINE[2]_i_17_n_0 ;
-  wire \SINE[2]_i_18_n_0 ;
-  wire \SINE[2]_i_19_n_0 ;
-  wire \SINE[2]_i_20_n_0 ;
-  wire \SINE[2]_i_21_n_0 ;
-  wire \SINE[2]_i_22_n_0 ;
-  wire \SINE[2]_i_23_n_0 ;
+  wire \SINE[1]_i_9_n_0 ;
+  wire \SINE[2]_i_10_n_0 ;
+  wire \SINE[2]_i_11_n_0 ;
   wire \SINE[2]_i_2_n_0 ;
-  wire \SINE[2]_i_3_n_0 ;
-  wire \SINE[2]_i_4_n_0 ;
+  wire \SINE[2]_i_6_n_0 ;
+  wire \SINE[2]_i_7_n_0 ;
   wire \SINE[2]_i_8_n_0 ;
-  wire \SINE[3]_i_12_n_0 ;
-  wire \SINE[3]_i_13_n_0 ;
-  wire \SINE[3]_i_14_n_0 ;
-  wire \SINE[3]_i_15_n_0 ;
-  wire \SINE[3]_i_16_n_0 ;
-  wire \SINE[3]_i_17_n_0 ;
-  wire \SINE[3]_i_18_n_0 ;
-  wire \SINE[3]_i_19_n_0 ;
-  wire \SINE[3]_i_20_n_0 ;
-  wire \SINE[3]_i_21_n_0 ;
-  wire \SINE[3]_i_22_n_0 ;
-  wire \SINE[3]_i_23_n_0 ;
+  wire \SINE[2]_i_9_n_0 ;
+  wire \SINE[3]_i_10_n_0 ;
+  wire \SINE[3]_i_11_n_0 ;
   wire \SINE[3]_i_2_n_0 ;
-  wire \SINE[3]_i_3_n_0 ;
-  wire \SINE[3]_i_4_n_0 ;
+  wire \SINE[3]_i_6_n_0 ;
+  wire \SINE[3]_i_7_n_0 ;
   wire \SINE[3]_i_8_n_0 ;
-  wire \SINE[4]_i_10_n_0 ;
-  wire \SINE[4]_i_11_n_0 ;
-  wire \SINE[4]_i_14_n_0 ;
-  wire \SINE[4]_i_15_n_0 ;
-  wire \SINE[4]_i_16_n_0 ;
-  wire \SINE[4]_i_17_n_0 ;
-  wire \SINE[4]_i_18_n_0 ;
-  wire \SINE[4]_i_19_n_0 ;
-  wire \SINE[4]_i_20_n_0 ;
-  wire \SINE[4]_i_21_n_0 ;
+  wire \SINE[3]_i_9_n_0 ;
+  wire \SINE[4]_i_2_n_0 ;
+  wire \SINE[4]_i_3_n_0 ;
   wire \SINE[4]_i_6_n_0 ;
   wire \SINE[4]_i_7_n_0 ;
-  wire \SINE[5]_i_10_n_0 ;
-  wire \SINE[5]_i_11_n_0 ;
-  wire \SINE[5]_i_14_n_0 ;
-  wire \SINE[5]_i_15_n_0 ;
-  wire \SINE[5]_i_16_n_0 ;
-  wire \SINE[5]_i_17_n_0 ;
-  wire \SINE[5]_i_18_n_0 ;
-  wire \SINE[5]_i_19_n_0 ;
-  wire \SINE[5]_i_20_n_0 ;
-  wire \SINE[5]_i_21_n_0 ;
+  wire \SINE[4]_i_8_n_0 ;
+  wire \SINE[4]_i_9_n_0 ;
+  wire \SINE[5]_i_2_n_0 ;
+  wire \SINE[5]_i_3_n_0 ;
   wire \SINE[5]_i_6_n_0 ;
   wire \SINE[5]_i_7_n_0 ;
-  wire \SINE[6]_i_10_n_0 ;
-  wire \SINE[6]_i_11_n_0 ;
-  wire \SINE[6]_i_14_n_0 ;
-  wire \SINE[6]_i_15_n_0 ;
-  wire \SINE[6]_i_16_n_0 ;
-  wire \SINE[6]_i_17_n_0 ;
-  wire \SINE[6]_i_18_n_0 ;
-  wire \SINE[6]_i_19_n_0 ;
-  wire \SINE[6]_i_20_n_0 ;
-  wire \SINE[6]_i_21_n_0 ;
+  wire \SINE[5]_i_8_n_0 ;
+  wire \SINE[5]_i_9_n_0 ;
   wire \SINE[6]_i_2_n_0 ;
+  wire \SINE[6]_i_3_n_0 ;
   wire \SINE[6]_i_6_n_0 ;
   wire \SINE[6]_i_7_n_0 ;
-  wire \SINE[7]_i_10_n_0 ;
-  wire \SINE[7]_i_11_n_0 ;
-  wire \SINE[7]_i_12_n_0 ;
+  wire \SINE[6]_i_8_n_0 ;
+  wire \SINE[6]_i_9_n_0 ;
   wire \SINE[7]_i_2_n_0 ;
   wire \SINE[7]_i_3_n_0 ;
+  wire \SINE[7]_i_4_n_0 ;
   wire \SINE[7]_i_5_n_0 ;
-  wire \SINE[7]_i_6_n_0 ;
-  wire \SINE[7]_i_7_n_0 ;
-  wire \SINE[7]_i_8_n_0 ;
-  wire \SINE[7]_i_9_n_0 ;
   wire \SINE[8]_i_2_n_0 ;
   wire \SINE[8]_i_3_n_0 ;
   wire \SINE[8]_i_4_n_0 ;
+  wire \SINE[8]_i_5_n_0 ;
   wire \SINE[9]_i_2_n_0 ;
   wire \SINE[9]_i_3_n_0 ;
   wire \SINE[9]_i_4_n_0 ;
-  wire \SINE[9]_i_5_n_0 ;
   wire [9:0]SINE_NEXT;
   wire [9:0]SINE_OBUF;
   wire \SINE_reg[0]_i_3_n_0 ;
   wire \SINE_reg[0]_i_4_n_0 ;
   wire \SINE_reg[0]_i_5_n_0 ;
-  wire \SINE_reg[1]_i_10_n_0 ;
-  wire \SINE_reg[1]_i_11_n_0 ;
+  wire \SINE_reg[1]_i_3_n_0 ;
+  wire \SINE_reg[1]_i_4_n_0 ;
   wire \SINE_reg[1]_i_5_n_0 ;
-  wire \SINE_reg[1]_i_6_n_0 ;
-  wire \SINE_reg[1]_i_7_n_0 ;
-  wire \SINE_reg[1]_i_9_n_0 ;
-  wire \SINE_reg[2]_i_10_n_0 ;
-  wire \SINE_reg[2]_i_11_n_0 ;
+  wire \SINE_reg[2]_i_3_n_0 ;
+  wire \SINE_reg[2]_i_4_n_0 ;
   wire \SINE_reg[2]_i_5_n_0 ;
-  wire \SINE_reg[2]_i_6_n_0 ;
-  wire \SINE_reg[2]_i_7_n_0 ;
-  wire \SINE_reg[2]_i_9_n_0 ;
-  wire \SINE_reg[3]_i_10_n_0 ;
-  wire \SINE_reg[3]_i_11_n_0 ;
+  wire \SINE_reg[3]_i_3_n_0 ;
+  wire \SINE_reg[3]_i_4_n_0 ;
   wire \SINE_reg[3]_i_5_n_0 ;
-  wire \SINE_reg[3]_i_6_n_0 ;
-  wire \SINE_reg[3]_i_7_n_0 ;
-  wire \SINE_reg[3]_i_9_n_0 ;
-  wire \SINE_reg[4]_i_12_n_0 ;
-  wire \SINE_reg[4]_i_13_n_0 ;
-  wire \SINE_reg[4]_i_2_n_0 ;
-  wire \SINE_reg[4]_i_3_n_0 ;
   wire \SINE_reg[4]_i_4_n_0 ;
   wire \SINE_reg[4]_i_5_n_0 ;
-  wire \SINE_reg[4]_i_8_n_0 ;
-  wire \SINE_reg[4]_i_9_n_0 ;
-  wire \SINE_reg[5]_i_12_n_0 ;
-  wire \SINE_reg[5]_i_13_n_0 ;
-  wire \SINE_reg[5]_i_2_n_0 ;
-  wire \SINE_reg[5]_i_3_n_0 ;
   wire \SINE_reg[5]_i_4_n_0 ;
   wire \SINE_reg[5]_i_5_n_0 ;
-  wire \SINE_reg[5]_i_8_n_0 ;
-  wire \SINE_reg[5]_i_9_n_0 ;
-  wire \SINE_reg[6]_i_12_n_0 ;
-  wire \SINE_reg[6]_i_13_n_0 ;
-  wire \SINE_reg[6]_i_3_n_0 ;
   wire \SINE_reg[6]_i_4_n_0 ;
   wire \SINE_reg[6]_i_5_n_0 ;
-  wire \SINE_reg[6]_i_8_n_0 ;
-  wire \SINE_reg[6]_i_9_n_0 ;
-  wire \SINE_reg[7]_i_4_n_0 ;
 
 initial begin
  $sdf_annotate("TB_SINE_time_impl.sdf",,,,"tool_control");
@@ -233,41 +150,10 @@ end
   IBUF CLK_IBUF_inst
        (.I(CLK),
         .O(CLK_IBUF));
-  LUT3 #(
-    .INIT(8'h0E)) 
-    NEG_FLAG_i_1
-       (.I0(ANGLE_IBUF[8]),
-        .I1(NEG_FLAG_i_2_n_0),
-        .I2(RESET_IBUF),
-        .O(NEG_FLAG_i_1_n_0));
-  LUT6 #(
-    .INIT(64'hCCC8888888888888)) 
-    NEG_FLAG_i_2
-       (.I0(ANGLE_IBUF[6]),
-        .I1(ANGLE_IBUF[7]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(NEG_FLAG_i_3_n_0),
-        .I4(ANGLE_IBUF[4]),
-        .I5(ANGLE_IBUF[5]),
-        .O(NEG_FLAG_i_2_n_0));
-  LUT3 #(
-    .INIT(8'hE0)) 
-    NEG_FLAG_i_3
-       (.I0(ANGLE_IBUF[0]),
-        .I1(ANGLE_IBUF[1]),
-        .I2(ANGLE_IBUF[2]),
-        .O(NEG_FLAG_i_3_n_0));
-  FDRE #(
-    .INIT(1'b0)) 
-    NEG_FLAG_reg
-       (.C(CLK_IBUF_BUFG),
-        .CE(1'b1),
-        .D(NEG_FLAG_i_1_n_0),
-        .Q(NEG_FLAG),
-        .R(1'b0));
   IBUF RESET_IBUF_inst
        (.I(RESET),
         .O(RESET_IBUF));
+  (* \PinAttr:I2:HOLD_DETOUR  = "2402" *) 
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \SINE[0]_i_1 
@@ -279,1130 +165,650 @@ end
         .I5(\SINE_reg[0]_i_5_n_0 ),
         .O(SINE_NEXT[0]));
   LUT6 #(
-    .INIT(64'hFCE1CDF8DED24DBA)) 
+    .INIT(64'hFECFDD4BC1D8E2DA)) 
     \SINE[0]_i_10 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[0]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[1]),
+        .I4(ANGLE_IBUF[0]),
+        .I5(ANGLE_IBUF[3]),
         .O(\SINE[0]_i_10_n_0 ));
   LUT6 #(
-    .INIT(64'h6C31D224C798F58B)) 
+    .INIT(64'h63D2C124C9F8785B)) 
     \SINE[0]_i_11 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[0]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[0]),
+        .I4(ANGLE_IBUF[3]),
         .I5(ANGLE_IBUF[1]),
         .O(\SINE[0]_i_11_n_0 ));
   LUT6 #(
-    .INIT(64'h55BBB55100BFF442)) 
+    .INIT(64'h5BB555B10FB404F2)) 
     \SINE[0]_i_2 
        (.I0(ANGLE_IBUF[5]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[0]),
+        .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
+        .I4(ANGLE_IBUF[0]),
         .I5(ANGLE_IBUF[3]),
         .O(\SINE[0]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h313E2E10C0FEC11D)) 
+    .INIT(64'h32CC31F11E01E0ED)) 
     \SINE[0]_i_6 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[0]),
-        .O(\SINE[0]_i_6_n_0 ));
-  LUT5 #(
-    .INIT(32'h963D87E1)) 
-    \SINE[0]_i_7 
-       (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[3]),
         .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[0]),
         .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[3]),
+        .O(\SINE[0]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'h939C6D39)) 
+    \SINE[0]_i_7 
+       (.I0(ANGLE_IBUF[4]),
+        .I1(ANGLE_IBUF[2]),
+        .I2(ANGLE_IBUF[0]),
+        .I3(ANGLE_IBUF[1]),
+        .I4(ANGLE_IBUF[3]),
         .O(\SINE[0]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hE96E313BA4E95CF8)) 
+    .INIT(64'hE633AE5F9E1B49C8)) 
     \SINE[0]_i_8 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[1]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[0]),
+        .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[3]),
         .O(\SINE[0]_i_8_n_0 ));
   LUT6 #(
-    .INIT(64'h449FAC9E5C90297B)) 
+    .INIT(64'h4A994CFE5297C90B)) 
     \SINE[0]_i_9 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
+        .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
+        .I4(ANGLE_IBUF[3]),
         .I5(ANGLE_IBUF[1]),
         .O(\SINE[0]_i_9_n_0 ));
   LUT6 #(
-    .INIT(64'h30D000D011EE3E2F)) 
-    \SINE[1]_i_12 
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    \SINE[1]_i_1 
+       (.I0(\SINE[1]_i_2_n_0 ),
+        .I1(\SINE_reg[1]_i_3_n_0 ),
+        .I2(ANGLE_IBUF[8]),
+        .I3(\SINE_reg[1]_i_4_n_0 ),
+        .I4(ANGLE_IBUF[6]),
+        .I5(\SINE_reg[1]_i_5_n_0 ),
+        .O(SINE_NEXT[1]));
+  (* \PinAttr:I0:HOLD_DETOUR  = "1336" *) 
+  (* \PinAttr:I1:HOLD_DETOUR  = "1406" *) 
+  LUT6 #(
+    .INIT(64'hCECDCF49DCE6FEE4)) 
+    \SINE[1]_i_10 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[1]_i_12_n_0 ));
-  LUT5 #(
-    .INIT(32'hD77CAB0D)) 
-    \SINE[1]_i_13 
-       (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[3]),
         .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[1]),
         .I4(ANGLE_IBUF[0]),
-        .O(\SINE[1]_i_13_n_0 ));
+        .I5(ANGLE_IBUF[3]),
+        .O(\SINE[1]_i_10_n_0 ));
+  (* \PinAttr:I1:HOLD_DETOUR  = "1404" *) 
   LUT6 #(
-    .INIT(64'h3679EF28EB695A79)) 
-    \SINE[1]_i_14 
+    .INIT(64'h5E3B6D2886474327)) 
+    \SINE[1]_i_11 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[1]_i_14_n_0 ));
-  LUT6 #(
-    .INIT(64'hFE2D529E4EFCA210)) 
-    \SINE[1]_i_15 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[1]_i_15_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCDFEFCEC4EED964)) 
-    \SINE[1]_i_16 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[3]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[1]_i_16_n_0 ));
-  LUT6 #(
-    .INIT(64'h50E4B4A2E653B707)) 
-    \SINE[1]_i_17 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[1]_i_17_n_0 ));
-  LUT6 #(
-    .INIT(64'h01C03FFFEE2EFE32)) 
-    \SINE[1]_i_18 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
+        .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[1]_i_18_n_0 ));
-  LUT5 #(
-    .INIT(32'h4F1B9E6C)) 
-    \SINE[1]_i_19 
-       (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[0]),
-        .O(\SINE[1]_i_19_n_0 ));
+        .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[3]),
+        .O(\SINE[1]_i_11_n_0 ));
   LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    .INIT(64'h0A5BAEFA0E5AACB8)) 
     \SINE[1]_i_2 
-       (.I0(\SINE[1]_i_4_n_0 ),
-        .I1(\SINE_reg[1]_i_5_n_0 ),
-        .I2(ANGLE_IBUF[8]),
-        .I3(\SINE_reg[1]_i_6_n_0 ),
-        .I4(ANGLE_IBUF[6]),
-        .I5(\SINE_reg[1]_i_7_n_0 ),
+       (.I0(ANGLE_IBUF[5]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[3]),
+        .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[0]),
         .O(\SINE[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hDF174F80DE130681)) 
-    \SINE[1]_i_20 
+    .INIT(64'h0C3F10FFE2F3EEE2)) 
+    \SINE[1]_i_6 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[0]),
-        .O(\SINE[1]_i_20_n_0 ));
-  LUT6 #(
-    .INIT(64'hBACDE23C710ED56B)) 
-    \SINE[1]_i_21 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[1]_i_21_n_0 ));
-  LUT6 #(
-    .INIT(64'h311103030D2C2E2E)) 
-    \SINE[1]_i_22 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[1]_i_22_n_0 ));
-  LUT6 #(
-    .INIT(64'h3CD723CB6693578C)) 
-    \SINE[1]_i_23 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[0]),
-        .O(\SINE[1]_i_23_n_0 ));
-  LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \SINE[1]_i_3 
-       (.I0(\SINE[1]_i_8_n_0 ),
-        .I1(\SINE_reg[1]_i_9_n_0 ),
-        .I2(ANGLE_IBUF[8]),
-        .I3(\SINE_reg[1]_i_10_n_0 ),
-        .I4(ANGLE_IBUF[6]),
-        .I5(\SINE_reg[1]_i_11_n_0 ),
-        .O(\SINE[1]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h550527BD555072EA)) 
-    \SINE[1]_i_4 
-       (.I0(ANGLE_IBUF[5]),
-        .I1(ANGLE_IBUF[0]),
-        .I2(ANGLE_IBUF[4]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[1]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h0AAE0EAC5BFA5AB8)) 
-    \SINE[1]_i_8 
-       (.I0(ANGLE_IBUF[5]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[2]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[1]_i_8_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFCFFF3E3E3EFF)) 
-    \SINE[2]_i_12 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[2]_i_12_n_0 ));
-  LUT5 #(
-    .INIT(32'hD0DBA50E)) 
-    \SINE[2]_i_13 
-       (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[3]),
         .I2(ANGLE_IBUF[0]),
         .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[1]),
-        .O(\SINE[2]_i_13_n_0 ));
-  LUT6 #(
-    .INIT(64'hC46F54BEC5DF55EF)) 
-    \SINE[2]_i_14 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[2]_i_14_n_0 ));
-  LUT6 #(
-    .INIT(64'h96A8D06F559BB3DD)) 
-    \SINE[2]_i_15 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[2]_i_15_n_0 ));
-  LUT6 #(
-    .INIT(64'h02033113FC78ECEC)) 
-    \SINE[2]_i_16 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[2]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[3]),
-        .I5(ANGLE_IBUF[0]),
-        .O(\SINE[2]_i_16_n_0 ));
-  LUT6 #(
-    .INIT(64'h2BFD8C8810477337)) 
-    \SINE[2]_i_17 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[2]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[3]),
-        .I5(ANGLE_IBUF[0]),
-        .O(\SINE[2]_i_17_n_0 ));
-  LUT6 #(
-    .INIT(64'hC00C00CCE110F110)) 
-    \SINE[2]_i_18 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[2]_i_18_n_0 ));
-  LUT5 #(
-    .INIT(32'h0BA45BF3)) 
-    \SINE[2]_i_19 
-       (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[1]),
-        .O(\SINE[2]_i_19_n_0 ));
-  LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \SINE[2]_i_2 
-       (.I0(\SINE[2]_i_4_n_0 ),
-        .I1(\SINE_reg[2]_i_5_n_0 ),
-        .I2(ANGLE_IBUF[8]),
-        .I3(\SINE_reg[2]_i_6_n_0 ),
-        .I4(ANGLE_IBUF[6]),
-        .I5(\SINE_reg[2]_i_7_n_0 ),
-        .O(\SINE[2]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h3B902B852A81BC16)) 
-    \SINE[2]_i_20 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[2]_i_20_n_0 ));
-  LUT6 #(
-    .INIT(64'h680FBB0DD5F166A6)) 
-    \SINE[2]_i_21 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[2]_i_21_n_0 ));
-  LUT6 #(
-    .INIT(64'hFECC2132CECD3132)) 
-    \SINE[2]_i_22 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[2]_i_22_n_0 ));
-  LUT6 #(
-    .INIT(64'h541F4B03E1B4B4F8)) 
-    \SINE[2]_i_23 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[0]),
-        .O(\SINE[2]_i_23_n_0 ));
-  LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \SINE[2]_i_3 
-       (.I0(\SINE[2]_i_8_n_0 ),
-        .I1(\SINE_reg[2]_i_9_n_0 ),
-        .I2(ANGLE_IBUF[8]),
-        .I3(\SINE_reg[2]_i_10_n_0 ),
-        .I4(ANGLE_IBUF[6]),
-        .I5(\SINE_reg[2]_i_11_n_0 ),
-        .O(\SINE[2]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hEAAAAAAABFFEDDD5)) 
-    \SINE[2]_i_4 
-       (.I0(ANGLE_IBUF[5]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[2]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[4]),
-        .I5(ANGLE_IBUF[0]),
-        .O(\SINE[2]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hBF151554E8034203)) 
-    \SINE[2]_i_8 
-       (.I0(ANGLE_IBUF[5]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[0]),
-        .O(\SINE[2]_i_8_n_0 ));
-  LUT6 #(
-    .INIT(64'h3F0F3F3FFFFFFFFE)) 
-    \SINE[3]_i_12 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[3]_i_12_n_0 ));
-  LUT5 #(
-    .INIT(32'h0D73D788)) 
-    \SINE[3]_i_13 
-       (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[1]),
-        .O(\SINE[3]_i_13_n_0 ));
-  LUT6 #(
-    .INIT(64'hD4FF45AF7F65EE44)) 
-    \SINE[3]_i_14 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[3]_i_14_n_0 ));
-  LUT6 #(
-    .INIT(64'h5F0032FAE5071DF5)) 
-    \SINE[3]_i_15 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[0]),
-        .I2(ANGLE_IBUF[4]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[3]_i_15_n_0 ));
-  LUT6 #(
-    .INIT(64'hA8FF99DD56846422)) 
-    \SINE[3]_i_16 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[2]),
-        .I3(ANGLE_IBUF[0]),
         .I4(ANGLE_IBUF[3]),
         .I5(ANGLE_IBUF[1]),
-        .O(\SINE[3]_i_16_n_0 ));
-  LUT6 #(
-    .INIT(64'h1DA2AFFB60594044)) 
-    \SINE[3]_i_17 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[2]),
-        .I3(ANGLE_IBUF[3]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[3]_i_17_n_0 ));
-  LUT6 #(
-    .INIT(64'hF0C0F00000000005)) 
-    \SINE[3]_i_18 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[0]),
-        .I2(ANGLE_IBUF[4]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[3]_i_18_n_0 ));
+        .O(\SINE[1]_i_6_n_0 ));
   LUT5 #(
-    .INIT(32'hD68C2877)) 
-    \SINE[3]_i_19 
+    .INIT(32'h72B73768)) 
+    \SINE[1]_i_7 
        (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[1]),
-        .O(\SINE[3]_i_19_n_0 ));
-  LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \SINE[3]_i_2 
-       (.I0(\SINE[3]_i_4_n_0 ),
-        .I1(\SINE_reg[3]_i_5_n_0 ),
-        .I2(ANGLE_IBUF[8]),
-        .I3(\SINE_reg[3]_i_6_n_0 ),
-        .I4(ANGLE_IBUF[6]),
-        .I5(\SINE_reg[3]_i_7_n_0 ),
-        .O(\SINE[3]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h202288229D37CB23)) 
-    \SINE[3]_i_20 
-       (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[1]),
         .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[0]),
         .I4(ANGLE_IBUF[3]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[3]_i_20_n_0 ));
+        .O(\SINE[1]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'h83A6FCFCFC5A1212)) 
-    \SINE[3]_i_21 
+    .INIT(64'h95E3C0F24CB15D21)) 
+    \SINE[1]_i_8 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[3]_i_21_n_0 ));
-  LUT6 #(
-    .INIT(64'h56640203999BFDFC)) 
-    \SINE[3]_i_22 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[2]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[3]),
         .I4(ANGLE_IBUF[0]),
         .I5(ANGLE_IBUF[1]),
-        .O(\SINE[3]_i_22_n_0 ));
+        .O(\SINE[1]_i_8_n_0 ));
   LUT6 #(
-    .INIT(64'h662D584C9AD2B3FB)) 
-    \SINE[3]_i_23 
+    .INIT(64'hFDE2E86821D35E4A)) 
+    \SINE[1]_i_9 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
+        .I2(ANGLE_IBUF[0]),
         .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[0]),
+        .I4(ANGLE_IBUF[3]),
         .I5(ANGLE_IBUF[1]),
-        .O(\SINE[3]_i_23_n_0 ));
+        .O(\SINE[1]_i_9_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \SINE[3]_i_3 
-       (.I0(\SINE[3]_i_8_n_0 ),
-        .I1(\SINE_reg[3]_i_9_n_0 ),
+    \SINE[2]_i_1 
+       (.I0(\SINE[2]_i_2_n_0 ),
+        .I1(\SINE_reg[2]_i_3_n_0 ),
         .I2(ANGLE_IBUF[8]),
-        .I3(\SINE_reg[3]_i_10_n_0 ),
+        .I3(\SINE_reg[2]_i_4_n_0 ),
         .I4(ANGLE_IBUF[6]),
-        .I5(\SINE_reg[3]_i_11_n_0 ),
-        .O(\SINE[3]_i_3_n_0 ));
+        .I5(\SINE_reg[2]_i_5_n_0 ),
+        .O(SINE_NEXT[2]));
   LUT6 #(
-    .INIT(64'hBFFFDDFFAAABAA80)) 
-    \SINE[3]_i_4 
-       (.I0(ANGLE_IBUF[5]),
-        .I1(ANGLE_IBUF[3]),
+    .INIT(64'h02310313FCEC78EC)) 
+    \SINE[2]_i_10 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[3]),
+        .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[0]),
+        .O(\SINE[2]_i_10_n_0 ));
+  LUT6 #(
+    .INIT(64'h239875CF0C738837)) 
+    \SINE[2]_i_11 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[4]),
         .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[4]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[3]_i_4_n_0 ));
+        .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[3]),
+        .O(\SINE[2]_i_11_n_0 ));
+  (* \PinAttr:I2:HOLD_DETOUR  = "1464" *) 
   LUT6 #(
-    .INIT(64'h4242020015545757)) 
-    \SINE[3]_i_8 
+    .INIT(64'hB115E040F5548323)) 
+    \SINE[2]_i_2 
        (.I0(ANGLE_IBUF[5]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[1]),
+        .I4(ANGLE_IBUF[0]),
+        .I5(ANGLE_IBUF[3]),
+        .O(\SINE[2]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hC00C00CCEF111100)) 
+    \SINE[2]_i_6 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[0]),
         .I3(ANGLE_IBUF[2]),
+        .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[3]),
+        .O(\SINE[2]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'h29782C7F)) 
+    \SINE[2]_i_7 
+       (.I0(ANGLE_IBUF[4]),
+        .I1(ANGLE_IBUF[2]),
+        .I2(ANGLE_IBUF[0]),
+        .I3(ANGLE_IBUF[1]),
+        .I4(ANGLE_IBUF[3]),
+        .O(\SINE[2]_i_7_n_0 ));
+  LUT6 #(
+    .INIT(64'h67C96FD4EE54FD57)) 
+    \SINE[2]_i_8 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[0]),
+        .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[3]),
+        .O(\SINE[2]_i_8_n_0 ));
+  LUT6 #(
+    .INIT(64'h3C805AE5FF3319F7)) 
+    \SINE[2]_i_9 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[3]),
+        .I3(ANGLE_IBUF[1]),
+        .I4(ANGLE_IBUF[0]),
+        .I5(ANGLE_IBUF[2]),
+        .O(\SINE[2]_i_9_n_0 ));
+  LUT6 #(
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    \SINE[3]_i_1 
+       (.I0(\SINE[3]_i_2_n_0 ),
+        .I1(\SINE_reg[3]_i_3_n_0 ),
+        .I2(ANGLE_IBUF[8]),
+        .I3(\SINE_reg[3]_i_4_n_0 ),
+        .I4(ANGLE_IBUF[6]),
+        .I5(\SINE_reg[3]_i_5_n_0 ),
+        .O(SINE_NEXT[3]));
+  LUT6 #(
+    .INIT(64'hA899FFDD56648422)) 
+    \SINE[3]_i_10 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[3]),
         .I4(ANGLE_IBUF[0]),
         .I5(ANGLE_IBUF[1]),
+        .O(\SINE[3]_i_10_n_0 ));
+  LUT6 #(
+    .INIT(64'h152227FBE8D9C844)) 
+    \SINE[3]_i_11 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[3]),
+        .I4(ANGLE_IBUF[0]),
+        .I5(ANGLE_IBUF[1]),
+        .O(\SINE[3]_i_11_n_0 ));
+  LUT6 #(
+    .INIT(64'h4422002015545577)) 
+    \SINE[3]_i_2 
+       (.I0(ANGLE_IBUF[5]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[3]),
+        .I4(ANGLE_IBUF[0]),
+        .I5(ANGLE_IBUF[1]),
+        .O(\SINE[3]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hF000F000C0000005)) 
+    \SINE[3]_i_6 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[0]),
+        .I2(ANGLE_IBUF[4]),
+        .I3(ANGLE_IBUF[3]),
+        .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[2]),
+        .O(\SINE[3]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'hE74819B3)) 
+    \SINE[3]_i_7 
+       (.I0(ANGLE_IBUF[4]),
+        .I1(ANGLE_IBUF[2]),
+        .I2(ANGLE_IBUF[0]),
+        .I3(ANGLE_IBUF[3]),
+        .I4(ANGLE_IBUF[1]),
+        .O(\SINE[3]_i_7_n_0 ));
+  LUT6 #(
+    .INIT(64'h7560DE4EE5F55F6E)) 
+    \SINE[3]_i_8 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[0]),
+        .I3(ANGLE_IBUF[2]),
+        .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[3]),
         .O(\SINE[3]_i_8_n_0 ));
+  LUT6 #(
+    .INIT(64'hF7AA98504FA5B75F)) 
+    \SINE[3]_i_9 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[0]),
+        .I2(ANGLE_IBUF[4]),
+        .I3(ANGLE_IBUF[1]),
+        .I4(ANGLE_IBUF[2]),
+        .I5(ANGLE_IBUF[3]),
+        .O(\SINE[3]_i_9_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \SINE[4]_i_1 
-       (.I0(\SINE_reg[4]_i_2_n_0 ),
-        .I1(\SINE_reg[4]_i_3_n_0 ),
-        .I2(NEG_FLAG),
+       (.I0(\SINE[4]_i_2_n_0 ),
+        .I1(\SINE[4]_i_3_n_0 ),
+        .I2(ANGLE_IBUF[8]),
         .I3(\SINE_reg[4]_i_4_n_0 ),
-        .I4(ANGLE_IBUF[8]),
+        .I4(ANGLE_IBUF[6]),
         .I5(\SINE_reg[4]_i_5_n_0 ),
         .O(SINE_NEXT[4]));
   LUT6 #(
-    .INIT(64'h555DDFDFDD9DD757)) 
-    \SINE[4]_i_10 
+    .INIT(64'h5070507045240507)) 
+    \SINE[4]_i_2 
        (.I0(ANGLE_IBUF[5]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[4]_i_10_n_0 ));
-  LUT6 #(
-    .INIT(64'hFC00FFFFFDFFFA00)) 
-    \SINE[4]_i_11 
-       (.I0(ANGLE_IBUF[0]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[4]),
-        .I3(ANGLE_IBUF[5]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[4]_i_11_n_0 ));
-  LUT6 #(
-    .INIT(64'h540088A8B9FF7756)) 
-    \SINE[4]_i_14 
-       (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[4]_i_14_n_0 ));
-  LUT6 #(
-    .INIT(64'hC88ECCA63E393F11)) 
-    \SINE[4]_i_15 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[1]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[3]),
         .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[4]_i_15_n_0 ));
+        .I5(ANGLE_IBUF[1]),
+        .O(\SINE[4]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h8AAA20000BBBB111)) 
-    \SINE[4]_i_16 
-       (.I0(ANGLE_IBUF[7]),
+    .INIT(64'hDB22336E00000000)) 
+    \SINE[4]_i_3 
+       (.I0(ANGLE_IBUF[1]),
         .I1(ANGLE_IBUF[3]),
+        .I2(ANGLE_IBUF[0]),
+        .I3(ANGLE_IBUF[2]),
+        .I4(ANGLE_IBUF[4]),
+        .I5(ANGLE_IBUF[5]),
+        .O(\SINE[4]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hDFFF75155EEEE444)) 
+    \SINE[4]_i_6 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[4]),
         .I2(ANGLE_IBUF[1]),
         .I3(ANGLE_IBUF[0]),
         .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[4]_i_16_n_0 ));
+        .I5(ANGLE_IBUF[3]),
+        .O(\SINE[4]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'h550022AABAF0F050)) 
-    \SINE[4]_i_17 
+    .INIT(64'h00EF55A577A5FF05)) 
+    \SINE[4]_i_7 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[0]),
         .I2(ANGLE_IBUF[4]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[4]_i_17_n_0 ));
-  LUT6 #(
-    .INIT(64'hAF55BF77508A4088)) 
-    \SINE[4]_i_18 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[3]),
+        .I3(ANGLE_IBUF[3]),
+        .I4(ANGLE_IBUF[1]),
         .I5(ANGLE_IBUF[2]),
-        .O(\SINE[4]_i_18_n_0 ));
+        .O(\SINE[4]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hB6C133C071E251EE)) 
-    \SINE[4]_i_19 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[4]_i_19_n_0 ));
-  LUT6 #(
-    .INIT(64'h755F5B5FF44E4E4E)) 
-    \SINE[4]_i_20 
+    .INIT(64'hA558B478F05AF078)) 
+    \SINE[4]_i_8 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
         .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[4]_i_20_n_0 ));
+        .I4(ANGLE_IBUF[3]),
+        .I5(ANGLE_IBUF[0]),
+        .O(\SINE[4]_i_8_n_0 ));
   LUT6 #(
-    .INIT(64'hAADDFF55450F07AF)) 
-    \SINE[4]_i_21 
+    .INIT(64'hB4E1F692B4B0D61E)) 
+    \SINE[4]_i_9 
        (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[0]),
-        .I2(ANGLE_IBUF[4]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[4]_i_21_n_0 ));
-  LUT6 #(
-    .INIT(64'hC68E1E3E00000000)) 
-    \SINE[4]_i_6 
-       (.I0(ANGLE_IBUF[1]),
-        .I1(ANGLE_IBUF[2]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[4]),
-        .I5(ANGLE_IBUF[5]),
-        .O(\SINE[4]_i_6_n_0 ));
-  LUT6 #(
-    .INIT(64'h5700570042540057)) 
-    \SINE[4]_i_7 
-       (.I0(ANGLE_IBUF[5]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[4]_i_7_n_0 ));
+        .I2(ANGLE_IBUF[2]),
+        .I3(ANGLE_IBUF[3]),
+        .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[0]),
+        .O(\SINE[4]_i_9_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \SINE[5]_i_1 
-       (.I0(\SINE_reg[5]_i_2_n_0 ),
-        .I1(\SINE_reg[5]_i_3_n_0 ),
-        .I2(NEG_FLAG),
+       (.I0(\SINE[5]_i_2_n_0 ),
+        .I1(\SINE[5]_i_3_n_0 ),
+        .I2(ANGLE_IBUF[8]),
         .I3(\SINE_reg[5]_i_4_n_0 ),
-        .I4(ANGLE_IBUF[8]),
+        .I4(ANGLE_IBUF[6]),
         .I5(\SINE_reg[5]_i_5_n_0 ),
         .O(SINE_NEXT[5]));
   LUT6 #(
-    .INIT(64'hDDDDDDDD77377FFF)) 
-    \SINE[5]_i_10 
+    .INIT(64'h0000050577777370)) 
+    \SINE[5]_i_2 
        (.I0(ANGLE_IBUF[5]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[5]_i_10_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFC0FFC0FFC0E0DF)) 
-    \SINE[5]_i_11 
-       (.I0(ANGLE_IBUF[0]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[5]),
-        .I3(ANGLE_IBUF[3]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[1]),
-        .O(\SINE[5]_i_11_n_0 ));
-  LUT6 #(
-    .INIT(64'hF1A52D0D0D0F0F0E)) 
-    \SINE[5]_i_14 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[5]_i_14_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F3FC080FFBC3FFF)) 
-    \SINE[5]_i_15 
-       (.I0(ANGLE_IBUF[0]),
-        .I1(ANGLE_IBUF[7]),
-        .I2(ANGLE_IBUF[2]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[4]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[5]_i_15_n_0 ));
-  LUT6 #(
-    .INIT(64'h55EA15EA00000000)) 
-    \SINE[5]_i_16 
-       (.I0(ANGLE_IBUF[2]),
-        .I1(ANGLE_IBUF[1]),
-        .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[3]),
-        .I4(ANGLE_IBUF[4]),
-        .I5(ANGLE_IBUF[7]),
-        .O(\SINE[5]_i_16_n_0 ));
-  LUT6 #(
-    .INIT(64'h54444466AA888888)) 
-    \SINE[5]_i_17 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[5]_i_17_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F5FFFFFE0A02020)) 
-    \SINE[5]_i_18 
-       (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
         .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[0]),
         .I4(ANGLE_IBUF[1]),
         .I5(ANGLE_IBUF[3]),
-        .O(\SINE[5]_i_18_n_0 ));
+        .O(\SINE[5]_i_2_n_0 ));
+  (* \PinAttr:I4:HOLD_DETOUR  = "1499" *) 
   LUT6 #(
-    .INIT(64'hD393D3B330002004)) 
-    \SINE[5]_i_19 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[2]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[5]_i_19_n_0 ));
-  LUT6 #(
-    .INIT(64'hDDDDD737DDDDD777)) 
-    \SINE[5]_i_20 
-       (.I0(ANGLE_IBUF[7]),
+    .INIT(64'h1333CC8000000000)) 
+    \SINE[5]_i_3 
+       (.I0(ANGLE_IBUF[0]),
         .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[5]_i_20_n_0 ));
-  LUT6 #(
-    .INIT(64'hABBBB9B955577777)) 
-    \SINE[5]_i_21 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[5]_i_21_n_0 ));
-  LUT6 #(
-    .INIT(64'h1555AA8000000000)) 
-    \SINE[5]_i_6 
-       (.I0(ANGLE_IBUF[3]),
-        .I1(ANGLE_IBUF[0]),
         .I2(ANGLE_IBUF[1]),
         .I3(ANGLE_IBUF[2]),
         .I4(ANGLE_IBUF[4]),
         .I5(ANGLE_IBUF[5]),
+        .O(\SINE[5]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h7F7D6D7D5F7D7D7D)) 
+    \SINE[5]_i_6 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[2]),
+        .I2(ANGLE_IBUF[3]),
+        .I3(ANGLE_IBUF[1]),
+        .I4(ANGLE_IBUF[0]),
+        .I5(ANGLE_IBUF[4]),
         .O(\SINE[5]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'h0707070707075350)) 
+    .INIT(64'h01111313FDFDDDDD)) 
     \SINE[5]_i_7 
-       (.I0(ANGLE_IBUF[5]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[3]),
+        .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[0]),
         .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[2]),
+        .I5(ANGLE_IBUF[4]),
         .O(\SINE[5]_i_7_n_0 ));
+  LUT6 #(
+    .INIT(64'h0F5FFFFFE2A20000)) 
+    \SINE[5]_i_8 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[1]),
+        .I3(ANGLE_IBUF[0]),
+        .I4(ANGLE_IBUF[2]),
+        .I5(ANGLE_IBUF[3]),
+        .O(\SINE[5]_i_8_n_0 ));
+  LUT6 #(
+    .INIT(64'h5153BBBBB8A00004)) 
+    \SINE[5]_i_9 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[1]),
+        .I3(ANGLE_IBUF[0]),
+        .I4(ANGLE_IBUF[2]),
+        .I5(ANGLE_IBUF[3]),
+        .O(\SINE[5]_i_9_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \SINE[6]_i_1 
        (.I0(\SINE[6]_i_2_n_0 ),
-        .I1(\SINE_reg[6]_i_3_n_0 ),
-        .I2(NEG_FLAG),
+        .I1(\SINE[6]_i_3_n_0 ),
+        .I2(ANGLE_IBUF[8]),
         .I3(\SINE_reg[6]_i_4_n_0 ),
-        .I4(ANGLE_IBUF[8]),
+        .I4(ANGLE_IBUF[6]),
         .I5(\SINE_reg[6]_i_5_n_0 ),
         .O(SINE_NEXT[6]));
-  LUT6 #(
-    .INIT(64'h77777777FFBFFFFF)) 
-    \SINE[6]_i_10 
-       (.I0(ANGLE_IBUF[5]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[6]_i_10_n_0 ));
-  LUT6 #(
-    .INIT(64'hCFCFCFF8F0F0F0F0)) 
-    \SINE[6]_i_11 
-       (.I0(ANGLE_IBUF[0]),
-        .I1(ANGLE_IBUF[5]),
-        .I2(ANGLE_IBUF[4]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[6]_i_11_n_0 ));
-  LUT6 #(
-    .INIT(64'h63333B3B3B393938)) 
-    \SINE[6]_i_14 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[1]),
-        .I5(ANGLE_IBUF[2]),
-        .O(\SINE[6]_i_14_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCC8CCCFFFF3F3F3)) 
-    \SINE[6]_i_15 
-       (.I0(ANGLE_IBUF[0]),
-        .I1(ANGLE_IBUF[7]),
-        .I2(ANGLE_IBUF[3]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[6]_i_15_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFEA001500000000)) 
-    \SINE[6]_i_16 
-       (.I0(ANGLE_IBUF[3]),
-        .I1(ANGLE_IBUF[1]),
-        .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[4]),
-        .I5(ANGLE_IBUF[7]),
-        .O(\SINE[6]_i_16_n_0 ));
+  (* \PinAttr:I2:HOLD_DETOUR  = "1648" *) 
   LUT5 #(
-    .INIT(32'h00150000)) 
-    \SINE[6]_i_17 
-       (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[2]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[3]),
-        .I4(ANGLE_IBUF[7]),
-        .O(\SINE[6]_i_17_n_0 ));
-  LUT6 #(
-    .INIT(64'h9CCCCCCCC646C646)) 
-    \SINE[6]_i_18 
-       (.I0(ANGLE_IBUF[7]),
+    .INIT(32'h44413333)) 
+    \SINE[6]_i_2 
+       (.I0(ANGLE_IBUF[5]),
         .I1(ANGLE_IBUF[4]),
         .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[6]_i_18_n_0 ));
-  LUT6 #(
-    .INIT(64'h5555555400222222)) 
-    \SINE[6]_i_19 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[6]_i_19_n_0 ));
-  LUT6 #(
-    .INIT(64'h30303C0C48480C0C)) 
-    \SINE[6]_i_2 
-       (.I0(\SINE[6]_i_6_n_0 ),
-        .I1(ANGLE_IBUF[6]),
-        .I2(ANGLE_IBUF[4]),
-        .I3(\SINE[6]_i_7_n_0 ),
         .I4(ANGLE_IBUF[3]),
-        .I5(ANGLE_IBUF[5]),
         .O(\SINE[6]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h55555737FFFFFDDD)) 
-    \SINE[6]_i_20 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[6]_i_20_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFEEEAFFFFFFFF)) 
-    \SINE[6]_i_21 
+    .INIT(64'hAAAA800000000000)) 
+    \SINE[6]_i_3 
        (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[2]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[3]),
-        .I5(ANGLE_IBUF[7]),
-        .O(\SINE[6]_i_21_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \SINE[6]_i_6 
-       (.I0(ANGLE_IBUF[1]),
-        .I1(ANGLE_IBUF[2]),
-        .O(\SINE[6]_i_6_n_0 ));
-  LUT3 #(
-    .INIT(8'h80)) 
-    \SINE[6]_i_7 
-       (.I0(ANGLE_IBUF[0]),
         .I1(ANGLE_IBUF[1]),
-        .I2(ANGLE_IBUF[2]),
-        .O(\SINE[6]_i_7_n_0 ));
+        .I2(ANGLE_IBUF[0]),
+        .I3(ANGLE_IBUF[2]),
+        .I4(ANGLE_IBUF[3]),
+        .I5(ANGLE_IBUF[5]),
+        .O(\SINE[6]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \SINE[7]_i_1 
-       (.I0(\SINE[7]_i_2_n_0 ),
-        .I1(\SINE[7]_i_3_n_0 ),
-        .I2(NEG_FLAG),
-        .I3(\SINE_reg[7]_i_4_n_0 ),
-        .I4(ANGLE_IBUF[8]),
-        .I5(\SINE[7]_i_5_n_0 ),
-        .O(SINE_NEXT[7]));
-  LUT6 #(
-    .INIT(64'hCCCCCCCCC3C3C3B3)) 
-    \SINE[7]_i_10 
-       (.I0(ANGLE_IBUF[0]),
-        .I1(ANGLE_IBUF[5]),
+    .INIT(64'hFFFDEDFD55575757)) 
+    \SINE[6]_i_6 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[2]),
         .I2(ANGLE_IBUF[3]),
         .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
+        .I4(ANGLE_IBUF[0]),
         .I5(ANGLE_IBUF[4]),
-        .O(\SINE[7]_i_10_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFD9D55555555)) 
-    \SINE[7]_i_11 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[7]_i_11_n_0 ));
-  LUT6 #(
-    .INIT(64'h40222222AAAAAAAA)) 
-    \SINE[7]_i_12 
-       (.I0(ANGLE_IBUF[7]),
-        .I1(ANGLE_IBUF[3]),
-        .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[2]),
-        .I5(ANGLE_IBUF[4]),
-        .O(\SINE[7]_i_12_n_0 ));
-  LUT6 #(
-    .INIT(64'h0055FEAA00000000)) 
-    \SINE[7]_i_2 
+        .O(\SINE[6]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'h0015FFFF)) 
+    \SINE[6]_i_7 
        (.I0(ANGLE_IBUF[4]),
         .I1(ANGLE_IBUF[1]),
         .I2(ANGLE_IBUF[2]),
         .I3(ANGLE_IBUF[3]),
-        .I4(ANGLE_IBUF[5]),
-        .I5(ANGLE_IBUF[6]),
-        .O(\SINE[7]_i_2_n_0 ));
+        .I4(ANGLE_IBUF[7]),
+        .O(\SINE[6]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'h3000BBBB30008888)) 
-    \SINE[7]_i_3 
-       (.I0(\SINE[7]_i_6_n_0 ),
-        .I1(ANGLE_IBUF[6]),
-        .I2(\SINE[7]_i_7_n_0 ),
-        .I3(ANGLE_IBUF[7]),
-        .I4(ANGLE_IBUF[5]),
-        .I5(\SINE[7]_i_8_n_0 ),
-        .O(\SINE[7]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hCFBBCF88)) 
-    \SINE[7]_i_5 
-       (.I0(\SINE[7]_i_11_n_0 ),
-        .I1(ANGLE_IBUF[6]),
-        .I2(ANGLE_IBUF[7]),
-        .I3(ANGLE_IBUF[5]),
-        .I4(\SINE[7]_i_12_n_0 ),
-        .O(\SINE[7]_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'h5555577700000000)) 
-    \SINE[7]_i_6 
-       (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[2]),
-        .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[3]),
-        .I5(ANGLE_IBUF[7]),
-        .O(\SINE[7]_i_6_n_0 ));
-  LUT5 #(
-    .INIT(32'hFEFFFFFF)) 
-    \SINE[7]_i_7 
-       (.I0(ANGLE_IBUF[3]),
-        .I1(ANGLE_IBUF[0]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[2]),
-        .I4(ANGLE_IBUF[4]),
-        .O(\SINE[7]_i_7_n_0 ));
-  LUT6 #(
-    .INIT(64'h9DDDDDDDD555D554)) 
-    \SINE[7]_i_8 
+    .INIT(64'h9CCCCC44CC66CC66)) 
+    \SINE[6]_i_8 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[4]),
-        .I2(ANGLE_IBUF[2]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[0]),
-        .I5(ANGLE_IBUF[3]),
-        .O(\SINE[7]_i_8_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFBFFFFFF)) 
-    \SINE[7]_i_9 
-       (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[2]),
         .I2(ANGLE_IBUF[0]),
-        .I3(ANGLE_IBUF[1]),
-        .I4(ANGLE_IBUF[3]),
-        .I5(ANGLE_IBUF[5]),
-        .O(\SINE[7]_i_9_n_0 ));
+        .I3(ANGLE_IBUF[3]),
+        .I4(ANGLE_IBUF[1]),
+        .I5(ANGLE_IBUF[2]),
+        .O(\SINE[6]_i_8_n_0 ));
   LUT6 #(
-    .INIT(64'h88BB8888B888B888)) 
-    \SINE[8]_i_1 
-       (.I0(\SINE[9]_i_2_n_0 ),
-        .I1(NEG_FLAG),
-        .I2(\SINE[8]_i_2_n_0 ),
-        .I3(ANGLE_IBUF[8]),
-        .I4(\SINE[8]_i_3_n_0 ),
-        .I5(ANGLE_IBUF[6]),
-        .O(SINE_NEXT[8]));
-  LUT6 #(
-    .INIT(64'h0000000000400000)) 
-    \SINE[8]_i_2 
-       (.I0(ANGLE_IBUF[4]),
+    .INIT(64'hFFDDFFD4002A002A)) 
+    \SINE[6]_i_9 
+       (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[2]),
         .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[3]),
-        .I5(ANGLE_IBUF[5]),
+        .I3(ANGLE_IBUF[3]),
+        .I4(ANGLE_IBUF[0]),
+        .I5(ANGLE_IBUF[4]),
+        .O(\SINE[6]_i_9_n_0 ));
+  LUT6 #(
+    .INIT(64'h30FFBBBB30FF8888)) 
+    \SINE[7]_i_2 
+       (.I0(\SINE[7]_i_4_n_0 ),
+        .I1(ANGLE_IBUF[6]),
+        .I2(\SINE[9]_i_3_n_0 ),
+        .I3(ANGLE_IBUF[7]),
+        .I4(ANGLE_IBUF[5]),
+        .I5(\SINE[7]_i_5_n_0 ),
+        .O(\SINE[7]_i_2_n_0 ));
+  (* \PinAttr:I0:HOLD_DETOUR  = "1914" *) 
+  (* \PinAttr:I2:HOLD_DETOUR  = "1916" *) 
+  (* \PinAttr:I3:HOLD_DETOUR  = "1921" *) 
+  LUT6 #(
+    .INIT(64'h0505FAEA00000000)) 
+    \SINE[7]_i_3 
+       (.I0(ANGLE_IBUF[4]),
+        .I1(ANGLE_IBUF[2]),
+        .I2(ANGLE_IBUF[3]),
+        .I3(ANGLE_IBUF[1]),
+        .I4(ANGLE_IBUF[5]),
+        .I5(ANGLE_IBUF[6]),
+        .O(\SINE[7]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h55574757FFFFFFFF)) 
+    \SINE[7]_i_4 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[2]),
+        .I2(ANGLE_IBUF[3]),
+        .I3(ANGLE_IBUF[1]),
+        .I4(ANGLE_IBUF[0]),
+        .I5(ANGLE_IBUF[4]),
+        .O(\SINE[7]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h402A002AAAAAAAAA)) 
+    \SINE[7]_i_5 
+       (.I0(ANGLE_IBUF[7]),
+        .I1(ANGLE_IBUF[2]),
+        .I2(ANGLE_IBUF[1]),
+        .I3(ANGLE_IBUF[3]),
+        .I4(ANGLE_IBUF[0]),
+        .I5(ANGLE_IBUF[4]),
+        .O(\SINE[7]_i_5_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \SINE[8]_i_1 
+       (.I0(\SINE[9]_i_2_n_0 ),
+        .I1(ANGLE_IBUF[8]),
+        .I2(\SINE[8]_i_2_n_0 ),
+        .I3(ANGLE_IBUF[6]),
+        .I4(\SINE[8]_i_3_n_0 ),
+        .O(SINE_NEXT[8]));
+  (* \PinAttr:I1:HOLD_DETOUR  = "1718" *) 
+  (* \PinAttr:I4:HOLD_DETOUR  = "1687" *) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFF00000400)) 
+    \SINE[8]_i_2 
+       (.I0(ANGLE_IBUF[5]),
+        .I1(ANGLE_IBUF[4]),
+        .I2(ANGLE_IBUF[0]),
+        .I3(\SINE[8]_i_4_n_0 ),
+        .I4(ANGLE_IBUF[2]),
+        .I5(ANGLE_IBUF[7]),
         .O(\SINE[8]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000400000)) 
+    .INIT(64'hA808000000000000)) 
     \SINE[8]_i_3 
        (.I0(ANGLE_IBUF[7]),
         .I1(ANGLE_IBUF[3]),
-        .I2(\SINE[8]_i_4_n_0 ),
-        .I3(ANGLE_IBUF[2]),
+        .I2(ANGLE_IBUF[2]),
+        .I3(\SINE[8]_i_5_n_0 ),
         .I4(ANGLE_IBUF[4]),
         .I5(ANGLE_IBUF[5]),
         .O(\SINE[8]_i_3_n_0 ));
   LUT2 #(
-    .INIT(4'h2)) 
-    \SINE[8]_i_4 
-       (.I0(ANGLE_IBUF[1]),
-        .I1(ANGLE_IBUF[0]),
-        .O(\SINE[8]_i_4_n_0 ));
-  LUT2 #(
     .INIT(4'h8)) 
+    \SINE[8]_i_4 
+       (.I0(ANGLE_IBUF[3]),
+        .I1(ANGLE_IBUF[1]),
+        .O(\SINE[8]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \SINE[8]_i_5 
+       (.I0(ANGLE_IBUF[1]),
+        .I1(ANGLE_IBUF[3]),
+        .I2(ANGLE_IBUF[0]),
+        .O(\SINE[8]_i_5_n_0 ));
+  (* \PinAttr:I4:HOLD_DETOUR  = "400" *) 
+  (* \PinAttr:I5:HOLD_DETOUR  = "1965" *) 
+  LUT6 #(
+    .INIT(64'hBB88B888B888B888)) 
     \SINE[9]_i_1 
        (.I0(\SINE[9]_i_2_n_0 ),
-        .I1(NEG_FLAG),
+        .I1(ANGLE_IBUF[8]),
+        .I2(ANGLE_IBUF[6]),
+        .I3(ANGLE_IBUF[7]),
+        .I4(\SINE[9]_i_3_n_0 ),
+        .I5(ANGLE_IBUF[5]),
         .O(SINE_NEXT[9]));
   LUT6 #(
-    .INIT(64'hBBBBBBBBFFFCCCFC)) 
+    .INIT(64'hFFFFFFFDFFFFFFFF)) 
     \SINE[9]_i_2 
-       (.I0(\SINE[9]_i_3_n_0 ),
-        .I1(ANGLE_IBUF[8]),
+       (.I0(ANGLE_IBUF[5]),
+        .I1(ANGLE_IBUF[2]),
         .I2(\SINE[9]_i_4_n_0 ),
-        .I3(ANGLE_IBUF[5]),
-        .I4(\SINE[9]_i_5_n_0 ),
+        .I3(ANGLE_IBUF[0]),
+        .I4(ANGLE_IBUF[4]),
         .I5(ANGLE_IBUF[6]),
         .O(\SINE[9]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFEFFFFFFFFFFFF)) 
+  (* \PinAttr:I4:HOLD_DETOUR  = "1650" *) 
+  LUT5 #(
+    .INIT(32'hEEEA0000)) 
     \SINE[9]_i_3 
-       (.I0(ANGLE_IBUF[4]),
+       (.I0(ANGLE_IBUF[3]),
         .I1(ANGLE_IBUF[2]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[3]),
-        .I5(ANGLE_IBUF[5]),
+        .I2(ANGLE_IBUF[0]),
+        .I3(ANGLE_IBUF[1]),
+        .I4(ANGLE_IBUF[4]),
         .O(\SINE[9]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+  LUT2 #(
+    .INIT(4'hB)) 
     \SINE[9]_i_4 
-       (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[2]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[3]),
-        .I5(ANGLE_IBUF[7]),
+       (.I0(ANGLE_IBUF[1]),
+        .I1(ANGLE_IBUF[3]),
         .O(\SINE[9]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFF7FFFFFFFF)) 
-    \SINE[9]_i_5 
-       (.I0(ANGLE_IBUF[4]),
-        .I1(ANGLE_IBUF[2]),
-        .I2(ANGLE_IBUF[1]),
-        .I3(ANGLE_IBUF[0]),
-        .I4(ANGLE_IBUF[3]),
-        .I5(ANGLE_IBUF[7]),
-        .O(\SINE[9]_i_5_n_0 ));
   OBUF \SINE_OBUF[0]_inst 
        (.I(SINE_OBUF[0]),
         .O(SINE[0]));
@@ -1464,40 +870,20 @@ end
         .D(SINE_NEXT[1]),
         .Q(SINE_OBUF[1]),
         .R(RESET_IBUF));
-  MUXF7 \SINE_reg[1]_i_1 
-       (.I0(\SINE[1]_i_2_n_0 ),
-        .I1(\SINE[1]_i_3_n_0 ),
-        .O(SINE_NEXT[1]),
-        .S(NEG_FLAG));
-  MUXF7 \SINE_reg[1]_i_10 
-       (.I0(\SINE[1]_i_20_n_0 ),
-        .I1(\SINE[1]_i_21_n_0 ),
-        .O(\SINE_reg[1]_i_10_n_0 ),
+  MUXF7 \SINE_reg[1]_i_3 
+       (.I0(\SINE[1]_i_6_n_0 ),
+        .I1(\SINE[1]_i_7_n_0 ),
+        .O(\SINE_reg[1]_i_3_n_0 ),
         .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[1]_i_11 
-       (.I0(\SINE[1]_i_22_n_0 ),
-        .I1(\SINE[1]_i_23_n_0 ),
-        .O(\SINE_reg[1]_i_11_n_0 ),
+  MUXF7 \SINE_reg[1]_i_4 
+       (.I0(\SINE[1]_i_8_n_0 ),
+        .I1(\SINE[1]_i_9_n_0 ),
+        .O(\SINE_reg[1]_i_4_n_0 ),
         .S(ANGLE_IBUF[5]));
   MUXF7 \SINE_reg[1]_i_5 
-       (.I0(\SINE[1]_i_12_n_0 ),
-        .I1(\SINE[1]_i_13_n_0 ),
+       (.I0(\SINE[1]_i_10_n_0 ),
+        .I1(\SINE[1]_i_11_n_0 ),
         .O(\SINE_reg[1]_i_5_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[1]_i_6 
-       (.I0(\SINE[1]_i_14_n_0 ),
-        .I1(\SINE[1]_i_15_n_0 ),
-        .O(\SINE_reg[1]_i_6_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[1]_i_7 
-       (.I0(\SINE[1]_i_16_n_0 ),
-        .I1(\SINE[1]_i_17_n_0 ),
-        .O(\SINE_reg[1]_i_7_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[1]_i_9 
-       (.I0(\SINE[1]_i_18_n_0 ),
-        .I1(\SINE[1]_i_19_n_0 ),
-        .O(\SINE_reg[1]_i_9_n_0 ),
         .S(ANGLE_IBUF[5]));
   FDRE #(
     .INIT(1'b0)) 
@@ -1507,40 +893,20 @@ end
         .D(SINE_NEXT[2]),
         .Q(SINE_OBUF[2]),
         .R(RESET_IBUF));
-  MUXF7 \SINE_reg[2]_i_1 
-       (.I0(\SINE[2]_i_2_n_0 ),
-        .I1(\SINE[2]_i_3_n_0 ),
-        .O(SINE_NEXT[2]),
-        .S(NEG_FLAG));
-  MUXF7 \SINE_reg[2]_i_10 
-       (.I0(\SINE[2]_i_20_n_0 ),
-        .I1(\SINE[2]_i_21_n_0 ),
-        .O(\SINE_reg[2]_i_10_n_0 ),
+  MUXF7 \SINE_reg[2]_i_3 
+       (.I0(\SINE[2]_i_6_n_0 ),
+        .I1(\SINE[2]_i_7_n_0 ),
+        .O(\SINE_reg[2]_i_3_n_0 ),
         .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[2]_i_11 
-       (.I0(\SINE[2]_i_22_n_0 ),
-        .I1(\SINE[2]_i_23_n_0 ),
-        .O(\SINE_reg[2]_i_11_n_0 ),
+  MUXF7 \SINE_reg[2]_i_4 
+       (.I0(\SINE[2]_i_8_n_0 ),
+        .I1(\SINE[2]_i_9_n_0 ),
+        .O(\SINE_reg[2]_i_4_n_0 ),
         .S(ANGLE_IBUF[5]));
   MUXF7 \SINE_reg[2]_i_5 
-       (.I0(\SINE[2]_i_12_n_0 ),
-        .I1(\SINE[2]_i_13_n_0 ),
+       (.I0(\SINE[2]_i_10_n_0 ),
+        .I1(\SINE[2]_i_11_n_0 ),
         .O(\SINE_reg[2]_i_5_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[2]_i_6 
-       (.I0(\SINE[2]_i_14_n_0 ),
-        .I1(\SINE[2]_i_15_n_0 ),
-        .O(\SINE_reg[2]_i_6_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[2]_i_7 
-       (.I0(\SINE[2]_i_16_n_0 ),
-        .I1(\SINE[2]_i_17_n_0 ),
-        .O(\SINE_reg[2]_i_7_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[2]_i_9 
-       (.I0(\SINE[2]_i_18_n_0 ),
-        .I1(\SINE[2]_i_19_n_0 ),
-        .O(\SINE_reg[2]_i_9_n_0 ),
         .S(ANGLE_IBUF[5]));
   FDRE #(
     .INIT(1'b0)) 
@@ -1550,40 +916,20 @@ end
         .D(SINE_NEXT[3]),
         .Q(SINE_OBUF[3]),
         .R(RESET_IBUF));
-  MUXF7 \SINE_reg[3]_i_1 
-       (.I0(\SINE[3]_i_2_n_0 ),
-        .I1(\SINE[3]_i_3_n_0 ),
-        .O(SINE_NEXT[3]),
-        .S(NEG_FLAG));
-  MUXF7 \SINE_reg[3]_i_10 
-       (.I0(\SINE[3]_i_20_n_0 ),
-        .I1(\SINE[3]_i_21_n_0 ),
-        .O(\SINE_reg[3]_i_10_n_0 ),
+  MUXF7 \SINE_reg[3]_i_3 
+       (.I0(\SINE[3]_i_6_n_0 ),
+        .I1(\SINE[3]_i_7_n_0 ),
+        .O(\SINE_reg[3]_i_3_n_0 ),
         .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[3]_i_11 
-       (.I0(\SINE[3]_i_22_n_0 ),
-        .I1(\SINE[3]_i_23_n_0 ),
-        .O(\SINE_reg[3]_i_11_n_0 ),
+  MUXF7 \SINE_reg[3]_i_4 
+       (.I0(\SINE[3]_i_8_n_0 ),
+        .I1(\SINE[3]_i_9_n_0 ),
+        .O(\SINE_reg[3]_i_4_n_0 ),
         .S(ANGLE_IBUF[5]));
   MUXF7 \SINE_reg[3]_i_5 
-       (.I0(\SINE[3]_i_12_n_0 ),
-        .I1(\SINE[3]_i_13_n_0 ),
+       (.I0(\SINE[3]_i_10_n_0 ),
+        .I1(\SINE[3]_i_11_n_0 ),
         .O(\SINE_reg[3]_i_5_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[3]_i_6 
-       (.I0(\SINE[3]_i_14_n_0 ),
-        .I1(\SINE[3]_i_15_n_0 ),
-        .O(\SINE_reg[3]_i_6_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[3]_i_7 
-       (.I0(\SINE[3]_i_16_n_0 ),
-        .I1(\SINE[3]_i_17_n_0 ),
-        .O(\SINE_reg[3]_i_7_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[3]_i_9 
-       (.I0(\SINE[3]_i_18_n_0 ),
-        .I1(\SINE[3]_i_19_n_0 ),
-        .O(\SINE_reg[3]_i_9_n_0 ),
         .S(ANGLE_IBUF[5]));
   FDRE #(
     .INIT(1'b0)) 
@@ -1593,45 +939,15 @@ end
         .D(SINE_NEXT[4]),
         .Q(SINE_OBUF[4]),
         .R(RESET_IBUF));
-  MUXF7 \SINE_reg[4]_i_12 
-       (.I0(\SINE[4]_i_18_n_0 ),
-        .I1(\SINE[4]_i_19_n_0 ),
-        .O(\SINE_reg[4]_i_12_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[4]_i_13 
-       (.I0(\SINE[4]_i_20_n_0 ),
-        .I1(\SINE[4]_i_21_n_0 ),
-        .O(\SINE_reg[4]_i_13_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[4]_i_2 
+  MUXF7 \SINE_reg[4]_i_4 
        (.I0(\SINE[4]_i_6_n_0 ),
         .I1(\SINE[4]_i_7_n_0 ),
-        .O(\SINE_reg[4]_i_2_n_0 ),
-        .S(ANGLE_IBUF[6]));
-  MUXF8 \SINE_reg[4]_i_3 
-       (.I0(\SINE_reg[4]_i_8_n_0 ),
-        .I1(\SINE_reg[4]_i_9_n_0 ),
-        .O(\SINE_reg[4]_i_3_n_0 ),
-        .S(ANGLE_IBUF[6]));
-  MUXF7 \SINE_reg[4]_i_4 
-       (.I0(\SINE[4]_i_10_n_0 ),
-        .I1(\SINE[4]_i_11_n_0 ),
         .O(\SINE_reg[4]_i_4_n_0 ),
-        .S(ANGLE_IBUF[6]));
-  MUXF8 \SINE_reg[4]_i_5 
-       (.I0(\SINE_reg[4]_i_12_n_0 ),
-        .I1(\SINE_reg[4]_i_13_n_0 ),
-        .O(\SINE_reg[4]_i_5_n_0 ),
-        .S(ANGLE_IBUF[6]));
-  MUXF7 \SINE_reg[4]_i_8 
-       (.I0(\SINE[4]_i_14_n_0 ),
-        .I1(\SINE[4]_i_15_n_0 ),
-        .O(\SINE_reg[4]_i_8_n_0 ),
         .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[4]_i_9 
-       (.I0(\SINE[4]_i_16_n_0 ),
-        .I1(\SINE[4]_i_17_n_0 ),
-        .O(\SINE_reg[4]_i_9_n_0 ),
+  MUXF7 \SINE_reg[4]_i_5 
+       (.I0(\SINE[4]_i_8_n_0 ),
+        .I1(\SINE[4]_i_9_n_0 ),
+        .O(\SINE_reg[4]_i_5_n_0 ),
         .S(ANGLE_IBUF[5]));
   FDRE #(
     .INIT(1'b0)) 
@@ -1641,45 +957,15 @@ end
         .D(SINE_NEXT[5]),
         .Q(SINE_OBUF[5]),
         .R(RESET_IBUF));
-  MUXF7 \SINE_reg[5]_i_12 
-       (.I0(\SINE[5]_i_18_n_0 ),
-        .I1(\SINE[5]_i_19_n_0 ),
-        .O(\SINE_reg[5]_i_12_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[5]_i_13 
-       (.I0(\SINE[5]_i_20_n_0 ),
-        .I1(\SINE[5]_i_21_n_0 ),
-        .O(\SINE_reg[5]_i_13_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[5]_i_2 
+  MUXF7 \SINE_reg[5]_i_4 
        (.I0(\SINE[5]_i_6_n_0 ),
         .I1(\SINE[5]_i_7_n_0 ),
-        .O(\SINE_reg[5]_i_2_n_0 ),
-        .S(ANGLE_IBUF[6]));
-  MUXF8 \SINE_reg[5]_i_3 
-       (.I0(\SINE_reg[5]_i_8_n_0 ),
-        .I1(\SINE_reg[5]_i_9_n_0 ),
-        .O(\SINE_reg[5]_i_3_n_0 ),
-        .S(ANGLE_IBUF[6]));
-  MUXF7 \SINE_reg[5]_i_4 
-       (.I0(\SINE[5]_i_10_n_0 ),
-        .I1(\SINE[5]_i_11_n_0 ),
         .O(\SINE_reg[5]_i_4_n_0 ),
-        .S(ANGLE_IBUF[6]));
-  MUXF8 \SINE_reg[5]_i_5 
-       (.I0(\SINE_reg[5]_i_12_n_0 ),
-        .I1(\SINE_reg[5]_i_13_n_0 ),
-        .O(\SINE_reg[5]_i_5_n_0 ),
-        .S(ANGLE_IBUF[6]));
-  MUXF7 \SINE_reg[5]_i_8 
-       (.I0(\SINE[5]_i_14_n_0 ),
-        .I1(\SINE[5]_i_15_n_0 ),
-        .O(\SINE_reg[5]_i_8_n_0 ),
         .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[5]_i_9 
-       (.I0(\SINE[5]_i_16_n_0 ),
-        .I1(\SINE[5]_i_17_n_0 ),
-        .O(\SINE_reg[5]_i_9_n_0 ),
+  MUXF7 \SINE_reg[5]_i_5 
+       (.I0(\SINE[5]_i_8_n_0 ),
+        .I1(\SINE[5]_i_9_n_0 ),
+        .O(\SINE_reg[5]_i_5_n_0 ),
         .S(ANGLE_IBUF[5]));
   FDRE #(
     .INIT(1'b0)) 
@@ -1689,40 +975,15 @@ end
         .D(SINE_NEXT[6]),
         .Q(SINE_OBUF[6]),
         .R(RESET_IBUF));
-  MUXF7 \SINE_reg[6]_i_12 
-       (.I0(\SINE[6]_i_18_n_0 ),
-        .I1(\SINE[6]_i_19_n_0 ),
-        .O(\SINE_reg[6]_i_12_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[6]_i_13 
-       (.I0(\SINE[6]_i_20_n_0 ),
-        .I1(\SINE[6]_i_21_n_0 ),
-        .O(\SINE_reg[6]_i_13_n_0 ),
-        .S(ANGLE_IBUF[5]));
-  MUXF8 \SINE_reg[6]_i_3 
-       (.I0(\SINE_reg[6]_i_8_n_0 ),
-        .I1(\SINE_reg[6]_i_9_n_0 ),
-        .O(\SINE_reg[6]_i_3_n_0 ),
-        .S(ANGLE_IBUF[6]));
   MUXF7 \SINE_reg[6]_i_4 
-       (.I0(\SINE[6]_i_10_n_0 ),
-        .I1(\SINE[6]_i_11_n_0 ),
+       (.I0(\SINE[6]_i_6_n_0 ),
+        .I1(\SINE[6]_i_7_n_0 ),
         .O(\SINE_reg[6]_i_4_n_0 ),
-        .S(ANGLE_IBUF[6]));
-  MUXF8 \SINE_reg[6]_i_5 
-       (.I0(\SINE_reg[6]_i_12_n_0 ),
-        .I1(\SINE_reg[6]_i_13_n_0 ),
-        .O(\SINE_reg[6]_i_5_n_0 ),
-        .S(ANGLE_IBUF[6]));
-  MUXF7 \SINE_reg[6]_i_8 
-       (.I0(\SINE[6]_i_14_n_0 ),
-        .I1(\SINE[6]_i_15_n_0 ),
-        .O(\SINE_reg[6]_i_8_n_0 ),
         .S(ANGLE_IBUF[5]));
-  MUXF7 \SINE_reg[6]_i_9 
-       (.I0(\SINE[6]_i_16_n_0 ),
-        .I1(\SINE[6]_i_17_n_0 ),
-        .O(\SINE_reg[6]_i_9_n_0 ),
+  MUXF7 \SINE_reg[6]_i_5 
+       (.I0(\SINE[6]_i_8_n_0 ),
+        .I1(\SINE[6]_i_9_n_0 ),
+        .O(\SINE_reg[6]_i_5_n_0 ),
         .S(ANGLE_IBUF[5]));
   FDRE #(
     .INIT(1'b0)) 
@@ -1732,11 +993,11 @@ end
         .D(SINE_NEXT[7]),
         .Q(SINE_OBUF[7]),
         .R(RESET_IBUF));
-  MUXF7 \SINE_reg[7]_i_4 
-       (.I0(\SINE[7]_i_9_n_0 ),
-        .I1(\SINE[7]_i_10_n_0 ),
-        .O(\SINE_reg[7]_i_4_n_0 ),
-        .S(ANGLE_IBUF[6]));
+  MUXF7 \SINE_reg[7]_i_1 
+       (.I0(\SINE[7]_i_2_n_0 ),
+        .I1(\SINE[7]_i_3_n_0 ),
+        .O(SINE_NEXT[7]),
+        .S(ANGLE_IBUF[8]));
   FDRE #(
     .INIT(1'b0)) 
     \SINE_reg[8] 

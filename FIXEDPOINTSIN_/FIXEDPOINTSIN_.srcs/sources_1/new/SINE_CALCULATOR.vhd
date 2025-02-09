@@ -64,10 +64,12 @@ architecture structural of SINE_CALCULATOR is
 
     --------
     -- Signals
-    --------
-    signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE   : std_logic_vector(M-3 downto 0);
-    signal SINE_TEMP, SINE_NEG_TEMP, SINE_NEG, SINE_NEXT                 : std_logic_vector(N-1 downto 0);
-    signal GT_90, GT_180, GT_270, NEG_FLAG, NEG_FLAG_NEXT               : std_logic := '0';  
+    -------- 
+    signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE : std_logic_vector(M-3 downto 0);
+    signal SINE_TEMP, SINE_NEG, SINE_NEG_TEMP, SINE_NEXT                                         : std_logic_vector(N-1 downto 0);
+    signal GT_90, GT_180, GT_270                                       : std_logic;
+    signal QUADRANT                                                    : std_logic_vector(2 downto 0);
+
 
 begin
 
@@ -135,6 +137,10 @@ begin
             SINE    => SINE_TEMP
         );
 
+    
+    QUADRANT <= GT_270 & GT_180 & GT_90;
+
+
     --------
     -- Two's complement logic for negative sine
     --------
@@ -150,29 +156,26 @@ begin
         );
 
     
-    process(GT_270, GT_180, GT_90, ANGLE, SUB_360_ANGLE, SUB_ANGLE_180, SUB_180_ANGLE)
+  process(QUADRANT, ANGLE, SUB_360_ANGLE, SUB_ANGLE_180, SUB_180_ANGLE)
     begin
-        ANGLE_ADJUSTED <= ANGLE(M-3 downto 0);
-        NEG_FLAG_NEXT <= '0';
-        
-        if GT_270 = '1' then                        -- Quadrant 4 (271°-359°)
-            ANGLE_ADJUSTED <= SUB_360_ANGLE;
-            NEG_FLAG_NEXT <= '1';
-        elsif GT_180 = '1' then                    -- Quadrant 3 (181°-270°)
-            ANGLE_ADJUSTED <= SUB_ANGLE_180;
-            NEG_FLAG_NEXT <= '1';
-        elsif GT_90 = '1' then                     -- Quadrant 2 (91°-180°)
-            ANGLE_ADJUSTED <= SUB_180_ANGLE;
-            NEG_FLAG_NEXT <= '0';
-        end if;
+        case QUADRANT is
+            when "111" =>   -- Quadrant 4 (271°-359°)
+                ANGLE_ADJUSTED <= SUB_360_ANGLE;
+            when "011" =>   -- Quadrant 3 (181°-270°)
+                ANGLE_ADJUSTED <= SUB_ANGLE_180;
+            when "001" =>   -- Quadrant 2 (91°-180°)
+                ANGLE_ADJUSTED <= SUB_180_ANGLE;
+            when others => -- Quadrant 1 (0°-90°)
+                ANGLE_ADJUSTED <= ANGLE(M-3 downto 0);
+        end case;
     end process;
 
     --------
     -- Combinational process for sine value selection
     --------
-    process(NEG_FLAG, SINE_TEMP, SINE_NEG)
+    process(QUADRANT)
     begin
-        if NEG_FLAG = '1' then
+        if QUADRANT(1) = '1' then
             SINE_NEXT <= SINE_NEG;
         else
             SINE_NEXT <= SINE_TEMP;
@@ -186,10 +189,8 @@ begin
     begin
         if rising_edge(CLK) then
             if RESET = '1' then
-                NEG_FLAG <= '0';
-                SINE <= (others => '0');
+                 SINE <= (others => '0');
             else
-                NEG_FLAG <= NEG_FLAG_NEXT;
                 SINE <= SINE_NEXT;
             end if;
         end if;

@@ -19,7 +19,7 @@ architecture Behavioral of TB_SINE is
     signal RESET   : std_logic;
     signal ANGLE   : std_logic_vector(8 downto 0);
     signal SINE    : std_logic_vector(9 downto 0);
-    constant CLK_PERIOD : time := 3 ns;
+    constant CLK_PERIOD : time := 14 ns;
     
 begin
     -- Unit Under Test
@@ -58,7 +58,7 @@ end process CLK_process;
     stim_proc: process
     begin
             
-        wait for CLK_period*33;  
+        wait for CLK_period*7;  
         
         
         -- Test all angles from 0 to 359
@@ -67,7 +67,7 @@ end process CLK_process;
             wait for CLK_PERIOD;
         end loop;
         
-       
+       wait for CLK_PERIOD;
         
         -- End simulation
         std.env.finish;  -- End simulation

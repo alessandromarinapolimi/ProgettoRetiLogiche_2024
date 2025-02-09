@@ -1,7 +1,6 @@
 # Ignore Vivado project files
 
-*.cache
-*.data
+
 *.jou
 *.log
 *.str
