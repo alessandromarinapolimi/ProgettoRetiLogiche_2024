@@ -11,7 +11,7 @@ entity SINE_CALCULATOR is
     );
     Port (
         CLK            : in  std_logic;
-        RESET          : in  std_logic := '0';
+        RST          : in  std_logic := '0';
         ANGLE          : in  std_logic_vector(M-1 downto 0);
         SINE           : out std_logic_vector(N-1 downto 0)
     );
@@ -19,7 +19,7 @@ end SINE_CALCULATOR;
 
 architecture structural of SINE_CALCULATOR is
 
-    component LUT is
+    component ANGLE_SINE_MAPPER is
         generic (N,M : positive);
         Port (
             ANGLE       : in  std_logic_vector(M downto 0);
@@ -50,7 +50,7 @@ architecture structural of SINE_CALCULATOR is
         Port (
             A    : in  std_logic_vector(N-1 downto 0);
             B    : in  std_logic_vector(N-1 downto 0);
-            GT   : out std_logic  
+            GREATER_THAN_FLAG   : out std_logic  
         );
     end component;
 
@@ -65,10 +65,10 @@ architecture structural of SINE_CALCULATOR is
     --------
     -- Signals
     -------- 
-    signal ANGLE_ADJUSTED, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE : std_logic_vector(M-3 downto 0);
-    signal SINE_TEMP, SINE_NEG, SINE_NEG_TEMP, SINE_NEXT                                         : std_logic_vector(N-1 downto 0);
-    signal GT_90, GT_180, GT_270                                       : std_logic;
-    signal QUADRANT                                                    : std_logic_vector(2 downto 0);
+    signal QUADRANT_ADJUSTED_ANGLE, SUB_180_ANGLE, SUB_ANGLE_180, SUB_360_ANGLE : std_logic_vector(M-3 downto 0);
+    signal SINE_TEMP_VALUE, SINE_NEG_VALUE, SINE_NEG_TEMP_VALUE, SINE_NEXT_VALUE               : std_logic_vector(N-1 downto 0);
+    signal ANGLE_GREATER_THAN_90, ANGLE_GREATER_THAN_180, ANGLE_GREATER_THAN_270                                       : std_logic;
+    signal ANGLE_QUADRANT_SELECTOR                                     : std_logic_vector(2 downto 0);
 
 
 begin
@@ -81,7 +81,7 @@ begin
         port map (
             A    => ANGLE,
             B    => ANGLE_90,
-            GT   => GT_90
+            GREATER_THAN_FLAG   => ANGLE_GREATER_THAN_90
         );
 
     COMP_180: COMPARATOR
@@ -89,7 +89,7 @@ begin
         port map (
             A    => ANGLE,
             B    => ANGLE_180,
-            GT   => GT_180
+            GREATER_THAN_FLAG   => ANGLE_GREATER_THAN_180
         );
 
     COMP_270: COMPARATOR
@@ -97,7 +97,7 @@ begin
         port map (
             A    => ANGLE,
             B    => ANGLE_270,
-            GT   => GT_270
+            GREATER_THAN_FLAG   => ANGLE_GREATER_THAN_270
         );
 
     --------
@@ -128,57 +128,57 @@ begin
         );
 
     --------
-    -- LUT instantiation for sine value lookup table
+    -- ANGLE_SINE_MAPPER instantiation for sine value lookup table
     --------
-    LUT_INST: LUT
+    ANGLE_SINE_MAPPER_INST: ANGLE_SINE_MAPPER
         generic map (N => N, M=>M-3)
         port map (
-            ANGLE   => ANGLE_ADJUSTED,
-            SINE    => SINE_TEMP
+            ANGLE   => QUADRANT_ADJUSTED_ANGLE,
+            SINE    => SINE_TEMP_VALUE
         );
 
     
-    QUADRANT <= GT_270 & GT_180 & GT_90;
+    ANGLE_QUADRANT_SELECTOR <= ANGLE_GREATER_THAN_270 & ANGLE_GREATER_THAN_180 & ANGLE_GREATER_THAN_90;
 
 
     --------
     -- Two's complement logic for negative sine
     --------
-    SINE_NEG_TEMP <= not SINE_TEMP;
+    SINE_NEG_TEMP_VALUE <= not SINE_TEMP_VALUE;
     RCA_2COMPL: RCA
         generic map (N => N)
         port map (
-            A    => SINE_NEG_TEMP,
+            A    => SINE_NEG_TEMP_VALUE,
             B    => (others => '0'),  
             CIN  => '1',
-            SUM  => SINE_NEG,
+            SUM  => SINE_NEG_VALUE,
             COUT => open
         );
 
     
-  process(QUADRANT, ANGLE, SUB_360_ANGLE, SUB_ANGLE_180, SUB_180_ANGLE)
+  process(ANGLE_QUADRANT_SELECTOR, ANGLE, SUB_360_ANGLE, SUB_ANGLE_180, SUB_180_ANGLE)
     begin
-        case QUADRANT is
+        case ANGLE_QUADRANT_SELECTOR is
             when "111" =>   -- Quadrant 4 (271°-359°)
-                ANGLE_ADJUSTED <= SUB_360_ANGLE;
+                QUADRANT_ADJUSTED_ANGLE <= SUB_360_ANGLE;
             when "011" =>   -- Quadrant 3 (181°-270°)
-                ANGLE_ADJUSTED <= SUB_ANGLE_180;
+                QUADRANT_ADJUSTED_ANGLE <= SUB_ANGLE_180;
             when "001" =>   -- Quadrant 2 (91°-180°)
-                ANGLE_ADJUSTED <= SUB_180_ANGLE;
+                QUADRANT_ADJUSTED_ANGLE <= SUB_180_ANGLE;
             when others => -- Quadrant 1 (0°-90°)
-                ANGLE_ADJUSTED <= ANGLE(M-3 downto 0);
+                QUADRANT_ADJUSTED_ANGLE <= ANGLE(M-3 downto 0);
         end case;
     end process;
 
     --------
     -- Combinational process for sine value selection
     --------
-    process(QUADRANT)
+    process(ANGLE_QUADRANT_SELECTOR)
     begin
-        if QUADRANT(1) = '1' then
-            SINE_NEXT <= SINE_NEG;
+        if ANGLE_QUADRANT_SELECTOR(1) = '1' then
+            SINE_NEXT_VALUE <= SINE_NEG_VALUE;
         else
-            SINE_NEXT <= SINE_TEMP;
+            SINE_NEXT_VALUE <= SINE_TEMP_VALUE;
         end if;
     end process;
 
@@ -188,10 +188,10 @@ begin
     process(CLK)
     begin
         if rising_edge(CLK) then
-            if RESET = '1' then
+            if RST = '1' then
                  SINE <= (others => '0');
             else
-                SINE <= SINE_NEXT;
+                SINE <= SINE_NEXT_VALUE;
             end if;
         end if;
     end process;

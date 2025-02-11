@@ -2,9 +2,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 --------------------------------------
--- Lookup Table (LUT)
+-- Lookup Table (ANGLE_SINE_MAPPER)
 --------------------------------------
-entity LUT is
+entity ANGLE_SINE_MAPPER is
     generic (
         N : positive := 10;                                                        
         M: positive := 6
@@ -13,12 +13,12 @@ entity LUT is
         ANGLE   : in  std_logic_vector(M downto 0);             -- Input: 7-bit angle
         SINE       : out std_logic_vector(N-1 downto 0)        -- Output: N-bit sine value
     );
-end entity LUT;
+end entity ANGLE_SINE_MAPPER;
 
-architecture RTL of LUT is
+architecture RTL of ANGLE_SINE_MAPPER is
 
     --------
-    -- LUT array values' declaration
+    -- ANGLE_SINE_MAPPER array values' declaration
     --------
     type lut_type is array (0 to 12) of std_logic_vector(N-1 downto 0);
     constant SINE_LUT : lut_type := (
@@ -37,13 +37,13 @@ architecture RTL of LUT is
         "0100000000"  -- sin(90)   (1.00000000)
     );
 
-    component INTERP is
+    component INTERPOLATOR is
         generic (
             N : positive
         );
         Port (
-            ANGLE_DIFF                             : in  std_logic_vector(2 downto 0);                    -- Input: Fine angle difference
-            SINE1, SINE2                            : in  std_logic_vector(N-1 downto 0);                -- Input: Two sine values for interpolation
+            DIFF_BETWEEN_ANGLE_AND_PREVIOUS_8_MULTIPLE                             : in  std_logic_vector(2 downto 0);                    -- Input: Fine angle difference
+            SINE_VALUE_PREVIOUS, SINE_VALUE_NEXT                            : in  std_logic_vector(N-1 downto 0);                -- Input: Two sine values for interpolation
             INTERPOLATED_SINE              : out std_logic_vector(N-1 downto 0)                -- Output: Interpolated sine value
         );
     end component;
@@ -51,20 +51,20 @@ architecture RTL of LUT is
     --------
     -- Internal signals for sine interpolation
     --------
-    signal SINE1, SINE2, INTERPOLATED_SINE : std_logic_vector(N-1 downto 0);
+    signal SINE_VALUE_PREVIOUS, SINE_VALUE_NEXT, INTERPOLATED_SINE : std_logic_vector(N-1 downto 0);
 
 begin
     --------
     -- Interpolation logic
     --------
-    INTERPOLATOR: INTERP
+    INTERPOLATOR_INST : INTERPOLATOR
         generic map (
             N => N
         )
         port map (
-            ANGLE_DIFF                           => ANGLE(2 downto 0),                                
-            SINE1                                      => SINE1,
-            SINE2                                      => SINE2,
+            DIFF_BETWEEN_ANGLE_AND_PREVIOUS_8_MULTIPLE          => ANGLE(2 downto 0),                                
+            SINE_VALUE_PREVIOUS                               => SINE_VALUE_PREVIOUS,
+            SINE_VALUE_NEXT                                      => SINE_VALUE_NEXT,
             INTERPOLATED_SINE             => INTERPOLATED_SINE
         );
 
@@ -75,38 +75,38 @@ begin
     begin
         case ANGLE(6 downto 3) is
             when "0000" => 
-                SINE1 <= SINE_LUT(0);
-                SINE2 <= SINE_LUT(1);
+                SINE_VALUE_PREVIOUS <= SINE_LUT(0);
+                SINE_VALUE_NEXT <= SINE_LUT(1);
             when "0001" => 
-                SINE1 <= SINE_LUT(1);
-                SINE2 <= SINE_LUT(2);
+                SINE_VALUE_PREVIOUS <= SINE_LUT(1);
+                SINE_VALUE_NEXT <= SINE_LUT(2);
             when "0010" => 
-                SINE1 <= SINE_LUT(2);
-                SINE2 <= SINE_LUT(3);
+                SINE_VALUE_PREVIOUS <= SINE_LUT(2);
+                SINE_VALUE_NEXT <= SINE_LUT(3);
             when "0011" => 
-                SINE1 <= SINE_LUT(3);
-                SINE2 <= SINE_LUT(4);
+                SINE_VALUE_PREVIOUS <= SINE_LUT(3);
+                SINE_VALUE_NEXT <= SINE_LUT(4);
             when "0100" => 
-                SINE1 <= SINE_LUT(4);
-                SINE2 <= SINE_LUT(5);
+                SINE_VALUE_PREVIOUS <= SINE_LUT(4);
+                SINE_VALUE_NEXT <= SINE_LUT(5);
             when "0101" => 
-                SINE1 <= SINE_LUT(5);
-                SINE2 <= SINE_LUT(6);
+                SINE_VALUE_PREVIOUS <= SINE_LUT(5);
+                SINE_VALUE_NEXT <= SINE_LUT(6);
             when "0110" => 
-                SINE1 <= SINE_LUT(6);
-                SINE2 <= SINE_LUT(7);
+                SINE_VALUE_PREVIOUS <= SINE_LUT(6);
+                SINE_VALUE_NEXT <= SINE_LUT(7);
             when "0111" => 
-                SINE1 <= SINE_LUT(7);
-                SINE2 <= SINE_LUT(8);
+                SINE_VALUE_PREVIOUS <= SINE_LUT(7);
+                SINE_VALUE_NEXT <= SINE_LUT(8);
             when "1000" => 
-                SINE1 <= SINE_LUT(8);
-                SINE2 <= SINE_LUT(9);
+                SINE_VALUE_PREVIOUS <= SINE_LUT(8);
+                SINE_VALUE_NEXT <= SINE_LUT(9);
             when "1001" => 
-                SINE1 <= SINE_LUT(9);
-                SINE2 <= SINE_LUT(10);
+                SINE_VALUE_PREVIOUS <= SINE_LUT(9);
+                SINE_VALUE_NEXT <= SINE_LUT(10);
             when others => 
-                SINE1 <= SINE_LUT(10);
-                SINE2 <= SINE_LUT(11);
+                SINE_VALUE_PREVIOUS <= SINE_LUT(10);
+                SINE_VALUE_NEXT <= SINE_LUT(11);
         end case;
     end process;
 
@@ -127,9 +127,9 @@ begin
             when "1000000" => SINE <= SINE_LUT(8);                              -- 64°
             when "1001000" => SINE <= SINE_LUT(9);                              -- 72°
             when "1010000" => SINE <= SINE_LUT(10);                             -- 80°
-            when "1011000" | "1011001" => SINE <= SINE_LUT(11);        -- 88° or 89°
+            when "1011000" | "1011001" => SINE <= SINE_LUT(11);                 -- 88° or 89°
             when "1011010" => SINE <= SINE_LUT(12);                             -- 90°
-            when others => SINE <= INTERPOLATED_SINE;                      -- Interpolated values
+            when others => SINE <= INTERPOLATED_SINE;                           -- Interpolated values
         end case;
     end process;
 
