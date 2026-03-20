@@ -1,6 +1,6 @@
 # ProgettoRetiLogiche_2024
 
-- Voto finale: -
+- Voto finale: 22
 
 Members of the group:
 
@@ -16,7 +16,7 @@ Legend:
 
 | Project Chosen                 | Status |
 |--------------------------------|--------|
-| FIXED-POINT SINE FUNCTION      |   🟡  |
+| FIXED-POINT SINE FUNCTION      |   🟢  |
 
 | Elements                        | Status |
 |---------------------------------|--------|
