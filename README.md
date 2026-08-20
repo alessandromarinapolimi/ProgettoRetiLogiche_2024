@@ -1,7 +1,5 @@
 # ProgettoRetiLogiche_2024
 
-- Voto finale: 22
-
 Members of the group:
 
 - Alessandro Marina (alessandro.marina@mail.polimi.it)
@@ -28,17 +26,40 @@ Legend:
 | SINE_CALCULATOR                 |   🟢   |
 
 
-## About the Project
+## Overview
 
-Sine Calculation Module
-This module is designed to calculate the sine of an angle given in degrees. The input angle, encoded in natural binary, must be between 0 and 359 degrees. The resulting sine value, which ranges from -1 to 1, is represented using 10-bit fixed-point precision, with 2 bits for the integer part and 8 bits for the fractional part.
+The module takes an angle expressed in degrees, encoded in natural binary, and produces the
+corresponding sine value. Since the result lies in the interval [-1, 1], it is encoded in a signed
+fixed-point format instead of an integer.
 
-### Key Features:
-- Input Range: The module accepts angles from 0 to 359 degrees.
-- Fixed-Point Representation: The sine output is a 10-bit value with 2 integer bits and 8 fractional bits, allowing for accurate representation of values between -1 and 1.
-- Trigonometric Symmetry: To efficiently compute the sine for angles outside the 0-90° range, the module leverages trigonometric identities, extending the calculation to cover angles between 91° and 359°.
-### Calculation Method:
-- 0-90 Degrees: The sine of angles between 0° and 90° is computed using a lookup table. This table stores the sine values for angles between 0° and 88° (at 8° intervals), as well as for 89° and 90°.
-- Interpolation: If the input angle does not directly match a value in the lookup table, the sine is computed using linear interpolation within the closest interval from the table.
-- 91-359 Degrees: For angles beyond 90°, the module applies trigonometric identities (e.g., sine symmetry and periodicity) to compute the sine based on the known values from the 0-90° range.
+### Numeric format
 
+The output uses a 10-bit signed fixed-point format with 2 integer bits and 8 fractional bits
+(Q2.8, two's complement):
+
+- resolution: 2^-8 = 1/256 = 0.00390625
+- representable range: -2.0 to +1.99609375
+- the values +1 and -1, reached at 90 and 270 degrees, are exactly representable
+
+### Key features
+
+- Input range: integer angles from 0 to 359 degrees.
+- Fixed-point output: 10 bits, 2 integer and 8 fractional, enough to cover [-1, 1] exactly at the
+  endpoints and with a quantization step of 1/256 elsewhere.
+- Trigonometric symmetry: only the first quadrant is stored; angles from 91 to 359 degrees are
+  reduced to it, so no extra table entries are needed.
+- Structural design: the arithmetic is built bottom-up from a 1-bit full adder, so the adder and the
+  subtractor are explicit hardware rather than inferred operators.
+
+### Calculation method
+
+1. **0-90 degrees.** The sine is read from a lookup table that stores the values for 0, 8, 16, ...,
+   88 degrees (a step of 8 degrees, 12 entries) plus the two extra points 89 and 90 degrees, for a
+   total of 14 entries.
+2. **Interpolation.** If the input angle does not match a table entry, the result is computed by
+   linear interpolation between the two nearest entries of the enclosing 8-degree interval.
+3. **91-359 degrees.** The angle is folded back into the first quadrant using the symmetry and
+   periodicity identities of the sine, and the sign of the result is set accordingly:
+   - 91-180 degrees: sin(a) = sin(180 - a)
+   - 181-270 degrees: sin(a) = -sin(a - 180)
+   - 271-359 degrees: sin(a) = -sin(360 - a)
