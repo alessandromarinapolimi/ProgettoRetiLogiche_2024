@@ -1,5 +1,8 @@
 # ProgettoRetiLogiche_2024 - Fixed-Point Sine Calculator
 
+![language](https://img.shields.io/badge/language-VHDL-4B0082?style=flat-square)
+![Politecnico di Milano](https://img.shields.io/badge/Politecnico%20di%20Milano-Reti%20Logiche-lightgrey?style=flat-square)
+
 VHDL module that computes the sine of an integer angle from 0 to 359 degrees and returns it as a
 10-bit fixed-point value, using a first-quadrant lookup table, linear interpolation and
 trigonometric symmetry.
