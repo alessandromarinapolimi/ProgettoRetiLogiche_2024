@@ -1,37 +1,25 @@
-# Ignore Vivado project files
-
-
+# Vivado project and generated files (recreate the project from src/, sim/, constraints/)
+*.xpr
 *.jou
 *.log
 *.str
 *.dcp
-*.bd
-*.bdxml
+*.pb
+*.wdb
+*.wdf
 *.bit
 *.bin
 *.ltx
 *.svf
 *.vds
-*.veo
-*.vhi
-*.vho
-*.xci
-*.xml
-*.xsc
-*.wdf
-*.wcfg
-*.tcl
-*.hwdef
-*.bat
-*.wdb
+.Xil/
+*.cache/
+*.hw/
+*.runs/
+*.sim/
+*.ip_user_files/
+*.gen/
 
-# Ignore Vivado backup files
-vivado*.backup.log
-vivado*.jou
-vivado*.log
-
-# Ignore everything in .srcs except .vhd, .v, and .sv
-**.srcs/*
-!**.srcs/**/*.vhd
-!**.srcs/**/*.v
-!**.srcs/**/*.sv
+# Build outputs
+build/
+vivado_project/

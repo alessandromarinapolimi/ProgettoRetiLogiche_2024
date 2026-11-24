@@ -70,3 +70,38 @@ The output is a 10-bit signed fixed-point value with 2 integer bits and 8 fracti
 | 91-180      | `sin(a) = sin(180-a)`  |
 | 181-270     | `sin(a) = -sin(a-180)` |
 | 271-359     | `sin(a) = -sin(360-a)` |
+
+## Repository layout
+
+| Path            | Content                                  |
+|-----------------|------------------------------------------|
+| `src/`          | Synthesizable VHDL sources               |
+| `sim/`          | Testbenches                              |
+| `constraints/`  | Vivado constraints (`.xdc`)              |
+| `scripts/`      | Vivado project creation script           |
+| `Makefile`      | Simulation with GHDL                     |
+
+The sources are plain VHDL-2008 with no tool-specific files, so any compiler can use them. The
+top level is `SINE_CALCULATOR`; the main testbench is `TB_SINE`. Compile order, if you do it by
+hand: `FA, RCA, SUB, COMPARATOR, INTERPOLATOR, ANGLE_SINE_MAPPER, SINE_CALCULATOR`.
+
+`TB_INTERP` and `TB_LUT` reference entities (`INTERP`, `LUT`) that no longer exist, so they do not
+compile and are excluded from the default run.
+
+### Vivado
+
+```
+vivado -mode batch -source scripts/vivado_create_project.tcl
+```
+
+This creates `vivado_project/` (not tracked by git) targeting `xc7a200tsbg484-1`.
+
+### GHDL (or any other simulator)
+
+```
+make            # runs TB_FA, TB_RCA, TB_SUB, TB_SINE
+make sim-TB_SINE
+```
+
+Waveforms are written to `build/*.ghw`. For ModelSim/Questa, analyze the same files in the order
+above with VHDL-2008 enabled, then simulate `TB_SINE`.
