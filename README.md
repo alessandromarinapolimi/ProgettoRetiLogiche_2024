@@ -115,6 +115,20 @@ This creates `vivado_project/` (not tracked by git) targeting `xc7a200tsbg484-1`
 `SINE_CALCULATOR` as the synthesis top and `TB_SINE` as the simulation top. The simulation run
 time is set to `-all`, so behavioural simulation runs until the testbench finishes.
 
+Two more scripts regenerate the results; both create the project if it is missing:
+
+```
+vivado -mode batch -source scripts/vivado_run_flow.tcl
+vivado -mode batch -source scripts/vivado_simulate.tcl -tclargs TB_SINE
+```
+
+The first runs synthesis and implementation and writes utilization, timing, power and DRC
+reports to `reports/`. The second simulates the given testbench and saves its waveform layout to
+`sim/waves/<TB>.wcfg`; `TB_SINE.wcfg` is loaded automatically when the project is created.
+
+The reports currently in `reports/` were generated on 2025-02-09 from the earlier version of the
+design, before the structural rewrite. Rerun the flow script to refresh them.
+
 `constraints/SINE_CONSTRAINT.xdc` defines a 14 ns clock on `CLK` and zero I/O delays, which
 makes Vivado time the path from the input ports through the logic to the output register. It
 has no pin assignments because the project is not tied to a board. Add `PACKAGE_PIN` and
