@@ -1,48 +1,43 @@
+----------------------------------------------------------------------------------
+-- Engineer:     Alessandro Marina, Ashvinder Singh
+-- Module Name:  SUB - RTL
+-- Project Name: ProgettoRetiLogiche_2024
+-- Description:  N-bit subtractor, DIFF = X - Y modulo 2^N.
+--               Computed as X + not(Y) + 1 on an RCA.
+-- Dependencies: RCA
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
----------------------------
--- Subtractor (SUB)
----------------------------
-
 entity SUB is
     generic (
-        N : positive    
+        N : positive
     );
-    Port (
-        X, Y            : in  std_logic_vector(N-1 downto 0);       -- Input: Minuend (X) and Subtrahend (Y)
-        DIFF          : out std_logic_vector(N-1 downto 0)       -- Output: Difference (X - Y)
+    port (
+        X, Y : in  std_logic_vector(N-1 downto 0);
+        DIFF : out std_logic_vector(N-1 downto 0)
     );
 end entity SUB;
 
 architecture RTL of SUB is
 
-    component RCA is
-        generic (
-            N : positive                                                              -- Number of bits for the operands
-        );
-        Port (
-            A, B         : in  std_logic_vector(N-1 downto 0);     -- Input: First operand and Second operand
-            CIN          : in  std_logic;                                           -- Carry-in
-            SUM        : out std_logic_vector(N-1 downto 0);   -- Output: Sum
-            COUT       : out std_logic                                          -- Carry-out 
-        );
-    end component;
+    signal Y_N : std_logic_vector(N-1 downto 0);
 
-    signal Y_COMP : std_logic_vector(N-1 downto 0);       -- Signal for the 2's complement of Y
+begin
 
-    begin
-            Y_COMP <= not Y;                                                   -- Calculate 2's complement of Y for subtraction
-            SUB_RCA: RCA
-            generic map (
-                N => N
-            )
-            port map (
-                A            => X,                                                       -- Minuend (X)
-                B            => Y_COMP,                                           -- Subtrahend (Y's 2's complement)
-                CIN        => '1',                                                      -- Carry-in set to 1 for 2's complement addition
-                SUM      => DIFF,                                                  -- Output: Difference (X - Y)
-                COUT    => open                                                   -- Carry-out is not used
-            );
-            
+    Y_N <= not Y;
+
+    SUB_RCA : entity work.RCA
+        generic map (
+            N => N
+        )
+        port map (
+            A    => X,
+            B    => Y_N,
+            CIN  => '1',
+            SUM  => DIFF,
+            COUT => open
+        );
+
 end architecture RTL;

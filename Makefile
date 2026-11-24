@@ -1,18 +1,16 @@
-# Simulation with GHDL (open source, any OS). Usage: make [all|test|sim-<TB>|clean]
-# Testbenches use std.env.finish/stop, so VHDL-2008 is required.
+# GHDL simulation. Usage: make [all|test|sim-<TB>|clean]
+# The testbenches need VHDL-2008 (std.env.finish, to_string).
 
 GHDL   ?= ghdl
 STD    ?= 08
 BUILD  ?= build
 GFLAGS := --std=$(STD) --workdir=$(BUILD)
 
-# Compile order matters: dependencies first.
+# Dependencies first.
 SRC := src/FA.vhd src/RCA.vhd src/SUB.vhd src/COMPARATOR.vhd \
        src/INTERPOLATOR.vhd src/ANGLE_SINE_MAPPER.vhd src/SINE_CALCULATOR.vhd
 
-# TB_INTERP and TB_LUT target entities (INTERP, LUT) that no longer exist
-# in src/, so they are not part of the default run.
-TBS := TB_FA TB_RCA TB_SUB TB_SINE
+TBS := TB_FA TB_RCA TB_SUB TB_INTERP TB_LUT TB_SINE
 
 .PHONY: all test clean $(addprefix sim-,$(TBS))
 all test: $(addprefix sim-,$(TBS))
@@ -22,6 +20,8 @@ $(BUILD)/.analyzed: $(SRC)
 	$(GHDL) -a $(GFLAGS) $(SRC)
 	@touch $@
 
+# A testbench reports a mismatch with severity failure, which makes ghdl -r
+# exit non-zero and stops make.
 $(addprefix sim-,$(TBS)): sim-%: $(BUILD)/.analyzed
 	$(GHDL) -a $(GFLAGS) sim/$*.vhd
 	$(GHDL) -e $(GFLAGS) $*

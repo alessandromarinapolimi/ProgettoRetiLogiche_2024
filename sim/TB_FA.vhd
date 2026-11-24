@@ -1,28 +1,26 @@
+----------------------------------------------------------------------------------
+-- Engineer:     Alessandro Marina, Ashvinder Singh
+-- Module Name:  TB_FA - Behavioral
+-- Project Name: ProgettoRetiLogiche_2024
+-- Description:  Exhaustive test of FA (all 8 input combinations).
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 entity TB_FA is
-end TB_FA;
+end entity TB_FA;
 
 architecture Behavioral of TB_FA is
 
-    -- Component declaration of the Full Adder (FA)
-    component FA
-        Port (
-            X, Y, CIN : in  std_logic;
-            SUM, COUT : out std_logic
-        );
-    end component;
-
-    -- Test signals to connect to the FA component
     signal X, Y, CIN : std_logic;
     signal SUM, COUT : std_logic;
 
 begin
 
-    -- Instantiate the Unit Under Test (UUT), the Full Adder (FA)
-    UUT: FA
-        Port map (
+    UUT : entity work.FA
+        port map (
             X    => X,
             Y    => Y,
             CIN  => CIN,
@@ -30,72 +28,34 @@ begin
             COUT => COUT
         );
 
-    -- Stimulus process to apply test vectors
-    stimulus_process: process
+    STIM_PROC : process
+        variable VEC      : unsigned(2 downto 0);
+        variable EXPECTED : unsigned(1 downto 0);
+        variable ERRORS   : natural := 0;
     begin
-        -- Test case 1: X = 0, Y = 0, CIN = 0 => SUM = 0, COUT = 0
-        X <= '0'; Y <= '0'; CIN <= '0';
-        wait for 10 ns;
-        assert (SUM = '0' and COUT = '0') 
-            report "Test Case 1 Failed: Expected SUM = 0, COUT = 0" 
-            severity error;
+        for i in 0 to 7 loop
+            VEC := to_unsigned(i, 3);
+            X   <= VEC(2);
+            Y   <= VEC(1);
+            CIN <= VEC(0);
+            wait for 10 ns;
+            EXPECTED := ('0' & VEC(2)) + ('0' & VEC(1)) + ('0' & VEC(0));
+            if SUM /= EXPECTED(0) or COUT /= EXPECTED(1) then
+                ERRORS := ERRORS + 1;
+                report "X Y CIN = " & to_string(VEC) & ": expected COUT SUM = "
+                       & to_string(EXPECTED) & ", got " & std_logic'image(COUT)
+                       & std_logic'image(SUM)
+                    severity error;
+            end if;
+        end loop;
 
-        -- Test case 2: X = 0, Y = 0, CIN = 1 => SUM = 1, COUT = 0
-        X <= '0'; Y <= '0'; CIN <= '1';
-        wait for 10 ns;
-        assert (SUM = '1' and COUT = '0') 
-            report "Test Case 2 Failed: Expected SUM = 1, COUT = 0" 
-            severity error;
+        if ERRORS = 0 then
+            report "TB_FA: all 8 cases match" severity note;
+        else
+            report "TB_FA: " & integer'image(ERRORS) & " mismatches" severity failure;
+        end if;
 
-        -- Test case 3: X = 0, Y = 1, CIN = 0 => SUM = 1, COUT = 0
-        X <= '0'; Y <= '1'; CIN <= '0';
-        wait for 10 ns;
-        assert (SUM = '1' and COUT = '0') 
-            report "Test Case 3 Failed: Expected SUM = 1, COUT = 0" 
-            severity error;
+        std.env.finish;
+    end process STIM_PROC;
 
-        -- Test case 4: X = 0, Y = 1, CIN = 1 => SUM = 0, COUT = 1
-        X <= '0'; Y <= '1'; CIN <= '1';
-        wait for 10 ns;
-        assert (SUM = '0' and COUT = '1') 
-            report "Test Case 4 Failed: Expected SUM = 0, COUT = 1" 
-            severity error;
-
-        -- Test case 5: X = 1, Y = 0, CIN = 0 => SUM = 1, COUT = 0
-        X <= '1'; Y <= '0'; CIN <= '0';
-        wait for 10 ns;
-        assert (SUM = '1' and COUT = '0') 
-            report "Test Case 5 Failed: Expected SUM = 1, COUT = 0" 
-            severity error;
-
-        -- Test case 6: X = 1, Y = 0, CIN = 1 => SUM = 0, COUT = 1
-        X <= '1'; Y <= '0'; CIN <= '1';
-        wait for 10 ns;
-        assert (SUM = '0' and COUT = '1') 
-            report "Test Case 6 Failed: Expected SUM = 0, COUT = 1" 
-            severity error;
-
-        -- Test case 7: X = 1, Y = 1, CIN = 0 => SUM = 0, COUT = 1
-        X <= '1'; Y <= '1'; CIN <= '0';
-        wait for 10 ns;
-        assert (SUM = '0' and COUT = '1') 
-            report "Test Case 7 Failed: Expected SUM = 0, COUT = 1" 
-            severity error;
-
-        -- Test case 8: X = 1, Y = 1, CIN = 1 => SUM = 1, COUT = 1
-        X <= '1'; Y <= '1'; CIN <= '1';
-        wait for 10 ns;
-        assert (SUM = '1' and COUT = '1') 
-            report "Test Case 8 Failed: Expected SUM = 1, COUT = 1" 
-            severity error;
-
-        -- Tests completed
-        report "-----------------------------------------" severity note;
-        report "---- SIMULATION COMPLETED SUCCESSFULLY ----" severity note;
-        report "-----------------------------------------" severity note;
-
-        -- End simulation
-        std.env.stop;
-    end process;
-
-end Behavioral;
+end architecture Behavioral;
